@@ -1,0 +1,12 @@
+What is the primary physical device used to type text and input commands into a computer? Keyboard
+https://i.ibb.co/Rk3JvDFv/keyboard.jpg
+
+What network hardware device directs internet traffic between different home devices and the wider web? Router
+https://i.ibb.co/k2ngMKP0/router.jpg
+
+What hardware component is known as the 'brain' of the computer, executing calculations and instructions? CPU
+https://i.ibb.co/847h1fgj/CPU.png
+
+What input pointing device uses a small light sensor or ball underneath to track movement on a flat surface? Mice
+https://i.ibb.co/8nKBQyNg/mice.jpg
+

@@ -1,0 +1,309 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>hktransport film</title>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+#stage{position:absolute;inset:0;overflow:hidden;font-family:-apple-system,"SF Pro Display","PingFang SC",sans-serif;perspective:1900px;-webkit-font-smoothing:antialiased;color:#1d1d1f}
+#light,#dark,#blend,#flash,#end{position:absolute;inset:0}
+#city{position:absolute;left:-3000px;top:0}
+#light{background:#f5f5f7;overflow:hidden}
+.orb{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-550px;top:-550px}
+#dark{background:#000}
+#blend{z-index:5;display:none}
+#flash{background:#000;opacity:0;pointer-events:none;z-index:30}
+.phone{position:absolute;left:50%;top:50%;width:448px;height:952px;margin:-476px 0 0 -224px;transform-style:preserve-3d;z-index:4}
+.body{position:absolute;inset:0;border-radius:74px;background:linear-gradient(135deg,#6f7278,#2b2c31 35%,#17181c 65%,#54565c);box-shadow:0 70px 120px rgba(20,25,60,.38),0 16px 34px rgba(20,25,60,.22)}
+.glassy{position:absolute;inset:9px;border-radius:66px;overflow:hidden;background:#000;transform:translateZ(1px)}
+.screen{position:absolute;left:1px;top:1px;width:428px;height:932px;border-radius:61px;overflow:hidden;background:#e4ebf2}
+.screen img{position:absolute;inset:0;width:100%;height:100%;opacity:0}
+.island{position:absolute;left:50%;top:21px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;transform:translateZ(3px)}
+.pop{position:absolute;left:10px;top:10px;width:428px;height:932px;transform-style:preserve-3d;opacity:0;filter:drop-shadow(0 26px 34px rgba(25,35,80,.3))}
+.pop img{position:absolute;inset:0;width:100%;height:100%}
+.cap{position:absolute;font-weight:700;letter-spacing:-.022em;line-height:1.14;white-space:pre;z-index:20}
+.cap .c{display:inline-block}
+.onlight{color:#1d1d1f;font-size:88px}
+.sub{font-size:34px;font-weight:500;letter-spacing:-.01em;color:#6e6e73;margin-top:18px}
+.oncity{color:#fff;font-size:72px;text-shadow:0 4px 34px rgba(0,0,20,.72)}
+.hero{color:#fff;font-size:150px;left:0;right:0;top:50%;margin-top:-90px;text-align:center}
+.grad{background:linear-gradient(95deg,#ff375f,#ff9f0a 55%,#ffd60a);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Things that jump out. */
+.jump{position:absolute;opacity:0;z-index:12;will-change:transform}
+.glass{background:rgba(255,255,255,.86);border-radius:34px;box-shadow:0 34px 70px rgba(30,40,100,.18),0 6px 16px rgba(30,40,100,.08),inset 0 0 0 1px rgba(255,255,255,.9)}
+.searchbar{left:1000px;top:190px;width:800px;height:112px;display:flex;align-items:center;padding:0 40px;gap:24px;font-size:48px;font-weight:600;border-radius:56px;box-shadow:0 0 0 5px #0a84ff,0 34px 70px rgba(10,132,255,.22);background:#fff}
+.row{left:1000px;width:800px;height:118px;display:flex;align-items:center;padding:0 32px;gap:26px;font-size:38px;font-weight:600}
+.row small{display:block;font-size:24px;color:#86868b;font-weight:500;margin-top:2px}
+.row b{margin-left:auto;font-size:30px;color:#86868b;font-weight:500}
+.dot{width:66px;height:66px;flex:none;border-radius:50%;background:#0a84ff;display:grid;place-items:center}
+.dot.place{background:#e5e5ea}
+.bubble{left:1190px;top:64px;padding:24px 44px;border-radius:44px 44px 10px 44px;background:linear-gradient(135deg,#0a84ff,#5e5ce6);color:#fff;font-size:50px;font-weight:600;box-shadow:0 26px 50px rgba(10,80,255,.3);white-space:pre}
+.shop{left:980px;width:800px;border-radius:40px;box-shadow:0 36px 70px rgba(20,25,60,.22)}
+.badge{padding:22px 40px;border-radius:60px;font-size:60px;font-weight:800;color:#fff;box-shadow:0 26px 50px rgba(30,40,100,.24);white-space:nowrap}
+.option{left:1000px;width:800px;height:220px;padding:0 44px;display:flex;align-items:center;gap:34px}
+.option.best{box-shadow:0 0 0 5px #0a84ff,0 34px 70px rgba(10,132,255,.24)}
+.num{font-size:112px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.num small{font-size:32px;font-weight:600;color:#86868b;margin-left:8px;letter-spacing:0}
+.lines{margin-left:auto;text-align:right}
+.tag{font-size:30px;font-weight:700;color:#0a84ff;margin-bottom:12px}
+.chip{display:inline-block;padding:7px 18px;border-radius:12px;color:#fff;font-size:27px;font-weight:700;margin-left:8px}
+.beacon{left:1380px;top:296px;width:0;height:0}
+.ring{position:absolute;border-radius:50%;left:0;top:0;border:5px solid #0a84ff}
+.core{position:absolute;left:-34px;top:-34px;width:68px;height:68px;border-radius:50%;background:#0a84ff;border:9px solid #fff;box-shadow:0 12px 30px rgba(10,132,255,.5)}
+.here{left:1460px;top:150px;padding:20px 38px;font-size:46px;font-weight:700;border-radius:50px 50px 50px 10px;white-space:nowrap}
+.eta{left:1020px;top:330px;padding:24px 50px;border-radius:60px;background:#ff3b30;color:#fff;font-size:84px;font-weight:800;box-shadow:0 30px 60px rgba(255,59,48,.38);white-space:nowrap}
+.cells{left:1020px;top:530px;width:760px;padding:34px 38px}
+.cells h4{font-size:36px;font-weight:700;margin-bottom:24px}
+.cells div{display:flex;gap:22px}
+.cells section{flex:1;background:#f0f1f5;border-radius:24px;padding:22px 28px;font-size:60px;font-weight:800}
+.cells section span{display:block;font-size:26px;color:#86868b;font-weight:600}
+#loop{left:860px;top:150px;width:980px;height:640px;opacity:1;z-index:11}
+.key{padding:18px 32px;font-size:36px;font-weight:700;border-radius:50px;display:flex;align-items:center;gap:16px;white-space:nowrap}
+.key i{width:26px;height:26px;border-radius:50%}
+#bento{position:absolute;inset:0;background:#05060a;z-index:15;display:none}
+.tile{position:absolute;border-radius:44px;padding:40px 44px;color:#fff;overflow:hidden;opacity:0;display:flex;flex-direction:column;justify-content:flex-end;font-size:60px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.tile span{font-size:30px;font-weight:500;letter-spacing:0;opacity:.82;margin-top:10px}
+.tile svg{position:absolute;right:38px;top:36px}
+#end{background:#000;opacity:0;text-align:center;z-index:18}
+#icon{position:absolute;left:50%;top:292px;width:190px;height:190px;margin-left:-95px;border-radius:44px;box-shadow:0 30px 80px rgba(255,80,60,.34)}
+#url{position:absolute;left:50%;top:790px;padding:16px 38px;border-radius:40px;background:rgba(255,255,255,.12);color:#fff;font-size:32px;font-weight:500;white-space:nowrap}
+#scrim{position:absolute;left:0;right:0;bottom:0;height:420px;background:linear-gradient(transparent,rgba(4,6,20,.78));opacity:0;z-index:6}
+#pill{position:absolute;left:0;top:0;padding:14px 30px;border-radius:40px;background:#ff3b30;color:#fff;font-size:40px;font-weight:700;box-shadow:0 14px 34px rgba(0,0,0,.45);opacity:0;white-space:nowrap;z-index:7}
+#pill:after{content:"";position:absolute;left:50%;bottom:-13px;margin-left:-14px;border:14px solid transparent;border-bottom:0;border-top-color:#ff3b30}
+</style>
+<div id="stage">
+  <div id="dark"></div>
+  <div id="light"><div class="orb" id="o1"></div><div class="orb" id="o2"></div><div class="orb" id="o3"></div></div>
+  <div class="phone" id="phone"><div class="body"></div><div class="glassy"><div class="screen" id="screen"></div></div><div class="island"></div></div>
+  <canvas id="city" width="1920" height="1080"></canvas><canvas id="blend" width="1920" height="1080"></canvas>
+  <div id="scrim"></div><div id="pill"></div>
+  <div id="bento"></div>
+  <div id="end"><img id="icon" src="shots/icon.png"><div id="url">hk.52-220-124-215.sslip.io</div></div>
+  <div id="flash"></div>
+</div>
+<script type="importmap">{"imports":{"three":"./lib/three.module.js"}}</script>
+<script type="module">
+import { createCity } from './city.js';
+const $ = (id) => document.getElementById(id), stage = $('stage');
+const LANG = new URLSearchParams(location.search).get('lang') ?? 'hans', BASE = LANG === 'hans' ? 'shots/' : `shots/${LANG}/`, isEN = LANG === 'en';
+const clamp = (x) => Math.max(0, Math.min(1, x)), win = (t, a, b) => clamp((t - a) / (b - a));
+const inOut = (x) => (x < 0.5 ? 16 * x ** 5 : 1 - (-2 * x + 2) ** 5 / 2);
+const glide = (x) => x * x * x * (x * (6 * x - 15) + 10);
+const spring = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-6.5 * x) * Math.cos(11 * x));
+const bounce = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-7.5 * x) * Math.cos(15 * x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const T = {
+  hans: { hero: ['车到哪了？', '哪条路最快？', '吃什么好？', '问 *hktransport*'], c: [['打开，就知道\n*你在哪*'], ['打字，\n*马上有推荐*', '站点和地点，由近到远'], ['一句话，\n*AI 帮你挑店*'], ['重点，\n*一眼就有*'], ['哪条路最快，\n*帮你比好*', '巴士、小巴、港铁、步行'], ['整条路线，\n*一眼看全*'], ['每一班车，都看得见'], ['按到站时间，推算它到哪了'], ['3D 小车，沿真实路线跑'], ['来车时间，跟着车走'], ['点一下站点，\n*来车就有*'], ['循环线，\n*两程两种颜色*']],
+    here: '你在这里', q: '尖沙咀', rows: [['尖沙咀警署', '站点', '77 m', 1], ['尖沙咀警署，弥敦道', '站点', '103 m', 1], ['尖沙咀德成街', '站点', '254 m', 1], ['尖沙咀', '地点', '355 m', 0]], ask: '去吃茶餐厅', badges: ['★ 4.0', '328 m', '营业中'], unit: '分钟', plans: [[37, '最快', [['观塘线', '#00ab4e'], ['荃湾线', '#ed1d24']]], [46, '少走路', [['72', '#e3242b'], ['屯马线', '#923011']]], [54, '直达', [['1', '#e3242b']]]], pill: ['还有 3 分钟', '还有 1 分钟'], stop: '太子站，旺角花墟', eta: '还有 11 分钟', cells: [['下一班', '11 分钟'], ['第二班', '25 分钟']], keys: ['去程', '回程'], tiles: [['定位', '打开就知道'], ['AI 找店', '说一句话，排好推荐'], ['实时到站', '每一站都清楚'], ['3D 小车', '沿真实路线跑'], ['循环线', '两程两色'], ['三种语言', '简 · 繁 · EN']], line: '香港出行，一个网页就够。' },
+  hant: { hero: ['車到哪了？', '哪條路最快？', '吃甚麼好？', '問 *hktransport*'], c: [['打開，就知道\n*你在哪*'], ['打字，\n*馬上有推薦*', '站點和地點，由近到遠'], ['一句話，\n*AI 幫你揀店*'], ['重點，\n*一眼就有*'], ['哪條路最快，\n*幫你比好*', '巴士、小巴、港鐵、步行'], ['整條路線，\n*一眼看全*'], ['每一班車，都看得見'], ['按到站時間，推算它到哪了'], ['3D 小車，沿真實路線跑'], ['來車時間，跟著車走'], ['點一下站點，\n*來車就有*'], ['循環線，\n*兩程兩種顏色*']],
+    here: '你在這裡', q: '尖沙咀', rows: [['尖沙咀警署', '站點', '77 m', 1], ['尖沙咀警署，彌敦道', '站點', '103 m', 1], ['尖沙咀德成街', '站點', '254 m', 1], ['尖沙咀', '地點', '355 m', 0]], ask: '去吃茶餐廳', badges: ['★ 4.0', '328 m', '營業中'], unit: '分鐘', plans: [[37, '最快', [['觀塘線', '#00ab4e'], ['荃灣線', '#ed1d24']]], [46, '少行路', [['72', '#e3242b'], ['屯馬線', '#923011']]], [54, '直達', [['1', '#e3242b']]]], pill: ['還有 3 分鐘', '還有 1 分鐘'], stop: '太子站，旺角花墟', eta: '還有 9 分鐘', cells: [['下一班', '9 分鐘'], ['第二班', '36 分鐘']], keys: ['去程', '回程'], tiles: [['定位', '打開就知道'], ['AI 找店', '說一句話，排好推薦'], ['實時到站', '每一站都清楚'], ['3D 小車', '沿真實路線跑'], ['循環線', '兩程兩色'], ['三種語言', '简 · 繁 · EN']], line: '香港出行，一個網頁就夠。' },
+  en: { hero: ['Where’s my bus?', 'What’s the fastest way?', 'Where should we eat?', 'Ask *hktransport*'], c: [['Open it.\n*It knows\nwhere you are.*'], ['Start typing.\n*See suggestions.*', 'Stops and places, nearest first'], ['Just ask.\n*AI picks\nthe place.*'], ['What matters,\n*up front.*'], ['The fastest way,\n*compared for you.*', 'Bus, minibus, MTR and walking'], ['The whole route,\n*at a glance.*'], ['Every bus, in plain sight'], ['Placed by its live arrival time'], ['A 3D bus on its real route'], ['Arrival time rides along'], ['Tap a stop.\n*See what’s coming.*'], ['Circular routes,\n*two colours.*']],
+    here: 'You are here', q: 'Tsim Sha Tsui', rows: [['Tsim Sha Tsui Police Station', 'Stop', '77 m', 1], ['Police Station, Nathan Road', 'Stop', '103 m', 1], ['Tak Shing Street', 'Stop', '254 m', 1], ['Tsim Sha Tsui', 'Place', '355 m', 0]], ask: 'Find a cha chaan teng', badges: ['★ 4.0', '328 m', 'Open now'], unit: 'min', plans: [[38, 'Fastest', [['Kwun Tong Line', '#00ab4e'], ['Tsuen Wan Line', '#ed1d24']]], [46, 'Less walking', [['72', '#e3242b'], ['Tuen Ma Line', '#923011']]], [54, 'Direct', [['1', '#e3242b']]]], pill: ['3 min', '1 min'], stop: 'Prince Edward Station', eta: '6 min', cells: [['Next', '6 min'], ['Then', '33 min']], keys: ['Out', 'Back'], tiles: [['Location', 'Known the moment you open it'], ['AI search', 'Say it, get it ranked'], ['Live arrivals', 'At every stop'], ['3D bus', 'On its real route'], ['Circular routes', 'Two colours'], ['Three languages', '简 · 繁 · EN']], line: 'Getting around Hong Kong, in one web page.' },
+}[LANG];
+
+// MARK: Words
+function caption(text, css, cls, sub) {
+  const el = document.createElement('div'); el.className = `cap ${cls}`; el.style.cssText = css;
+  const chars = [], line = document.createElement('div');
+  for (const part of text.split(/(\*[^*]+\*)/)) {
+    const isGrad = part.startsWith('*');
+    for (const ch of part.replace(/\*/g, '')) {
+      if (ch === '\n') { line.append(document.createElement('br')); continue; }
+      const c = document.createElement('span'); c.className = `c${isGrad ? ' grad' : ''}`; c.textContent = ch; line.append(c); chars.push(c);
+    }
+  }
+  el.append(line);
+  if (sub) { const s = document.createElement('div'); s.className = 'sub'; s.textContent = sub; el.append(s); chars.push(s); }
+  stage.append(el);
+  return { el, chars };
+}
+function showCaption(cap, t, from, to, gap = 0.024) {
+  if (isEN) gap *= 0.5;
+  const live = t >= from - 0.01 && t <= to + 0.01;
+  cap.el.style.display = live ? 'block' : 'none';
+  if (!live) return;
+  const leave = glide(win(t, to - 0.2, to));
+  cap.chars.forEach((c, i) => {
+    const k = win(t, from + i * gap, from + i * gap + 0.62), s = spring(k);
+    c.style.opacity = clamp(k * 4) * (1 - leave);
+    c.style.transform = `translate3d(0,${(1 - s) * 70 - leave * 34}px,0) scale(${0.86 + 0.14 * s})`;
+  });
+}
+const size = isEN ? 'font-size:76px' : 'font-size:92px', mid = isEN ? 'top:370px' : 'top:390px';
+const SLOTS = [[`left:110px;${mid};${size}`, 'onlight', 4.3, 5.95], [`left:110px;${mid};${size}`, 'onlight', 6.1, 7.92], [`left:110px;${mid};${size}`, 'onlight', 8.15, 11.9], [`left:110px;top:150px;${size}`, 'onlight', 12.0, 13.9], [`left:110px;${mid};${size}`, 'onlight', 14.1, 15.9], [`left:110px;${mid};${isEN ? 'font-size:66px' : size}`, 'onlight', 16.05, 17.1],
+  ['left:110px;top:840px', 'oncity', 21.05, 22.9], ['left:110px;top:840px', 'oncity', 23.05, 24.9], ['left:110px;top:840px', 'oncity', 25.05, 26.9], ['left:110px;top:840px', 'oncity', 27.05, 28.7], [`left:1020px;top:90px;${isEN ? 'font-size:66px' : 'font-size:80px'}`, 'onlight', 31.05, 32.9], [`left:110px;${mid};${size}`, 'onlight', 33.1, 34.85]];
+const caps = SLOTS.map(([css, cls, a, b], i) => [caption(T.c[i][0], css, cls, T.c[i][1]), a, b]);
+const heroes = T.hero.map((text, i) => [caption(text, isEN ? 'font-size:124px' : '', 'hero'), i, i === 3 ? 3.92 : i + 0.97]);
+const endName = caption('hktransport', 'left:0;right:0;top:520px;text-align:center;font-size:96px;color:#fff;z-index:19', '');
+const endLine = caption(T.line, 'left:0;right:0;top:660px;text-align:center;font-size:46px;font-weight:500;color:#a1a1a6;z-index:19', '');
+
+// MARK: What jumps out
+const jumps = [];
+function jump(html, cls, css, at, until, from = {}) {
+  const el = document.createElement('div'); el.className = `jump ${cls}`; if (css) el.style.cssText = css; el.innerHTML = html; stage.append(el);
+  jumps.push({ el, at, until, ...from }); return el;
+}
+const pin = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 12h14M8 21l1-3M16 21l-1-3"/></svg>';
+const place = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="2.4"><path d="M12 21s7-6.3 7-11.5A7 7 0 0 0 5 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>';
+// Location.
+jump('<div class="ring" id="r1"></div><div class="ring" id="r2"></div><div class="core"></div>', 'beacon', '', 4.5, 5.95);
+jump(T.here, 'glass here', '', 4.75, 5.95);
+// Search.
+const bar = jump('<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg><span id="typed"></span>', 'searchbar', '', 6.25, 7.92);
+T.rows.forEach(([name, kind, far, isStop], i) => jump(`<div class="dot ${isStop ? '' : 'place'}">${isStop ? pin : place}</div><div>${name}<small>${kind}</small></div><b>${far}</b>`, 'glass row', `top:${332 + i * 134}px`, 6.75 + i * 0.125, 7.92));
+// AI.
+const bubble = jump('', 'bubble', isEN ? 'left:1120px' : '', 8.2, 11.9);
+[0, 1, 2].forEach((k) => { const c = jump(`<img src="${BASE}card${k}.png" style="width:100%;display:block;border-radius:40px">`, 'shop', `top:${[190, 485, 790][k]}px;${k === 2 ? 'height:270px;overflow:hidden;border-radius:40px' : ''}`, 9.5 + k * 0.5, 13.85, { fromX: 240 }); });
+T.badges.forEach((text, i) => jump(text, 'badge', `left:${[120, 440, 170][i]}px;top:${[520, 640, 790][i]}px;background:${['#ff9f0a', '#0a84ff', '#30b84f'][i]}`, 12 + i * 0.5, 13.85));
+// Plans.
+T.plans.forEach(([minutes, tag, lines], i) => jump(`<div class="num">${minutes}<small>${T.unit}</small></div><div class="lines"><div class="tag">${tag}</div>${lines.map(([n, c]) => `<span class="chip" style="background:${c}">${n}</span>`).join('')}</div>`, `glass option${i ? '' : ' best'}`, `top:${160 + i * 262}px`, 14.25 + i * 0.25, 15.9, { fromX: 200 }));
+// Stop.
+jump(T.eta, 'eta', '', 31.25, 32.9);
+jump(`<h4>${T.stop}</h4><div>${T.cells.map(([a, b]) => `<section><span>${a}</span>${b}</section>`).join('')}</div>`, 'glass cells', '', 31.5, 32.9);
+// The loop, drawn rather than shown.
+const OUT = 'M70 520 C 240 540 300 330 470 300 S 760 110 890 170', BACK = 'M890 170 C 920 380 700 480 540 490 S 220 620 70 560';
+const loop = document.createElement('div'); loop.id = 'loop'; loop.className = 'jump';
+loop.innerHTML = `<svg width="980" height="640" viewBox="0 0 980 640"><path d="${OUT}" id="pOutCase" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round" pathLength="1"/><path d="${BACK}" id="pBackCase" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round" pathLength="1"/><path d="${OUT}" id="pOut" fill="none" stroke="#e3242b" stroke-width="18" stroke-linecap="round" pathLength="1"/><path d="${BACK}" id="pBack" fill="none" stroke="#7c4dff" stroke-width="18" stroke-linecap="round" pathLength="1"/><g id="dots"></g></svg>`;
+stage.append(loop);
+const dots = [];
+for (const [id, color, from] of [['pOut', '#e3242b', 33.2], ['pBack', '#7c4dff', 33.75]]) {
+  const path = loop.querySelector(`#${id}`), total = path.getTotalLength();
+  for (let k = 0; k <= 6; k++) {
+    if (id === 'pBack' && (k === 0 || k === 6)) continue;
+    const p = path.getPointAtLength((k / 6) * total), c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttribute('cx', p.x); c.setAttribute('cy', p.y); c.setAttribute('r', 15); c.setAttribute('fill', '#fff'); c.setAttribute('stroke', color); c.setAttribute('stroke-width', 7);
+    c.style.transformBox = 'fill-box'; c.style.transformOrigin = 'center'; loop.querySelector('#dots').append(c); dots.push({ c, at: from + (k / 6) * 0.6 });
+  }
+}
+jump(`<i style="background:#e3242b"></i>${T.keys[0]}`, 'glass key', 'left:1090px;top:800px', 33.9, 34.85);
+jump(`<i style="background:#7c4dff"></i>${T.keys[1]}`, 'glass key', 'left:1340px;top:800px', 34.3, 34.85);
+
+// Six tiles, one per half beat.
+const icon = (d) => `<svg width="92" height="92" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const TILES = [
+  [60, 60, 430, 960, '78% center/cover url(shots/city_8.4.jpg)', '', 3],
+  [514, 60, 900, 468, 'linear-gradient(135deg,#7c4dff,#ff375f)', icon('<path d="M12 3l1.9 5.6L19.5 10.500l-5.600 1.900L12 18l-1.900-5.600L4.500 10.500l5.600-1.900z"/>'), 1],
+  [1438, 60, 422, 468, 'linear-gradient(135deg,#0a84ff,#40c8e0)', icon('<path d="M12 21s7-6.300 7-11.500A7 7 0 0 0 5 9.500C5 14.700 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.400"/>'), 0],
+  [514, 552, 422, 468, 'linear-gradient(135deg,#30d158,#0a9d6a)', icon('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.500 2"/>'), 2],
+  [960, 552, 454, 468, 'linear-gradient(135deg,#e3242b 50%,#7c4dff 50%)', icon('<path d="M4 12a8 8 0 0 1 14-5.300L20 9M20 12a8 8 0 0 1-14 5.300L4 15"/><path d="M20 4v5h-5M4 20v-5h5"/>'), 4],
+  [1438, 552, 422, 468, 'linear-gradient(135deg,#ff9f0a,#ff375f)', icon('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'), 5],
+];
+const tiles = TILES.map(([x, y, w, h, bg, svg, n], i) => {
+  const el = document.createElement('div'); el.className = 'tile'; el.style.cssText = `left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${bg}`;
+  el.innerHTML = `${svg}<div>${T.tiles[n][0]}<span style="display:block">${T.tiles[n][1]}</span></div>`;
+  if (i === 0) el.style.textShadow = '0 3px 24px rgba(0,0,0,.7)';
+  $('bento').append(el); return { el, at: 35 + i * 0.5 };
+});
+
+// MARK: The phone: only for the moments that need the real thing.
+const SCREENS = [[3.5, '01_home'], [15.7, '05_route'], [30.3, '06_stop']];
+const images = [], pops = [];
+for (const [, name] of SCREENS) {
+  const img = new Image(); img.src = `${BASE}${name}.png`; img.style.clipPath = 'inset(0 0 45% 0)'; $('screen').append(img); images.push(img);
+  const pop = document.createElement('div'); pop.className = 'pop';
+  const copy = new Image(); copy.src = img.src; copy.style.clipPath = `inset(${397 / 844 * 100}% 2% 1% 2% round 34px)`;
+  pop.append(copy); $('phone').append(pop); pops.push(pop);
+}
+const PORTAL_IN = [17.0, 18.75], PORTAL_OUT = [29.2, 30.75], WIDE = 4.75;
+const PHONE = [[3.55, 300, 1000, -46, 34, 12], [4.3, 420, 0, -12, 3, 0], [5.8, 420, 0, -7, 2, 0], [6.15, 620, 1200, -30, 24, 8], [15.55, 200, 1200, -24, 24, 6], [16.15, 0, 0, 0, 0, 0], [30.8, 0, 0, 0, 0, 0], [31.15, -440, 0, 13, 3, 0], [32.75, -440, 0, 9, 2, 0], [33.1, -640, 1200, 26, 22, -6]];
+function phoneAt(t) {
+  let i = PHONE.findIndex(([at]) => at > t); if (i < 0) i = PHONE.length - 1; if (i === 0) i = 1;
+  const a = PHONE[i - 1], b = PHONE[i], k = inOut(win(t, a[0], b[0])), v = a.map((x, n) => lerp(x, b[n], k));
+  const calm = t < 15.9 || t > 31 ? 1 : 0;
+  const scale = portal(t);
+  return `translate3d(${v[1]}px,${v[2] + Math.sin(t * 1.7) * 7 * calm}px,0) rotateY(${v[3] + Math.sin(t * 1.3) * 1.2 * calm}deg) rotateX(${v[4]}deg) rotateZ(${v[5]}deg) scale(${scale})`;
+}
+/** The screen itself opens up to become the whole picture: one steady move, no cut. */
+function portal(t) {
+  const k = t < 24 ? glide(win(t, ...PORTAL_IN)) : 1 - glide(win(t, ...PORTAL_OUT));
+  return WIDE ** k;
+}
+
+const blend = $('blend').getContext('2d');
+const city = createCity($('city'), 1920, 1080, LANG);
+let SUB = 4;
+window.setSub = (n) => { SUB = n; };
+function drawCity(t) {
+  for (let k = 0; k < SUB; k++) {
+    city.render(Math.max(-1.5, Math.min(13, t + (k / SUB) * (0.5 / 60))));
+    blend.globalAlpha = 1 / (k + 1); blend.drawImage($('city'), 0, 0);
+  }
+  blend.globalAlpha = 1;
+}
+window.renderAt = (t) => {
+  const inCity = t >= 16.6 && t < 30.9;
+  $('light').style.display = t >= 3.4 && t < 35.2 ? 'block' : 'none';
+  $('light').style.opacity = win(t, 3.4, 3.9);
+  [['o1', '#ffb6c9', 400, 250, 0.9], ['o2', '#b9d4ff', 1500, 800, 0.7], ['o3', '#ffe2a8', 1200, 200, 1.1]].forEach(([id, color, x, y, speed]) => {
+    const o = $(id); o.style.background = `radial-gradient(circle,${color}cc,${color}00 68%)`;
+    o.style.transform = `translate3d(${x + Math.sin(t * speed) * 260}px,${y + Math.cos(t * speed * 0.8) * 180}px,0)`;
+  });
+  const b = $('blend'); b.style.display = inCity ? 'block' : 'none';
+  if (inCity) {
+    drawCity(t - 18);
+    const s = portal(t), hw = 214 * s, hh = 466 * s, r = Math.max(0, 61 * s * (1 - win(s, 2.6, WIDE)));
+    b.style.clipPath = `inset(${Math.max(0, 540 - hh)}px ${Math.max(0, 960 - hw)}px ${Math.max(0, 540 - hh)}px ${Math.max(0, 960 - hw)}px round ${r}px)`;
+    b.style.opacity = t < 24 ? glide(win(t, 16.65, 17.25)) : 1 - glide(win(t, 29.95, 30.5));
+  }
+  const phone = $('phone'), showPhone = t >= 3.5 && t < 33.15 && !(t >= 18.8 && t < 29.15) && !(t >= 6.2 && t < 15.55);
+  phone.style.display = showPhone ? 'block' : 'none';
+  if (showPhone) {
+    phone.style.transform = phoneAt(t);
+    let current = 0; SCREENS.forEach(([at], i) => { if (t >= at) current = i; });
+    images.forEach((img, i) => { img.style.opacity = i === current ? 1 : 0; });
+    pops.forEach((pop, i) => {
+      const inK = spring(win(t, SCREENS[i][0] + 0.25, SCREENS[i][0] + 0.87));
+      pop.style.opacity = i === current ? 1 : 0;
+      pop.style.transform = `translate3d(0,${(1 - inK) * 560}px,44px)`;
+    });
+  }
+  for (const j of jumps) {
+    const live = t >= j.at && t <= j.until + 0.01;
+    j.el.style.display = live ? (j.el.classList.contains('row') || j.el.classList.contains('option') || j.el.classList.contains('searchbar') || j.el.classList.contains('key') ? 'flex' : 'block') : 'none';
+    if (!live) continue;
+    const k = win(t, j.at, j.at + 0.6), s = bounce(k), leave = glide(win(t, j.until - 0.16, j.until));
+    j.el.style.opacity = clamp(k * 7) * (1 - leave);
+    j.el.style.transform = `translate3d(${(1 - s) * (j.fromX ?? 0)}px,${(1 - s) * 46}px,0) scale(${(0.35 + 0.65 * s) * (1 - leave * 0.14)}) rotate(${(1 - s) * -5}deg)`;
+  }
+  $('typed').textContent = T.q.slice(0, Math.floor(win(t, 6.3, 6.72) * (T.q.length + 0.99)));
+  bubble.textContent = T.ask.slice(0, Math.floor(win(t, 8.3, 8.95) * (T.ask.length + 0.99))) + (t < 9 ? '｜' : '');
+  [['r1', 0], ['r2', 0.45]].forEach(([id, shift]) => { const x = ((t + shift) % 0.9) / 0.9, d = 60 + x * 300, r = $(id); r.style.cssText = `width:${d}px;height:${d}px;margin:${-d / 2}px 0 0 ${-d / 2}px;opacity:${1 - x}`; });
+  // The loop draws itself.
+  const live = t >= 33 && t < 34.86, leave = 1 - glide(win(t, 34.68, 34.85));
+  loop.style.display = live ? 'block' : 'none';
+  if (live) {
+    loop.style.opacity = leave;
+    const outK = glide(win(t, 33.15, 33.8)), backK = glide(win(t, 33.7, 34.35));
+    for (const [id, k] of [['pOut', outK], ['pOutCase', outK], ['pBack', backK], ['pBackCase', backK]]) { const p = loop.querySelector(`#${id}`); p.style.strokeDasharray = `${k} 2`; p.style.opacity = k > 0 ? 1 : 0; }
+    for (const { c, at } of dots) { const s = bounce(win(t, at, at + 0.45)); c.style.transform = `scale(${s})`; c.style.opacity = t >= at ? 1 : 0; }
+  }
+  for (const [cap, a, b2] of caps) showCaption(cap, t, a, b2);
+  for (const [cap, a, b2] of heroes) { showCaption(cap, t, a, b2, 0.02); cap.el.style.transform = `scale(${0.94 + win(t, a, b2) * 0.1})`; }
+  $('scrim').style.opacity = win(t, 20.8, 21.1) * (1 - win(t, 28.5, 28.8));
+  const pill = $('pill'), tc = t - 18, shown = (tc > 3.05 && tc < 4.95) || (tc > 7.05 && tc < 8.95);
+  if (inCity && shown) {
+    const p = city.label(tc), edge = Math.min(win(tc, 3.05, 3.3) + win(tc, 7.05, 7.3), 1) * (1 - win(tc, 4.75, 4.95) - win(tc, 8.75, 8.95));
+    const s = bounce(win(tc, tc < 6 ? 3.05 : 7.05, tc < 6 ? 3.6 : 7.6));
+    pill.textContent = T.pill[tc < 6 ? 0 : 1]; pill.style.opacity = p.isFront ? clamp(edge) : 0;
+    pill.style.transform = `translate3d(${p.x * 1920}px,${p.y * 1080}px,0) translate(-50%,-125%) scale(${0.5 + 0.5 * s})`;
+  } else pill.style.opacity = 0;
+  const bento = $('bento'), on = t >= 34.85 && t < 39.2;
+  bento.style.display = on ? 'block' : 'none';
+  if (on) {
+    bento.style.opacity = win(t, 34.85, 35.02);
+    const gather = glide(win(t, 38.55, 39.05));
+    for (const { el, at } of tiles) {
+      const s = bounce(win(t, at, at + 0.62));
+      el.style.opacity = t >= at ? 1 - gather : 0;
+      el.style.transform = `translateY(${(1 - s) * 70}px) scale(${(0.5 + 0.5 * s) * (1 + (t - at) * 0.008) * (1 - gather * 0.25)})`;
+    }
+  }
+  const end = $('end'); end.style.display = t >= 38.9 ? 'block' : 'none'; end.style.opacity = win(t, 38.95, 39.1);
+  const ic = $('icon'), i = bounce(win(t, 39, 39.7));
+  ic.style.opacity = t >= 39 ? 1 : 0; ic.style.transform = `translateY(${(1 - i) * 90}px) scale(${0.5 + 0.5 * i})`;
+  showCaption(endName, t, 39.5, 45, 0.03); showCaption(endLine, t, 40, 45, 0.02);
+  const u = bounce(win(t, 41, 41.6)), url = $('url'); url.style.opacity = clamp(win(t, 41, 41.15)); url.style.transform = `translateX(-50%) translateY(${(1 - u) * 50}px)`;
+  $('flash').style.opacity = win(t, 43, 44);
+};
+await Promise.all([...document.images].map((img) => img.decode().catch(() => {})));
+await document.fonts.ready;
+await new Promise((r) => setTimeout(r, 500));
+renderAt(0); window.ready = true;
+</script></html>

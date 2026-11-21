@@ -1,0 +1,268 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>hktransport wide film</title>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+#stage{position:absolute;inset:0;overflow:hidden;font-family:-apple-system,"SF Pro Display","PingFang HK","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased;color:#1d1d1f}
+#city{position:absolute;left:-4000px;top:0}
+#blend{position:absolute;inset:0;z-index:2}
+#intro{position:absolute;inset:0;background:#f5f5f7;z-index:1;overflow:hidden}
+.orb{position:absolute;width:1300px;height:1300px;border-radius:50%;left:-650px;top:-650px}
+#logo{position:absolute;left:820px;top:400px;width:280px;height:280px;z-index:3}
+#scrimR{position:absolute;right:0;top:0;bottom:0;width:820px;background:linear-gradient(to left,rgba(245,247,250,.9) 30%,rgba(245,247,250,0));z-index:4;opacity:0}
+#scrimL{position:absolute;left:0;bottom:0;width:1300px;height:560px;background:radial-gradient(ellipse at 0% 100%,rgba(245,247,250,.95) 25%,rgba(245,247,250,0) 70%);z-index:4;opacity:0}
+#scrimT{position:absolute;left:0;top:0;width:1100px;height:320px;background:linear-gradient(rgba(245,247,250,.7),rgba(245,247,250,0));z-index:4;opacity:0}
+.ui{position:absolute;z-index:10;opacity:0;will-change:transform,opacity,filter}
+.glass{background:rgba(255,255,255,.94);box-shadow:0 26px 60px rgba(30,40,100,.16),0 5px 14px rgba(30,40,100,.08),inset 0 0 0 1.5px rgba(255,255,255,.9)}
+.bar{right:56px;width:620px;top:930px;height:100px;border-radius:50px;display:flex;align-items:center;padding:0 12px 0 28px;gap:16px;font-size:30px;font-weight:500}
+.bar .text{flex:1;white-space:nowrap;overflow:hidden}
+.bar .ph{color:#a1a1a6}
+.bar .yue{color:#6e6e73;font-size:26px;font-weight:600}
+.bar .send{width:76px;height:76px;border-radius:50%;background:#0a84ff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(10,132,255,.35)}
+.caret{display:inline-block;width:3px;height:34px;background:#0a84ff;vertical-align:-6px;margin-left:3px}
+.me{right:56px;padding:22px 34px;border-radius:40px 40px 12px 40px;background:linear-gradient(135deg,#0a84ff,#5e5ce6);color:#fff;font-size:34px;font-weight:600;box-shadow:0 20px 44px rgba(10,80,255,.28);white-space:nowrap}
+.ai{right:56px;width:620px;border-radius:38px;padding:26px 32px 28px}
+.ai .who{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:700;color:#7d4ce0;margin-bottom:10px}
+.ai .say{font-size:34px;line-height:1.4;font-weight:600;color:#6b3fd0}
+.ai .say b{color:#e3242b;font-weight:800}
+.ai .plan{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:26px;font-weight:600;color:#6e6e73}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 16px;border-radius:12px;background:#e3242b;color:#fff;font-weight:800;font-size:26px}
+.live{color:#30b84f;font-weight:700}
+.live:before{content:"";display:inline-block;width:13px;height:13px;border-radius:50%;background:#30b84f;margin-right:8px;vertical-align:2px}
+.dots{right:476px;width:200px;height:84px;border-radius:42px;display:flex;align-items:center;justify-content:center;gap:14px}
+.dots i{width:16px;height:16px;border-radius:50%;background:#b39ddb}
+.shopcard{margin-top:18px;background:#eef8fd;border-radius:26px;padding:22px 24px;display:flex;gap:18px}
+.shopcard .n{flex:none;width:52px;height:52px;border-radius:50%;background:#0a84ff;color:#fff;font-size:30px;font-weight:800;display:grid;place-items:center}
+.shopcard h5{font-size:34px;font-weight:800;color:#1d1d1f;display:flex;justify-content:space-between;width:460px}
+.shopcard h5 span{font-size:24px;color:#86868b;font-weight:500}
+.shopcard p{font-size:24px;color:#86868b;margin-top:6px;font-weight:500}
+.shopcard p em{font-style:normal;color:#ff9f0a;font-weight:800}
+.nav{left:56px;top:56px;width:720px;height:150px;border-radius:42px;display:flex;align-items:center;padding:0 36px 0 26px;gap:24px}
+.nav .bus{width:96px;height:96px;border-radius:26px;background:#e3242b;display:grid;place-items:center;box-shadow:0 10px 22px rgba(227,36,43,.35)}
+.nav h3{font-size:44px;font-weight:800;letter-spacing:-.01em}
+.nav h3 + div{font-size:26px;color:#86868b;font-weight:600;margin-top:4px}
+.nav .eta{margin-left:auto;text-align:right}
+.nav .eta b{font-size:86px;font-weight:800;letter-spacing:-.04em;line-height:1;display:inline-block}
+.nav .eta small{font-size:30px;font-weight:700;color:#6e6e73;margin-left:6px}
+.cap{position:absolute;left:76px;top:770px;font-size:96px;font-weight:800;letter-spacing:-.025em;line-height:1.1;white-space:pre;z-index:9}
+.cap .c{display:inline-block}
+.grad{background:linear-gradient(95deg,#ff375f,#ff9f0a 60%,#ffcc00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{position:absolute;left:0;top:0;z-index:8;opacity:0;white-space:nowrap;display:flex;align-items:center;gap:12px;padding:12px 22px;border-radius:32px;font-size:30px;font-weight:700}
+.tag i{width:22px;height:22px;flex:none}
+.tag.bus{background:#e3242b;color:#fff;padding:9px 18px;border-radius:20px;font-size:32px;font-weight:800;box-shadow:0 12px 26px rgba(227,36,43,.4)}
+.tag.bus:after{content:"";position:absolute;left:50%;bottom:-11px;margin-left:-11px;border:11px solid transparent;border-bottom:0;border-top-color:#e3242b}
+.shoppin{position:absolute;left:0;top:0;z-index:8;opacity:0;display:flex;align-items:center;gap:12px}
+.shoppin .n{width:66px;height:66px;border-radius:50%;background:#0a84ff;border:6px solid #fff;color:#fff;font-size:34px;font-weight:800;display:grid;place-items:center;box-shadow:0 12px 26px rgba(10,132,255,.45)}
+.shoppin .name{padding:11px 22px;border-radius:26px;font-size:30px;font-weight:700}
+.place{position:absolute;z-index:9;opacity:0;color:#1d1d1f;font-size:34px;font-weight:800;letter-spacing:.32em;text-shadow:0 0 24px rgba(255,255,255,.95),0 0 8px rgba(255,255,255,.9);white-space:nowrap}
+.place small{display:block;font-size:20px;letter-spacing:.5em;font-weight:700;color:#6e6e73;margin-top:8px}
+#end{position:absolute;inset:0;background:#000;z-index:20;opacity:0;text-align:center}
+#endIcon{position:absolute;left:840px;top:250px;width:240px;height:240px;filter:drop-shadow(0 30px 80px rgba(255,80,60,.35))}
+#url{position:absolute;left:50%;top:810px;padding:14px 34px;border-radius:40px;background:rgba(255,255,255,.12);color:#fff;font-size:28px;font-weight:500;white-space:nowrap}
+#flash{position:absolute;inset:0;background:#000;opacity:0;z-index:30}
+</style>
+<div id="stage">
+  <div id="intro"><div class="orb" id="o1"></div><div class="orb" id="o2"></div><div class="orb" id="o3"></div></div>
+  <canvas id="city" width="1920" height="1080"></canvas><canvas id="blend" width="1920" height="1080"></canvas>
+  <img id="logo" src="shots/icon.png">
+  <div id="scrimR"></div><div id="scrimL"></div><div id="scrimT"></div>
+  <div id="end"><img id="endIcon" src="shots/icon.png"><div id="url">hk.52-220-124-215.sslip.io</div></div>
+  <div id="flash"></div>
+</div>
+<script>addEventListener('error', (e) => { window.failed = `${e.message} ${e.filename}:${e.lineno}`; }); addEventListener('unhandledrejection', (e) => { window.failed = String(e.reason?.stack ?? e.reason); });</script>
+<script type="importmap">{"imports":{"three":"./lib/three.module.js"}}</script>
+<script type="module">
+import { createWideCity } from './widecity.js';
+const $ = (id) => document.getElementById(id), stage = $('stage');
+const W = 1920, H = 1080;
+const LANG = new URLSearchParams(location.search).get('lang') ?? 'hans', isEN = LANG === 'en';
+const clamp = (x) => Math.max(0, Math.min(1, x)), win = (t, a, b) => clamp((t - a) / (b - a));
+const glide = (x) => x * x * x * (x * (6 * x - 15) + 10);
+const spring = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-6.5 * x) * Math.cos(11 * x));
+const bounce = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-7.5 * x) * Math.cos(15 * x));
+
+const T = {
+  hans: { ph: '告诉 AI，例如：去吃茶餐厅', yue: '粤语', ai: 'AI 助手',
+    q1: '去尖沙咀码头，最快怎么去？', a1: '搭 <b>1 号巴士</b> 直达，<br>下一班 <b>3 分钟</b> 就到。', plan: '直达 · 54 分钟',
+    q2: '顺路想吃个茶餐厅', a2: '前面 328 米就有一间，口碑很稳：', shop: '澳洲牛奶公司', shopMeta: '<em>★ 4.0</em>  (6,542) · 中菜馆 · <span class="live">营业中</span>', far: '328 m',
+    stop: '尖沙咀码头', next: ['下一站 弥敦道', '即将到站'], unit: '分钟', live: '实时',
+    places: [['维多利亚港', 'VICTORIA HARBOUR'], ['九龙', 'KOWLOON']],
+    caps: ['车到哪了？\n*一眼就知*', '3D 小车\n*沿真实路线跑*'], line: '香港出行，一个网页就够。' },
+  hant: { ph: '告訴 AI，例如：去食茶餐廳', yue: '粵語', ai: 'AI 助手',
+    q1: '去尖沙咀碼頭，最快點去？', a1: '搭 <b>1 號巴士</b> 直達，<br>下一班 <b>3 分鐘</b> 就到。', plan: '直達 · 54 分鐘',
+    q2: '順路想食個茶餐廳', a2: '前面 328 米就有一間，口碑好穩陣：', shop: '澳洲牛奶公司', shopMeta: '<em>★ 4.0</em>  (6,542) · 中菜館 · <span class="live">營業中</span>', far: '328 m',
+    stop: '尖沙咀碼頭', next: ['下一站 彌敦道', '即將到站'], unit: '分鐘', live: '實時',
+    places: [['維多利亞港', 'VICTORIA HARBOUR'], ['九龍', 'KOWLOON']],
+    caps: ['車到哪了？\n*一眼就知*', '3D 小車\n*沿真實路線跑*'], line: '香港出行，一個網頁就夠。' },
+  en: { ph: 'Ask AI, e.g. find a cha chaan teng', yue: 'Cantonese', ai: 'AI assistant',
+    q1: 'Fastest way to the Star Ferry?', a1: 'Take <b>bus 1</b>, no changes.<br>The next one is <b>3 min</b> away.', plan: 'Direct · 54 min',
+    q2: 'A cha chaan teng on the way?', a2: 'A local favourite, 328 m off your route:', shop: 'Australia Dairy Co.', shopMeta: '<em>★ 4.0</em>  (6,542) · <span class="live">Open now</span>', far: '328 m',
+    stop: 'Star Ferry Pier', next: ['Next: Nathan Road', 'Arriving'], unit: 'min', live: 'Live',
+    places: [['Victoria Harbour', '維多利亞港'], ['Kowloon', '九龍']],
+    caps: ['Where’s my bus?\n*Right there.*', 'A 3D bus,\n*on its real route.*'], line: 'Getting around Hong Kong, in one web page.' },
+}[LANG];
+
+// MARK: Pieces
+const ui = [];
+function piece(html, cls, css, at, until, from = {}) {
+  const el = document.createElement('div'); el.className = `ui ${cls}`; if (css) el.style.cssText = css; el.innerHTML = html; stage.append(el);
+  const p = { el, at, until, dy: 50, dx: 0, origin: 'center', ...from }; el.style.transformOrigin = p.origin; ui.push(p); return el;
+}
+const sparkle = (size) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c4dff"/><stop offset="1" stop-color="#ff375f"/></linearGradient></defs><path fill="url(#sg)" d="M10 2.5l1.9 5.6 5.6 1.9-5.6 1.9L10 17.5l-1.9-5.6L2.5 10l5.6-1.9zM18.5 14l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z"/></svg>`;
+const mic = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+const arrow = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+const busGlyph = (c = '#fff', s = 28) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.4"><rect x="5" y="3" width="14" height="15" rx="3"/><path d="M5 11h14M8 21l1-3M16 21l-1-3"/></svg>`;
+
+// Two rounds with the AI, each over a wide shot of the map, in a panel on the right.
+const ROUNDS = [
+  { bar: [5.6, 9.95], type: [5.9, 6.7], send: 6.8, dots: [7.05, 7.45], q: T.q1, top: 560, replyTop: 655,
+    reply: `<div class="who">${sparkle(30)}${T.ai}</div><div class="say">${T.a1}</div><div class="plan"><span class="chip">${busGlyph('#fff', 24)}1</span>${T.plan}<span class="live" style="margin-left:auto">${T.live}</span></div>` },
+  { bar: [17.75, 21.15], type: [18.0, 18.7], send: 18.8, dots: [19.05, 19.45], q: T.q2, top: 470, replyTop: 565,
+    reply: `<div class="who">${sparkle(30)}${T.ai}</div><div class="say">${T.a2}</div><div class="shopcard"><div class="n">1</div><div><h5>${T.shop}<span>${T.far}</span></h5><p>${T.shopMeta}</p></div></div>` },
+];
+for (const r of ROUNDS) {
+  r.barEl = piece(`${sparkle(42)}<div class="text"></div><span class="yue">${T.yue}</span>${mic}<div class="send">${arrow}</div>`, 'glass bar', '', r.bar[0], r.bar[1], { dx: 120, dy: 0 });
+  r.meEl = piece(r.q, 'me', `top:${r.top}px`, r.send, r.bar[1], { dy: 70, origin: 'right bottom' });
+  r.dotsEl = piece('<i></i><i></i><i></i>', 'glass dots', `top:${r.replyTop}px`, r.dots[0], r.dots[1] + 0.12, { origin: 'left top' });
+  r.aiEl = piece(r.reply, 'glass ai', `top:${r.replyTop}px`, r.dots[1], r.bar[1], { dy: 60, origin: 'left top' });
+}
+piece(`<div class="bus">${busGlyph('#fff', 54)}</div><div><h3>${T.stop}</h3><div id="navNext"></div></div><div class="eta"><div class="live" style="font-size:24px;margin-bottom:4px">${T.live}</div><b id="navMin">3</b><small>${T.unit}</small></div>`, 'glass nav', '', 10.75, 17.15, { dy: -40 });
+
+// MARK: Words
+function caption(text, css) {
+  const el = document.createElement('div'); el.className = 'cap'; el.style.cssText = css;
+  const chars = [];
+  for (const part of text.split(/(\*[^*]+\*)/)) {
+    const isGrad = part.startsWith('*');
+    for (const ch of part.replace(/\*/g, '')) {
+      if (ch === '\n') { el.append(document.createElement('br')); continue; }
+      const c = document.createElement('span'); c.className = `c${isGrad ? ' grad' : ''}`; c.textContent = ch === ' ' ? ' ' : ch; el.append(c); chars.push(c);
+    }
+  }
+  stage.append(el); return { el, chars };
+}
+function showCaption(cap, t, from, to, gap = 0.03) {
+  if (isEN) gap *= 0.5;
+  const live = t >= from - 0.01 && t <= to + 0.01;
+  cap.el.style.display = live ? 'block' : 'none';
+  if (!live) return;
+  const leave = glide(win(t, to - 0.22, to));
+  cap.chars.forEach((c, i) => {
+    const k = win(t, from + i * gap, from + i * gap + 0.6), s = spring(k);
+    c.style.opacity = clamp(k * 4) * (1 - leave);
+    c.style.transform = `translate3d(0,${(1 - s) * 70 - leave * 36}px,0) scale(${0.86 + 0.14 * s})`;
+    c.style.filter = leave ? `blur(${leave * 14}px)` : 'none';
+  });
+}
+const caps = [[caption(T.caps[0], isEN ? 'font-size:84px' : ''), 10.9, 13.8], [caption(T.caps[1], isEN ? 'font-size:84px' : ''), 14.5, 17.2]];
+const endName = caption('hktransport', 'left:0;right:0;top:545px;text-align:center;font-size:112px;color:#fff;z-index:21');
+const endLine = caption(T.line, `left:0;right:0;top:690px;text-align:center;font-size:${isEN ? 40 : 46}px;font-weight:500;color:#a1a1a6;z-index:21;letter-spacing:0`);
+// Place names that drift past during the dive.
+const places = T.places.map(([big, small], i) => { const el = document.createElement('div'); el.className = 'place'; el.innerHTML = `${big}<small>${small}</small>`; el.style.cssText = i ? 'left:120px;top:150px' : 'left:120px;top:820px'; stage.append(el); return el; });
+const PLACE_AT = [[2.55, 3.45], [4.05, 4.95]];
+
+// MARK: Labels on the map
+const tag = (html, cls) => { const el = document.createElement('div'); el.className = `tag ${cls}`; el.innerHTML = html; stage.append(el); return el; };
+const endTag = tag(`<i style="border-radius:6px;background:#e3242b"></i>${T.stop}`, 'glass');
+const busTag = tag(`${busGlyph('#fff', 30)}1`, 'bus');
+const shopPin = document.createElement('div'); shopPin.className = 'shoppin'; shopPin.innerHTML = `<div class="n">1</div><div class="name glass">${T.shop}</div>`; stage.append(shopPin);
+function placeTag(el, p, t, from, to, ax = -50, ay = -50) {
+  const on = t >= from && t < to && p.front && p.x > -0.1 && p.x < 1.1 && p.y > -0.1 && p.y < 1.1;
+  if (!on) { el.style.opacity = 0; return; }
+  const s = bounce(win(t, from, from + 0.55)), leave = glide(win(t, to - 0.2, to));
+  el.style.opacity = clamp(win(t, from, from + 0.12)) * (1 - leave);
+  el.style.transform = `translate3d(${p.x * W}px,${p.y * H}px,0) translate(${ax}%,${ay}%) scale(${(0.4 + 0.6 * s) * (1 - leave * 0.2)})`;
+  el.style.filter = leave ? `blur(${leave * 10}px)` : 'none';
+}
+
+// MARK: The city, with motion blur from many moments per frame.
+const blend = $('blend').getContext('2d');
+const city = createWideCity($('city'), W, H, LANG);
+const WHIPS = [[1.4, 2.55], [3.45, 4.05], [4.95, 5.65], [9.95, 10.65], [13.75, 14.35], [17.15, 17.75], [21.15, 21.85]];
+let SUB = null;
+window.setSub = (n) => { SUB = n; };
+function drawCity(t) {
+  const whip = WHIPS.some(([a, b]) => t >= a && t < b);
+  const n = SUB ?? (whip ? 12 : 3), shutter = whip ? 1 / 30 : 0.5 / 60;
+  for (let k = 0; k < n; k++) {
+    city.render(t + (n > 1 ? (k / (n - 1) - 0.5) * shutter : 0));
+    blend.globalAlpha = 1 / (k + 1); blend.drawImage($('city'), 0, 0);
+  }
+  blend.globalAlpha = 1;
+}
+
+window.renderAt = (t) => {
+  $('intro').style.display = t < 2.2 ? 'block' : 'none';
+  [['o1', '#ffb6c9', 300, 250, 0.9], ['o2', '#b9d4ff', 1600, 800, 0.7], ['o3', '#ffe2a8', 1300, 150, 1.1]].forEach(([id, color, x, y, speed]) => {
+    const o = $(id); o.style.background = `radial-gradient(circle,${color}aa,${color}00 68%)`;
+    o.style.transform = `translate3d(${x + Math.sin(t * speed) * 240}px,${y + Math.cos(t * speed * 0.8) * 160}px,0)`;
+  });
+  // The icon lands on the beat, breathes, then opens like a window onto the sky above the city.
+  const pop = spring(win(t, 0.2, 0.9)), beat = Math.max(0, Math.sin(Math.PI * win(t, 1.0, 1.18))) * 0.06, grow = win(t, 1.4, 2.12), scale = (0.55 + 0.45 * pop + beat) * 16 ** (grow ** 2.3);
+  const logo = $('logo');
+  logo.style.display = t < 2.15 ? 'block' : 'none';
+  logo.style.opacity = clamp(win(t, 0.2, 0.32)) * (1 - win(t, 1.45, 1.6));
+  logo.style.transform = `translateY(${Math.sin(t * 2.2) * 6 * (1 - grow)}px) scale(${scale}) rotate(${-grow * 18}deg)`;
+  logo.style.filter = `drop-shadow(0 34px 54px rgba(20,25,60,.28)) blur(${win(t, 1.6, 2.0) * 10}px)`;
+  const showMap = t >= 1.45 && t < 21.86, b = $('blend');
+  b.style.display = showMap ? 'block' : 'none';
+  if (showMap) {
+    drawCity(t);
+    const side = 280 * 0.805 * scale / 2, r = 280 * 0.18 * scale;
+    b.style.clipPath = grow < 1 ? `inset(${540 - side}px ${960 - side}px ${540 - side}px ${960 - side}px round ${r}px)` : 'none';
+    b.style.transform = grow < 1 ? `rotate(${-grow * 18}deg)` : 'none';
+    b.style.opacity = clamp(win(t, 1.45, 1.65));
+  }
+  const overview = clamp(win(t, 5.45, 5.8) * (1 - win(t, 9.9, 10.15)) + win(t, 17.6, 17.9) * (1 - win(t, 21.1, 21.35)));
+  $('scrimR').style.opacity = overview;
+  $('scrimL').style.opacity = clamp(win(t, 10.7, 11) * (1 - win(t, 17.1, 17.35)));
+  $('scrimT').style.opacity = clamp(win(t, 10.6, 10.9) * (1 - win(t, 17.1, 17.3)));
+
+  for (const p of ui) {
+    const live = t >= p.at && t <= p.until + 0.01;
+    p.el.style.display = live ? (p.el.classList.contains('bar') || p.el.classList.contains('dots') || p.el.classList.contains('nav') ? 'flex' : 'block') : 'none';
+    if (!live) continue;
+    const k = win(t, p.at, p.at + 0.6), s = bounce(k), leave = glide(win(t, p.until - 0.18, p.until));
+    p.el.style.opacity = clamp(k * 6) * (1 - leave);
+    p.el.style.transform = `translate3d(${(1 - s) * p.dx}px,${(1 - s) * p.dy - leave * 26}px,0) scale(${(0.6 + 0.4 * s) * (1 - leave * 0.08)})`;
+    p.el.style.filter = leave ? `blur(${leave * 16}px)` : 'none';
+  }
+  for (const r of ROUNDS) {
+    const text = r.barEl.querySelector('.text'), typing = t < r.send, chars = [...r.q];
+    const n = Math.floor(win(t, ...r.type) * (chars.length + 0.99));
+    text.innerHTML = typing && n > 0 ? `${chars.slice(0, n).join('')}<span class="caret" style="opacity:${Math.floor(t * 4) % 2 || t < r.type[1] ? 1 : 0}"></span>` : `<span class="ph">${T.ph}</span>`;
+    r.barEl.querySelector('.send').style.transform = `scale(${1 - 0.12 * Math.sin(Math.PI * win(t, r.send - 0.12, r.send + 0.08))})`;
+    r.dotsEl.querySelectorAll('i').forEach((d, i) => { d.style.transform = `translateY(${-Math.max(0, Math.sin(t * 7 - i * 0.9)) * 12}px)`; });
+    r.meEl.style.marginTop = `${-glide(win(t, r.dots[1], r.dots[1] + 0.35)) * 26}px`;
+  }
+  $('navNext').textContent = T.next[t < 14.3 ? 0 : 1];
+  const navMin = $('navMin'); navMin.textContent = t < 14.35 ? '3' : '1';
+  navMin.style.transform = `translateY(${Math.sin(win(t, 14.2, 14.5) * Math.PI) * -20}px)`;
+  for (const [cap, a, b2] of caps) showCaption(cap, t, a, b2);
+  places.forEach((el, i) => {
+    const [a, b2] = PLACE_AT[i], k = glide(win(t, a, a + 0.4)), leave = glide(win(t, b2 - 0.25, b2));
+    el.style.opacity = t >= a && t <= b2 ? k * (1 - leave) : 0;
+    el.style.transform = `translateY(${(1 - k) * 20}px)`; el.style.letterSpacing = `${0.32 + (t - a) * 0.08}em`;
+  });
+
+  const L = showMap ? city.labels() : null;
+  if (L) {
+    const late = t >= 17;
+    placeTag(endTag, L.end, t, late ? 17.9 : 8.6, late ? 21.1 : 9.9, -50, -140);
+    placeTag(busTag, L.bus, t, late ? 17.8 : 8.0, late ? 21.1 : 9.9, -50, -125);
+    placeTag(shopPin, L.shop, t, 19.6, 21.1, -38, -50);
+  } else for (const el of [endTag, busTag, shopPin]) el.style.opacity = 0;
+
+  $('flash').style.opacity = win(t, 21.5, 21.82) * (1 - win(t, 21.86, 22.0));
+  const end = $('end'); end.style.display = t >= 21.86 ? 'block' : 'none'; end.style.opacity = 1;
+  const ic = $('endIcon'), i = bounce(win(t, 22.0, 22.7));
+  ic.style.opacity = t >= 22.0 ? 1 : 0; ic.style.transform = `translateY(${(1 - i) * 90}px) scale(${0.5 + 0.5 * i})`;
+  showCaption(endName, t, 22.4, 26, 0.03); showCaption(endLine, t, 22.85, 26, 0.025);
+  const u = bounce(win(t, 23.6, 24.2)), url = $('url'); url.style.opacity = clamp(win(t, 23.6, 23.75)); url.style.transform = `translateX(-50%) translateY(${(1 - u) * 40}px)`;
+};
+await Promise.all([...document.images].map((img) => img.decode().catch(() => {})));
+await document.fonts.ready;
+// Draw the city once from each shot first, so shaders and shadows are built before frame 0.
+for (const t of [1.6, 2.2, 3, 3.8, 4.5, 6, 10.3, 12, 15, 19, 21.5]) { city.render(t); await new Promise((r) => setTimeout(r, 50)); }
+await new Promise((r) => setTimeout(r, 500));
+renderAt(0); window.ready = true;
+</script></html>

@@ -1,0 +1,22 @@
+HKTransport | ITC2010 Digital Literacy | Group G
+
+LIVE PROTOTYPE
+https://hk.52-220-124-215.sslip.io/
+
+Open the live site to try the full prototype. No sign-in is needed.
+Try "Tsim Sha Tsui to Central, less walking" or "Ramen in Mong Kok".
+
+RUN LOCALLY
+1. Extract this ZIP and open a terminal in HKTransport_Prototype.
+2. Run: python3 -m http.server 8642 --directory web
+3. Open: http://localhost:8642/
+
+The local version needs internet access for maps and transit data.
+It uses the built-in route planner and free map and search services.
+Use the live site for the hosted AI assistant and map integrations.
+
+CONTENTS
+Open HKTransport.html  Quick link to the live prototype
+web/                   App code, assets, vendor files and tests
+server/                Source and tests for the optional hosted proxy
+LICENSE and notices    Source and third-party credits and licences

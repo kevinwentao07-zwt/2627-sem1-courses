@@ -1,0 +1,322 @@
+// The AI, reached through this site's server, and the rule parser used without it.
+const FEWER = ['唔想轉車', '不想轉車', '唔轉車', '不轉車', '少轉車', '少啲轉車', '直達', 'fewer transfers', 'no transfers', 'no transfer', 'direct'];
+const LESS_WALK = ['唔想行', '少行路', '少啲行', '少行', '不想走路', '少走路', 'less walking', 'walk less'];
+const FASTEST = ['最快', '快啲', '快点', 'fastest', 'quickest', 'faster'];
+const FILLER = ['點樣去', '點去', '怎麼去', '怎樣去', '如何去', '嘅路線', '的路線', '搭咩車', '坐咩車', '坐什麼車', '坐甚麼車', '請問', '我想', '我要', 'how do i get there', 'how to get there', 'please'];
+const HERE = new Set(['呢度', '這裡', '這裏', '这里', '我的位置', '目前位置', '現在位置', '而家位置', 'here', 'my location', 'current location']);
+const WISHES = ['我想吃', '我想食', '我要吃', '我要食', '想吃', '想食', '想喝', '想飲', '我想買', '想買', '我想搵', '想搵', '附近有冇', '附近有什麼', '附近有甚麼', '附近有咩', 'i want to eat', 'i want', 'looking for', 'find me', 'craving'];
+
+const has = (text, words) => words.some((word) => text.toLowerCase().includes(word));
+const strip = (text) => text.replace(/^[\s，,。.？?！!～~、]+|[\s，,。.？?！!～~、]+$/g, '');
+
+export const isCurrentLocation = (text) => HERE.has((text ?? '').trim().toLowerCase());
+export const normalizedOrigin = (origin) => {
+  const value = (origin ?? '').trim();
+  return !value || isCurrentLocation(value) ? null : value;
+};
+
+export function parseTrip(input) {
+  let working = input.trim();
+  if (!working) return null;
+  let preference = has(working, FASTEST) ? 'fastest' : 'lessWalking';
+  if (has(working, FEWER)) preference = 'fewerTransfers';
+  else if (has(working, LESS_WALK)) preference = 'lessWalking';
+  for (const word of [...FEWER, ...LESS_WALK, ...FASTEST, ...FILLER]) {
+    working = working.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), ' ');
+  }
+  // 改去中環 changes the destination: 改 isn't a place to start from.
+  working = strip(working).replace(/^(?:改|換|换|轉|转)\s*(?=去|到|往)/, '');
+  const intent = (origin, destination) => {
+    const end = (destination ?? '').trim();
+    return end ? { origin: normalizedOrigin(origin), destination: end, preference } : null;
+  };
+  const separator = '(?:去|到|往|至|→|->|\\s+to\\s+)';
+  let match = working.match(new RegExp(`^(?:由|從|从|from\\s+)\\s*(.+?)\\s*${separator}\\s*(.+)$`, 'i'));
+  if (match) return intent(match[1], match[2]);
+  match = working.match(/^(?:去|到|往|to\s+)\s*(.+)$/i);
+  if (match) return intent(null, match[1]);
+  match = working.match(new RegExp(`^(.+?)\\s*${separator}\\s*(.+)$`, 'i'));
+  if (match) return intent(match[1], match[2]);
+  return intent(null, working);
+}
+
+/** Applies a follow-up to the trip on screen: anything not mentioned stays. */
+export function parseFollowUp(text, current) {
+  if (!current) return parseTrip(text);
+  const preference = has(text, FEWER) ? 'fewerTransfers' : has(text, LESS_WALK) ? 'lessWalking' : has(text, FASTEST) ? 'fastest' : current.preference;
+  const intent = parseTrip(text);
+  if (!intent) return has(text, [...FEWER, ...LESS_WALK, ...FASTEST]) ? { ...current, preference } : null;
+  const mentionsHere = [...HERE].some((word) => text.toLowerCase().includes(word));
+  return { ...intent, preference, origin: intent.origin ?? (mentionsHere ? null : current.origin) };
+}
+
+/** "我想吃螺螄粉" without the AI: the words after the wish are the search. */
+export function parseWish(text) {
+  const working = text.trim();
+  const prefix = WISHES.find((wish) => working.toLowerCase().startsWith(wish));
+  if (!prefix) return null;
+  const want = strip(working.slice(prefix.length));
+  if (!want) return null;
+  return { want, query: want, queryEn: null, searchTerms: [want], area: null, extra: null, question: null, options: [] };
+}
+
+/** Without the AI, whatever isn't plainly a trip goes to Google as typed, across Hong Kong. */
+export function parseSearch(text) {
+  const want = strip(text);
+  if (!want || has(want, [...FEWER, ...LESS_WALK, ...FASTEST]) || /[去到往至由從从→]|->|\b(to|from)\b/i.test(want)) return null;
+  return { want, query: want, queryEn: null, searchTerms: [want], area: null, extra: null, question: null, options: [], anywhere: true };
+}
+
+export function searchMessage(origin, destination, preference) {
+  return `Search form\nStart: ${origin ?? 'current location'}\nDestination: ${destination}\nPreference: ${preference}`;
+}
+/** A rider's message with everything the AI needs to tell a follow-up from a new subject. */
+export function chatMessage(text, current, context = {}) {
+  const { talk = [], search, question, mayAsk = true } = context, lines = [];
+  if (talk.length) lines.push('Conversation so far', ...talk, '');
+  if (current) lines.push('Current trip', `Start: ${current.origin ?? 'current location'}`, `Destination: ${current.destination}`, `Preference: ${current.preference}`, '');
+  if (search) {
+    lines.push('Current search', `Looking for: ${search.want}`, `Query: ${search.query}`);
+    if (search.area) lines.push(`Area: ${search.area}`);
+    if (search.extra) lines.push(`Also wants: ${search.extra}`);
+    if (search.shops?.length) lines.push('Shops on screen:', ...search.shops.map((shop, index) => `${index + 1}. ${shop}`));
+    lines.push('');
+  }
+  if (question) lines.push(`You just asked: ${question}`);
+  if (!mayAsk) lines.push('You may not ask anything more, so question must be null.');
+  return lines.length ? [...lines, `Rider says: ${text}`].join('\n') : text;
+}
+
+export const INTENT_PROMPT = `You turn Hong Kong public transport trip requests into JSON for a route planner.
+Reply with one JSON object and nothing else:
+{"origin": string or null, "destination": string, "preference": "fastest" | "fewerTransfers" | "lessWalking"}
+Rules:
+- origin is null when the rider starts from their current location or does not say where they start.
+- A "Search form" message gives the Start and Destination the rider typed: clean up each one, and keep
+  the Preference unless the typed text asks for something else.
+- A "Current trip" message is what is on screen, and "Rider says" is the follow-up: change only what the
+  rider mentions and keep everything else, e.g. "少行路" keeps both places, "改去機場" keeps the start.
+- "current location" as a Start means origin is null.
+- Expand nicknames and abbreviations into full place names that a map can find in Hong Kong,
+  in Traditional Chinese. Examples: 理大 -> 香港理工大學, 中大 -> 香港中文大學, 港大 -> 香港大學,
+  機場 -> 香港國際機場一號客運大樓, 尖東 -> 尖沙咀東, 銅鑼灣時代廣場 -> 時代廣場.
+- Keep MTR station names as station names, e.g. 旺角, 九龍塘.
+- preference is fewerTransfers for fewer changes, fastest when the rider asks for speed, and lessWalking by default.
+- Never suggest routes, times or fares.`;
+
+const DISCOVER_RULES = `{"kind": "discover", "want": string, "query": string, "queryEn": string, "searchTerms": [string], "area": string or null, "extra": string or null, "question": string or null, "options": [string]}
+- You only pick out what matters here. Never name or recommend a shop from your own knowledge.
+- want is a short phrase in Traditional Chinese with typos fixed, e.g. 我想吃螺狮粉 -> 螺螄粉.
+- query is what to search for this kind of place: only the useful words from the whole
+  conversation, without filler such as 我想 and without the area, e.g. 想飲咖啡要靜啲 -> 安靜 咖啡店,
+  食拉麵要平啲 -> 平價 拉麵.
+- queryEn is the same search in English, e.g. cheap ramen.
+- searchTerms are up to four map search terms, most specific first: the item itself, then short shop
+  types in Chinese and English that would sell it, e.g. ["螺螄粉", "米線", "mixian", "noodles"].
+- area is one district or landmark the rider named, without words such as 附近, e.g. 朗豪坊附近 -> 朗豪坊.
+  Use "附近" if they mean near them, otherwise null. With no area, the search covers 5 km around the rider.
+- extra is any other wish, e.g. 要平啲, otherwise null.
+- You decide whether to ask the rider anything. Most requests need no question: if a useful search is
+  already possible, set question to null and options to [], and the search runs at once.
+- Never ask where to look just because no area was given. 我想吃螺螄粉 needs no question.
+- Ask only when the answer would really change what to search for, and ask whatever matters most. It need
+  not be about the area. For example, 我想食嘢 could ask what kind of food, and 想買禮物 who it is for.
+- question is one short, natural question in Traditional Chinese as used in Hong Kong.
+- options are two to four short answers the rider can tap, written as the rider would say them.`;
+
+export const CHAT_PROMPT = `${INTENT_PROMPT}
+
+The rider may instead want to find a kind of place, such as food, a shop or something to do, without
+naming one place to go to. Then reply with this JSON object instead:
+${DISCOVER_RULES}
+- Going to a named place is still a trip, e.g. 去時代廣場 or 去理大.
+
+The message may give the conversation, the current trip, the current search and the shops on screen.
+First decide whether "Rider says" continues them or starts something new:
+- It continues unless it is clearly a new subject. Short messages almost always continue, e.g. 平啲嘅,
+  近啲, 要有得坐, 換銅鑼灣, 唔要太辣, 少行路.
+- If you just asked something, the message is the answer, unless it plainly changes the subject.
+- Continuing a search: reply with discover. Keep want, query, area and extra, change only what the rider
+  mentioned, and put any new wish into query, e.g. 拉麵 in 旺角 + 平啲嘅 -> query 平價 拉麵, area 旺角.
+- Continuing a trip: reply with the trip, changing only what the rider mentioned.
+- Asking how to get to a shop on screen, e.g. 第一間點去, 去第二間, 呢間點去: reply with a trip whose
+  destination is that shop's exact name from the list, and origin null.
+- A new subject, e.g. 去機場 while looking at ramen shops, or 我想買手機: ignore the conversation, the
+  search and the trip completely.
+
+If the message is neither a trip nor a search for somewhere, e.g. the weather, small talk or a question
+about you, reply with this JSON object instead:
+{"kind": "say", "text": string}
+- text is one or two short, friendly sentences in the rider's language, saying you can plan a trip or
+  find places, with one example. Never answer the question itself, and never give facts, times or fares.`;
+
+export const ROUTE_PROMPT = `You plan public transport trips in Hong Kong for an app that checks every plan against real route data.
+The message gives the start, the destination, the stations and lines within a walk of each, the lines
+that run from one to the other without a change, the time and the rider's preference.
+Reply with one JSON object and nothing else:
+{"plans": [{"legs": [{"mode": "mtr" | "bus" | "minibus" | "lightRail", "route": string}]}]}
+Rules:
+- Give up to three different plans, best first for the preference: fastest, fewerTransfers (fewest
+  changes) or lessWalking. Each plan has one to three legs, in the order ridden. Walking is not a leg.
+- route is a bus or minibus route number such as 968 or 1A, a Light Rail route number such as 610, or an
+  MTR line code: AEL, TCL, DRL, EAL, TML, TWL, KTL, ISL, TKL, SIL. Each MTR line ridden is its own leg.
+- The first leg must be a line listed near the start, and the last leg a line listed near the
+  destination. A change may use any line you know, where both lines really stop within a short walk.
+- A line listed as direct needs no change. Offer the best of them, and a faster plan with a change if
+  there is one, such as the MTR for a long trip.
+- The app picks the stops and works out the times, and drops any plan whose lines do not exist, are not
+  running or do not meet. So name only lines you are sure of, and never give stops, times or fares.
+- If you cannot plan the trip, reply {"plans": []}.`;
+
+const MODE_LABELS = { mtr: 'MTR', lightRail: 'Light Rail', bus: 'Bus', minibus: 'Minibus' };
+const linesText = (lines) => Object.keys(MODE_LABELS).filter((mode) => lines[mode]?.length)
+  .map((mode) => `${MODE_LABELS[mode]} ${lines[mode].join(', ')}`).join('; ') || 'none';
+
+/** A trip for the AI to plan: names, line numbers and the time. `facts` comes from `tripFacts`. */
+export function routeMessage({ from, to, facts, preference, when }) {
+  const end = (label, name, { stations, lines }) => [
+    `${label}: ${name}`,
+    `Stations nearby: ${stations.join(', ') || 'none'}`,
+    `Lines nearby: ${linesText(lines)}`,
+  ];
+  return [
+    ...end('Start', from, facts.start), '',
+    ...end('Destination', to, facts.end), '',
+    `Direct lines: ${linesText(facts.direct)}`,
+    when, `Preference: ${preference}`,
+  ].join('\n');
+}
+
+export const PROMPTS = {
+  intent: INTENT_PROMPT, chat: CHAT_PROMPT, route: ROUTE_PROMPT,
+};
+
+function jsonObject(reply) {
+  const start = reply.indexOf('{'), end = reply.lastIndexOf('}');
+  if (start < 0 || end <= start) return null;
+  try { return JSON.parse(reply.slice(start, end + 1)); } catch { return null; }
+}
+const clean = (value) => (typeof value === 'string' ? value.trim() : '');
+const strings = (value) => (Array.isArray(value) ? value.map(clean).filter(Boolean) : []);
+const PREFERENCES = ['fastest', 'fewerTransfers', 'lessWalking'];
+
+export function decodeIntent(reply) {
+  const object = jsonObject(reply), destination = clean(object?.destination);
+  if (!destination) return null;
+  return { origin: normalizedOrigin(object.origin), destination, preference: PREFERENCES.includes(object.preference) ? object.preference : 'lessWalking' };
+}
+
+/** A trip request ({trip}), or a request to find somewhere ({wish}). */
+export function decodeChat(reply) {
+  const object = jsonObject(reply);
+  if (object?.kind === 'say') {
+    const say = clean(object.text);
+    return say ? { say } : null;
+  }
+  if (object?.kind !== 'discover') {
+    const trip = decodeIntent(reply);
+    return trip ? { trip } : null;
+  }
+  const wish = decodeWish(object);
+  return wish ? { wish } : null;
+}
+
+function decodeWish(object) {
+  const want = clean(object?.want);
+  if (!want) return null;
+  const terms = strings(object.searchTerms), question = clean(object.question) || null;
+  return {
+    want, query: clean(object.query) || want, queryEn: clean(object.queryEn) || null, searchTerms: terms.length ? terms.slice(0, 4) : [want], area: clean(object.area) || null,
+    extra: clean(object.extra) || null, question, options: question ? strings(object.options).slice(0, 4) : [],
+  };
+}
+
+const MOST_PLANS = 3, MOST_LEGS = 3;
+
+/** The AI's plans as [[{mode, route}]], each still to be checked against the route data. Null if unreadable. */
+export function decodePlans(reply) {
+  const plans = jsonObject(reply)?.plans;
+  if (!Array.isArray(plans)) return null;
+  return plans.map((plan) => (Array.isArray(plan?.legs) ? plan.legs : [])
+    .map((leg) => ({ mode: clean(leg?.mode), route: clean(typeof leg?.route === 'number' ? String(leg.route) : leg?.route) })))
+    .filter((legs) => legs.length > 0 && legs.length <= MOST_LEGS && legs.every((leg) => leg.route))
+    .slice(0, MOST_PLANS);
+}
+
+export const AI_PROVIDERS = {
+  openai: { name: 'OpenAI', model: 'gpt-5.4-mini', rates: ['USD', 0.75, 4.5, 0.075] },
+  anthropic: { name: 'Claude (Anthropic)', model: 'claude-haiku-4-5-20251001', rates: ['USD', 1, 5, 0.1] },
+  gemini: { name: 'Google Gemini', model: 'gemini-4-hydrogen', rates: ['USD', 1.5, 7.5, 0.075] },
+  deepseek: { name: 'DeepSeek', model: 'deepseek-flash' },
+  openrouter: { name: 'OpenRouter', model: 'openrouter/auto' },
+  custom: {},
+};
+
+export function aiCharge(config, usage) {
+  const { amount, currency, input, output, cached } = usage;
+  if (Number.isFinite(amount) && amount >= 0 && ['USD', 'CNY', 'HKD'].includes(currency)) return { amount, currency };
+  const preset = AI_PROVIDERS[config.provider];
+  const rates = config.rates ?? (preset?.model === config.model ? preset.rates : null);
+  if (rates && Number.isFinite(input) && Number.isFinite(output)) {
+    const [currency, inputRate, outputRate, cachedRate = inputRate] = rates;
+    const hits = Number.isFinite(cached) ? Math.min(input, cached) : 0;
+    return { currency, amount: ((input - hits) * inputRate + hits * cachedRate + output * outputRate) / 1_000_000 };
+  }
+  return null;
+}
+
+async function requestAI(path, config, body, timeout, onUsage, onUnauthorized) {
+  const { key, provider, model, baseUrl, protocol } = config;
+  const response = await fetch(path, {
+    method: 'POST', redirect: 'error',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+    body: JSON.stringify({ ...body, ai: { provider, model, baseUrl, protocol } }),
+    signal: AbortSignal.timeout(timeout),
+  });
+  const json = await response.json().catch(() => null);
+  if (json?.usage) onUsage?.(aiCharge(config, json.usage));
+  if (Number.isFinite(json?.costCny)) onUsage?.({ amount: json.costCny, currency: 'CNY' });
+  if (response.status === 401) onUnauthorized?.();
+  if (!response.ok || !json) throw Object.assign(new Error('AI request failed'), { status: response.status });
+  return json;
+}
+
+export async function verifyAIKey(config, onUsage) {
+  const response = await requestAI('api/ai', config, { task: 'verify' }, 40_000, onUsage);
+  if (response.verified !== true) throw new Error('AI configuration could not be verified');
+}
+
+export function personalAI(config, onUsage, onUnauthorized) {
+  const complete = async (task, message, timeout = 60_000) => {
+    const json = await requestAI('api/ai', config, { task, message }, timeout, onUsage, onUnauthorized);
+    return json.reply;
+  };
+  return {
+    ...assistant(complete),
+    explore(destination, category, locale) {
+      return requestAI('api/explore/ai', config, { area: destination.name.slice(0, 100), category, locale },
+        60_000, onUsage, onUnauthorized);
+    },
+  };
+}
+
+function assistant(complete) {
+  return {
+    async intent(message) {
+      const intent = decodeIntent(await complete('intent', message));
+      if (!intent) throw new Error('AI reply was not valid trip JSON');
+      return intent;
+    },
+    async chat(message) {
+      const reply = decodeChat(await complete('chat', message));
+      if (!reply) throw new Error('AI reply was not valid trip JSON');
+      return reply;
+    },
+    /** Plans for a trip. A rider is waiting on the map, so this gives up sooner than a chat. */
+    async route(message) {
+      const plans = decodePlans(await complete('route', message, 20_000));
+      if (!plans) throw new Error('AI reply was not valid plan JSON');
+      return plans;
+    },
+  };
+}

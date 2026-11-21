@@ -1,0 +1,268 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>hktransport reel</title>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#stage{position:absolute;inset:0;overflow:hidden;font-family:-apple-system,"SF Pro Display","PingFang HK","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased;color:#1d1d1f}
+#city{position:absolute;left:-3000px;top:0}
+#blend{position:absolute;inset:0;z-index:2}
+#intro{position:absolute;inset:0;background:#f5f5f7;z-index:1;overflow:hidden}
+.orb{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-550px;top:-550px}
+#logo{position:absolute;left:390px;top:810px;width:300px;height:300px;z-index:3;filter:drop-shadow(0 40px 60px rgba(20,25,60,.28))}
+#scrimB{position:absolute;left:0;right:0;bottom:0;height:900px;background:linear-gradient(rgba(245,247,250,0),rgba(245,247,250,.92) 62%);z-index:4;opacity:0}
+#scrimT{position:absolute;left:0;right:0;top:0;height:420px;background:linear-gradient(rgba(245,247,250,.75),rgba(245,247,250,0));z-index:4;opacity:0}
+.ui{position:absolute;z-index:10;opacity:0;will-change:transform,opacity,filter}
+.glass{background:rgba(255,255,255,.93);box-shadow:0 30px 70px rgba(30,40,100,.16),0 6px 16px rgba(30,40,100,.08),inset 0 0 0 1.5px rgba(255,255,255,.9)}
+/* The AI box, as the app has it. */
+.bar{left:44px;right:44px;top:1556px;height:132px;border-radius:66px;display:flex;align-items:center;padding:0 18px 0 38px;gap:22px;font-size:40px;font-weight:500}
+.bar .text{flex:1;white-space:nowrap;overflow:hidden}
+.bar .ph{color:#a1a1a6}
+.bar .yue{color:#6e6e73;font-size:34px;font-weight:600}
+.bar .send{width:98px;height:98px;border-radius:50%;background:#0a84ff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(10,132,255,.35)}
+.caret{display:inline-block;width:4px;height:46px;background:#0a84ff;vertical-align:-8px;margin-left:3px}
+.me{right:44px;max-width:860px;padding:30px 44px;border-radius:50px 50px 14px 50px;background:linear-gradient(135deg,#0a84ff,#5e5ce6);color:#fff;font-size:46px;font-weight:600;box-shadow:0 24px 50px rgba(10,80,255,.28);white-space:nowrap}
+.ai{left:44px;width:992px;border-radius:48px;padding:34px 40px 36px}
+.ai .who{display:flex;align-items:center;gap:14px;font-size:30px;font-weight:700;color:#7d4ce0;margin-bottom:14px}
+.ai .say{font-size:44px;line-height:1.38;font-weight:600;color:#6b3fd0}
+.ai .say b{color:#e3242b;font-weight:800}
+.ai .plan{display:flex;align-items:center;gap:16px;margin-top:22px;font-size:34px;font-weight:600;color:#6e6e73}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:6px 20px;border-radius:14px;background:#e3242b;color:#fff;font-weight:800;font-size:34px}
+.live{color:#30b84f;font-weight:700}
+.live:before{content:"";display:inline-block;width:16px;height:16px;border-radius:50%;background:#30b84f;margin-right:10px;vertical-align:3px}
+.dots{left:44px;width:190px;height:104px;border-radius:52px;display:flex;align-items:center;justify-content:center;gap:16px}
+.dots i{width:20px;height:20px;border-radius:50%;background:#b39ddb}
+.shopcard{margin-top:24px;background:#eef8fd;border-radius:34px;padding:28px 32px;display:flex;gap:24px}
+.shopcard .n{flex:none;width:66px;height:66px;border-radius:50%;background:#0a84ff;color:#fff;font-size:38px;font-weight:800;display:grid;place-items:center}
+.shopcard h5{font-size:44px;font-weight:800;color:#1d1d1f;display:flex;justify-content:space-between;width:740px}
+.shopcard h5 span{font-size:32px;color:#86868b;font-weight:500}
+.shopcard p{font-size:32px;color:#86868b;margin-top:8px;font-weight:500}
+.shopcard p em{font-style:normal;color:#ff9f0a;font-weight:800}
+/* The live card at the top while riding along. */
+.nav{left:44px;right:44px;top:120px;height:200px;border-radius:52px;display:flex;align-items:center;padding:0 46px 0 36px;gap:30px}
+.nav .bus{width:118px;height:118px;border-radius:30px;background:#e3242b;display:grid;place-items:center;color:#fff;font-size:56px;font-weight:800;box-shadow:0 12px 26px rgba(227,36,43,.35)}
+.nav h3{font-size:56px;font-weight:800;letter-spacing:-.01em}
+.nav h3 + div{font-size:32px;color:#86868b;font-weight:600;margin-top:6px}
+.nav .eta{margin-left:auto;text-align:right}
+.nav .eta b{font-size:110px;font-weight:800;letter-spacing:-.04em;line-height:1;display:inline-block}
+.nav .eta small{font-size:36px;font-weight:700;color:#6e6e73;margin-left:6px}
+.cap{position:absolute;left:64px;top:1300px;font-size:104px;font-weight:800;letter-spacing:-.025em;line-height:1.12;white-space:pre;z-index:9}
+.cap .c{display:inline-block}
+.grad{background:linear-gradient(95deg,#ff375f,#ff9f0a 60%,#ffcc00);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Labels that ride on the map. */
+.tag{position:absolute;left:0;top:0;z-index:8;opacity:0;white-space:nowrap;display:flex;align-items:center;gap:14px;padding:16px 28px;border-radius:40px;font-size:38px;font-weight:700}
+.tag i{width:28px;height:28px;flex:none}
+.tag.bus{background:#e3242b;color:#fff;padding:12px 24px;border-radius:24px;font-size:40px;font-weight:800;box-shadow:0 14px 30px rgba(227,36,43,.4)}
+.tag.bus:after{content:"";position:absolute;left:50%;bottom:-14px;margin-left:-14px;border:14px solid transparent;border-bottom:0;border-top-color:#e3242b}
+.shoppin{position:absolute;left:0;top:0;z-index:8;opacity:0;display:flex;align-items:center;gap:14px}
+.shoppin .n{width:84px;height:84px;border-radius:50%;background:#0a84ff;border:7px solid #fff;color:#fff;font-size:44px;font-weight:800;display:grid;place-items:center;box-shadow:0 14px 30px rgba(10,132,255,.45)}
+.shoppin .name{padding:14px 26px;border-radius:30px;font-size:38px;font-weight:700}
+#end{position:absolute;inset:0;background:#000;z-index:20;opacity:0;text-align:center}
+#endIcon{position:absolute;left:400px;top:620px;width:280px;height:280px;filter:drop-shadow(0 30px 80px rgba(255,80,60,.35))}
+#url{position:absolute;left:50%;top:1250px;padding:18px 40px;border-radius:44px;background:rgba(255,255,255,.12);color:#fff;font-size:34px;font-weight:500;white-space:nowrap}
+#flash{position:absolute;inset:0;background:#000;opacity:0;z-index:30}
+</style>
+<div id="stage">
+  <div id="intro"><div class="orb" id="o1"></div><div class="orb" id="o2"></div><div class="orb" id="o3"></div></div>
+  <canvas id="city" width="1080" height="1920"></canvas><canvas id="blend" width="1080" height="1920"></canvas>
+  <img id="logo" src="shots/icon.png">
+  <div id="scrimT"></div><div id="scrimB"></div>
+  <div id="end"><img id="endIcon" src="shots/icon.png"><div id="url">hk.52-220-124-215.sslip.io</div></div>
+  <div id="flash"></div>
+</div>
+<script>addEventListener('error', (e) => { window.failed = `${e.message} ${e.filename}:${e.lineno}`; }); addEventListener('unhandledrejection', (e) => { window.failed = String(e.reason?.stack ?? e.reason); });</script>
+<script type="importmap">{"imports":{"three":"./lib/three.module.js"}}</script>
+<script type="module">
+import { createReelCity } from './reelcity.js';
+const $ = (id) => document.getElementById(id), stage = $('stage');
+const W = 1080, H = 1920;
+const LANG = new URLSearchParams(location.search).get('lang') ?? 'hans', isEN = LANG === 'en';
+const clamp = (x) => Math.max(0, Math.min(1, x)), win = (t, a, b) => clamp((t - a) / (b - a));
+const glide = (x) => x * x * x * (x * (6 * x - 15) + 10);
+const spring = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-6.5 * x) * Math.cos(11 * x));
+const bounce = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-7.5 * x) * Math.cos(15 * x));
+const lerp = (a, b, k) => a + (b - a) * k;
+
+const T = {
+  hans: { ph: '告诉 AI，例如：去吃茶餐厅', yue: '粤语', ai: 'AI 助手',
+    q1: '去尖沙咀码头，最快怎么去？', a1: '搭 <b>1 号巴士</b> 直达，<br>下一班 <b>3 分钟</b> 就到。', plan: '直达 · 54 分钟',
+    q2: '顺路想吃个茶餐厅', a2: '前面 328 米就有一间，口碑很稳：', shop: '澳洲牛奶公司', shopMeta: '<em>★ 4.0</em>  (6,542) · 中菜馆 · <span class="live">营业中</span>', far: '328 m',
+    stop: '尖沙咀码头', next: ['下一站 弥敦道', '即将到站'], unit: '分钟', live: '实时', start: '竹园邨',
+    caps: ['车到哪了？\n*一眼就知*', '3D 小车\n*沿真实路线跑*'], line: '香港出行，一个网页就够。' },
+  hant: { ph: '告訴 AI，例如：去食茶餐廳', yue: '粵語', ai: 'AI 助手',
+    q1: '去尖沙咀碼頭，最快點去？', a1: '搭 <b>1 號巴士</b> 直達，<br>下一班 <b>3 分鐘</b> 就到。', plan: '直達 · 54 分鐘',
+    q2: '順路想食個茶餐廳', a2: '前面 328 米就有一間，口碑好穩陣：', shop: '澳洲牛奶公司', shopMeta: '<em>★ 4.0</em>  (6,542) · 中菜館 · <span class="live">營業中</span>', far: '328 m',
+    stop: '尖沙咀碼頭', next: ['下一站 彌敦道', '即將到站'], unit: '分鐘', live: '實時', start: '竹園邨',
+    caps: ['車到哪了？\n*一眼就知*', '3D 小車\n*沿真實路線跑*'], line: '香港出行，一個網頁就夠。' },
+  en: { ph: 'Ask AI, e.g. find a cha chaan teng', yue: 'Cantonese', ai: 'AI assistant',
+    q1: 'Fastest way to the Star Ferry?', a1: 'Take <b>bus 1</b>, no changes.<br>The next one is <b>3 min</b> away.', plan: 'Direct · 54 min',
+    q2: 'A cha chaan teng on the way?', a2: 'There’s a local favourite 328 m off your route:', shop: 'Australia Dairy Co.', shopMeta: '<em>★ 4.0</em>  (6,542) · <span class="live">Open now</span>', far: '328 m',
+    stop: 'Star Ferry Pier', next: ['Next: Nathan Road', 'Arriving'], unit: 'min', live: 'Live', start: 'Chuk Yuen',
+    caps: ['Where’s my bus?\n*Right there.*', 'A 3D bus,\n*on its real route.*'], line: 'Getting around Hong Kong, in one web page.' },
+}[LANG];
+
+// MARK: Pieces
+const ui = [];
+function piece(html, cls, css, at, until, from = {}) {
+  const el = document.createElement('div'); el.className = `ui ${cls}`; if (css) el.style.cssText = css; el.innerHTML = html; stage.append(el);
+  const p = { el, at, until, dy: 60, dx: 0, origin: 'center', ...from }; el.style.transformOrigin = p.origin; ui.push(p); return el;
+}
+const sparkle = (size) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c4dff"/><stop offset="1" stop-color="#ff375f"/></linearGradient></defs><path fill="url(#sg)" d="M10 2.5l1.9 5.6 5.6 1.9-5.6 1.9L10 17.5l-1.9-5.6L2.5 10l5.6-1.9zM18.5 14l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z"/></svg>`;
+const mic = '<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+const arrow = '<svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+const busGlyph = (c = '#fff', s = 34) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.4"><rect x="5" y="3" width="14" height="15" rx="3"/><path d="M5 11h14M8 21l1-3M16 21l-1-3"/></svg>`;
+
+// Two rounds with the AI, each in its own wide shot of the map.
+const ROUNDS = [
+  { bar: [2.75, 6.75], type: [3.05, 3.85], send: 3.95, dots: [4.2, 4.62], q: T.q1, reply: `<div class="who">${sparkle(38)}${T.ai}</div><div class="say">${T.a1}</div><div class="plan"><span class="chip">${busGlyph('#fff', 30)}1</span>${T.plan}<span class="live" style="margin-left:auto">${T.live}</span></div>`, top: 1000, replyTop: 1150 },
+  { bar: [14.55, 17.95], type: [14.8, 15.5], send: 15.6, dots: [15.85, 16.25], q: T.q2, reply: `<div class="who">${sparkle(38)}${T.ai}</div><div class="say">${T.a2}</div><div class="shopcard"><div class="n">1</div><div><h5>${T.shop}<span>${T.far}</span></h5><p>${T.shopMeta}</p></div></div>`, top: 880, replyTop: 1025 },
+];
+for (const r of ROUNDS) {
+  r.barEl = piece(`${sparkle(54)}<div class="text"></div><span class="yue">${T.yue}</span>${mic}<div class="send">${arrow}</div>`, 'glass bar', '', r.bar[0], r.bar[1]);
+  r.meEl = piece(r.q, 'me', `top:${r.top}px`, r.send, r.bar[1], { dy: 80, origin: 'right bottom' });
+  r.dotsEl = piece('<i></i><i></i><i></i>', 'glass dots', `top:${r.replyTop}px`, r.dots[0], r.dots[1] + 0.12, { origin: 'left top' });
+  r.aiEl = piece(r.reply, 'glass ai', `top:${r.replyTop}px`, r.dots[1], r.bar[1], { dy: 70, origin: 'left top' });
+}
+// Riding along: the live card up top.
+const nav = piece(`<div class="bus">${busGlyph('#fff', 64)}</div><div><h3>${T.stop}</h3><div id="navNext"></div></div><div class="eta"><div class="live" style="font-size:30px;margin-bottom:6px">${T.live}</div><b id="navMin">3</b><small>${T.unit}</small></div>`, 'glass nav', '', 7.5, 13.95, { dy: -50 });
+
+// MARK: Words
+function caption(text, css) {
+  const el = document.createElement('div'); el.className = 'cap'; el.style.cssText = css;
+  const chars = [];
+  for (const part of text.split(/(\*[^*]+\*)/)) {
+    const isGrad = part.startsWith('*');
+    for (const ch of part.replace(/\*/g, '')) {
+      if (ch === '\n') { el.append(document.createElement('br')); continue; }
+      const c = document.createElement('span'); c.className = `c${isGrad ? ' grad' : ''}`; c.textContent = ch === ' ' ? ' ' : ch; el.append(c); chars.push(c);
+    }
+  }
+  stage.append(el); return { el, chars };
+}
+function showCaption(cap, t, from, to, gap = 0.03) {
+  if (isEN) gap *= 0.5;
+  const live = t >= from - 0.01 && t <= to + 0.01;
+  cap.el.style.display = live ? 'block' : 'none';
+  if (!live) return;
+  const leave = glide(win(t, to - 0.22, to));
+  cap.chars.forEach((c, i) => {
+    const k = win(t, from + i * gap, from + i * gap + 0.6), s = spring(k);
+    c.style.opacity = clamp(k * 4) * (1 - leave);
+    c.style.transform = `translate3d(0,${(1 - s) * 80 - leave * 40}px,0) scale(${0.86 + 0.14 * s})`;
+    c.style.filter = leave ? `blur(${leave * 14}px)` : 'none';
+  });
+}
+const capSize = isEN ? 'font-size:92px' : '';
+const caps = [[caption(T.caps[0], capSize), 7.7, 10.6], [caption(T.caps[1], capSize), 11.3, 14.0]];
+const endName = caption('hktransport', 'left:0;right:0;top:950px;text-align:center;font-size:112px;color:#fff;z-index:21');
+const endLine = caption(T.line, `left:0;right:0;top:1100px;text-align:center;font-size:${isEN ? 42 : 50}px;font-weight:500;color:#a1a1a6;z-index:21;letter-spacing:0`);
+
+// MARK: Labels on the map
+const tag = (html, cls, css = '') => { const el = document.createElement('div'); el.className = `tag ${cls}`; el.style.cssText = css; el.innerHTML = html; stage.append(el); return el; };
+const startTag = tag(`<i style="border-radius:50%;background:#0a84ff;border:6px solid #fff;box-shadow:0 0 0 2px #0a84ff"></i>${T.start}`, 'glass');
+const endTag = tag(`<i style="border-radius:7px;background:#e3242b"></i>${T.stop}`, 'glass');
+const busTag = tag(`${busGlyph('#fff', 38)}1`, 'bus');
+const shopPin = document.createElement('div'); shopPin.className = 'shoppin'; shopPin.innerHTML = `<div class="n">1</div><div class="name glass">${T.shop}</div>`; stage.append(shopPin);
+function placeTag(el, p, t, from, to, ax = -50, ay = -50) {
+  const on = t >= from && t < to && p.front && p.x > -0.2 && p.x < 1.2 && p.y > -0.2 && p.y < 1.2;
+  if (!on) { el.style.opacity = 0; return; }
+  const s = bounce(win(t, from, from + 0.55)), leave = glide(win(t, to - 0.2, to));
+  el.style.opacity = clamp(win(t, from, from + 0.12)) * (1 - leave);
+  el.style.transform = `translate3d(${p.x * W}px,${p.y * H}px,0) translate(${ax}%,${ay}%) scale(${(0.4 + 0.6 * s) * (1 - leave * 0.2)})`;
+  el.style.filter = leave ? `blur(${leave * 10}px)` : 'none';
+}
+
+// MARK: The city, with motion blur from many moments per frame.
+const blend = $('blend').getContext('2d');
+const city = createReelCity($('city'), W, H, LANG);
+const WHIPS = [[1.5, 2.85], [6.75, 7.45], [10.55, 11.15], [13.95, 14.55], [17.95, 18.6]];
+let SUB = null;
+window.setSub = (n) => { SUB = n; };
+function drawCity(t) {
+  const whip = WHIPS.some(([a, b]) => t >= a && t < b);
+  const n = SUB ?? (whip ? 12 : 3), shutter = whip ? 1 / 30 : 0.5 / 60;
+  for (let k = 0; k < n; k++) {
+    city.render(t + (n > 1 ? (k / (n - 1) - 0.5) * shutter : 0));
+    blend.globalAlpha = 1 / (k + 1); blend.drawImage($('city'), 0, 0);
+  }
+  blend.globalAlpha = 1;
+}
+
+window.renderAt = (t) => {
+  // White, the icon, then down through it into the map.
+  const intro = t < 2.7;
+  $('intro').style.display = intro ? 'block' : 'none';
+  [['o1', '#ffb6c9', 160, 420, 0.9], ['o2', '#b9d4ff', 900, 1500, 0.7], ['o3', '#ffe2a8', 820, 300, 1.1]].forEach(([id, color, x, y, speed]) => {
+    const o = $(id); o.style.background = `radial-gradient(circle,${color}aa,${color}00 68%)`;
+    o.style.transform = `translate3d(${x + Math.sin(t * speed) * 200}px,${y + Math.cos(t * speed * 0.8) * 160}px,0)`;
+  });
+  const pop = spring(win(t, 0.15, 0.85)), grow = win(t, 1.55, 2.55), scale = (0.55 + 0.45 * pop) * 14 ** (grow ** 2.2);
+  const logo = $('logo');
+  logo.style.display = t < 2.6 ? 'block' : 'none';
+  logo.style.opacity = clamp(win(t, 0.15, 0.3)) * (1 - win(t, 1.7, 1.95));
+  logo.style.transform = `translateY(${Math.sin(t * 2.2) * 8 * (1 - grow)}px) scale(${scale}) rotate(${-grow * 14}deg)`;
+  logo.style.filter = `drop-shadow(0 40px 60px rgba(20,25,60,.28)) blur(${win(t, 1.75, 2.3) * 12}px)`;
+  const showMap = t >= 1.62 && t < 18.62, b = $('blend');
+  b.style.display = showMap ? 'block' : 'none';
+  if (showMap) {
+    drawCity(t);
+    // Seen through the icon's square while it grows past the edges of the frame.
+    const side = 300 * 0.805 * scale / 2, r = 300 * 0.18 * scale;
+    b.style.clipPath = grow < 1 ? `inset(${960 - side}px ${540 - side}px ${960 - side}px ${540 - side}px round ${r}px)` : 'none';
+    b.style.transform = grow < 1 ? `rotate(${-grow * 14}deg)` : 'none';
+    b.style.opacity = clamp(win(t, 1.62, 1.85));
+  }
+  const map = t >= 2.4 && t < 18.6;
+  $('scrimB').style.opacity = map ? clamp(win(t, 2.6, 3) * (1 - win(t, 6.7, 7)) + win(t, 7.5, 7.8) * (1 - win(t, 13.95, 14.3)) * 0.85 + win(t, 14.5, 14.8) * (1 - win(t, 17.9, 18.2))) : 0;
+  $('scrimT').style.opacity = map ? win(t, 7.4, 7.7) * (1 - win(t, 13.95, 14.2)) : 0;
+
+  for (const p of ui) {
+    const live = t >= p.at && t <= p.until + 0.01;
+    p.el.style.display = live ? (p.el.classList.contains('bar') || p.el.classList.contains('dots') || p.el.classList.contains('nav') ? 'flex' : 'block') : 'none';
+    if (!live) continue;
+    const k = win(t, p.at, p.at + 0.6), s = bounce(k), leave = glide(win(t, p.until - 0.18, p.until));
+    p.el.style.opacity = clamp(k * 6) * (1 - leave);
+    p.el.style.transform = `translate3d(${(1 - s) * p.dx}px,${(1 - s) * p.dy - leave * 30}px,0) scale(${(0.6 + 0.4 * s) * (1 - leave * 0.08)})`;
+    p.el.style.filter = leave ? `blur(${leave * 16}px)` : 'none';
+  }
+  for (const r of ROUNDS) {
+    const text = r.barEl.querySelector('.text'), typing = t < r.send;
+    const n = Math.floor(win(t, ...r.type) * ([...r.q].length + 0.99));
+    text.innerHTML = typing && n > 0 ? `${[...r.q].slice(0, n).join('')}<span class="caret" style="opacity:${Math.floor(t * 4) % 2 || t < r.type[1] ? 1 : 0}"></span>` : `<span class="ph">${T.ph}</span>`;
+    const press = 1 - 0.12 * Math.sin(Math.PI * win(t, r.send - 0.12, r.send + 0.08));
+    r.barEl.querySelector('.send').style.transform = `scale(${press})`;
+    r.dotsEl.querySelectorAll('i').forEach((d, i) => { d.style.transform = `translateY(${-Math.max(0, Math.sin((t * 7 - i * 0.9))) * 14}px)`; });
+    // The question moves up out of the way as the answer arrives.
+    const lift = glide(win(t, r.dots[1], r.dots[1] + 0.35));
+    r.meEl.style.marginTop = `${-lift * (r === ROUNDS[0] ? 40 : 30)}px`;
+  }
+  const nextIdx = t < 11.1 ? 0 : 1;
+  $('navNext').textContent = T.next[nextIdx];
+  const flip = win(t, 11.0, 11.3), navMin = $('navMin');
+  navMin.textContent = t < 11.15 ? '3' : '1';
+  navMin.style.transform = `translateY(${Math.sin(flip * Math.PI) * -24}px)`;
+
+  for (const [cap, a, b2] of caps) showCaption(cap, t, a, b2);
+
+  const L = map ? city.labels() : null;
+  if (L) {
+    const late = t >= 14;
+    placeTag(endTag, L.end, t, late ? 14.7 : 5.75, late ? 17.95 : 6.72, -50, -130);
+    placeTag(busTag, L.bus, t, late ? 14.6 : 5.3, late ? 17.95 : 6.72, -50, -120);
+    placeTag(shopPin, L.shop, t, 16.35, 17.95, -42, -50);
+  } else for (const el of [startTag, endTag, busTag, shopPin]) el.style.opacity = 0;
+  if (t > 6.72 && t < 14.6) for (const el of [startTag, endTag, busTag, shopPin]) el.style.opacity = 0;
+
+  // Out through the sky into black, then the name.
+  $('flash').style.opacity = win(t, 18.2, 18.55) * (1 - win(t, 18.6, 18.75));
+  const end = $('end'); end.style.display = t >= 18.6 ? 'block' : 'none'; end.style.opacity = 1;
+  const ic = $('endIcon'), i = bounce(win(t, 18.75, 19.45));
+  ic.style.opacity = t >= 18.75 ? 1 : 0; ic.style.transform = `translateY(${(1 - i) * 100}px) scale(${0.5 + 0.5 * i})`;
+  showCaption(endName, t, 19.15, 23, 0.03); showCaption(endLine, t, 19.6, 23, 0.025);
+  const u = bounce(win(t, 20.4, 21)), url = $('url'); url.style.opacity = clamp(win(t, 20.4, 20.55)); url.style.transform = `translateX(-50%) translateY(${(1 - u) * 50}px)`;
+};
+await Promise.all([...document.images].map((img) => img.decode().catch(() => {})));
+await document.fonts.ready;
+// Draw the city once from each shot first, so shaders and shadows are built before frame 0.
+for (const t of [2, 5, 7.1, 9, 12, 16, 18.3]) { city.render(t); await new Promise((r) => setTimeout(r, 50)); }
+await new Promise((r) => setTimeout(r, 500));
+renderAt(0); window.ready = true;
+</script></html>

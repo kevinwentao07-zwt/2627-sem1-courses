@@ -1,0 +1,36 @@
+FINAL SUBMISSION AND REHEARSAL CHECKLIST
+
+Main group materials
+[ ] Two 70-minute core double lessons with detailed evidence-led subsequent teaching.
+[ ] Matching student worksheet, notes, hardware reference and follow-up activities.
+[ ] Teacher answers, criteria and feedback guidance kept separate from students.
+[ ] Live resource link and offline/printed alternatives prepared.
+[ ] Lecturer-facing deck and five assigned English speaking parts.
+[ ] Names, actual contributions and AI use checked by the group.
+
+During the 25-minute presentation
+[ ] A: concepts, learners, prior knowledge and assessable objectives.
+[ ] B: pedagogical rationale, sequence and before/after-class arrangements.
+[ ] C: selected tool functions, pupil tasks, sample teacher prompts, one AP demonstration and the TCP/IP slide.
+[ ] D: evidence, marking, feedback and support for learner differences.
+[ ] E: educational value, limits, ethical/social issues, feasibility and evaluation.
+[ ] Follow the lecturer’s arrangements for questions after the talk.
+
+Final rehearsal
+[ ] Test projector/English display, reference networks, pause/reset and backup files.
+[ ] Explain the opening handouts and use of the lesson plan before the demo.
+[ ] Keep AP prediction before revealing its outcome. Demo on slide 19 at 10:25–11:35.
+[ ] Use the TCP/IP ordering slide during the talk; keep the live animation for the classroom lesson.
+[ ] Rehearse every handover. C narrates the AP demonstration and D operates the browser.
+[ ] All members can explain Switch / Router / AP and receiving TCP.
+[ ] Each member reads the learning objectives and rehearses their assigned script and handover in Presenter View.
+[ ] Address the audience as fellow teachers. Explain the pupil task, teaching reason and evidence.
+
+Editable DOCX/PPTX and print/view PDFs are included. This checklist supports the
+package; follow the lecturer's latest submission instructions if formatting or
+submission arrangements differ.
+
+[ ] Explain the A/B/C follow-up choices, fresh rechecks and flexible unit duration.
+
+[ ] Open START_HERE_MATERIALS.html after extraction and test that the local files open.
+[ ] Rehearse the 41-slide deck in order. The excerpts appear in the relevant speaker sections.

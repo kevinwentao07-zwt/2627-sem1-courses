@@ -1,0 +1,96 @@
+# hktransport
+
+香港公共交通網頁應用：路線規劃、實時到站、地圖上的巴士位置，以及能聽懂一句話的 AI 助手。打開網址就能用，無需安裝和登入。
+
+**立即使用：<https://hk.52-220-124-215.sslip.io/>**
+
+繁體中文 | [English](README.en.md)
+
+## 功能
+
+### 路線規劃
+
+- **搜尋地點或站名**：聯想結果先列地點和店舖（Google 地圖），再列站點。
+- **一搜就有路線**：搜尋後最佳路線馬上畫在地圖上，視野自動框住全程，點選其他方案即可切換。
+- **計劃時間**：現在出發、指定出發時間或指定抵達時間。按抵達時間規劃時會顯示建議出門時間；趕不及會直接提示。
+- **三種偏好**：最快、少轉車、少行路。
+- **實時修正**：以各營辦商的實時到站時間取代估算，再重新排序。
+- **導航**：跟隨位置，提示下一站、還有幾站及在哪裡下車。
+- **比較多個路線來源**：同時搜尋 Transitous、Google 地圖（可用時）及內置 RAPTOR，合併相同上落車站的方案，再按步行、換乘及抵達時間排序。
+- **每段步行最多 10 分鐘**：超過上限的方案會在需要時由乘客選擇查看。Transitous 及 Google 方案使用街道步行時間，內置規劃在缺少街道資料時會標示估算。
+- 支援巴士、小巴、港鐵及輕鐵。內置規劃最多三程車。
+
+### 地圖上的巴士
+
+綜合路線上**所有站**的到站時間，推算每一架車現在的位置，並沿真實道路顯示。不只看單一站點，所以多架車也能分開顯示；純粹按時間表的班次不會當成真車。
+
+### 路線查詢
+
+- **快捷鍵盤**：只有能組成真實路線的按鍵才可按，通常按三四下就找到。
+- **一條路線一張卡片**：雙向及特別班收在同一張卡片內，例如「康盛花園 ⇄ 大埔工業邨」。
+- **轉方向**：一按切換，地圖視野不動，巴士同時換成對應方向，已選的站會跳到對面同名的站。
+- **左右滑動站點**，可設為出發地或目的地。
+- 記住最近查看的路線及上次看的方向。
+
+### 站點與收藏
+
+輸入站名或地點，列出附近所有巴士、小巴、港鐵及輕鐵站，可按類型及範圍篩選；常用車站可以收藏。
+
+### AI 助手
+
+負責**理解語句**及**記住上下文**，再將起終點和偏好交給路線規劃。店舖搜尋和排序由 Google 提供。
+
+| 你說 | 結果 |
+| --- | --- |
+| 由尖沙咀去中環，少行路 | 規劃路線 |
+| 想喺旺角食拉麵 | 用 Google 地圖找店 |
+| 第一間點去 | 規劃到第一間店 |
+| 第二間呢 | 改去第二間 |
+| 由尖沙咀出發 | 只改起點，目的地不變 |
+
+支援打字及語音輸入。在「設定 → AI API」選擇平台及模型，驗證並儲存自己的 API Key，即可使用 AI 助手和附近地點的 AI 建議。
+
+### 其他
+
+- 可加入主畫面，當作 App 使用（PWA）。
+- 繁體中文、简体中文及 English，深色模式跟隨系統。
+- 收藏及搜尋記錄只保存在你的裝置。
+
+## 技術
+
+| 部分 | 做法 |
+| --- | --- |
+| 網頁 | 靜態 PWA，原生 ES modules，沒有框架及建置步驟 |
+| 路線規劃 | 比較 Transitous、Google Routes API 及 Web Worker 內的 RAPTOR 方案 |
+| 地點及步行 | Google 地點搜尋及步行路線；額度用完後改用政府地理資訊、OpenStreetMap 及直線估算 |
+| 到站資料 | 由瀏覽器直接查詢九巴／龍運、城巴、嶼巴、綠色專線小巴、港鐵及輕鐵 |
+| 地圖 | Google 地圖；額度用完後自動改用 OpenFreeMap |
+| AI | OpenAI、Claude、Gemini、DeepSeek、OpenRouter，以及支援 OpenAI Chat Completions、OpenAI Responses 或 Anthropic Messages 的自訂平台，經 [`server/ai_proxy.py`](server/ai_proxy.py) 呼叫 |
+| 伺服器 | Python 標準庫，前面是 Caddy |
+
+### 安全與費用
+
+- AI API Key 儲存在使用者的瀏覽器，每次請求由伺服器轉送至所選 AI 平台。Google 後端密鑰保存在伺服器。
+- 地圖密鑰必須給瀏覽器使用，已限制網域及 API。
+- AI 接口只接受應用自己的任務，只傳回簡短 JSON，不能當作免費聊天機器人。
+- 「設定 → AI API」顯示此瀏覽器當天在本站的 AI 費用估算。Google 用量到達免費額度後自動退回免費方案。
+
+## 開發
+
+```bash
+python3 -m http.server 8642 --directory web   # 本機預覽
+node --test web/test/core.test.mjs            # 網頁測試
+cd server && python3 -m unittest test_ai_proxy # 伺服器測試
+```
+
+部署到自己的伺服器及各項設定見 [`web/README.md`](web/README.md)。
+
+## macOS 版
+
+倉庫同時包含一個原生 macOS 應用（Swift / SwiftUI），提供到站預報、路線規劃，以及可選的 MacBook 劉海靈動島顯示。可到 [Releases](https://github.com/kevinwentao07-zwt/hktransport/releases/latest) 下載，或執行 `./"Start hktransport.command"` 從原始碼編譯（需要 macOS 14 或以上）。部分網頁版的新功能尚未加入 macOS 版。
+
+## 來源與授權
+
+路線資料來自 [hkbus.app](https://hkbus.app/)，到站時間來自各營辦商的開放數據。macOS 版的劉海視窗基於 [Notch Triage](https://github.com/0Hyacinth0/Notch-Triage)，交通資料處理參考 [HK Bus ETA](https://github.com/hkbus/hk-independent-bus-eta)。
+
+本專案採用 **GPL-3.0**，見 [`LICENSE`](LICENSE)。來源紀錄見 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。

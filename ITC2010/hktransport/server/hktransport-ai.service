@@ -1,0 +1,24 @@
+[Unit]
+Description=hktransport AI proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 -I /opt/hktransport-ai/ai_proxy.py
+EnvironmentFile=-/etc/hktransport/google.env
+EnvironmentFile=-/etc/hktransport/routes.env
+EnvironmentFile=-/etc/hktransport/embed.env
+EnvironmentFile=-/etc/hktransport/search.env
+DynamicUser=yes
+StateDirectory=hktransport-ai
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+MemoryMax=128M
+
+[Install]
+WantedBy=multi-user.target

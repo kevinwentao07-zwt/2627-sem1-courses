@@ -1,0 +1,58 @@
+[
+  {
+    "page": 1,
+    "column": 1,
+    "font_size": 6.95,
+    "height": 753.55,
+    "entries": 24
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "font_size": 6.35,
+    "height": 752.5,
+    "entries": 28
+  },
+  {
+    "page": 1,
+    "column": 3,
+    "font_size": 6.6,
+    "height": 753.7,
+    "entries": 25
+  },
+  {
+    "page": 1,
+    "column": 4,
+    "font_size": 6.7,
+    "height": 752.2,
+    "entries": 27
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "font_size": 6.5,
+    "height": 745.3,
+    "entries": 28
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "font_size": 6.1,
+    "height": 752.5,
+    "entries": 28
+  },
+  {
+    "page": 2,
+    "column": 3,
+    "font_size": 6.45,
+    "height": 752.25,
+    "entries": 25
+  },
+  {
+    "page": 2,
+    "column": 4,
+    "font_size": 6.1,
+    "height": 741.6,
+    "entries": 27
+  }
+]

@@ -1,0 +1,1351 @@
+// Route data, the RAPTOR search and journey maths. No DOM, so it also runs in
+// the worker and in Node tests. A port of RoutePlanner.swift and friends.
+
+export const OPERATORS = ['kmb', 'ctb', 'nlb', 'gmb', 'lightRail', 'mtr'];
+
+export const OP_COLORS = {
+  kmb: '#e3242b', ctb: '#ffd100', nlb: '#1ca39c', gmb: '#3dad4a', lightRail: '#f29900', mtr: '#6e8cd6',
+};
+export const OP_LABELS = { kmb: 'KMB·LWB', ctb: 'CTB', nlb: 'NLB', gmb: 'GMB', lightRail: 'LRT', mtr: 'MTR' };
+
+const MTR_LINES = {
+  AEL: ['Airport Express', '機場快綫', '#00888a'], TCL: ['Tung Chung Line', '東涌綫', '#f7941d'],
+  DRL: ['Disneyland Resort Line', '迪士尼綫', '#e868a2'], EAL: ['East Rail Line', '東鐵綫', '#53b7e8'],
+  TML: ['Tuen Ma Line', '屯馬綫', '#ab4205'], TWL: ['Tsuen Wan Line', '荃灣綫', '#ed1d24'],
+  KTL: ['Kwun Tong Line', '觀塘綫', '#00a040'], ISL: ['Island Line', '港島綫', '#007dc5'],
+  TKL: ['Tseung Kwan O Line', '將軍澳綫', '#8b3d96'], SIL: ['South Island Line', '南港島綫', '#b5bd00'],
+};
+
+/** What riders call a route: "東鐵綫" rather than the MTR's "EAL". */
+export function lineName(op, route, lang) {
+  const line = op === 'mtr' ? MTR_LINES[route] : null;
+  return line ? line[lang === 'zh' ? 1 : 0] : route;
+}
+export const lineColor = (op, route) => (op === 'mtr' && MTR_LINES[route]?.[2]) || OP_COLORS[op] || '#888';
+export const RETURN_COLOR = '#7c4dff'; // Stands apart from every operator's colour.
+export const nameText = (name, lang) => (lang === 'zh' ? name?.zh : name?.en) || name?.zh || name?.en || '';
+
+// MARK: Tuning
+
+export const SETTINGS = {
+  walkMetersPerMinute: 75,
+  walkDetour: 1.3, // Straight lines understate streets, footbridges and crossings.
+  footpathRadius: 250,
+  stationFootpathRadius: 450, // MTR coordinates are station centres.
+  accessRadius: 700,
+  fallbackAccessRadius: 1500,
+  walkOnlyRadius: 1500,
+  transferMinutes: 2,
+  mtrInterchangeMinutes: 3,
+  maxTransitLegs: 3,
+  maxWaitMinutes: 90,
+};
+export const walkMinutes = (meters) => (meters * SETTINGS.walkDetour) / SETTINGS.walkMetersPerMinute;
+
+const SPEED_KMH = { kmb: 17, ctb: 17, nlb: 20, gmb: 20, lightRail: 18, mtr: 38 };
+const HEADWAY = { kmb: 15, ctb: 15, nlb: 20, gmb: 10, lightRail: 6, mtr: 4 };
+// Rail has no timetable in the data, and it stops overnight: about 05:30 to 01:00.
+const railBand = (op) => [{ start: 330, end: 60, headway: HEADWAY[op] * 60 }];
+const RAIL_HOURS = { mtr: railBand('mtr'), lightRail: railBand('lightRail') };
+const dwell = (op) => (op === 'mtr' ? 0.5 : 0.4);
+
+export function meters(a, b) {
+  const lat1 = (a.lat * Math.PI) / 180, lat2 = (b.lat * Math.PI) / 180;
+  const x = (((b.lng - a.lng) * Math.PI) / 180) * Math.cos((lat1 + lat2) / 2);
+  return 6371000 * Math.hypot(x, lat2 - lat1);
+}
+const validLocation = (l) => l && Number.isFinite(l.lat) && Number.isFinite(l.lng);
+
+// MARK: Database
+
+/** "0535" -> 335 */
+export function minuteOfDay(text) {
+  if (typeof text !== 'string' || !/^\d{4}$/.test(text)) return null;
+  const value = Number(text), hours = Math.floor(value / 100), minutes = value % 100;
+  return hours <= 47 && minutes <= 59 ? hours * 60 + minutes : null;
+}
+
+/** `{"287": {"0535": ["0705", "900"]}}`: every 900 s from 05:35 to 07:05. No headway is one departure. */
+export function parseFrequency(raw) {
+  if (!raw || typeof raw !== 'object') return null;
+  const days = {};
+  for (const [day, bands] of Object.entries(raw)) {
+    if (!bands || typeof bands !== 'object') continue;
+    days[day] = Object.entries(bands).flatMap(([start, value]) => {
+      const startMinute = minuteOfDay(start);
+      if (startMinute == null) return [];
+      const headway = Number(value?.[1]);
+      return [{ start: startMinute, end: minuteOfDay(value?.[0]), headway: headway > 0 ? headway : null }];
+    }).sort((a, b) => a.start - b.start);
+  }
+  return Object.keys(days).length ? days : null;
+}
+
+/** Keeps supported routes, and makes the loosely typed fields consistent. */
+export function normalizeDB(raw) {
+  const routes = {};
+  for (const [key, route] of Object.entries(raw.routeList ?? {})) {
+    const operators = (route.co ?? []).filter((op) => OPERATORS.includes(op) && route.stops?.[op]);
+    if (!operators.length) continue;
+    const jt = Number(route.jt);
+    routes[key] = {
+      key, route: String(route.route), operators, orig: route.orig, dest: route.dest,
+      serviceType: String(route.serviceType ?? '1'), stops: route.stops, bound: route.bound ?? {},
+      gtfsId: route.gtfsId == null ? null : String(route.gtfsId),
+      nlbId: route.nlbId == null ? null : String(route.nlbId),
+      journeyMinutes: jt > 0 ? jt : null, frequency: parseFrequency(route.freq),
+    };
+  }
+  return { routes, stops: raw.stopList ?? {}, serviceDayMap: raw.serviceDayMap ?? {}, holidays: raw.holidays ?? [] };
+}
+
+const compare = (a, b) => a.localeCompare(b, 'en', { numeric: true });
+
+/** Drops operator stop codes such as "(YT611)". */
+export const cleanStopName = (name) => (name ?? '').replace(/\s*[(（][A-Za-z]{1,5}[0-9]{1,6}[A-Za-z0-9-]*[)）]\s*$/, '').trim();
+export const stopName = (id, db, lang) => cleanStopName(nameText(db.stops[id]?.name, lang)) || id;
+
+// MARK: Network
+
+class SpatialGrid {
+  static size = 0.005; // About 550 m.
+  constructor(locations) {
+    this.cells = new Map();
+    locations.forEach((location, index) => {
+      const key = this.key(this.cell(location.lat), this.cell(location.lng));
+      if (!this.cells.has(key)) this.cells.set(key, []);
+      this.cells.get(key).push(index);
+    });
+  }
+  cell(value) { return Math.floor(value / SpatialGrid.size); }
+  key(x, y) { return `${x}:${y}`; }
+  near(location, radius, locations) {
+    if (!validLocation(location) || radius <= 0) return [];
+    const cx = this.cell(location.lat), cy = this.cell(location.lng), reach = Math.ceil(radius / 500);
+    const found = [];
+    for (let dx = -reach; dx <= reach; dx++) {
+      for (let dy = -reach; dy <= reach; dy++) {
+        for (const stop of this.cells.get(this.key(cx + dx, cy + dy)) ?? []) {
+          const distance = meters(location, locations[stop]);
+          if (distance <= radius) found.push({ stop, meters: distance });
+        }
+      }
+    }
+    return found.sort((a, b) => a.meters - b.meters || a.stop - b.stop);
+  }
+}
+
+export function buildNetwork(db) {
+  const stopIDs = [], stopIndex = new Map(), locations = [], patterns = [];
+  for (const key of Object.keys(db.routes).sort()) {
+    const route = db.routes[key], op = route.operators[0], ids = route.stops[op];
+    if (!ids || ids.length < 2) continue;
+    const stopLocations = ids.map((id) => db.stops[id]?.location);
+    if (!stopLocations.every(validLocation)) continue;
+
+    const cumulative = [0];
+    for (let i = 1; i < stopLocations.length; i++) {
+      cumulative.push(cumulative[i - 1] + meters(stopLocations[i - 1], stopLocations[i]));
+    }
+    const total = cumulative.at(-1);
+    // Spread the published journey time over the route by distance.
+    const offsets = route.journeyMinutes && total > 0
+      ? cumulative.map((m) => (route.journeyMinutes * m) / total)
+      : cumulative.map((m, index) => (m / 1000 / SPEED_KMH[op]) * 60 + index * dwell(op));
+
+    const indices = ids.map((id, position) => {
+      if (!stopIndex.has(id)) {
+        stopIndex.set(id, stopIDs.length);
+        stopIDs.push(id);
+        locations.push(stopLocations[position]);
+      }
+      return stopIndex.get(id);
+    });
+    patterns.push({
+      routeKey: key, route: route.route, op, dest: route.dest, stops: indices, offsets,
+      frequency: route.frequency, routeID: `${op}|${route.route}`,
+    });
+  }
+
+  const patternsAtStop = stopIDs.map(() => []);
+  const isStation = stopIDs.map(() => false);
+  const byRoute = new Map();
+  patterns.forEach((pattern, p) => {
+    const number = pattern.route.toUpperCase();
+    if (!byRoute.has(number)) byRoute.set(number, []);
+    byRoute.get(number).push(p);
+    pattern.stops.forEach((stop, position) => {
+      if (pattern.op === 'mtr') isStation[stop] = true;
+      // Nobody boards at the last stop.
+      if (position < pattern.stops.length - 1) patternsAtStop[stop].push({ pattern: p, position });
+    });
+  });
+
+  const grid = new SpatialGrid(locations);
+  const searchRadius = Math.max(SETTINGS.footpathRadius, SETTINGS.stationFootpathRadius);
+  const footpaths = locations.map((location, stop) => grid.near(location, searchRadius, locations).flatMap((near) => {
+    if (near.stop === stop) return [];
+    const limit = isStation[stop] || isStation[near.stop] ? SETTINGS.stationFootpathRadius : SETTINGS.footpathRadius;
+    return near.meters <= limit ? [{ to: near.stop, meters: near.meters }] : [];
+  }));
+
+  return {
+    stopIDs, stopIndex, locations, isStation, patterns, patternsAtStop, byRoute, footpaths, grid,
+    serviceDayMap: db.serviceDayMap, holidays: new Set(db.holidays),
+    near: (location, radius) => grid.near(location, radius, locations),
+  };
+}
+
+// MARK: Service times
+
+/** The departure expressed the way the timetable data is keyed: Hong Kong time, holidays as Sunday. */
+export function serviceClock(date, holidays = new Set()) {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Hong_Kong', year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+  }).formatToParts(date).map((part) => [part.type, part.value]));
+  const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(parts.weekday);
+  return {
+    weekday: holidays.has(`${parts.year}${parts.month}${parts.day}`) ? 0 : weekday,
+    minuteOfDay: Number(parts.hour) * 60 + Number(parts.minute) + Number(parts.second) / 60,
+  };
+}
+
+function covers(t, start, end) {
+  const s = start % 1440, e = end % 1440;
+  return s <= e ? t >= s && t < e : t >= s || t < e; // Bands such as 23:40 -> 01:00 cross midnight.
+}
+
+/** Expected wait from timetable bands, or null when nothing runs soon. */
+export function waitFromBands(bands, t, maxWait) {
+  let nextStart = Infinity;
+  for (const band of bands) {
+    if (band.headway && band.end != null && covers(t, band.start, band.end)) return band.headway / 60 / 2;
+    let delta = band.start - t;
+    if (delta < 0) delta += 1440;
+    nextStart = Math.min(nextStart, delta);
+  }
+  return nextStart <= maxWait ? nextStart : null;
+}
+
+class WaitEstimator {
+  constructor(network, clock) {
+    this.network = network;
+    this.clock = clock;
+    this.cache = new Map();
+  }
+  wait(p, position, minutesAfterDeparture) {
+    const pattern = this.network.patterns[p];
+    const hours = RAIL_HOURS[pattern.op];
+    if (!pattern.frequency && !hours) return HEADWAY[pattern.op] / 2;
+    let t = (this.clock.minuteOfDay + minutesAfterDeparture - pattern.offsets[position]) % 1440;
+    if (t < 0) t += 1440;
+    return waitFromBands(pattern.frequency ? this.bands(p) : hours, t, SETTINGS.maxWaitMinutes);
+  }
+  bands(p) {
+    if (this.cache.has(p)) return this.cache.get(p);
+    const bands = Object.entries(this.network.patterns[p].frequency).flatMap(([day, list]) => {
+      const flags = this.network.serviceDayMap[day];
+      // Unknown service-day ids are assumed to run.
+      return !flags || flags[this.clock.weekday] === '1' || flags[this.clock.weekday] === 1 ? list : [];
+    });
+    this.cache.set(p, bands);
+    return bands;
+  }
+}
+
+// MARK: Journeys
+
+export const rides = (journey) => journey.legs.filter((leg) => leg.type === 'ride');
+export const totalMinutes = (journey) => journey.legs.reduce((total, leg) => total
+  + (leg.type === 'walk' ? leg.minutes : leg.transferMinutes + leg.waitMinutes + leg.rideMinutes), 0);
+export const walkingMeters = (journey) => journey.legs.reduce((total, leg) => total + (leg.type === 'walk' ? leg.meters : 0), 0);
+const walkingMinutes = (journey) => journey.legs.reduce((total, leg) => total + (leg.type === 'walk' ? leg.minutes : 0), 0);
+export const transfers = (journey) => Math.max(0, rides(journey).length - 1);
+export const arrivalTime = (journey) => journey.departure + totalMinutes(journey) * 60_000;
+export const arrivesLate = (journey) => journey.arriveBy != null && arrivalTime(journey) > journey.arriveBy;
+export const journeyID = (journey) => rides(journey).map((r) => `${r.op}|${r.route}@${r.boardStopID}>${r.alightStopID}`).join(',') || 'walk';
+
+const LATE_PENALTY = 100_000;
+
+/** Lower is better. Weights are in "minutes the rider would trade". A late arrival never beats an on-time one. */
+export function score(journey, preference) {
+  const minutes = totalMinutes(journey) + (arrivesLate(journey) ? LATE_PENALTY : 0), changes = transfers(journey);
+  if (preference === 'fewerTransfers') return minutes + changes * 12;
+  if (preference === 'lessWalking') return minutes + walkingMinutes(journey) * 1.5 + changes * 3;
+  return minutes + changes * 2;
+}
+
+const SAME_WALK_METERS = 100;
+
+/**
+ * Why the first option is on top, from its own numbers. `t` picks the language, and
+ * `lineOf` names a ride. Only a real-time departure is mentioned as one.
+ */
+export function planAdvice(journeys, t, lineOf, now) {
+  const [best, next] = journeys;
+  if (!best) return null;
+  const minutes = Math.round(totalMinutes(best)), changes = transfers(best), walk = Math.round(walkingMeters(best));
+  const lines = [t(
+    `建議第一個方案：全程 ${minutes} 分鐘，${changes ? `轉 ${changes} 次車` : '直達'}，步行 ${walk} 米。`,
+    `Best option: ${minutes} min, ${changes ? `${changes} change${changes > 1 ? 's' : ''}` : 'direct'}, ${walk} m on foot.`,
+  )];
+  if (best.arriveBy != null && !arrivesLate(best)) lines.push(t('出發時間已預留最長的候車時間。', 'The start time allows for the longest wait.'));
+  const first = rides(best)[0];
+  if (first?.liveDeparture && !first.isProjected) {
+    const wait = Math.max(0, Math.floor((first.liveDeparture - now) / 60_000)), line = lineOf(first);
+    lines.push(wait ? t(`${line} ${wait} 分鐘後開出。`, `${line} leaves in ${wait} min.`) : t(`${line} 即將開出。`, `${line} is leaving now.`));
+  }
+  if (next) {
+    const faster = Math.round(totalMinutes(next)) - minutes, fewer = transfers(next) - changes, less = Math.round(walkingMeters(next)) - walk;
+    const differences = [
+      faster > 0 && t(`快 ${faster} 分鐘`, `${faster} min faster`),
+      faster < 0 && t(`慢 ${-faster} 分鐘`, `${-faster} min slower`),
+      fewer > 0 && t(`少轉 ${fewer} 次車`, `${fewer} fewer change${fewer > 1 ? 's' : ''}`),
+      fewer < 0 && t(`多轉 ${-fewer} 次車`, `${-fewer} more change${fewer < -1 ? 's' : ''}`),
+      less >= SAME_WALK_METERS && t(`少行 ${less} 米`, `${less} m less walking`),
+      less <= -SAME_WALK_METERS && t(`多行 ${-less} 米`, `${-less} m more walking`),
+    ].filter(Boolean);
+    if (differences.length) lines.push(t(`比第二個方案${differences.join('、')}。`, `Against the next option: ${differences.join(', ')}.`));
+  }
+  return lines.join(t('', ' '));
+}
+
+export function rank(journeys, preference, limit) {
+  // One option per first vehicle: "EAL then walk" and "EAL then ISL" are the same decision.
+  const seen = new Set();
+  const unique = [...journeys].sort((a, b) => score(a, preference) - score(b, preference)).filter((journey) => {
+    const first = rides(journey)[0];
+    const key = first ? `${first.op}|${first.route}` : 'walk';
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  if (!unique.length) return [];
+  const best = score(unique[0], preference);
+  return unique.filter((journey) => score(journey, preference) <= best + 20).slice(0, limit);
+}
+
+/** Round-based transit routing (RAPTOR): round k finds the fastest way to every stop using k vehicles. */
+export function search(network, origin, destination, departure, bannedFirstRoutes = new Set()) {
+  let access = network.near(origin, SETTINGS.accessRadius);
+  if (!access.length) access = network.near(origin, SETTINGS.fallbackAccessRadius);
+  let egressList = network.near(destination, SETTINGS.accessRadius);
+  if (!egressList.length) egressList = network.near(destination, SETTINGS.fallbackAccessRadius);
+  if (!access.length || !egressList.length) return [];
+
+  const n = network.stopIDs.length, rounds = Math.max(1, SETTINGS.maxTransitLegs);
+  const estimator = new WaitEstimator(network, serviceClock(new Date(departure), network.holidays));
+  const layer = (value) => Array.from({ length: rounds + 1 }, () => new Array(n).fill(value));
+  const arrival = layer(Infinity), rideArrival = layer(Infinity), rideParent = layer(null), walkParent = layer(null);
+  const best = new Array(n).fill(Infinity);
+  const accessMeters = new Map();
+  let marked = [];
+
+  for (const { stop, meters: distance } of access) {
+    const minutes = walkMinutes(distance);
+    if (minutes >= arrival[0][stop]) continue;
+    arrival[0][stop] = minutes;
+    best[stop] = minutes;
+    accessMeters.set(stop, distance);
+    marked.push(stop);
+  }
+  const egress = new Map();
+  for (const { stop, meters: distance } of egressList) egress.set(stop, Math.min(distance, egress.get(stop) ?? Infinity));
+
+  const interchange = (round, stop, next) => {
+    const ride = rideParent[round][stop];
+    return !walkParent[round][stop] && ride && network.patterns[ride.pattern].op === 'mtr' && next.op === 'mtr'
+      ? SETTINGS.mtrInterchangeMinutes : SETTINGS.transferMinutes;
+  };
+
+  const journeys = [];
+  for (let k = 1; k <= rounds && marked.length; k++) {
+    // Each pattern is scanned once, from its earliest marked stop.
+    const queue = new Map();
+    for (const stop of new Set(marked)) {
+      for (const visit of network.patternsAtStop[stop]) {
+        if (k === 1 && bannedFirstRoutes.has(network.patterns[visit.pattern].routeID)) continue;
+        const existing = queue.get(visit.pattern);
+        if (existing === undefined || visit.position < existing) queue.set(visit.pattern, visit.position);
+      }
+    }
+
+    const improved = [];
+    for (const [p, start] of [...queue].sort((a, b) => a[0] - b[0])) {
+      const pattern = network.patterns[p];
+      let base = Infinity, boardPosition = -1, boardTransfer = 0, boardWait = 0;
+      for (let i = start; i < pattern.stops.length; i++) {
+        const stop = pattern.stops[i];
+        if (boardPosition >= 0) {
+          const time = base + pattern.offsets[i];
+          if (time < best[stop]) {
+            best[stop] = time;
+            arrival[k][stop] = time;
+            rideArrival[k][stop] = time;
+            rideParent[k][stop] = { pattern: p, board: boardPosition, alight: i, transfer: boardTransfer, wait: boardWait };
+            walkParent[k][stop] = null;
+            improved.push(stop);
+          }
+        }
+        if (i >= pattern.stops.length - 1 || arrival[k - 1][stop] === Infinity) continue;
+        const previous = arrival[k - 1][stop];
+        const transfer = k === 1 ? 0 : interchange(k - 1, stop, pattern);
+        const wait = estimator.wait(p, i, previous + transfer);
+        if (wait == null) continue;
+        const candidate = previous + transfer + wait - pattern.offsets[i];
+        if (candidate < base) {
+          base = candidate;
+          boardPosition = i;
+          boardTransfer = transfer;
+          boardWait = wait;
+        }
+      }
+    }
+
+    // Walking interchanges always start from a vehicle, never chain walks.
+    const walked = [];
+    for (const stop of improved) {
+      const from = rideArrival[k][stop];
+      for (const path of network.footpaths[stop]) {
+        const time = from + walkMinutes(path.meters);
+        if (time < best[path.to]) {
+          best[path.to] = time;
+          arrival[k][path.to] = time;
+          walkParent[k][path.to] = { from: stop, meters: path.meters };
+          walked.push(path.to);
+        }
+      }
+    }
+    marked = [...improved, ...walked];
+
+    let bestEnd = Infinity, endStop = -1;
+    for (const [stop, distance] of egress) {
+      if (arrival[k][stop] === Infinity) continue;
+      const time = arrival[k][stop] + walkMinutes(distance);
+      if (time < bestEnd || (time === bestEnd && stop < endStop)) {
+        bestEnd = time;
+        endStop = stop;
+      }
+    }
+    const previousBest = journeys.length ? totalMinutes(journeys.at(-1)) : Infinity;
+    if (endStop < 0 || bestEnd >= previousBest - 0.5) continue;
+    const journey = reconstruct(network, k, endStop, egress.get(endStop) ?? 0, accessMeters, departure, rideParent, walkParent);
+    if (journey) journeys.push(journey);
+  }
+  return journeys;
+}
+
+function reconstruct(network, round, endStop, egressMeters, accessMeters, departure, rideParent, walkParent) {
+  const legs = [{ type: 'walk', meters: egressMeters, minutes: walkMinutes(egressMeters), to: null }];
+  let stop = endStop;
+  for (let k = round; k > 0; k--) {
+    const walk = walkParent[k][stop];
+    if (walk) {
+      legs.push({ type: 'walk', meters: walk.meters, minutes: walkMinutes(walk.meters), to: network.stopIDs[stop] });
+      stop = walk.from;
+    }
+    const step = rideParent[k][stop];
+    if (!step) return null;
+    const pattern = network.patterns[step.pattern];
+    legs.push({
+      type: 'ride', routeKey: pattern.routeKey, route: pattern.route, op: pattern.op, dest: pattern.dest,
+      boardPosition: step.board, alightPosition: step.alight,
+      boardStopID: network.stopIDs[pattern.stops[step.board]], alightStopID: network.stopIDs[pattern.stops[step.alight]],
+      transferMinutes: step.transfer, waitMinutes: step.wait,
+      rideMinutes: pattern.offsets[step.alight] - pattern.offsets[step.board],
+      liveDeparture: null, isProjected: false, livePlatform: null,
+    });
+    stop = pattern.stops[step.board];
+  }
+  if (!accessMeters.has(stop)) return null;
+  const distance = accessMeters.get(stop);
+  legs.push({ type: 'walk', meters: distance, minutes: walkMinutes(distance), to: network.stopIDs[stop] });
+  // Drop zero-length walks, e.g. when the origin is exactly at a stop.
+  return { legs: legs.reverse().filter((leg) => leg.type !== 'walk' || leg.meters >= 1), departure };
+}
+
+/** Several searches, each banning the first route of earlier answers, so options really differ. */
+export function plan(network, origin, destination, departure, preference = 'fastest', limit = 5) {
+  const found = [], banned = new Set();
+  for (let i = 0; i < 4; i++) {
+    const journeys = search(network, origin, destination, departure, banned);
+    if (!journeys.length) break;
+    found.push(...journeys);
+    for (const journey of journeys) {
+      const first = rides(journey)[0];
+      if (first) banned.add(`${first.op}|${first.route}`);
+    }
+  }
+  const direct = meters(origin, destination);
+  if (direct <= SETTINGS.walkOnlyRadius) {
+    found.push({ legs: [{ type: 'walk', meters: direct, minutes: walkMinutes(direct), to: null }], departure });
+  }
+  return rank(found, preference, limit);
+}
+
+/**
+ * Only headways are known, so a bus could be a full headway away: the average wait in the journey
+ * is counted twice, and the rider who leaves then is on time even after the longest wait.
+ */
+const latestStart = (journey, arriveBy) => arriveBy - (totalMinutes(journey) + rides(journey).reduce((total, ride) => total + ride.waitMinutes, 0)) * 60_000;
+
+/** Journeys that reach the destination by `arriveBy`. One that cannot leaves `now` and shows as late. */
+export function planArriving(network, origin, destination, arriveBy, now, preference = 'fastest', limit = 5) {
+  let found = [];
+  // Which buses run depends on the hour, so first find about when to leave, then plan from there.
+  for (const minutes of [45, 15, 90]) {
+    found = plan(network, origin, destination, arriveBy - minutes * 60_000, preference, limit);
+    if (found.length) break;
+  }
+  if (found.length) {
+    const closer = plan(network, origin, destination, latestStart(found[0], arriveBy), preference, limit);
+    if (closer.length) found = closer;
+  }
+  return found.map((journey) => ({ ...journey, departure: Math.max(now, latestStart(journey, arriveBy)), arriveBy }));
+}
+
+// MARK: Plans from the AI
+
+const MODE_OPERATORS = { bus: ['kmb', 'ctb', 'nlb'], minibus: ['gmb'], lightRail: ['lightRail'], mtr: ['mtr'] };
+const modeOf = (op) => Object.keys(MODE_OPERATORS).find((mode) => MODE_OPERATORS[mode].includes(op));
+const lineKey = (text) => String(text ?? '').toLowerCase().replace(/[\s綫線线]|line$/g, '');
+
+/** The MTR line a code or name means: "TWL", "荃灣線" and "Tsuen Wan Line" are all TWL. */
+export function mtrLine(text) {
+  const wanted = lineKey(text);
+  return wanted ? Object.keys(MTR_LINES).find((code) => [code, ...MTR_LINES[code]].some((name) => lineKey(name) === wanted)) ?? null : null;
+}
+
+/** Every direction and service of the line a leg names. A wrong mode still finds the route by its number. */
+function linePatterns(network, { mode, route }) {
+  const all = network.byRoute.get(mtrLine(route) ?? String(route ?? '').toUpperCase().replace(/\s/g, '')) ?? [];
+  const operators = MODE_OPERATORS[mode], ofMode = operators ? all.filter((p) => operators.includes(network.patterns[p].op)) : all;
+  return ofMode.length ? ofMode : all;
+}
+
+const stopsAround = (network, place) => {
+  const near = network.near(place, SETTINGS.accessRadius);
+  return near.length ? near : network.near(place, SETTINGS.fallbackAccessRadius);
+};
+
+/**
+ * The fastest way to ride exactly these lines in this order, or null when one does not exist, is not
+ * running, or does not meet the next. `lines` is [{mode, route}]. Only the lines are taken on trust:
+ * every stop, walk and time comes from the route data, as in `search`.
+ */
+export function journeyAlong(network, lines, origin, destination, departure) {
+  if (!lines.length || lines.length > SETTINGS.maxTransitLegs) return null;
+  const estimator = new WaitEstimator(network, serviceClock(new Date(departure), network.holidays));
+  // How each stop is reached before the next ride: on foot from the start, or off a ride and perhaps a walk.
+  let reached = new Map(stopsAround(network, origin).map(({ stop, meters: distance }) => [stop, { minutes: walkMinutes(distance), walk: distance, ride: null }]));
+  let alighted = new Map();
+
+  for (const [index, line] of lines.entries()) {
+    alighted = new Map();
+    for (const p of linePatterns(network, line)) {
+      const pattern = network.patterns[p];
+      let base = Infinity, boarding = null;
+      pattern.stops.forEach((stop, position) => {
+        if (boarding) {
+          const minutes = base + pattern.offsets[position];
+          if (minutes < (alighted.get(stop)?.minutes ?? Infinity)) alighted.set(stop, { minutes, ride: { ...boarding, pattern: p, alight: position } });
+        }
+        const before = reached.get(stop);
+        if (!before || position === pattern.stops.length - 1) return;
+        const isSameStation = before.ride && before.walk == null && network.patterns[before.ride.pattern].op === 'mtr' && pattern.op === 'mtr';
+        const transfer = index === 0 ? 0 : isSameStation ? SETTINGS.mtrInterchangeMinutes : SETTINGS.transferMinutes;
+        const wait = estimator.wait(p, position, before.minutes + transfer);
+        if (wait == null) return;
+        const candidate = before.minutes + transfer + wait - pattern.offsets[position];
+        if (candidate < base) {
+          base = candidate;
+          boarding = { board: position, transfer, wait, before };
+        }
+      });
+    }
+    reached = new Map();
+    const offer = (stop, minutes, ride, walk) => {
+      if (minutes < (reached.get(stop)?.minutes ?? Infinity)) reached.set(stop, { minutes, ride, walk });
+    };
+    for (const [stop, { minutes, ride }] of alighted) {
+      offer(stop, minutes, ride, null);
+      for (const path of network.footpaths[stop]) offer(path.to, minutes + walkMinutes(path.meters), ride, path.meters);
+    }
+  }
+
+  let end = null;
+  for (const { stop, meters: distance } of stopsAround(network, destination)) {
+    const arrival = alighted.get(stop);
+    if (arrival && (!end || arrival.minutes + walkMinutes(distance) < end.minutes)) end = { minutes: arrival.minutes + walkMinutes(distance), ride: arrival.ride, walk: distance };
+  }
+  if (!end) return null;
+
+  const walk = (distance, to) => ({ type: 'walk', meters: distance, minutes: walkMinutes(distance), to });
+  const legs = [walk(end.walk, null)];
+  for (let ride = end.ride; ride; ride = ride.before.ride) {
+    const pattern = network.patterns[ride.pattern], boardStopID = network.stopIDs[pattern.stops[ride.board]];
+    legs.push({
+      type: 'ride', routeKey: pattern.routeKey, route: pattern.route, op: pattern.op, dest: pattern.dest,
+      boardPosition: ride.board, alightPosition: ride.alight,
+      boardStopID, alightStopID: network.stopIDs[pattern.stops[ride.alight]],
+      transferMinutes: ride.transfer, waitMinutes: ride.wait,
+      rideMinutes: pattern.offsets[ride.alight] - pattern.offsets[ride.board],
+      liveDeparture: null, isProjected: false, livePlatform: null,
+    });
+    if (ride.before.walk != null) legs.push(walk(ride.before.walk, boardStopID));
+  }
+  return { legs: legs.reverse().filter((leg) => leg.type !== 'walk' || leg.meters >= 1), departure, byAI: true };
+}
+
+const MOST_SLOWER_THAN_SEARCH = 20;
+
+/**
+ * The AI's plans as journeys, best first. A plan is dropped when its lines do not connect, or when it
+ * is far worse than what the search found (`baseline`), so a real but roundabout idea never leads.
+ * Empty when none stands, and the caller then shows the search's own journeys.
+ */
+export function planProposed(network, proposals, origin, destination, { departure, arriveBy = null, preference = 'fastest', limit = 5, baseline = [] }) {
+  const along = (lines, at) => journeyAlong(network, lines, origin, destination, at);
+  const found = proposals.flatMap((lines) => {
+    if (arriveBy == null) return along(lines, departure) ?? [];
+    // As in `planArriving`: find about when to leave, then plan from there.
+    const rough = [45, 15, 90].reduce((journey, minutes) => journey ?? along(lines, arriveBy - minutes * 60_000), null);
+    if (!rough) return [];
+    const journey = along(lines, latestStart(rough, arriveBy)) ?? rough;
+    return { ...journey, departure: Math.max(departure, latestStart(journey, arriveBy)), arriveBy };
+  });
+  const most = baseline.length ? score(baseline[0], preference) + MOST_SLOWER_THAN_SEARCH : Infinity;
+  const sound = found.filter((journey) => score(journey, preference) <= most);
+  if (!sound.length) return [];
+  return rank([...sound, ...baseline.filter((journey) => !rides(journey).length)], preference, limit);
+}
+
+const MOST_LINES_NAMED = { bus: 40, minibus: 15, lightRail: 12, mtr: 10 }, MOST_STATIONS_NAMED = 6;
+
+/**
+ * What the AI is told about a trip: the stations and lines within a walk of each end, nearest first,
+ * and the lines that run from one to the other. Only lines in service around `departure` are named,
+ * so a night bus is not offered at noon. Names and numbers only, never coordinates.
+ */
+export function tripFacts(network, db, origin, destination, departure) {
+  const estimator = new WaitEstimator(network, serviceClock(new Date(departure), network.holidays));
+  const around = (place) => new Map(stopsAround(network, place).map(({ stop, meters: distance }) => [stop, distance]));
+  const start = around(origin), end = around(destination), isRail = new Set();
+  // For each pattern, the first place to board near the start and the last place to alight near the end.
+  const boards = new Map(), alights = new Map();
+  network.patterns.forEach((pattern, p) => {
+    const isRunning = estimator.wait(p, 0, 0) != null;
+    pattern.stops.forEach((stop, position) => {
+      if (pattern.op === 'mtr' || pattern.op === 'lightRail') isRail.add(stop);
+      if (!isRunning) return;
+      if (position < pattern.stops.length - 1 && start.has(stop) && !boards.has(p)) boards.set(p, { position, meters: start.get(stop) });
+      if (position > 0 && end.has(stop)) alights.set(p, { position, meters: end.get(stop) });
+    });
+  });
+  // Maps keep the order they were filled in, so the nearest station comes first.
+  const stations = (stops) => [...new Set([...stops.keys()].filter((stop) => isRail.has(stop))
+    .map((stop) => cleanStopName(db.stops[network.stopIDs[stop]]?.name?.zh)).filter(Boolean))].slice(0, MOST_STATIONS_NAMED);
+  const lines = (visits) => {
+    const nearest = new Map();
+    for (const [p, { meters: distance }] of visits) {
+      // A route two operators share is one line to a rider.
+      const { op, route } = network.patterns[p], line = `${modeOf(op)}|${route}`;
+      nearest.set(line, Math.min(distance, nearest.get(line) ?? Infinity));
+    }
+    const named = {};
+    for (const [line] of [...nearest].sort((a, b) => a[1] - b[1] || compare(a[0], b[0]))) {
+      const [mode, route] = line.split('|');
+      named[mode] ??= [];
+      if (named[mode].length < MOST_LINES_NAMED[mode]) named[mode].push(route);
+    }
+    return named;
+  };
+  const direct = [...boards].filter(([p, board]) => alights.get(p)?.position > board.position);
+  return {
+    start: { stations: stations(start), lines: lines(boards) },
+    end: { stations: stations(end), lines: lines(alights) },
+    direct: lines(direct.map(([p, board]) => [p, { meters: board.meters + alights.get(p).meters }])),
+  };
+}
+
+// MARK: Live ETAs
+
+export const MAX_PROJECTION_MINUTES = 60;
+export const LIVE_AHEAD_MS = 30 * 60_000; // Further off, today's arrivals say nothing about the trip.
+
+/**
+ * The first departure the rider can catch. Rail feeds stop after about four
+ * trains, so later legs continue the live headway instead of guessing.
+ * `live` is [{date (ms), platform}].
+ */
+export function nextDeparture(live, atStop, projecting) {
+  const sorted = [...live].sort((a, b) => a.date - b.date);
+  // A bus "due now" is still catchable if we are a few seconds late.
+  const next = sorted.find((departure) => departure.date >= atStop - 30_000);
+  if (next) return { departure: next, isProjected: false };
+  if (!projecting || sorted.length < 2) return null;
+  const first = sorted[0], last = sorted.at(-1);
+  const headway = (last.date - first.date) / (sorted.length - 1);
+  if (headway <= 0) return null;
+  const trains = Math.ceil((atStop - last.date) / headway);
+  if (trains * headway > MAX_PROJECTION_MINUTES * 60_000) return null;
+  return { departure: { date: last.date + trains * headway, platform: last.platform }, isProjected: true };
+}
+
+/** Re-times a journey with live arrivals; `arrivals(ride)` resolves to departures or null. */
+export async function retime(journey, arrivals) {
+  let clock = journey.departure;
+  const legs = [];
+  for (const leg of journey.legs) {
+    if (leg.type === 'walk') {
+      clock += leg.minutes * 60_000;
+      legs.push(leg);
+      continue;
+    }
+    const ride = { ...leg };
+    const atStop = clock + ride.transferMinutes * 60_000;
+    const live = await arrivals(ride);
+    const next = live ? nextDeparture(live, atStop, ride.op === 'mtr' || ride.op === 'lightRail') : null;
+    if (next) {
+      ride.waitMinutes = Math.max(0, (next.departure.date - atStop) / 60_000);
+      ride.liveDeparture = next.departure.date;
+      ride.isProjected = next.isProjected;
+      ride.livePlatform = next.departure.platform ?? null;
+    } else {
+      ride.liveDeparture = null;
+      ride.isProjected = false;
+      ride.livePlatform = null;
+    }
+    clock = atStop + (ride.waitMinutes + ride.rideMinutes) * 60_000;
+    legs.push(ride);
+  }
+  return { ...journey, legs };
+}
+
+/** False for a train that ends before the rider's stop or takes the other branch. */
+export function trainServes(terminus, ride, db) {
+  if (ride.op !== 'mtr') return true;
+  let isKnown = false;
+  for (const route of Object.values(db.routes)) {
+    if (route.route !== ride.route) continue;
+    const ids = route.stops.mtr;
+    const end = ids?.findIndex((id) => { const n = db.stops[id]?.name; return n && n.zh === terminus?.zh && n.en === terminus?.en; }) ?? -1;
+    if (end < 0) continue;
+    isKnown = true;
+    const board = ids.indexOf(ride.boardStopID), alight = ids.indexOf(ride.alightStopID);
+    if (board >= 0 && alight >= 0 && board < alight && alight <= end) return true;
+  }
+  return !isKnown; // An unknown terminus is no reason to drop a train.
+}
+
+// MARK: Journey path
+
+/** Every stop the rider passes, from boarding to alighting. */
+/** The closest point on one stretch of a line, with which way it runs. */
+function pointOnStretch(line, index, location) {
+  const scale = Math.cos((location.lat * Math.PI) / 180), a = line[index], b = line[index + 1];
+  const east = (b.lng - a.lng) * scale, north = b.lat - a.lat, length = east * east + north * north;
+  const part = length ? Math.max(0, Math.min(1, (((location.lng - a.lng) * scale * east) + ((location.lat - a.lat) * north)) / length)) : 0;
+  const point = { lat: a.lat + (b.lat - a.lat) * part, lng: a.lng + (b.lng - a.lng) * part };
+  return { index, location: point, meters: meters(point, location), heading: (Math.atan2(east, north) * 180) / Math.PI };
+}
+
+const MOST_METERS_OFF_LINE = 300, EVEN_PROGRESS_METERS = 60, LEAST_STOPS_ON_LINE = 0.8;
+
+/**
+ * Finds the best place on the line for every stop at once, always moving forward. Stops are only metres
+ * from the opposite carriageway, so taking each one's nearest or first match would put return stops on
+ * the way out. Near-ties lean toward even progress, for routes drawn along the same road both ways.
+ */
+function alignStops(line, along, stops) {
+  const count = line.length - 1, total = along.at(-1) || 1, cameFrom = [];
+  let previous = new Float64Array(count);
+  stops.forEach(({ location, share }) => {
+    const costs = new Float64Array(count), from = new Int32Array(count);
+    let cheapest = Infinity, cheapestAt = 0;
+    for (let index = 0; index < count; index++) {
+      if (previous[index] < cheapest) {
+        cheapest = previous[index];
+        cheapestAt = index;
+      }
+      const away = Math.min(pointOnStretch(line, index, location).meters, MOST_METERS_OFF_LINE);
+      costs[index] = cheapest + away + EVEN_PROGRESS_METERS * Math.abs(along[index] / total - share);
+      from[index] = cheapestAt;
+    }
+    previous = costs;
+    cameFrom.push(from);
+  });
+  let index = previous.indexOf(Math.min(...previous));
+  const placed = new Array(stops.length);
+  for (let stop = stops.length - 1; stop >= 0; stop--) {
+    placed[stop] = index;
+    index = cameFrom[stop][index];
+  }
+  return placed;
+}
+
+/**
+ * A route's line with every stop placed along it, in order. A route can use a road twice, as circular
+ * and out-and-back routes do, so places are found by progress along the line, never by what is nearest.
+ */
+export function routeTrack(line, stops) {
+  if (!line || line.length < 2) return null;
+  const along = [0];
+  for (let index = 1; index < line.length; index++) along[index] = along[index - 1] + meters(line[index - 1], line[index]);
+  const known = stops.flatMap((location, index) => (validLocation(location) ? [{ location, index, share: index / Math.max(1, stops.length - 1) }] : []));
+  if (known.length < 2) return null;
+  const passes = new Array(stops.length).fill(null);
+  let reached = 0;
+  alignStops(line, along, known).forEach((stretch, order) => {
+    const { location, index } = known[order], pass = pointOnStretch(line, stretch, location);
+    if (pass.meters > MOST_METERS_OFF_LINE) return;
+    // Two stops can share a stretch, and a bus still only goes forward.
+    reached = Math.max(reached, along[stretch] + meters(line[stretch], pass.location));
+    passes[index] = { location: pass.location, at: reached };
+  });
+  // A line missing much of the route is the wrong one: straight between the stops at least shows it all.
+  const placed = passes.filter(Boolean).length;
+  return placed >= 2 && placed >= known.length * LEAST_STOPS_ON_LINE ? { line, along, passes, stops } : null;
+}
+
+/** How far along the line a fractional stop number is, between the stops that were placed. */
+function distanceAt(track, position) {
+  const { passes } = track;
+  let before = Math.min(Math.floor(position), passes.length - 1), after = before + 1;
+  while (before >= 0 && !passes[before]) before -= 1;
+  while (after < passes.length && !passes[after]) after += 1;
+  if (before < 0) return passes[after].at;
+  if (after >= passes.length) return passes[before].at;
+  return passes[before].at + ((passes[after].at - passes[before].at) * (position - before)) / (after - before);
+}
+
+function stretchAt(track, distance) {
+  let low = 0, high = track.line.length - 2;
+  while (low < high) {
+    const middle = Math.ceil((low + high) / 2);
+    if (track.along[middle] <= distance) low = middle;
+    else high = middle - 1;
+  }
+  return low;
+}
+
+/** Where a fractional stop number is on the road, and which way the road runs there. */
+export function placeOnTrack(track, position) {
+  const distance = distanceAt(track, position), index = stretchAt(track, distance);
+  const a = track.line[index], b = track.line[index + 1], length = track.along[index + 1] - track.along[index];
+  const part = length ? Math.max(0, Math.min(1, (distance - track.along[index]) / length)) : 0;
+  const east = (b.lng - a.lng) * Math.cos((a.lat * Math.PI) / 180), north = b.lat - a.lat;
+  return {
+    location: { lat: a.lat + (b.lat - a.lat) * part, lng: a.lng + (b.lng - a.lng) * part },
+    heading: (Math.atan2(east, north) * 180) / Math.PI,
+  };
+}
+
+/** The road between two fractional stop numbers. */
+export function trackBetween(track, from, to) {
+  const start = stretchAt(track, distanceAt(track, from)), end = stretchAt(track, distanceAt(track, to));
+  return [placeOnTrack(track, from).location, ...track.line.slice(start + 1, end + 1), placeOnTrack(track, to).location];
+}
+
+/** The road between two stops, with any stop the line stops short of joined on straight, so none is left off. */
+export function roadBetween(track, from, to) {
+  const placed = track.passes.flatMap((pass, index) => (pass ? [index] : []));
+  const spare = (start, end) => track.stops.slice(start, end).filter(validLocation);
+  return [...spare(from, placed[0]), ...trackBetween(track, from, to), ...spare(placed.at(-1) + 1, to + 1)];
+}
+
+const SECONDS_PER_STOP = 90;
+
+/** A fractional stop number as a place on the map. */
+function placeOnStops(stops, position, db) {
+  const index = Math.min(Math.floor(position), stops.length - 2), part = position - index;
+  const from = db.stops[stops[index]]?.location, to = db.stops[stops[index + 1]]?.location;
+  if (!validLocation(from) || !validLocation(to)) return null;
+  const east = (to.lng - from.lng) * Math.cos((from.lat * Math.PI) / 180), north = to.lat - from.lat;
+  return {
+    location: { lat: from.lat + (to.lat - from.lat) * part, lng: from.lng + (to.lng - from.lng) * part },
+    heading: (Math.atan2(east, north) * 180) / Math.PI,
+  };
+}
+
+const LOOP_CLOSES_WITHIN = 300;
+
+/**
+ * Where a circular route turns for home: the position of the stop it is signed for,
+ * or else of its farthest stop. Null for a route that does not come back to its start.
+ */
+export function circularTurn(route, op, db) {
+  const ids = route.stops[op] ?? [], places = ids.map((id) => db.stops[id]?.location);
+  if (ids.length < 3 || op === 'mtr' || !places[0] || !places.at(-1)) return null;
+  const isSigned = /循環|circular/i.test(`${route.dest?.zh} ${route.dest?.en}`);
+  if (!isSigned && (ids.length < 4 || meters(places[0], places.at(-1)) > LOOP_CLOSES_WITHIN)) return null;
+  const away = places.map((place) => (place ? meters(places[0], place) : 0));
+  const farthest = away.indexOf(Math.max(...away));
+  const signed = cleanStopName(route.dest?.zh ?? '').replace(/\s*[(（]循環線[)）]\s*/, '').trim();
+  // A terminus can share its name with a stop beside the start, which is no turning point.
+  const named = signed ? ids.flatMap((id, position) => (
+    position && position < ids.length - 1 && away[position] >= away[farthest] / 2 && db.stops[id]?.name?.zh?.includes(signed) ? [position] : [])) : [];
+  const turn = named.sort((a, b) => Math.abs(a - farthest) - Math.abs(b - farthest))[0] ?? farthest;
+  return turn > 0 && turn < ids.length - 1 ? turn : null;
+}
+
+function secondsPerStop(route, stops) {
+  return route.journeyMinutes ? (route.journeyMinutes * 60) / (stops.length - 1) : SECONDS_PER_STOP;
+}
+
+const SAME_GAP_MS = 20_000, LONGEST_GAP_MS = 20 * 60_000, MOST_STOPS_MISSED = 2;
+
+/**
+ * How long each stop to the next takes. The operator's times for different buses agree on it
+ * to the second, so the gap most pairs of times share is the true one.
+ */
+function stopGaps(byStop, fallback) {
+  return byStop.slice(0, -1).map((here, position) => {
+    const gaps = here.flatMap(({ time }) => byStop[position + 1].map((next) => next.time - time))
+      .filter((gap) => gap > 0 && gap < LONGEST_GAP_MS);
+    const sharing = gaps.map((gap) => gaps.filter((other) => Math.abs(other - gap) <= SAME_GAP_MS));
+    const most = Math.max(0, ...sharing.map((group) => group.length));
+    const best = sharing.filter((group) => group.length === most)
+      .sort((a, b) => Math.abs(a[0] - fallback) - Math.abs(b[0] - fallback))[0];
+    return best ? best.reduce((sum, gap) => sum + gap, 0) / best.length : fallback;
+  });
+}
+
+/**
+ * Links the times at every stop into one timetable per bus: each continues as the next stop's time
+ * it predicts. A time too far off to be a bus that has just passed the stop before is a bus still
+ * behind it, so one the operator has timed unevenly: it joins the nearest bus not yet linked.
+ */
+function busTimetables(byStop, gaps, now) {
+  const buses = [];
+  let open = [];
+  byStop.forEach((entries, position) => {
+    const tolerance = Math.max(45_000, (gaps[position - 1] ?? 0) * 0.3);
+    const fits = open.flatMap((bus) => entries.map((entry) => ({ bus, entry, miss: Math.abs(entry.time - bus.expected) })))
+      .filter(({ miss }) => miss <= tolerance).sort((a, b) => a.miss - b.miss);
+    const linked = new Map(), used = new Set();
+    for (const { bus, entry } of fits) {
+      if (linked.has(bus) || used.has(entry)) continue;
+      linked.set(bus, entry);
+      used.add(entry);
+    }
+    for (const entry of entries) {
+      if (used.has(entry) || !position || entry.time - now <= gaps[position - 1]) continue;
+      const bus = open.filter((candidate) => !linked.has(candidate))
+        .sort((a, b) => Math.abs(entry.time - a.expected) - Math.abs(entry.time - b.expected))[0];
+      if (!bus) continue;
+      linked.set(bus, entry);
+      used.add(entry);
+    }
+    const started = entries.filter((entry) => !used.has(entry)).map((entry) => {
+      const bus = { stops: [], expected: 0, missed: 0 };
+      linked.set(bus, entry);
+      buses.push(bus);
+      return bus;
+    });
+    open = [...open, ...started].filter((bus) => {
+      const entry = linked.get(bus), gap = gaps[position] ?? 0;
+      if (entry) {
+        bus.stops.push({ position, ...entry });
+        bus.expected = entry.time + gap;
+        bus.missed = 0;
+        return true;
+      }
+      bus.expected += gap;
+      return ++bus.missed <= MOST_STOPS_MISSED;
+    });
+  });
+  return buses;
+}
+
+/** Where a bus is at `now`: between the stops its times fall between. Null when off the route. */
+function positionOf(stops, gaps, now) {
+  const next = stops.findIndex(({ time }) => time > now);
+  if (next < 0) return null;
+  const after = stops[next], before = stops[next - 1];
+  if (before) return before.position + ((after.position - before.position) * (now - before.time)) / (after.time - before.time);
+  // No stop before this one lists it, so go back along the route by the time it still needs.
+  let position = after.position, left = after.time - now;
+  while (position > 0 && left >= gaps[position - 1]) left -= gaps[--position];
+  if (position === 0) return null; // Not yet set off.
+  return position - left / gaps[position - 1];
+}
+
+/** When a bus reaches a stop: its own time there, or else counted on from its nearest stop. */
+function arrivalAt(stops, position, gaps) {
+  const anchor = stops.findLast((stop) => stop.position <= position) ?? stops[0];
+  const between = gaps.slice(Math.min(anchor.position, position), Math.max(anchor.position, position)).reduce((sum, gap) => sum + gap, 0);
+  return { arrival: anchor.time + (anchor.position <= position ? between : -between), isLive: anchor.position === position };
+}
+
+/**
+ * Every bus on a route. There is no public bus tracking, but the arrivals at all the stops together
+ * give each bus's timetable, and that says where it is now. Times for buses that are only
+ * timetabled are not followed. `arrivals` is [{position, times, planned}]; `boardPosition`, if any,
+ * is where the rider gets on, and the bus that reaches it first is the next one.
+ */
+export function vehiclesOnRoute(arrivals, ride, db, now) {
+  const route = db.routes[ride.routeKey], stops = route?.stops[ride.op];
+  if (!stops || stops.length < 2) return [];
+  const byStop = stops.map(() => []);
+  for (const { position, times = [], planned = [] } of arrivals) {
+    if (!byStop[position]) continue;
+    byStop[position] = [...times.map((time) => ({ time, isPlanned: false })), ...planned.map((time) => ({ time, isPlanned: true }))].sort((a, b) => a.time - b.time);
+  }
+  const gaps = stopGaps(byStop, secondsPerStop(route, stops) * 1000);
+  const board = ride.boardPosition ?? null;
+  const vehicles = busTimetables(byStop, gaps, now).flatMap((bus) => {
+    if (bus.stops.every((stop) => stop.isPlanned)) return [];
+    const position = positionOf(bus.stops, gaps, now);
+    const place = position == null ? null : placeOnStops(stops, position, db);
+    if (!place) return [];
+    const due = board != null && position < board ? arrivalAt(bus.stops, board, gaps) : { arrival: null, isLive: false };
+    return [{ ...place, position, ...due, minutes: due.arrival == null ? null : Math.max(0, Math.floor((due.arrival - now) / 60_000)), color: lineColor(ride.op, ride.route), isMinibus: ride.op === 'gmb', isNext: false }];
+  });
+  const coming = vehicles.filter((vehicle) => vehicle.arrival != null).sort((a, b) => a.arrival - b.arrival)[0];
+  if (coming) coming.isNext = true;
+  return vehicles.sort((a, b) => b.position - a.position);
+}
+
+export function rideStopIDs(ride, db) {
+  const all = db.routes[ride.routeKey]?.stops[ride.op];
+  return all && ride.boardPosition <= ride.alightPosition && ride.alightPosition < all.length
+    ? all.slice(ride.boardPosition, ride.alightPosition + 1) : [ride.boardStopID, ride.alightStopID];
+}
+
+export function journeyPath(journey, origin, destination, db) {
+  let cursor = origin;
+  const segments = [];
+  for (const leg of journey.legs) {
+    let segment;
+    if (leg.type === 'walk') {
+      const target = leg.to ? db.stops[leg.to]?.location : destination;
+      if (!target) continue;
+      segment = { mode: 'walk', points: [cursor, target], stopIDs: [] };
+    } else {
+      const ids = rideStopIDs(leg, db), isWhole = ids.length === leg.alightPosition - leg.boardPosition + 1;
+      const onRoute = ids.map((id, index) => [id, isWhole ? leg.boardPosition + index : index ? leg.alightPosition : leg.boardPosition])
+        .filter(([id]) => validLocation(db.stops[id]?.location));
+      const stops = onRoute.map(([id]) => id);
+      segment = { mode: 'ride', route: leg.route, routeKey: leg.routeKey, op: leg.op, points: stops.map((id) => db.stops[id].location), stopIDs: stops, positions: onRoute.map(([, position]) => position) };
+    }
+    if (!segment.points.length) continue;
+    segments.push(segment);
+    cursor = segment.points.at(-1);
+  }
+  return { origin, destination, segments };
+}
+
+/** Where each walk in a journey starts and ends, as [from, to]; null for a ride or a walk with no known end. */
+export function walkEnds(journey, origin, destination, db) {
+  let cursor = origin;
+  return journey.legs.map((leg) => {
+    if (leg.type === 'ride') {
+      cursor = db.stops[leg.alightStopID]?.location ?? cursor;
+      return null;
+    }
+    const target = leg.to ? db.stops[leg.to]?.location : destination;
+    if (!target) return null;
+    const ends = [cursor, target];
+    cursor = target;
+    return ends;
+  });
+}
+
+/**
+ * The journey with real walking distances and times where `timeOf(from, to)` knows them, or the
+ * same journey when nothing changed. Times after a changed walk still need retiming.
+ */
+export function withWalkTimes(journey, ends, timeOf) {
+  let changed = false;
+  const legs = journey.legs.map((leg, index) => {
+    const time = ends[index] && timeOf(...ends[index]);
+    if (!time || (leg.walkFromMap && leg.minutes === time.minutes)) return leg;
+    changed = true;
+    return { ...leg, meters: time.meters, minutes: time.minutes, walkFromMap: true };
+  });
+  return changed ? { ...journey, legs } : journey;
+}
+
+function pathEdges(path) {
+  return path.segments.flatMap((segment, index) => segment.points.slice(1).map((to, offset) => ({
+    segment: index, toPoint: offset + 1, from: segment.points[offset], to,
+  })));
+}
+
+function nearestOnEdge(here, edge) {
+  const scale = Math.cos((here.lat * Math.PI) / 180);
+  const x = (edge.to.lng - edge.from.lng) * scale, y = edge.to.lat - edge.from.lat;
+  const px = (here.lng - edge.from.lng) * scale, py = here.lat - edge.from.lat;
+  const length = x * x + y * y;
+  const t = length > 0 ? Math.min(1, Math.max(0, (px * x + py * y) / length)) : 0;
+  return { lat: edge.from.lat + t * y, lng: edge.from.lng + t * (edge.to.lng - edge.from.lng) };
+}
+
+const metersToEdge = (here, edge) => meters(here, nearestOnEdge(here, edge));
+
+/** The real road from a point on it onward. */
+function roadFrom(road, cut) {
+  const nearest = road.reduce((best, point, index) => (meters(point, cut) < meters(road[best], cut) ? index : best), 0);
+  return [cut, ...road.slice(nearest + 1)];
+}
+
+/**
+ * What is still ahead of the rider: the part already travelled is gone, the
+ * current leg starts where the rider is, and later legs are `upcoming`, drawn
+ * light until the rider gets there. `lead` is how many points come before the
+ * first of `stopIDs`. Without a position yet, the whole trip is ahead.
+ */
+export function pathAhead(path, progress, here) {
+  const edge = progress && pathEdges(path)[progress.edge];
+  if (!edge) return path;
+  if (progress.hasArrived) return { ...path, segments: [] };
+  const cut = progress.isOffRoute || !here ? edge.from : nearestOnEdge(here, edge);
+  const segments = path.segments.flatMap((segment, index) => {
+    if (index < edge.segment) return [];
+    if (index > edge.segment) return [{ ...segment, upcoming: true }];
+    const rest = (list) => list?.slice(edge.toPoint);
+    const { legs, ...current } = segment;
+    return [{
+      ...current, points: [cut, ...rest(segment.points)], stopIDs: rest(segment.stopIDs), lead: 1,
+      ...(segment.line && { line: roadFrom(segment.line, cut), marks: rest(segment.marks), positions: rest(segment.positions) }),
+      ...(segment.dots && { dots: rest(segment.dots) }),
+    }];
+  });
+  return { ...path, segments };
+}
+
+/** Where the rider is along a journey. `previous` stops a noisy fix from undoing progress. */
+export function progressAt(path, here, accuracy = 0, previous = null) {
+  const edges = pathEdges(path), first = previous?.edge ?? 0;
+  if (first >= edges.length) return null;
+  let best = first, bestMeters = Infinity;
+  for (let i = first; i < edges.length; i++) {
+    const distance = metersToEdge(here, edges[i]);
+    if (distance < bestMeters) {
+      best = i;
+      bestMeters = distance;
+    }
+  }
+  const hasArrived = meters(here, path.destination) <= Math.max(50, Math.min(accuracy, 100));
+  const isOffRoute = !hasArrived && bestMeters > Math.max(200, accuracy);
+  // Off the route the nearest edge means nothing, so stay where we were.
+  const index = isOffRoute ? first : best, edge = edges[index];
+  const stops = path.segments[edge.segment].stopIDs;
+  const nextStop = stops.length
+    ? Math.min(edge.toPoint + (meters(here, edge.to) <= 40 ? 1 : 0), stops.length - 1) : null;
+  return { edge: index, segment: edge.segment, nextStop, metersFromRoute: bestMeters, isOffRoute, hasArrived };
+}
+
+/** One line telling the rider what to do now. */
+export function instruction(path, progress, lang, name) {
+  const t = (zh, en) => (lang === 'zh' ? zh : en);
+  if (progress.hasArrived) return t('已到達目的地', 'You have arrived');
+  if (progress.isOffRoute) {
+    const distance = Math.round(progress.metersFromRoute);
+    return t(`你目前不在路線上（相距約 ${distance} 米）`, `You're off the route (about ${distance} m away)`);
+  }
+  const segment = path.segments[progress.segment];
+  if (segment.mode !== 'ride' || progress.nextStop == null) {
+    const nextRide = path.segments.slice(progress.segment + 1).find((s) => s.stopIDs.length);
+    const target = nextRide ? name(nextRide.stopIDs[0]) : t('目的地', 'your destination');
+    return t(`步行前往 ${target}`, `Walk to ${target}`);
+  }
+  const stop = name(segment.stopIDs[progress.nextStop]);
+  const left = segment.stopIDs.length - progress.nextStop;
+  if (left <= 1) return t(`下一站 ${stop} 下車`, `Get off at the next stop, ${stop}`);
+  const line = lineName(segment.op, segment.route, lang), alight = name(segment.stopIDs.at(-1));
+  return t(`${line} · 下一站 ${stop} · 還有 ${left} 站到 ${alight} 下車`, `${line} · Next: ${stop} · ${left} stops to ${alight}`);
+}
+
+// MARK: Stop index
+
+const clusterKey = (name) => name.zh || name.en?.toLowerCase() || '';
+const visitOrder = (db) => (a, b) => {
+  const ra = db.routes[a.routeKey], rb = db.routes[b.routeKey];
+  return compare(ra.route, rb.route) || ra.serviceType.localeCompare(rb.serviceType) || a.seq - b.seq;
+};
+
+/** Every stop that can be boarded at, with same-named platforms within 100 m merged. */
+export function buildStopIndex(db) {
+  const visits = new Map();
+  for (const route of Object.values(db.routes)) {
+    for (const op of route.operators) {
+      const ids = route.stops[op];
+      // The final stop has no onward arrival to board.
+      for (let seq = 0; seq < ids.length - 1; seq++) {
+        if (!validLocation(db.stops[ids[seq]]?.location)) continue;
+        if (!visits.has(ids[seq])) visits.set(ids[seq], []);
+        visits.get(ids[seq]).push({ routeKey: route.key, seq, op });
+      }
+    }
+  }
+  const groups = new Map();
+  for (const id of [...visits.keys()].sort()) {
+    const stop = db.stops[id];
+    const name = { zh: cleanStopName(stop.name?.zh), en: cleanStopName(stop.name?.en) };
+    const platform = { id, name, location: stop.location, visits: visits.get(id) };
+    const candidates = groups.get(clusterKey(name)) ?? [];
+    const group = candidates.find((g) => g.every((p) => meters(p.location, platform.location) <= 100));
+    if (group) group.push(platform);
+    else candidates.push([platform]);
+    groups.set(clusterKey(name), candidates);
+  }
+  return [...groups.values()].flat().map((platforms) => ({
+    id: platforms[0].id, name: platforms[0].name,
+    location: {
+      lat: platforms.reduce((sum, p) => sum + p.location.lat, 0) / platforms.length,
+      lng: platforms.reduce((sum, p) => sum + p.location.lng, 0) / platforms.length,
+    },
+    platforms: platforms.map((p) => p.location),
+    visits: platforms.flatMap((p) => p.visits).sort(visitOrder(db)),
+  }));
+}
+
+export const MODES = {
+  all: () => true,
+  bus: (visit) => ['kmb', 'ctb', 'nlb'].includes(visit.op),
+  minibus: (visit) => visit.op === 'gmb',
+  mtr: (visit) => visit.op === 'mtr',
+  lightRail: (visit) => visit.op === 'lightRail',
+};
+export const siteHasMode = (site, mode) => site.visits.some(MODES[mode]);
+export const primaryMode = (site) => ['mtr', 'lightRail', 'bus', 'minibus'].find((mode) => siteHasMode(site, mode)) ?? 'bus';
+
+export function stopsNear(index, location, radius) {
+  return index.flatMap((site) => {
+    // Rank a station by its nearest boarding platform, not its centroid.
+    const distance = Math.min(...site.platforms.map((p) => meters(location, p)));
+    return distance <= radius ? [{ site, distance }] : [];
+  }).sort((a, b) => a.distance - b.distance || a.site.id.localeCompare(b.site.id));
+}
+
+export const normalizePlace = (text) => {
+  let value = text.toLowerCase().trim();
+  for (const suffix of ['港鐵站', '站', ' station', ' mtr']) {
+    if (value.endsWith(suffix) && value.length > suffix.length) {
+      value = value.slice(0, -suffix.length);
+      break;
+    }
+  }
+  return value.trim();
+};
+
+const siteRank = (site) => (siteHasMode(site, 'mtr') ? 100000 : siteHasMode(site, 'lightRail') ? 50000 : 0) + site.visits.length;
+const busiest = (sites) => sites.reduce((best, site) => (!best || siteRank(site) > siteRank(best) ? site : best), null);
+
+/** A stop called exactly what was typed; a station beats a bus stop of the same name. */
+export function exactSite(query, index) {
+  const wanted = normalizePlace(query);
+  if (!wanted) return null;
+  return busiest(index.filter((s) => normalizePlace(s.name.zh) === wanted || normalizePlace(s.name.en) === wanted));
+}
+
+/** Stops whose name contains the text, nearest first, or the busiest first with no position. */
+export function matchingSites(query, index, from, text = (site) => `${site.name.zh} ${site.name.en}`.toLowerCase(), limit = 8) {
+  const wanted = query.trim().toLowerCase();
+  if (!wanted) return [];
+  const found = index.filter((site) => text(site).includes(wanted)).map((site) => ({
+    site, distance: from ? Math.min(...site.platforms.map((p) => meters(from, p))) : null,
+  }));
+  found.sort((a, b) => (from ? a.distance - b.distance : b.site.visits.length - a.site.visits.length));
+  return found.slice(0, limit);
+}
+
+export function partialSite(query, index) {
+  const wanted = query.trim().toLowerCase();
+  if (wanted.length < 2) return null;
+  return busiest(index.filter((s) => s.name.zh.includes(wanted) || s.name.en.toLowerCase().includes(wanted)));
+}
+
+/** Route keys whose number starts with the search text, in natural order. */
+/** What can follow `query` in a real route number, so a keypad offers nothing that leads nowhere. */
+export function nextRouteKeys(db, query) {
+  const prefix = query.trim().toUpperCase(), keys = new Set();
+  for (const { route } of Object.values(db.routes)) {
+    const number = route.toUpperCase(), key = number[prefix.length];
+    if (key && /[0-9A-Z]/.test(key) && number.startsWith(prefix)) keys.add(key);
+  }
+  return keys;
+}
+
+const SAME_TERMINUS_METERS = 600;
+
+const terminiOf = (route, db) => {
+  const ids = route.stops[route.operators[0]] ?? [];
+  return { from: db.stops[ids[0]]?.location, to: db.stops[ids.at(-1)]?.location };
+};
+const isNear = (a, b) => !!a && !!b && meters(a, b) <= SAME_TERMINUS_METERS;
+
+/** Minibuses reuse numbers across the territory, so a shared number alone doesn't make one route. */
+function isSameRoute(a, b, db) {
+  if (!a.operators.some((op) => b.operators.includes(op))) return false;
+  if (a.gtfsId && a.gtfsId === b.gtfsId) return true;
+  const x = terminiOf(a, db), y = terminiOf(b, db);
+  return isNear(x.from, y.from) || isNear(x.from, y.to) || isNear(x.to, y.from) || isNear(x.to, y.to);
+}
+
+/** Its ends lie closer swapped than as they are, which also holds for routes only a street long. */
+function isReverse(route, of, db) {
+  const x = terminiOf(route, db), y = terminiOf(of, db);
+  if (!x.from || !x.to || !y.from || !y.to) return false;
+  return meters(x.from, y.to) + meters(x.to, y.from) < meters(x.from, y.from) + meters(x.to, y.to);
+}
+
+/** Regular service first, then plain outbound (so not the 'OI' round trip of a route with both halves), then the fullest. */
+const routeRank = (a, b) => Number(a.serviceType) - Number(b.serviceType)
+  || Number(Object.values(a.bound)[0] !== 'O') - Number(Object.values(b.bound)[0] !== 'O')
+  || (b.stops[b.operators[0]]?.length ?? 0) - (a.stops[a.operators[0]]?.length ?? 0);
+
+const familiesOf = new WeakMap();
+
+function routeFamilies(db) {
+  if (familiesOf.has(db)) return familiesOf.get(db);
+  const byNumber = new Map(), families = new Map();
+  for (const route of Object.values(db.routes)) byNumber.set(route.route, [...(byNumber.get(route.route) ?? []), route]);
+  for (const routes of byNumber.values()) {
+    let groups = [];
+    for (const route of routes) {
+      const joined = groups.filter((group) => group.some((other) => isSameRoute(route, other, db)));
+      groups = [...groups.filter((group) => !joined.includes(group)), [route, ...joined.flat()]];
+    }
+    for (const group of groups) {
+      const sorted = [...group].sort(routeRank), family = { main: sorted[0], routes: sorted };
+      for (const route of group) families.set(route.key, family);
+    }
+  }
+  familiesOf.set(db, families);
+  return families;
+}
+
+/** Both directions of a route and its special services. `main` stands for them all. */
+export const routeFamily = (db, route) => routeFamilies(db).get(route.key);
+
+/** The services running the same way as `route`, and the regular one running the other way. */
+export function routeWays(db, route) {
+  const { main, routes } = routeFamily(db, route), isBack = (other) => other !== main && isReverse(other, main, db);
+  return { variants: routes.filter((other) => isBack(other) === isBack(route)), opposite: routes.find((other) => isBack(other) !== isBack(route)) ?? null };
+}
+
+/** The stop on a route closest to a place, if one is close: across the road, in the other direction. */
+export function closestPosition(route, op, location, db) {
+  let best = null, least = SAME_TERMINUS_METERS;
+  route.stops[op].forEach((id, position) => {
+    const here = db.stops[id]?.location, distance = here ? meters(here, location) : Infinity;
+    if (distance <= least) [best, least] = [position, distance];
+  });
+  return best;
+}
+
+/** One entry for each route, however many directions and special services it has. */
+export function searchRoutes(db, query, limit = 60) {
+  const prefix = query.trim().toUpperCase(), seen = new Set();
+  if (!prefix) return [];
+  return Object.values(db.routes)
+    .filter((route) => route.route.toUpperCase().startsWith(prefix) || lineName(route.operators[0], route.route, 'zh').includes(query.trim()))
+    .sort((a, b) => compare(a.route, b.route) || a.serviceType.localeCompare(b.serviceType))
+    .map((route) => routeFamily(db, route).main)
+    .filter((route) => !seen.has(route.key) && seen.add(route.key))
+    .slice(0, limit);
+}
