@@ -1,0 +1,7 @@
+PRESENTER C | INT2065
+25-minute presentation: slides 15–29. Your running time: 9:00–15:00.
+Open Presenter_C_EN.pdf for your final English speech or the DOCX to edit.
+PowerPoint: ../../Teacher/English/Group_Presentation_EN.pptx
+The PowerPoint notes contain the same speech. Stage cues are not spoken.
+
+Slide 19: 10:25–11:35. C narrates and D operates. Preload https://int2065.herolch07.me/ and the offline backup.

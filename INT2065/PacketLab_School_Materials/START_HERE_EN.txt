@@ -1,0 +1,71 @@
+PACKET LAB | FINAL TEACHING AND PRESENTATION PACKAGE
+INT2065 | Two core double lessons of 70 minutes with adaptive follow up | Five presenters
+
+LATEST ENGLISH SPEECH
+Open 00_LATEST_SPEECH_EN.pdf in this folder for the complete group script.
+This is the final 25-minute script for all five presenters. Page 1 shows the running order; PDF bookmarks jump to each presenter.
+Use the PDF bookmarks or the Presenters/A to E folders to find your part.
+Preload https://int2065.herolch07.me/ before the talk. Slide 19 also has a clickable link. C narrates and D opens the site or switches to the prepared tab.
+Live demo from opening: 10:25–11:35 in the 25-minute presentation.
+
+GROUP PRESENTATION FOR FELLOW TEACHERS
+Explain how the lesson works, why each activity was chosen, and how a teacher would check learning. Use the Group Presentation deck for this talk. Use Classroom Teaching and the Students folders only in the actual lesson or as brief examples for the audience.
+
+FIRST, EXTRACT THE ZIP AND OPEN START_HERE_MATERIALS.html
+The offline browser index opens the actual files. Keep the folder structure intact.
+
+KEY FILES
+1. Teacher/English/PacketLab_Presenter_Guide.docx: who presents what and what to show.
+2. Teacher/English/Group_Presentation_EN.pptx: the complete lecturer-facing deck.
+3. Teacher/English/Lesson_Plan_EN.pdf: the detailed core teaching and adaptive follow-up plan.
+
+FOLDERS
+Teacher/English
+- Group_Presentation_EN: 41 slides. Advance in order through the talk; the ten resource excerpts sit inside the relevant presenter sections. Each slide contains stage cues and the final 25-minute speech in its notes.
+- PacketLab_Presenter_Guide: quick group roles and case prompts. For the talk, do the AP demo live and use the slide for TCP/IP.
+- Presentation_Guide_and_Script_EN: all five scripts, slide timings, handoffs and demonstration cues.
+- Presentation_Allocation_EN: five-person timing and coverage of the project brief.
+- Classroom_Teaching_EN: a separate 12-slide English deck for teaching pupils. This is not the lecturer presentation.
+- Lesson_Plan_EN: two 70-minute core double lessons plus detailed evidence-led follow-up A/B/C, readiness checks and further teaching decisions. Unit_Overview_EN provides a one-page map.
+- Answers_and_Marking_EN: core answers /24, optional consolidation /12 and feedback guidance. Keep these teacher files away from pupils during tasks.
+- Classroom_Use_Guide_EN: slide-to-lesson mapping and operation routine.
+- Student_Perspective_Review_EN: clarity review from a beginner's perspective. This is a design review, not collected student feedback or proof of learning gains.
+- AI_Use_and_Contribution_Record_EN: complete names, actual contributions, tools and human review truthfully before submission.
+
+Students/English and Students/Traditional_Chinese
+Each language folder has a `pdf` folder for printing and a `doc` folder for editable Word files. Use one language for the class. The file names show what to hand out:
+- 01 Classwork and Exit Assessment (Worksheet): Q1–Q4 are guided classwork across the two lessons. Page 4 (Q5) is the independent exit assessment. Print and hold that page separately until needed.
+- 02–04 Reference: Network Communication (Foundation Notes), Network Hardware (Hardware Reference), and TCP/IP. The oral foundation quick check is in Teacher/English/Foundation_Quick_Check_Teacher_EN.txt. The hardware A/B/C labels indicate lesson priorities, not official exam weightings.
+- 05 Follow-up Practice and Recheck (Progress Check): unmarked guided practice and short independent rechecks.
+- 06 Extension Activities and Assessment (Follow-up Activities): Scenario B is classwork. Scenario A is later application; it may be assigned as homework if appropriate. The 12-mark task is a separate consolidation assessment.
+These filenames identify the materials already named in the lesson plan. Do not issue teacher answers with student copies.
+
+Presenters/A to E
+Each member has an English script, assigned slide numbers and handover cues. Use the same Group_Presentation_EN.pptx for rehearsal and delivery.
+25-minute presentation. Follow the lecturer’s arrangements for questions.
+A: 0:00–4:00, slides 1–6. Opening, handouts and objectives.
+B: 4:00–9:00, slides 7–14. How the teacher runs both lessons, chooses follow-up and explains the lesson design.
+C: 9:00–15:00, slides 15–29. Packet Lab, Q3 and Q4. C narrates the live demo.
+D: 15:00–20:00, slides 30–37. Assessment and follow-up. D also operates the live demo.
+E: 20:00–25:00, slides 38–41. Educational value, ethics and evaluation.
+
+PRINT AND TEACH
+In 01 Classwork and Exit Assessment, print pages 1–3 for classwork and hold page 4 separately for Q5. Cover or collect earlier pages and notes before Q5. Each learner writes their own responses even when sharing a computer.
+Use the notes and hardware reference during guided practice. Show the AP-off outcome only after written predictions. Use the numbers printed in Q4 even if the live animation differs.
+Keep the core /24 and optional /12 scores separate. The core includes guided work; it is not an independent mastery score. Look at independent Q5, causal explanations and revisions.
+
+WEBSITE AND BACKUPS
+Live project: use your group’s current production URL after testing it on the presentation computer.
+Offline conceptual backup: Students/Network_Lab_EN.html (English).
+Static conceptual examples: Teacher/Backup_Stills (six images).
+Extract the entire ZIP before opening files. Keep these relative folder locations unchanged. The offline version illustrates the same core concepts with fewer controls and does not reproduce the live 3D environment. Printed scenarios can be answered without it.
+Test the live reference scenarios, English display, pause/reset controls, projector and local backup on the presentation/classroom computer before use. The teaching package does not change or revalidate the deployed site's code.
+
+BEFORE SUBMISSION OR PRESENTATION
+- Replace presenter letters with names in your working copy and complete the actual contribution record.
+- Rehearse the final 25-minute script. C narrates the AP demonstration and D operates the browser. The same spoken words appear in PowerPoint Presenter View.
+- Keep the focus on teaching decisions, learner tasks and evidence, rather than teaching the lecturer the whole topic.
+- Retain editable DOCX/PPTX copies; use the PDFs for printing/viewing. The group presentation PDF follows the same slide order. Editable slides and speaker notes are in the PPTX file.
+
+UNIT TIMING AND FOLLOW-UP
+The planned 140 minutes covers the two core double lessons. It does not limit the unit. Follow-up A (about 20 minutes) addresses devices/paths, B (about 25 minutes) addresses TCP/IP, and C (about 35 minutes) supports integrated application. Select or repeat according to evidence, continue unfinished core work, and check a fresh response. If all three follow-ups are used once, the illustrative total is 220 minutes; actual time depends on progress. Read the Lesson Plan follow-up sections and Unit_Overview_EN.

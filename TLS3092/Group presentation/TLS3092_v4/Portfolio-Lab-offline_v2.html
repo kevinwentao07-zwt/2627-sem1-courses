@@ -1,0 +1,1327 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#17634b">
+  <meta name="description" content="中五 ICT HTML 與 CSS 課堂教材：理解、練習、創作。">
+  <title>Portfolio Lab · HTML 與 CSS 課堂教材</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMTAiIGZpbGw9IiMxNzYzNGIiLz48cGF0aCBkPSJtMTggMTQtMTAgMTAgMTAgMTBtMTItMjAgMTAgMTAtMTAgMTBtLTMtMjMtNiAyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+Cg==" type="image/svg+xml">
+  <style>:root{--ink:#172b2a;--muted:#526560;--green:#17634b;--light:#e5f5ed;--line:#d4dedc;--rail:#f2f5f6;--code:#162d2d;--radius:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang HK","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fff;font-size:16px;line-height:1.65}
+*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button,a,input,select,summary{touch-action:manipulation}button{cursor:pointer}a{color:var(--green);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}button{background:#fff;border:1px solid #aebfba;border-radius:6px;color:var(--ink);padding:9px 16px;font-size:15px;font-weight:600;line-height:1.4}button:hover{background:var(--rail);border-color:var(--green)}button.primary{background:var(--green);color:#fff;border-color:var(--green)}button.primary:hover{background:#104d39}button.selected,button[aria-pressed=true]{background:var(--light);border-color:var(--green);color:#104b38}button.danger{color:#8a2828;border-color:#be8383}button:disabled{cursor:not-allowed;opacity:.55}:focus-visible{outline:3px solid #257da1;outline-offset:3px}h1,h2,h3,h4,p{margin-top:0}h1{font-size:34px;letter-spacing:-.8px;line-height:1.3;margin-bottom:8px}h2{font-size:26px;letter-spacing:-.4px;line-height:1.4;margin:0 0 6px}h3{font-size:20px;line-height:1.4;margin:0 0 12px}h4{font-size:17px;margin:0 0 6px}p{margin-bottom:16px}code,pre,textarea.code{font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace}code{font-size:.94em}p code,li code,td code{background:#edf2ef;padding:1px 4px;border-radius:3px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--code);color:#e6f3ed;padding:20px;border-radius:6px;line-height:1.75;font-size:14px;margin:12px 0}ul,ol{padding-left:24px;margin-top:6px}li{margin-bottom:7px}.muted,.meta{color:var(--muted)}.meta{font-size:14px}.small{font-size:14px}.skip{position:fixed;top:-100px;left:16px;z-index:20;background:#fff;padding:12px}.skip:focus{top:10px}.header{height:76px;padding:0 30px;display:flex;gap:28px;align-items:center;border-bottom:1px solid var(--line);background:#fff}.brand{font-size:25px;font-weight:750;letter-spacing:-.8px;text-decoration:none;color:var(--ink);white-space:nowrap}.header-desc{border-left:1px solid #b7c5c2;padding-left:25px;font-size:17px}.header nav{margin-left:auto;display:flex;gap:25px}.header nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}.layout{display:grid;grid-template-columns:224px minmax(0,1fr);min-height:calc(100vh - 76px)}.sidebar{background:var(--rail);border-right:1px solid var(--line);padding:28px 20px;display:flex;flex-direction:column;gap:22px}.sidebar h2{font-size:17px;margin:0 0 16px}.lessons{display:grid;gap:10px}.lessons button{text-align:left;padding:13px 15px;min-height:48px}.side-links{border-top:1px solid var(--line);padding-top:18px;display:grid;gap:7px}.side-links a{text-decoration:none;color:var(--ink);font-weight:600;padding:10px 12px;position:relative;border-radius:4px;line-height:1.5}.side-links a[aria-current=page]{color:var(--green);background:#e8eeeb}.side-links a[aria-current=page]:before{content:"";position:absolute;left:-5px;top:9px;bottom:9px;width:4px;background:var(--green);border-radius:4px}.side-bottom{margin-top:auto;border-top:1px solid var(--line);padding-top:19px}.side-bottom a{font-weight:600}.sidebar .meta{margin:14px 0 0;line-height:1.5;font-size:13px}main{padding:28px 30px 50px;max-width:1420px;min-width:0;width:100%}.intro{margin-bottom:22px}.intro p{font-size:17px;margin-bottom:10px}.intro .meta{font-size:14px}.steps{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #bbc9c5;border-radius:8px;margin-bottom:24px;overflow:hidden}.steps a{text-align:center;padding:13px 8px;font-weight:650;text-decoration:none;color:var(--ink);border-bottom:4px solid transparent}.steps a[aria-current=step]{border-bottom-color:var(--green);color:var(--green);background:#f7fbf8}.section-head{margin-bottom:18px}.section-head p{margin:0;color:var(--muted)}.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);border:1px solid #b9c7c3;border-radius:var(--radius);overflow:hidden}.panel{min-width:0}.panel+.panel{border-left:1px solid var(--line)}.panel-bar{padding:11px 17px;background:var(--rail);font-weight:650;font-size:15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.panel-bar label{font-weight:650}.code-panel{background:var(--code);color:#e8f5ed}.code-panel .panel-bar{background:#213b3b;border-color:#345151}.xray-canvas{padding:25px;min-height:320px;line-height:1.7}.xray-canvas button{display:block;border:1px solid transparent;background:transparent;text-align:left;border-radius:4px;padding:5px 7px;max-width:100%;font-size:16px;font-weight:400;margin:0 0 10px}.xray-canvas button:hover{border-color:var(--green)}.xray-canvas button[aria-pressed=true]{background:#e9f9ef;border-color:var(--green);color:var(--ink)}.xray-canvas .x-title{font-size:28px;font-weight:700;line-height:1.35}.xray-canvas img{display:block;width:270px;max-width:100%;height:auto}.xray-canvas .x-link{color:var(--green);text-decoration:underline}.source-list{padding:20px 12px;margin:0;list-style:none;font:15px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;min-height:320px}.source-list li{margin-bottom:8px}.source-list button{font:inherit;display:flex;gap:15px;padding:7px 9px;width:100%;background:transparent;color:#e4f3ed;border:0;overflow-wrap:anywhere;text-align:left}.source-list button[aria-pressed=true]{background:#20543f;color:#fff;border-radius:4px}.line-number{color:#a9bcba;min-width:18px;user-select:none}.source-list code{background:transparent;padding:0;color:inherit;font-size:inherit}.explanation{display:flex;align-items:center;gap:24px;border:1px solid var(--line);border-radius:7px;margin:16px 0;padding:15px 20px;background:#f8faf9}.explanation strong{font-size:19px;color:var(--green);min-width:155px;white-space:nowrap}.explanation p{margin:0;border-left:1px solid #b9c6c2;padding-left:24px}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0}.actions .push{margin-left:auto}.element-buttons button{min-width:78px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:16px}.reading{border-top:1px solid var(--line);padding-top:24px;margin-top:30px}.reading-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.note{border-left:3px solid var(--green);padding:12px 18px;background:#f1f7f3;margin:18px 0}.note p:last-child{margin-bottom:0}.note.warning{border-color:#926113;background:#fff9ed}.task-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}.task-nav button{font-size:14px}.task-description{max-width:960px}.workbench{grid-template-columns:1fr 1fr}.editor-wrap{background:var(--code)}textarea.code{display:block;width:100%;min-height:365px;padding:20px;border:0;resize:vertical;background:var(--code);color:#eaf3ef;line-height:1.75;font-size:15px;tab-size:2;outline-offset:-4px;border-radius:0}textarea.code:focus-visible{outline-color:#81bda1}.preview-frame{width:100%;height:365px;display:block;border:0;background:#fff}.workbench-footer{font-size:13px;color:var(--muted);padding:10px 14px;background:#f7f9f8}.editor-tabs{display:flex;gap:4px}.editor-tabs button{background:transparent;color:#cbded6;border:0;padding:6px 12px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.editor-tabs button[aria-pressed=true]{background:#3c6057;color:#fff}.below-editor{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:24px}.check-list{list-style:none;padding:0;margin:12px 0}.check-list li{display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);padding:9px 0;margin:0}.check-list .mark{font-weight:700;white-space:nowrap;font-size:14px}.pass .mark{color:#17634b}.fail .mark{color:#9c3a23}.feedback{padding:13px 16px;border-radius:6px;background:var(--rail);margin:14px 0;font-size:15px}.feedback:empty{display:none}.feedback.pass{background:#e5f5ed}.feedback.fail{background:#fff3e6}.hints{border-top:1px solid var(--line);padding-top:18px}.hint{border-left:2px solid #9bbbab;padding:7px 15px;margin-top:12px}.hint pre{font-size:13px;padding:12px}.checks-label{font-size:14px;color:var(--muted);margin-top:10px}.form-row{display:grid;gap:6px;margin-bottom:20px}.form-row label,legend{font-weight:600}.form-row textarea,.form-row input[type=text],select{width:100%;padding:10px 12px;border:1px solid #a9bcb5;border-radius:5px;background:#fff;color:var(--ink)}textarea{max-width:100%}fieldset{border:1px solid var(--line);border-radius:6px;padding:16px 20px;margin:20px 0;min-width:0}legend{padding:0 7px}fieldset label.choice{display:flex;align-items:baseline;gap:10px;margin:8px 0;font-weight:400}input[type=radio],input[type=checkbox]{accent-color:var(--green);min-width:17px;min-height:17px}.quiz-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.quiz-grid section{min-width:0}.assessment-page{max-width:1050px}.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;margin:16px 0 26px}table{border-collapse:collapse;width:100%;font-size:15px;text-align:left}th,td{border-bottom:1px solid var(--line);padding:12px 15px;vertical-align:top}th{background:var(--rail);font-weight:650}tr:last-child td{border-bottom:0}table caption{text-align:left;padding:10px 15px;font-weight:600;background:#f7faf8}td:first-child.time{white-space:nowrap}.teacher-page{max-width:1120px}.teacher-page section{margin:26px 0 32px}.toc{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px}.plain-list{padding-left:20px}.resource-list{display:grid;gap:1px}.resource-list>a{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:14px}.file-input{display:block;max-width:100%;font-size:14px;margin:10px 0}.status{font-size:14px;min-height:24px;color:var(--muted)}.status.error{color:#9c3a23}.privacy-list{max-width:850px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:30px}.confirm-box{border:1px solid #b17f6b;border-radius:6px;padding:18px;background:#fff8f2;margin:18px 0}.confirm-box p{margin:0 0 12px}.key-reveal{margin-top:18px}details{border-bottom:1px solid var(--line);padding:12px 0}summary{font-weight:650;cursor:pointer}details>div{padding:16px 0 4px}.css-demo{padding:24px}.css-demo .demo-portfolio{padding:20px;border:1px solid #ccd8d0}.css-demo h3{margin-bottom:10px}.css-demo p{margin-bottom:10px}.css-demo img{width:100%;max-width:220px;height:auto}.css-toggle{margin-bottom:15px}.contrast-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.sample-rough,.sample-clear{padding:18px 20px;border:1px solid var(--line);border-radius:6px;line-height:1.7;background:#fff}.sample-tag{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px}.reading.opener{border-top:0;padding-top:0;margin:0 0 30px}.reading.opener .small{margin:12px 0 0}.sample-rough .fake-h{font-size:inherit;font-weight:400}.sample-rough p,.sample-clear p{margin-bottom:6px}.sample-clear .fake-h{font-size:23px;font-weight:700;line-height:1.35;margin-bottom:6px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.print-link{white-space:nowrap}.page-footer{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:13px}.print-only{display:none}
+@media(min-width:1600px){main{padding:38px 44px}.intro{margin-bottom:26px}.xray-canvas,.source-list{min-height:360px}.xray-canvas{padding:28px}}
+@media(max-width:1100px){.layout{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding:24px 14px}main{padding:24px}.split{grid-template-columns:1fr}.panel+.panel{border-left:0;border-top:1px solid var(--line)}.source-list{min-height:200px}.xray-canvas{min-height:280px}.workbench{grid-template-columns:1fr 1fr}.below-editor{gap:20px}.explanation{align-items:flex-start;gap:15px}.explanation p{padding-left:15px}}
+@media(max-width:850px){.header{padding:16px 20px;height:auto;gap:14px;flex-wrap:wrap}.header-desc{display:none}.header nav{gap:16px}.header nav a{font-size:14px}.brand{font-size:22px}.layout{display:block}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:14px 20px;display:block}.sidebar h2,.sidebar .meta,.side-bottom{display:none}.lessons{grid-template-columns:1fr 1fr}.lessons button{font-size:14px;padding:10px 12px;min-height:42px}.side-links{display:flex;gap:5px;flex-wrap:wrap;border-top:0;margin-top:8px;padding:0}.side-links a{font-size:14px;padding:8px}.side-links a[aria-current=page]:before{display:none}main{padding:24px 20px 40px}.intro h1{font-size:29px}.intro p{font-size:16px}.workbench{grid-template-columns:1fr}.reading-grid,.below-editor,.quiz-grid,.two-col{grid-template-columns:1fr}.source-list{min-height:210px}.xray-canvas{min-height:280px}.explanation{display:block}.explanation strong{white-space:normal}.explanation p{border-left:0;padding:9px 0 0}.steps a{font-size:14px;padding:11px 3px}.actions .push{margin-left:0}.element-buttons{gap:7px}.element-buttons button{min-width:65px;padding:9px 12px}.preview-frame,textarea.code{height:330px;min-height:330px}h2{font-size:24px}pre{padding:16px;font-size:13px}.panel-bar{padding:10px 13px}.contrast-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media print{@page{size:A4;margin:14mm}.header,.sidebar,.steps,.no-print,.skip,.page-footer{display:none!important}.layout{display:block}main{padding:0;max-width:none}.print-only{display:block}body{color:#000;background:#fff}a{color:#000}.table-scroll{overflow:visible}th,td{border:1px solid #444;padding:7px 9px}table{font-size:10pt}h1{font-size:22pt}h2{font-size:16pt;break-after:avoid}h3{font-size:12pt;break-after:avoid}p,li{font-size:10pt}pre{background:#fff;color:#000;border:1px solid #555;font-size:9pt}section,fieldset{break-inside:avoid}.reading-grid,.two-col,.quiz-grid{display:block}.note{background:#fff;border:1px solid #555}.teacher-page section{break-inside:auto}.print-break{break-before:page}}
+@media(max-width:850px){.sidebar .side-bottom{display:block;border:0;margin:0;padding:7px 8px 0;font-size:14px}}
+.language-switch{display:flex;gap:3px;flex-shrink:0;padding:3px;border:1px solid var(--line);border-radius:7px}.language-switch button{font-size:14px;min-height:36px;padding:7px 10px;border-color:transparent;background:transparent}.language-switch button[aria-pressed=true]{background:var(--light);border-color:#a7c4b5;color:var(--green)}html[lang=en] .side-links a{font-size:15px}html[lang=en] .sidebar .lessons button{font-size:14px}html[lang=en] .xray-canvas .x-title{font-size:27px}html[lang=en] .explanation strong{white-space:normal}html[lang=en] .panel-bar button{font-size:14px}@media(max-width:850px){.header .language-switch{order:1;margin-left:auto}.header nav{order:2;width:100%;margin-left:0;gap:20px}.language-switch button{padding:6px 9px;min-height:34px}html[lang=en] .side-links a{font-size:14px}html[lang=en] .intro h1{font-size:29px}html[lang=en] .element-buttons button{min-width:58px}html[lang=en] .panel-bar{align-items:center}}
+.teacher-page .plain-list{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <div id="app"></div>
+  <noscript>本互動教材需要瀏覽器啟用 JavaScript。學生只須學習 HTML 和 CSS。請使用 print/worksheet.html 的工作紙及 starter.html，以文字編輯器進行離線練習。 This interactive tool needs JavaScript enabled, but students learn only HTML and CSS. Use print/worksheet.en.html and starter.en.html with a text editor for an offline alternative.</noscript>
+<script>window.LabOffline=true;window.LabOfflineResources={"print/worksheet.html":"\u003c!doctype html>\n\u003chtml lang=\"zh-HK\">\u003chead>\u003cmeta charset=\"utf-8\">\u003cmeta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\u003cmeta name=\"referrer\" content=\"no-referrer\">\u003clink rel=\"icon\" href=\"data:,\">\u003ctitle>Portfolio Lab · 學生備用工作紙\u003c/title>\u003cstyle>*{box-sizing:border-box}body{font-family:Arial,\"PingFang HK\",\"Microsoft JhengHei\",sans-serif;color:#111;background:#e9eceb;margin:0;font-size:15px;line-height:1.55}h1{font-size:25px;margin:0 0 8px}h2{font-size:19px;margin:18px 0 8px}h3{font-size:16px;margin:12px 0 5px}p{margin:6px 0 12px}.toolbar{padding:16px 24px;background:#fff;display:flex;gap:20px;align-items:center;border-bottom:1px solid #999}.toolbar button{padding:9px 18px;background:#fff;border:1px solid #444;border-radius:4px;font:inherit;cursor:pointer}.toolbar a{color:#111}.sheet{width:210mm;min-height:287mm;padding:15mm 16mm;margin:20px auto;background:white}.sub{font-size:14px}.identity{display:flex;gap:30px;border:1px solid #333;padding:8px 12px;margin:15px 0}.line{height:27px;border-bottom:1px solid #999}.writing{border:1px solid #555;padding:9px 12px;margin:10px 0;min-height:125px}.writing.large{min-height:220px}.writing.medium{min-height:170px}.writing h3{margin:0 0 6px}pre{font-family:Consolas,Menlo,monospace;white-space:pre-wrap;font-size:13px;line-height:1.6;border:1px solid #444;padding:12px;margin:10px 0}code{font-family:Consolas,Menlo,monospace}table{width:100%;border-collapse:collapse;font-size:14px;margin:9px 0}th,td{border:1px solid #444;text-align:left;padding:8px;vertical-align:top}th{font-weight:bold}ul,ol{padding-left:23px;margin:8px 0}li{margin-bottom:6px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.footer{margin-top:17px;font-size:12px}.checklist{list-style:none;padding:0}.checklist li:before{content:\"□ \";font-size:17px}.box-model{border:1px dashed #444;padding:12px;text-align:center}.box-model>div{border:3px solid #333;padding:15px}.box-model>div>div{border:1px solid #555;padding:10px}.answer{border-left:2px solid #555;padding-left:12px;margin:10px 0}summary{font-weight:bold}@media(max-width:820px){.sheet{width:auto;min-height:0;margin:12px;padding:24px}.columns{grid-template-columns:1fr}.toolbar{flex-wrap:wrap}}@media print{@page{size:A4;margin:0}body{background:#fff;font-size:10pt;line-height:1.42}.toolbar{display:none}.sheet{margin:0;width:210mm;min-height:0;height:297mm;padding:12mm 15mm;break-after:page;overflow:visible}.sheet:last-child{break-after:auto}h1{font-size:18pt}h2{font-size:13pt;margin-top:14px}h3{font-size:11pt}pre{font-size:9pt;line-height:1.5;padding:9px}table{font-size:9.5pt}th,td{padding:6px}.writing.large{min-height:180px}.writing.medium{min-height:125px}.writing{min-height:110px}.line{height:24px}.footer{font-size:8.5pt}.identity{margin:10px 0}.columns{display:grid;grid-template-columns:1fr 1fr}}\n\n@media print{.box-model{padding:8px}.box-model>div{padding:8px}.box-model>div>div{padding:6px}pre{line-height:1.4}h2{margin-top:12px}}\n\n@media print{html[lang=en] body{font-size:10pt;line-height:1.42}html[lang=en] h1{font-size:17pt}html[lang=en] .sub{font-size:10pt}html[lang=en] .footer{font-size:8.5pt}html[lang=en] table{font-size:9.5pt}}\n\n@media print{.recap-sheet h2{margin-top:8px}.recap-sheet p{margin-bottom:10px}.recap-sheet pre{padding:6px;margin:7px 0}.recap-sheet .recap-questions li{margin-bottom:3px}.recap-sheet .line{height:18px}.recap-sheet .box-model,.recap-sheet .box-model>div,.recap-sheet .box-model>div>div{padding:4px}.recap-sheet .footer{margin-top:10px}}\n\n.qlines{padding-left:22px;margin:6px 0 4px}.qlines li{margin-bottom:4px}.qlines .line{height:25px}.writing.sketch{min-height:95px}.writing.draft{min-height:205px}@media print{.qlines .line{height:21px}.qlines li{margin-bottom:2px}.writing.sketch{min-height:72px}.writing.draft{min-height:160px}.tight h2{margin-top:9px}.tight p{margin-bottom:8px}.tight pre{padding:7px;margin:7px 0}.tight .footer{margin-top:10px}}\n\u003c/style>\u003c/head>\n\u003cbody>\n\u003cnav class=\"toolbar\" aria-label=\"工作紙工具\">\u003cbutton type=\"button\" onclick=\"window.print()\">打印／另存 PDF\u003c/button>\u003cspan>共四頁：HTML 兩頁、CSS 兩頁。第一課只派第 1–2 頁。\u003c/span>\u003c/nav>\n\u003csection class=\"sheet\">\n\u003ch1>Portfolio Lab · HTML 備用工作紙\u003c/h1>\u003cp class=\"sub\">Lesson 1 · 70 分鐘 · 第 1 / 4 頁\u003c/p>\n\u003cdiv class=\"identity\">\u003cspan>別名：______________\u003c/span>\u003cspan>班號：______\u003c/span>\u003cspan>日期：______________\u003c/span>\u003c/div>\n\u003ch2>1. 課前診斷（0–10 分鐘，連導入）\u003c/h2>\n\u003col class=\"qlines\">\u003cli>網頁的標題有甚麼用途？\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003cli>哪種功能可讓讀者按文字前往另一頁？\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003cli>使用照片或個人資料前，應先檢查甚麼？\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003c/ol>\n\u003ch2>2. 參考範例（10–20 分鐘）\u003c/h2>\n\u003cpre>&lt;!doctype html&gt;\n&lt;html lang=\"zh-HK\"&gt;\n&lt;head&gt;\n  &lt;meta charset=\"utf-8\"&gt;\n  &lt;title&gt;Alex 的 Portfolio&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Alex 的 Portfolio&lt;/h1&gt;\n  &lt;p&gt;我喜歡攝影。&lt;/p&gt;\n  &lt;img src=\"mountain.svg\" alt=\"山脊與日出的練習插圖\"&gt;\n  &lt;a href=\"#projects\"&gt;看看我的作品&lt;/a&gt;\n  &lt;section id=\"projects\"&gt;&lt;h2&gt;我的作品&lt;/h2&gt;&lt;/section&gt;\n&lt;/body&gt;\n&lt;/html&gt;\u003c/pre>\n\u003cp>\u003ccode>head\u003c/code> 放文件資料；\u003ccode>body\u003c/code> 放顯示內容。\u003ccode>src\u003c/code> 是圖片來源，\u003ccode>alt\u003c/code> 是文字替代，\u003ccode>href\u003c/code> 是連結目的地。\u003ccode>img\u003c/code> 沒有結束標籤。\u003c/p>\n\u003ch2>3. 標籤配對（20–30 分鐘）\u003c/h2>\n\u003cp>在右欄填 A–D：A 圖片、B 超連結、C 段落、D 主標題。\u003c/p>\n\u003ctable>\u003cthead>\u003ctr>\u003cth>標籤\u003c/th>\u003cth>功能\u003c/th>\u003cth>屬性／注意事項\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\n\u003ctr>\u003ctd>\u003ccode>&lt;h1&gt;\u003c/code>\u003c/td>\u003ctd>________\u003c/td>\u003ctd>表示頁面的主要主題\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>\u003ccode>&lt;p&gt;\u003c/code>\u003c/td>\u003ctd>________\u003c/td>\u003ctd>相關的句子組成段落\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>\u003ccode>&lt;img&gt;\u003c/code>\u003c/td>\u003ctd>________\u003c/td>\u003ctd>src、alt；內容圖片用具體描述\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>\u003ccode>&lt;a&gt;\u003c/code>\u003c/td>\u003ctd>________\u003c/td>\u003ctd>href；連結文字說明目的地\u003c/td>\u003c/tr>\n\u003c/tbody>\u003c/table>\n\u003cp class=\"footer\">可查閱參考，不必背碼。使用別名與授權素材；不要求真實照片、電話或住址。\u003c/p>\n\u003c/section>\n\u003csection class=\"sheet tight\">\n\u003ch1>HTML · 除錯、設計與反思\u003c/h1>\u003cp class=\"sub\">Lesson 1 · 第 2 / 4 頁\u003c/p>\n\u003ch2>4. 修好這段源碼（30–45 分鐘）\u003c/h2>\n\u003cp>圈出兩個問題，再寫出修正。圖片是一張山景內容圖。\u003c/p>\n\u003cpre>&lt;h1&gt;My Portfolio\n&lt;p&gt;I enjoy photography.&lt;/p&gt;\n&lt;img src=\"mountain.svg\"&gt;\n&lt;a href=\"#projects\"&gt;My Projects&lt;/a&gt;\n&lt;section id=\"projects\"&gt;&lt;h2&gt;My Projects&lt;/h2&gt;&lt;/section&gt;\u003c/pre>\n\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>5. 紙上 Portfolio（45–60 分鐘）\u003c/h2>\n\u003cp>先畫出內容位置，再寫 body 內的 HTML：主標題、介紹、含 alt 的圖片、可用連結和對應目的地。可用虛構角色。\u003c/p>\n\u003cdiv class=\"writing sketch\">\u003ch3>版面草圖\u003c/h3>\u003c/div>\n\u003cdiv class=\"writing draft\">\u003ch3>HTML 草稿\u003c/h3>\u003c/div>\n\u003ch2>6. 同伴檢查（60–66 分鐘）\u003c/h2>\n\u003cp>伙伴檢查：□ h1　□ p　□ 圖片 src／alt　□ href 與 id 相符　□ 標籤配對\u003c/p>\n\u003cp>我解釋了哪一項 HTML 選擇；伙伴指出的一個優點和一項具體建議：\u003c/p>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>7. 個人 Exit Ticket（66–70 分鐘）\u003c/h2>\n\u003col class=\"qlines\">\u003cli>解釋今天用過的兩個 HTML 元素的用途。\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003cli>\u003ccode>&lt;a&gt;My Projects&lt;/a&gt;\u003c/code> 欠了甚麼？寫出一個可用例子。\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003cli>今天修正了甚麼錯誤？你會怎樣在瀏覽器確認修正有效？下一課想改善甚麼？\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003c/ol>\n\u003cp class=\"footer\">設備恢復後：把草稿輸入瀏覽器，補測圖片、連結、顯示及保存。紙上檢查不能證明實際網頁正常。\u003c/p>\n\u003c/section>\n\u003csection class=\"sheet recap-sheet\">\n\u003ch1>Portfolio Lab · CSS 備用工作紙\u003c/h1>\u003cp class=\"sub\">Lesson 2 · 70 分鐘 · 第 3 / 4 頁\u003c/p>\n\u003cdiv class=\"identity\">\u003cspan>別名：______________\u003c/span>\u003cspan>班號：______\u003c/span>\u003cspan>日期：______________\u003c/span>\u003c/div>\n\u003ch2>課前複習小測 · Lesson 1 HTML（0–5 分鐘）\u003c/h2>\n\u003cp>獨立圈出答案，檢查上一課的掌握；5–8 分鐘訂正後才開始 CSS。\u003c/p>\n\u003col class=\"recap-questions\">\n\u003cli>主標題和介紹段落分別用甚麼？\u003cbr>A \u003ccode>h1、p\u003c/code>　B \u003ccode>p、img\u003c/code>　C \u003ccode>img、a\u003c/code>\u003c/li>\n\u003cli>圖片的 src 和 alt 分別用來做甚麼？\u003cbr>A 描述、來源　B 來源、文字替代　C 兩者都指定連結目的地\u003c/li>\n\u003cli>目標已有 \u003ccode>id=\"projects\"\u003c/code>，連結的開始標籤應怎樣寫？\u003cbr>A \u003ccode>&lt;a src=\"#projects\"&gt;\u003c/code>　B \u003ccode>&lt;a href=\"projects\"&gt;\u003c/code>　C \u003ccode>&lt;a href=\"#projects\"&gt;\u003c/code>\u003c/li>\n\u003cli>\u003ccode>&lt;h1&gt;我的 Portfolio&lt;p&gt;我喜歡攝影。&lt;/p&gt;\u003c/code> 欠甚麼？\u003cbr>A 圖片後加 \u003ccode>&lt;/img&gt;\u003c/code>　B 標題後、p 前加 \u003ccode>&lt;/h1&gt;\u003c/code>　C 段落加 href\u003c/li>\n\u003c/ol>\n\u003ch2>1. 讀規則與觀察（8–20 分鐘）\u003c/h2>\n\u003cp>HTML 描述內容結構；CSS 控制呈現樣式。圈出下列規則的選擇器，為屬性畫底線，為值畫方框。\u003c/p>\n\u003cpre>h1 { color: #17634b; }\nbody { font-family: Arial, sans-serif; font-size: 18px;\n  line-height: 1.7; color: #243b35; background-color: #f4f8f6; }\u003c/pre>\n\u003cp>\u003ccode>h1\u003c/code> 選取 h1 元素；\u003ccode>.intro\u003c/code> 選取 class=\"intro\"；\u003ccode>#projects\u003c/code> 選取 id=\"projects\"。HTML 和 CSS 可以分開編輯，匯出時放入 head 內的 style 元素；多頁網站可共用外部 CSS。\u003c/p>\n\u003ch2>2. 預測與除錯（20–35 分鐘）\u003c/h2>\n\u003cp>相同條件、相同選擇器的規則，後面的宣告覆蓋前面的。以下段落最後是甚麼顏色？為甚麼？\u003c/p>\n\u003cpre>p { color: #333333; }\np { color: #17634b; }\u003c/pre>\u003cdiv class=\"line\">\u003c/div>\n\u003cp>修正下面的語法，使標題為指定綠色、字體大小為 28px。\u003c/p>\n\u003cpre>h1 {\n  color #17634b\n  font-size: 28px;\n}\u003c/pre>\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>3. 盒模型參考\u003c/h2>\n\u003cdiv class=\"box-model\">margin：外距\u003cdiv>border：邊框\u003cdiv>padding：內距\u003cdiv>content：內容\u003c/div>\u003c/div>\u003c/div>\u003c/div>\n\u003cp>文字與邊框之間：________；邊框外的距離：________。\u003c/p>\n\u003cp class=\"footer\">先預測效果再測試；網頁可讀性包括文字大小、行距、對比和清楚連結，不只配色。\u003c/p>\n\u003c/section>\n\u003csection class=\"sheet\">\n\u003ch1>CSS · 改善 Portfolio 閱讀體驗\u003c/h1>\u003cp class=\"sub\">Lesson 2 · 第 4 / 4 頁\u003c/p>\n\u003ch2>4. 設計樣式（35–55 分鐘）\u003c/h2>\n\u003cp>為第一課作品寫 CSS：正文的字型、大小、行高、文字與背景顏色；標題顏色；section 的 padding、margin-top、border；連結底線。可選有足夠對比的其他配色。\u003c/p>\n\u003cdiv class=\"writing large\">\u003ch3>我的 CSS\u003c/h3>\u003c/div>\n\u003ch2>5. 解釋與同伴回饋（55–65 分鐘）\u003c/h2>\n\u003cp>我改善的一項閱讀問題是甚麼？指出相關 CSS 規則，解釋原因。\u003c/p>\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\n\u003cp>同伴建議我怎樣改得更清楚？\u003c/p>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>6. 個人 Exit Ticket（65–70 分鐘）\u003c/h2>\n\u003cp>① 分辨 HTML 與 CSS 的工作。② 寫一條段落顏色規則，指出選擇器、屬性和值。③ 分辨 padding 與 margin，並說明你會怎樣測試改善。\u003c/p>\n\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>設備恢復後要補做的檢查\u003c/h2>\n\u003cul class=\"checklist\">\n\u003cli>開啟 HTML，圖片顯示正常；點連結能到目的地。\u003c/li>\n\u003cli>把 CSS 輸入教材的 CSS 欄，比較有／無樣式。\u003c/li>\n\u003cli>確認實際字體、顏色、行距與留白，修正無效宣告。\u003c/li>\n\u003cli>用窄畫面及鍵盤 Tab 檢查；請同伴閱讀內容。\u003c/li>\n\u003cli>下載 JSON 備份與 HTML；獨立開啟 HTML 再測一次。\u003c/li>\n\u003c/ul>\n\u003cp class=\"footer\">紙本能顯示理解、預測和設計。實際呈現、可用連結與檔案匯出必須在設備恢復後驗證。\u003c/p>\n\u003c/section>\n\u003c/body>\u003c/html>\n","print/teacher-key.html":"\u003c!doctype html>\n\u003chtml lang=\"zh-HK\">\u003chead>\u003cmeta charset=\"utf-8\">\u003cmeta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\u003clink rel=\"icon\" href=\"data:,\">\u003ctitle>Portfolio Lab · 教師答案與評閱準則\u003c/title>\u003cstyle>*{box-sizing:border-box}body{font-family:Arial,\"PingFang HK\",\"Microsoft JhengHei\",sans-serif;color:#111;background:#e9eceb;margin:0;font-size:15px;line-height:1.55}h1{font-size:25px;margin:0 0 8px}h2{font-size:19px;margin:18px 0 8px}h3{font-size:16px;margin:12px 0 5px}p{margin:6px 0 12px}.toolbar{padding:16px 24px;background:#fff;display:flex;gap:20px;align-items:center;border-bottom:1px solid #999}.toolbar button{padding:9px 18px;background:#fff;border:1px solid #444;border-radius:4px;font:inherit;cursor:pointer}.toolbar a{color:#111}.sheet{width:210mm;min-height:287mm;padding:15mm 16mm;margin:20px auto;background:white}.sub{font-size:14px}.identity{display:flex;gap:30px;border:1px solid #333;padding:8px 12px;margin:15px 0}.line{height:27px;border-bottom:1px solid #999}.writing{border:1px solid #555;padding:9px 12px;margin:10px 0;min-height:125px}.writing.large{min-height:220px}.writing.medium{min-height:170px}.writing h3{margin:0 0 6px}pre{font-family:Consolas,Menlo,monospace;white-space:pre-wrap;font-size:13px;line-height:1.6;border:1px solid #444;padding:12px;margin:10px 0}code{font-family:Consolas,Menlo,monospace}table{width:100%;border-collapse:collapse;font-size:14px;margin:9px 0}th,td{border:1px solid #444;text-align:left;padding:8px;vertical-align:top}th{font-weight:bold}ul,ol{padding-left:23px;margin:8px 0}li{margin-bottom:6px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.footer{margin-top:17px;font-size:12px}.checklist{list-style:none;padding:0}.checklist li:before{content:\"□ \";font-size:17px}.box-model{border:1px dashed #444;padding:12px;text-align:center}.box-model>div{border:3px solid #333;padding:15px}.box-model>div>div{border:1px solid #555;padding:10px}.answer{border-left:2px solid #555;padding-left:12px;margin:10px 0}summary{font-weight:bold}@media(max-width:820px){.sheet{width:auto;min-height:0;margin:12px;padding:24px}.columns{grid-template-columns:1fr}.toolbar{flex-wrap:wrap}}@media print{@page{size:A4;margin:0}body{background:#fff;font-size:10pt;line-height:1.42}.toolbar{display:none}.sheet{margin:0;width:210mm;min-height:0;height:297mm;padding:12mm 15mm;break-after:page;overflow:visible}.sheet:last-child{break-after:auto}h1{font-size:18pt}h2{font-size:13pt;margin-top:14px}h3{font-size:11pt}pre{font-size:9pt;line-height:1.5;padding:9px}table{font-size:9.5pt}th,td{padding:6px}.writing.large{min-height:180px}.writing.medium{min-height:125px}.writing{min-height:110px}.line{height:24px}.footer{font-size:8.5pt}.identity{margin:10px 0}.columns{display:grid;grid-template-columns:1fr 1fr}}\n\n@media print{.box-model{padding:8px}.box-model>div{padding:8px}.box-model>div>div{padding:6px}pre{line-height:1.4}h2{margin-top:12px}}\n\n@media print{html[lang=en] body{font-size:10pt;line-height:1.42}html[lang=en] h1{font-size:17pt}html[lang=en] .sub{font-size:10pt}html[lang=en] .footer{font-size:8.5pt}html[lang=en] table{font-size:9.5pt}}\n\n@media print{.recap-sheet h2{margin-top:8px}.recap-sheet p{margin-bottom:10px}.recap-sheet pre{padding:6px;margin:7px 0}.recap-sheet .recap-questions li{margin-bottom:3px}.recap-sheet .line{height:18px}.recap-sheet .box-model,.recap-sheet .box-model>div,.recap-sheet .box-model>div>div{padding:4px}.recap-sheet .footer{margin-top:10px}}\n\n.qlines{padding-left:22px;margin:6px 0 4px}.qlines li{margin-bottom:4px}.qlines .line{height:25px}.writing.sketch{min-height:95px}.writing.draft{min-height:205px}@media print{.qlines .line{height:21px}.qlines li{margin-bottom:2px}.writing.sketch{min-height:72px}.writing.draft{min-height:160px}.tight h2{margin-top:9px}.tight p{margin-bottom:8px}.tight pre{padding:7px;margin:7px 0}.tight .footer{margin-top:10px}}\n\u003c/style>\u003c/head>\u003cbody>\n\u003cnav class=\"toolbar\">\u003cbutton type=\"button\" onclick=\"window.print()\">打印／另存 PDF\u003c/button>\u003cspan>形成性評估用；此頁可公開查閱。\u003c/span>\u003c/nav>\n\u003csection class=\"sheet\">\n\u003ch1>教師答案 · Lesson 1 HTML\u003c/h1>\u003cp class=\"sub\">第 1 / 2 頁 · 答案可接受合理的其他表述。\u003c/p>\n\u003ch2>診斷與標籤配對\u003c/h2>\n\u003col>\u003cli>標題說明頁面或內容區的主題，幫助讀者理解結構。\u003c/li>\u003cli>超連結。\u003c/li>\u003cli>相片使用權、同意、版權或私隱；不用真名或真實照片也可完成。\u003c/li>\u003c/ol>\n\u003cp>這些答案只留在學生的螢幕或紙上。教師巡視時閱讀，並請全班舉手，包括「記得必修部分哪些 HTML 標籤？」，按結果調整示範重點。\u003c/p>\n\u003cp>配對：h1 → D 主標題；p → C 段落；img → A 圖片；a → B 超連結。\u003c/p>\n\u003ch2>除錯參考\u003c/h2>\n\u003cpre>&lt;h1&gt;My Portfolio&lt;/h1&gt;\n&lt;p&gt;I enjoy photography.&lt;/p&gt;\n&lt;img src=\"mountain.svg\" alt=\"山脊與日出的練習插圖\"&gt;\n&lt;a href=\"#projects\"&gt;My Projects&lt;/a&gt;\n&lt;section id=\"projects\"&gt;&lt;h2&gt;My Projects&lt;/h2&gt;&lt;/section&gt;\u003c/pre>\n\u003cp>兩個目標問題：缺少 &lt;/h1&gt;；內容圖片欠 alt。其他具體而合適的描述亦可接受。裝飾圖片可用空 alt，但本題圖片被指定為內容圖。\u003c/p>\n\u003ch2>課後選做 HTML 自測\u003c/h2>\n\u003cp>完成 HTML 活動後才作答：1 h1；2 href；3 修正路徑再檢查 alt；4 別名、興趣與獲准素材。\u003c/p>\n\u003ch2>Exit Ticket 參考及評閱\u003c/h2>\n\u003cp>學生下載學習紀錄，連同匯出的 HTML 按學校慣常方式提交；教師在第二課前閱讀。\u003c/p>\n\u003ctable>\u003cthead>\u003ctr>\u003cth>題目\u003c/th>\u003cth>達成證據\u003c/th>\u003cth>跟進\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\n\u003ctr>\u003ctd>解釋兩元素\u003c/td>\u003ctd>例如 h1 標示主題、p 組織介紹、img 加圖片、a 建立連結。每個解釋合理。\u003c/td>\u003ctd>把「字較大」引回主題和結構用途。\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>修復 a\u003c/td>\u003ctd>補 href，例：&lt;a href=\"#projects\"&gt;My Projects&lt;/a&gt;，另有 id=\"projects\" 目標。\u003c/td>\u003ctd>用 src/href 對比再試一次。\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>除錯與轉移\u003c/td>\u003ctd>指出一項真實錯誤、修正及預覽／點測方式；提出 CSS 課的閱讀改進（時間不足時，最後一部分可改為課後任務）。\u003c/td>\u003ctd>只有「改好了」則請具體示範。\u003c/td>\u003c/tr>\n\u003c/tbody>\u003c/table>\n\u003ch2>Portfolio 草稿簡要規準\u003c/h2>\n\u003cp>分別記錄「已達成／需修正」：清楚主標題和介紹、可載入圖片、合適 alt、有用連結、源碼基本結構、可獨立開啟的匯出檔、合適素材、能解釋選擇。開放題及內容品質由教師判斷，不以自動檢查數目作總分。\u003c/p>\n\u003cp class=\"footer\">口頭問答須涵蓋四個元素，確認學生能解釋至少三個。範本完成不等同獨立理解。紙本課後補做瀏覽器驗證。\u003c/p>\n\u003c/section>\n\u003csection class=\"sheet\">\n\u003ch1>教師答案 · Lesson 2 CSS\u003c/h1>\u003cp class=\"sub\">第 2 / 2 頁\u003c/p>\n\u003ch2>課前複習小測 · Lesson 1 HTML\u003c/h2>\n\u003cp>答案：1 A（h1／p）；2 B（src 是來源、alt 是文字替代）；3 C（href=\"#projects\" 配對 id）；4 B（標題後、p 前補 &lt;/h1&gt;）。這是第一課的複習，不考 CSS。首五分鐘獨立作答，5–8 分鐘按錯題重溫及補測草稿。\u003c/p>\n\u003ch2>規則、預測與除錯\u003c/h2>\n\u003cp>h1 是選擇器；color 是屬性；#17634b 是值。段落最終為 #17634b，因同條件及同選擇器後出的宣告覆蓋前者。修正：color 後加入冒號，色碼後加入分號。\u003c/p>\n\u003cpre>h1 { color: #17634b; font-size: 28px; }\nsection { padding: 20px; margin-top: 24px;\n  border: 1px solid #c7d6ce; }\u003c/pre>\n\u003cp>文字至邊框的內側為 padding；邊框外為 margin。CSS 有效值及完整宣告要在瀏覽器測試。\u003c/p>\n\u003ch2>CSS 課後自測（選做）\u003c/h2>\n\u003cp>只在完成 CSS 活動後選做：1 選擇器；2 padding；3 後出現的一條（來源、重要性、層和優先度相同時）；4 足夠對比、行距、底線。\u003c/p>\n\u003ch2>Exit Ticket 參考及評閱\u003c/h2>\n\u003ctable>\u003cthead>\u003ctr>\u003cth>題目\u003c/th>\u003cth>達成證據\u003c/th>\u003cth>跟進\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\n\u003ctr>\u003ctd>HTML 與 CSS\u003c/td>\u003ctd>HTML 描述內容結構；CSS 控制外觀呈現。同一份 HTML 可套用不同樣式。\u003c/td>\u003ctd>切換 CSS，確認文字仍存在。\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>段落顏色\u003c/td>\u003ctd>例：p { color: #243b35; }。正確指出 p / color / #243b35。\u003c/td>\u003ctd>分別改一個屬性及值，說明效果。\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>盒模型與測試\u003c/td>\u003ctd>分辨內距與外距；提出具體改善，並以預覽、窄畫面或同伴閱讀驗證。\u003c/td>\u003ctd>讓學生在紙本框圖標示位置，再到瀏覽器改動。\u003c/td>\u003c/tr>\n\u003c/tbody>\u003c/table>\n\u003ch2>觀察而非單靠數字\u003c/h2>\n\u003cp>網站抽樣檢查 body 及 h1 文字對比、字體大小、行高、section 盒模型及底線。它沒有評估所有背景、巢狀區域或內容含義。需另做鍵盤、窄畫面及實際閱讀測試。\u003c/p>\n\u003ch2>調整教學的決定\u003c/h2>\n\u003cp>若學生能套用範本但解釋不清，下一課先讀一條新規則並預測效果。若多名學生混淆 padding／margin，用框圖再示範。若主要卡在檔案操作，先練備份與重新匯入，讓學生能保存成果。\u003c/p>\n\u003cp class=\"footer\">備案：紙本可評估概念和設計；瀏覽器執行、圖片／連結及匯出功能必須在設備恢復後補測。\u003c/p>\n\u003c/section>\u003c/body>\u003c/html>\n","print/worksheet.en.html":"\u003c!doctype html>\n\u003chtml lang=\"en\">\u003chead>\u003cmeta charset=\"utf-8\">\u003cmeta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\u003cmeta name=\"referrer\" content=\"no-referrer\">\u003clink rel=\"icon\" href=\"data:,\">\u003ctitle>Portfolio Lab · Student backup worksheets\u003c/title>\u003cstyle>*{box-sizing:border-box}body{font-family:Arial,\"PingFang HK\",\"Microsoft JhengHei\",sans-serif;color:#111;background:#e9eceb;margin:0;font-size:15px;line-height:1.55}h1{font-size:25px;margin:0 0 8px}h2{font-size:19px;margin:18px 0 8px}h3{font-size:16px;margin:12px 0 5px}p{margin:6px 0 12px}.toolbar{padding:16px 24px;background:#fff;display:flex;gap:20px;align-items:center;border-bottom:1px solid #999}.toolbar button{padding:9px 18px;background:#fff;border:1px solid #444;border-radius:4px;font:inherit;cursor:pointer}.toolbar a{color:#111}.sheet{width:210mm;min-height:287mm;padding:15mm 16mm;margin:20px auto;background:white}.sub{font-size:14px}.identity{display:flex;gap:30px;border:1px solid #333;padding:8px 12px;margin:15px 0}.line{height:27px;border-bottom:1px solid #999}.writing{border:1px solid #555;padding:9px 12px;margin:10px 0;min-height:125px}.writing.large{min-height:220px}.writing.medium{min-height:170px}.writing h3{margin:0 0 6px}pre{font-family:Consolas,Menlo,monospace;white-space:pre-wrap;font-size:13px;line-height:1.6;border:1px solid #444;padding:12px;margin:10px 0}code{font-family:Consolas,Menlo,monospace}table{width:100%;border-collapse:collapse;font-size:14px;margin:9px 0}th,td{border:1px solid #444;text-align:left;padding:8px;vertical-align:top}th{font-weight:bold}ul,ol{padding-left:23px;margin:8px 0}li{margin-bottom:6px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.footer{margin-top:17px;font-size:12px}.checklist{list-style:none;padding:0}.checklist li:before{content:\"□ \";font-size:17px}.box-model{border:1px dashed #444;padding:12px;text-align:center}.box-model>div{border:3px solid #333;padding:15px}.box-model>div>div{border:1px solid #555;padding:10px}.answer{border-left:2px solid #555;padding-left:12px;margin:10px 0}summary{font-weight:bold}@media(max-width:820px){.sheet{width:auto;min-height:0;margin:12px;padding:24px}.columns{grid-template-columns:1fr}.toolbar{flex-wrap:wrap}}@media print{@page{size:A4;margin:0}body{background:#fff;font-size:10pt;line-height:1.42}.toolbar{display:none}.sheet{margin:0;width:210mm;min-height:0;height:297mm;padding:12mm 15mm;break-after:page;overflow:visible}.sheet:last-child{break-after:auto}h1{font-size:18pt}h2{font-size:13pt;margin-top:14px}h3{font-size:11pt}pre{font-size:9pt;line-height:1.5;padding:9px}table{font-size:9.5pt}th,td{padding:6px}.writing.large{min-height:180px}.writing.medium{min-height:125px}.writing{min-height:110px}.line{height:24px}.footer{font-size:8.5pt}.identity{margin:10px 0}.columns{display:grid;grid-template-columns:1fr 1fr}}\n\n@media print{.box-model{padding:8px}.box-model>div{padding:8px}.box-model>div>div{padding:6px}pre{line-height:1.4}h2{margin-top:12px}}\n\n@media print{html[lang=en] body{font-size:10pt;line-height:1.42}html[lang=en] h1{font-size:17pt}html[lang=en] .sub{font-size:10pt}html[lang=en] .footer{font-size:8.5pt}html[lang=en] table{font-size:9.5pt}}\n\n@media print{.recap-sheet h2{margin-top:8px}.recap-sheet p{margin-bottom:10px}.recap-sheet pre{padding:6px;margin:7px 0}.recap-sheet .recap-questions li{margin-bottom:3px}.recap-sheet .line{height:18px}.recap-sheet .box-model,.recap-sheet .box-model>div,.recap-sheet .box-model>div>div{padding:4px}.recap-sheet .footer{margin-top:10px}}\n\n.qlines{padding-left:22px;margin:6px 0 4px}.qlines li{margin-bottom:4px}.qlines .line{height:25px}.writing.sketch{min-height:95px}.writing.draft{min-height:205px}@media print{.qlines .line{height:21px}.qlines li{margin-bottom:2px}.writing.sketch{min-height:72px}.writing.draft{min-height:160px}.tight h2{margin-top:9px}.tight p{margin-bottom:8px}.tight pre{padding:7px;margin:7px 0}.tight .footer{margin-top:10px}}\n\u003c/style>\u003c/head>\n\u003cbody>\n\u003cnav class=\"toolbar\" aria-label=\"Worksheet tools\">\u003cbutton type=\"button\" onclick=\"window.print()\">Print / Save as PDF\u003c/button>\u003cspan>Four pages: two for HTML, two for CSS. Use pages 1–2 for Lesson 1.\u003c/span>\u003c/nav>\n\u003csection class=\"sheet\">\n\u003ch1>Portfolio Lab · HTML backup worksheet\u003c/h1>\u003cp class=\"sub\">Lesson 1 · 70 minutes · Page 1 / 4\u003c/p>\n\u003cdiv class=\"identity\">\u003cspan>Alias: ______________\u003c/span>\u003cspan>Class no.: ______\u003c/span>\u003cspan>Date: ______________\u003c/span>\u003c/div>\n\u003ch2>1. Diagnostic questions (0–10 minutes, including introduction)\u003c/h2>\n\u003col class=\"qlines\">\u003cli>What is the purpose of a heading on a web page?\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003cli>What feature lets a reader click text to open another page?\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003cli>What should you check before using a photo or personal information?\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003c/ol>\n\u003ch2>2. Reference example (10–20 minutes)\u003c/h2>\n\u003cpre>&lt;!doctype html&gt;\n&lt;html lang=\"en\"&gt;\n&lt;head&gt;\n  &lt;meta charset=\"utf-8\"&gt;\n  &lt;title&gt;Alex's Portfolio&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Alex's Portfolio&lt;/h1&gt;\n  &lt;p&gt;I enjoy photography.&lt;/p&gt;\n  &lt;img src=\"mountain.svg\" alt=\"Mountain ridges and sunrise\"&gt;\n  &lt;a href=\"#projects\"&gt;View my projects&lt;/a&gt;\n  &lt;section id=\"projects\"&gt;&lt;h2&gt;My projects&lt;/h2&gt;&lt;/section&gt;\n&lt;/body&gt;\n&lt;/html&gt;\u003c/pre>\n\u003cp>\u003ccode>head\u003c/code> holds document information; \u003ccode>body\u003c/code> holds displayed content. \u003ccode>src\u003c/code> is the image source, \u003ccode>alt\u003c/code> is a text alternative, and \u003ccode>href\u003c/code> is a link destination. \u003ccode>img\u003c/code> has no end tag.\u003c/p>\n\u003ch2>3. Match the tags (20–30 minutes)\u003c/h2>\n\u003cp>Write A–D: A image, B hyperlink, C paragraph, D main heading.\u003c/p>\n\u003ctable>\u003cthead>\u003ctr>\u003cth>Tag\u003c/th>\u003cth>Purpose\u003c/th>\u003cth>Attribute / reminder\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\n\u003ctr>\u003ctd>\u003ccode>&lt;h1&gt;\u003c/code>\u003c/td>\u003ctd>________\u003c/td>\u003ctd>Identifies the page's main topic\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>\u003ccode>&lt;p&gt;\u003c/code>\u003c/td>\u003ctd>________\u003c/td>\u003ctd>Groups related sentences\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>\u003ccode>&lt;img&gt;\u003c/code>\u003c/td>\u003ctd>________\u003c/td>\u003ctd>src and alt; describe a content image meaningfully\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>\u003ccode>&lt;a&gt;\u003c/code>\u003c/td>\u003ctd>________\u003c/td>\u003ctd>href; link text explains the destination\u003c/td>\u003c/tr>\n\u003c/tbody>\u003c/table>\n\u003cp class=\"footer\">Use the reference; memorising code is not required. Use an alias and permitted images. Real photos, phone numbers and home addresses are not required.\u003c/p>\n\u003c/section>\n\u003csection class=\"sheet tight\">\n\u003ch1>HTML · Debug, design and reflect\u003c/h1>\u003cp class=\"sub\">Lesson 1 · Page 2 / 4\u003c/p>\n\u003ch2>4. Repair this source (30–45 minutes)\u003c/h2>\n\u003cp>Circle two problems and write the corrections. The mountain picture is a content image.\u003c/p>\n\u003cpre>&lt;h1&gt;My Portfolio\n&lt;p&gt;I enjoy photography.&lt;/p&gt;\n&lt;img src=\"mountain.svg\"&gt;\n&lt;a href=\"#projects\"&gt;My Projects&lt;/a&gt;\n&lt;section id=\"projects\"&gt;&lt;h2&gt;My Projects&lt;/h2&gt;&lt;/section&gt;\u003c/pre>\n\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>5. Paper portfolio (45–60 minutes)\u003c/h2>\n\u003cp>Sketch the layout, then write the HTML inside body: a main heading, introduction, image with alt, and a link with a matching target. You may use a fictional character.\u003c/p>\n\u003cdiv class=\"writing sketch\">\u003ch3>Layout sketch\u003c/h3>\u003c/div>\n\u003cdiv class=\"writing draft\">\u003ch3>HTML draft\u003c/h3>\u003c/div>\n\u003ch2>6. Peer review (60–66 minutes)\u003c/h2>\n\u003cp>My partner checks: □ h1　□ p　□ image src / alt　□ matching href / id　□ paired tags\u003c/p>\n\u003cp>The HTML choice I explained, and one strength and one specific suggestion from my partner:\u003c/p>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>7. Individual Exit Ticket (66–70 minutes)\u003c/h2>\n\u003col class=\"qlines\">\u003cli>Explain the purposes of two HTML elements you used today.\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003cli>What is missing from \u003ccode>&lt;a&gt;My Projects&lt;/a&gt;\u003c/code>? Write a working example.\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003cli>What error did you fix today, and how would you test the fix in a browser? What would you like to improve next lesson?\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\u003c/li>\u003c/ol>\n\u003cp class=\"footer\">When devices recover, enter your draft and test display, images, links and saving in a browser. Paper checks do not prove that a web page works.\u003c/p>\n\u003c/section>\n\u003csection class=\"sheet recap-sheet\">\n\u003ch1>Portfolio Lab · CSS backup worksheet\u003c/h1>\u003cp class=\"sub\">Lesson 2 · 70 minutes · Page 3 / 4\u003c/p>\n\u003cdiv class=\"identity\">\u003cspan>Alias: ______________\u003c/span>\u003cspan>Class no.: ______\u003c/span>\u003cspan>Date: ______________\u003c/span>\u003c/div>\n\u003ch2>Before class · Lesson 1 HTML recap (0–5 minutes)\u003c/h2>\n\u003cp>Circle answers independently. Review them at minutes 5–8 before starting CSS.\u003c/p>\n\u003col class=\"recap-questions\">\n\u003cli>Which elements give a main heading and introductory paragraph?\u003cbr>A \u003ccode>h1, p\u003c/code>　B \u003ccode>p, img\u003c/code>　C \u003ccode>img, a\u003c/code>\u003c/li>\n\u003cli>What are the jobs of an image's src and alt, respectively?\u003cbr>A Description, source　B Source, text alternative　C Both give a link destination\u003c/li>\n\u003cli>The target has \u003ccode>id=\"projects\"\u003c/code>. Which start tag gives the correct same-page destination?\u003cbr>A \u003ccode>&lt;a src=\"#projects\"&gt;\u003c/code>　B \u003ccode>&lt;a href=\"projects\"&gt;\u003c/code>　C \u003ccode>&lt;a href=\"#projects\"&gt;\u003c/code>\u003c/li>\n\u003cli>What is missing from \u003ccode>&lt;h1&gt;My Portfolio&lt;p&gt;I enjoy photography.&lt;/p&gt;\u003c/code>?\u003cbr>A Add \u003ccode>&lt;/img&gt;\u003c/code>　B Add \u003ccode>&lt;/h1&gt;\u003c/code> before p　C Add href to p\u003c/li>\n\u003c/ol>\n\u003ch2>1. Read rules and observe (8–20 minutes)\u003c/h2>\n\u003cp>HTML gives structure; CSS gives presentation. Circle selectors, underline properties and box values.\u003c/p>\n\u003cpre>h1 { color: #17634b; }\nbody { font-family: Arial, sans-serif; font-size: 18px;\n  line-height: 1.7; color: #243b35; background-color: #f4f8f6; }\u003c/pre>\n\u003cp>\u003ccode>h1\u003c/code> selects h1 elements; \u003ccode>.intro\u003c/code> selects class=\"intro\"; \u003ccode>#projects\u003c/code> selects id=\"projects\". Edit HTML and CSS separately. Export places CSS in a style element inside head; several pages can share an external stylesheet.\u003c/p>\n\u003ch2>2. Predict and debug (20–35 minutes)\u003c/h2>\n\u003cp>The rules have the same selector and equal priority. What colour wins, and why?\u003c/p>\n\u003cpre>p { color: #333333; }\np { color: #17634b; }\u003c/pre>\u003cdiv class=\"line\">\u003c/div>\n\u003cp>Fix the syntax below to make the heading green with a font size of 28px.\u003c/p>\n\u003cpre>h1 {\n  color #17634b\n  font-size: 28px;\n}\u003c/pre>\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>3. Box-model reference\u003c/h2>\n\u003cdiv class=\"box-model\">margin: outside the border\u003cdiv>border\u003cdiv>padding: inside the border\u003cdiv>content\u003c/div>\u003c/div>\u003c/div>\u003c/div>\n\u003cp>Space between text and border: __________; space outside the border: __________.\u003c/p>\n\u003cp class=\"footer\">Predict, then test. Readability includes text size, line spacing, contrast and clear links, as well as colour choices.\u003c/p>\n\u003c/section>\n\u003csection class=\"sheet\">\n\u003ch1>CSS · Make your portfolio easier to read\u003c/h1>\u003cp class=\"sub\">Lesson 2 · Page 4 / 4\u003c/p>\n\u003ch2>4. Design your styles (35–55 minutes)\u003c/h2>\n\u003cp>Write CSS for your Lesson 1 work: body typeface, size, line height, text and background colour; heading colour; section padding, margin-top and border; underlined links. You may choose another palette with sufficient contrast.\u003c/p>\n\u003cdiv class=\"writing large\">\u003ch3>My CSS\u003c/h3>\u003c/div>\n\u003ch2>5. Explain and review (55–65 minutes)\u003c/h2>\n\u003cp>What reading problem did you improve? Identify the relevant CSS rule and explain your choice.\u003c/p>\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\n\u003cp>What specific change did your partner suggest?\u003c/p>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>6. Individual Exit Ticket (65–70 minutes)\u003c/h2>\n\u003cp>1. Distinguish HTML from CSS. 2. Write a paragraph colour rule and identify its selector, property and value. 3. Distinguish padding from margin and explain how you would test your improvement.\u003c/p>\n\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\u003cdiv class=\"line\">\u003c/div>\n\u003ch2>Complete these tests when devices recover\u003c/h2>\n\u003cul class=\"checklist\">\n\u003cli>Open the HTML. Check the image and click the link to reach its destination.\u003c/li>\n\u003cli>Enter CSS in the CSS editor and compare styles on/off.\u003c/li>\n\u003cli>Check actual fonts, colours, line spacing and box spacing. Correct invalid declarations.\u003c/li>\n\u003cli>Try a narrow view and Tab navigation. Ask a partner to read the content.\u003c/li>\n\u003cli>Download JSON and HTML. Open the exported HTML independently and retest.\u003c/li>\n\u003c/ul>\n\u003cp class=\"footer\">Paper work shows understanding, prediction and design. Test actual display, usable links and file exports when devices recover.\u003c/p>\n\u003c/section>\n\u003c/body>\u003c/html>\n","print/teacher-key.en.html":"\u003c!doctype html>\n\u003chtml lang=\"en\">\u003chead>\u003cmeta charset=\"utf-8\">\u003cmeta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\u003cmeta name=\"referrer\" content=\"no-referrer\">\u003clink rel=\"icon\" href=\"data:,\">\u003ctitle>Portfolio Lab · Teacher answers and assessment guidance\u003c/title>\u003cstyle>*{box-sizing:border-box}body{font-family:Arial,\"PingFang HK\",\"Microsoft JhengHei\",sans-serif;color:#111;background:#e9eceb;margin:0;font-size:15px;line-height:1.55}h1{font-size:25px;margin:0 0 8px}h2{font-size:19px;margin:18px 0 8px}h3{font-size:16px;margin:12px 0 5px}p{margin:6px 0 12px}.toolbar{padding:16px 24px;background:#fff;display:flex;gap:20px;align-items:center;border-bottom:1px solid #999}.toolbar button{padding:9px 18px;background:#fff;border:1px solid #444;border-radius:4px;font:inherit;cursor:pointer}.toolbar a{color:#111}.sheet{width:210mm;min-height:287mm;padding:15mm 16mm;margin:20px auto;background:white}.sub{font-size:14px}.identity{display:flex;gap:30px;border:1px solid #333;padding:8px 12px;margin:15px 0}.line{height:27px;border-bottom:1px solid #999}.writing{border:1px solid #555;padding:9px 12px;margin:10px 0;min-height:125px}.writing.large{min-height:220px}.writing.medium{min-height:170px}.writing h3{margin:0 0 6px}pre{font-family:Consolas,Menlo,monospace;white-space:pre-wrap;font-size:13px;line-height:1.6;border:1px solid #444;padding:12px;margin:10px 0}code{font-family:Consolas,Menlo,monospace}table{width:100%;border-collapse:collapse;font-size:14px;margin:9px 0}th,td{border:1px solid #444;text-align:left;padding:8px;vertical-align:top}th{font-weight:bold}ul,ol{padding-left:23px;margin:8px 0}li{margin-bottom:6px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.footer{margin-top:17px;font-size:12px}.checklist{list-style:none;padding:0}.checklist li:before{content:\"□ \";font-size:17px}.box-model{border:1px dashed #444;padding:12px;text-align:center}.box-model>div{border:3px solid #333;padding:15px}.box-model>div>div{border:1px solid #555;padding:10px}.answer{border-left:2px solid #555;padding-left:12px;margin:10px 0}summary{font-weight:bold}@media(max-width:820px){.sheet{width:auto;min-height:0;margin:12px;padding:24px}.columns{grid-template-columns:1fr}.toolbar{flex-wrap:wrap}}@media print{@page{size:A4;margin:0}body{background:#fff;font-size:10pt;line-height:1.42}.toolbar{display:none}.sheet{margin:0;width:210mm;min-height:0;height:297mm;padding:12mm 15mm;break-after:page;overflow:visible}.sheet:last-child{break-after:auto}h1{font-size:18pt}h2{font-size:13pt;margin-top:14px}h3{font-size:11pt}pre{font-size:9pt;line-height:1.5;padding:9px}table{font-size:9.5pt}th,td{padding:6px}.writing.large{min-height:180px}.writing.medium{min-height:125px}.writing{min-height:110px}.line{height:24px}.footer{font-size:8.5pt}.identity{margin:10px 0}.columns{display:grid;grid-template-columns:1fr 1fr}}\n\n@media print{.box-model{padding:8px}.box-model>div{padding:8px}.box-model>div>div{padding:6px}pre{line-height:1.4}h2{margin-top:12px}}\n\n@media print{html[lang=en] body{font-size:10pt;line-height:1.42}html[lang=en] h1{font-size:17pt}html[lang=en] .sub{font-size:10pt}html[lang=en] .footer{font-size:8.5pt}html[lang=en] table{font-size:9.5pt}}\n\n@media print{.recap-sheet h2{margin-top:8px}.recap-sheet p{margin-bottom:10px}.recap-sheet pre{padding:6px;margin:7px 0}.recap-sheet .recap-questions li{margin-bottom:3px}.recap-sheet .line{height:18px}.recap-sheet .box-model,.recap-sheet .box-model>div,.recap-sheet .box-model>div>div{padding:4px}.recap-sheet .footer{margin-top:10px}}\n\n.qlines{padding-left:22px;margin:6px 0 4px}.qlines li{margin-bottom:4px}.qlines .line{height:25px}.writing.sketch{min-height:95px}.writing.draft{min-height:205px}@media print{.qlines .line{height:21px}.qlines li{margin-bottom:2px}.writing.sketch{min-height:72px}.writing.draft{min-height:160px}.tight h2{margin-top:9px}.tight p{margin-bottom:8px}.tight pre{padding:7px;margin:7px 0}.tight .footer{margin-top:10px}}\n\u003c/style>\u003c/head>\u003cbody>\n\u003cnav class=\"toolbar\" aria-label=\"Teacher answer tools\">\u003cbutton type=\"button\" onclick=\"window.print()\">Print / Save as PDF\u003c/button>\u003cspan>For formative assessment. Students can access this page.\u003c/span>\u003c/nav>\n\u003csection class=\"sheet\">\n\u003ch1>Teacher answers · Lesson 1 HTML\u003c/h1>\u003cp class=\"sub\">Page 1 / 2 · Accept other reasonable explanations.\u003c/p>\n\u003ch2>Diagnostic questions and tag matching\u003c/h2>\n\u003col>\u003cli>A heading identifies the topic of a page or section and helps readers understand its structure.\u003c/li>\u003cli>A hyperlink.\u003c/li>\u003cli>Image rights, permission, copyright or privacy. Students can use an alias and a fictional profile.\u003c/li>\u003c/ol>\n\u003cp>These answers stay on each student's screen or paper. Read them while circulating and take a show of hands, including \"Which HTML tags do you remember from the Compulsory Part?\" Use the result to adjust the demonstration.\u003c/p>\n\u003cp>Matching: h1 → D main heading; p → C paragraph; img → A image; a → B hyperlink.\u003c/p>\n\u003ch2>Debugging example\u003c/h2>\n\u003cpre>&lt;h1&gt;My Portfolio&lt;/h1&gt;\n&lt;p&gt;I enjoy photography.&lt;/p&gt;\n&lt;img src=\"mountain.svg\" alt=\"Mountain ridges and sunrise\"&gt;\n&lt;a href=\"#projects\"&gt;My Projects&lt;/a&gt;\n&lt;section id=\"projects\"&gt;&lt;h2&gt;My Projects&lt;/h2&gt;&lt;/section&gt;\u003c/pre>\n\u003cp>The target problems are a missing &lt;/h1&gt; and missing alt for a content image. Accept other specific, appropriate descriptions. A decorative image may use empty alt, but this task explicitly uses a content image.\u003c/p>\n\u003ch2>Optional HTML self-check after class\u003c/h2>\n\u003cp>Only after the HTML activities: 1. h1. 2. href. 3. Correct the path, then check alt. 4. An alias, interests and permitted materials.\u003c/p>\n\u003ch2>Exit Ticket guidance\u003c/h2>\n\u003cp>Students download the learning record and submit it with the exported HTML through the school's usual channel. Read these before Lesson 2.\u003c/p>\n\u003ctable>\u003cthead>\u003ctr>\u003cth>Prompt\u003c/th>\u003cth>Evidence of achievement\u003c/th>\u003cth>Follow-up\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\n\u003ctr>\u003ctd>Explain two elements\u003c/td>\u003ctd>For example: h1 identifies the main topic; p groups an introduction; img embeds an image; a creates a link. Each explanation is reasonable.\u003c/td>\u003ctd>Move beyond \"larger text\" to topic and structure.\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>Repair a\u003c/td>\u003ctd>Add href, for example &lt;a href=\"#projects\"&gt;My Projects&lt;/a&gt;, with an id=\"projects\" target.\u003c/td>\u003ctd>Compare src and href, then retry.\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>Debug and transfer\u003c/td>\u003ctd>Identify an actual error, its fix and a preview or click test. Propose a readability improvement for CSS (this last part may become the post-lesson task if time is short).\u003c/td>\u003ctd>If the answer is only \"fixed it\", request a specific demonstration.\u003c/td>\u003c/tr>\n\u003c/tbody>\u003c/table>\n\u003ch2>Portfolio draft criteria\u003c/h2>\n\u003cp>Record \"achieved / needs revision\" for: a clear heading and introduction, a loaded image, appropriate alt, a useful link, basic source structure, an independently opened export, suitable materials and an explained choice. The teacher judges open responses and content quality. Do not turn the automatic check count into a final grade.\u003c/p>\n\u003cp class=\"footer\">Use oral questions covering all four elements to check that students can explain at least three. Completing a template does not prove independent understanding. Follow paper work with browser testing.\u003c/p>\n\u003c/section>\n\u003csection class=\"sheet\">\n\u003ch1>Teacher answers · Lesson 2 CSS\u003c/h1>\u003cp class=\"sub\">Page 2 / 2\u003c/p>\n\u003ch2>Before class · Lesson 1 HTML recap\u003c/h2>\n\u003cp>Answers: 1 A (h1/p); 2 B (src gives the source, alt a text alternative); 3 C (href=\"#projects\" matches the id); 4 B (close h1 before p). This reviews Lesson 1, not CSS. Answer independently for five minutes, then review errors and test the draft at minutes 5–8.\u003c/p>\n\u003ch2>Rules, prediction and debugging\u003c/h2>\n\u003cp>h1 is the selector; color is the property; #17634b is the value. The final paragraph colour is #17634b because, under equal conditions with the same selector, the later declaration wins. Add a colon after color and a semicolon after the colour code.\u003c/p>\n\u003cpre>h1 { color: #17634b; font-size: 28px; }\nsection { padding: 20px; margin-top: 24px;\n  border: 1px solid #c7d6ce; }\u003c/pre>\n\u003cp>padding is the space inside the border; margin is the space outside it. Check CSS values and complete declarations in a browser.\u003c/p>\n\u003ch2>Optional CSS self-check after class\u003c/h2>\n\u003cp>Only after the CSS activities: 1. Selector. 2. padding. 3. The later rule when origin, importance, layer and specificity are equal. 4. Sufficient contrast, line spacing and underlines.\u003c/p>\n\u003ch2>Exit Ticket guidance\u003c/h2>\n\u003ctable>\u003cthead>\u003ctr>\u003cth>Prompt\u003c/th>\u003cth>Evidence of achievement\u003c/th>\u003cth>Follow-up\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\n\u003ctr>\u003ctd>HTML and CSS\u003c/td>\u003ctd>HTML describes content structure; CSS controls presentation. The same HTML can receive different styles.\u003c/td>\u003ctd>Toggle CSS and check that the content remains.\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>Paragraph colour\u003c/td>\u003ctd>For example, p { color: #243b35; }. Correctly identify p, color and #243b35.\u003c/td>\u003ctd>Change a property or value and explain its effect.\u003c/td>\u003c/tr>\n\u003ctr>\u003ctd>Box model and testing\u003c/td>\u003ctd>Distinguish inner and outer spacing; identify an improvement and a preview, narrow-view or peer reading test.\u003c/td>\u003ctd>Label a paper box model, then change it in a browser.\u003c/td>\u003c/tr>\n\u003c/tbody>\u003c/table>\n\u003ch2>Observe more than a score\u003c/h2>\n\u003cp>The lab samples body and h1 contrast, font size, line height, section spacing and link underlining. It does not assess every background, nested area or meaning. Add keyboard, narrow-view and actual reading tests.\u003c/p>\n\u003ch2>Deciding the next teaching step\u003c/h2>\n\u003cp>If students can copy a template but cannot explain it, predict the effect of a new rule next lesson. Revisit padding and margin with the box diagram if needed. If file handling is the main barrier, practise backup and import first so students can keep their work.\u003c/p>\n\u003cp class=\"footer\">Paper work assesses concepts and design. Browser display, images, links and exports must be tested when devices recover.\u003c/p>\n\u003c/section>\u003c/body>\u003c/html>\n","starter.html":"\u003c!doctype html>\n\u003chtml lang=\"zh-HK\">\n\u003chead>\u003clink rel=\"icon\" href=\"data:,\">\n  \u003cmeta charset=\"utf-8\">\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  \u003ctitle>我的 Portfolio\u003c/title>\n\u003c/head>\n\u003cbody>\n  \u003c!-- 以別名或虛構角色創作；不用寫電話、地址或真實姓名。 -->\n  \u003ch1>請填上你的 Portfolio 標題\u003c/h1>\n  \u003cp>請填上兩句介紹，例如興趣和想學會的技能。\u003c/p>\n  \u003cimg src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iMjgwIiB2aWV3Qm94PSIwIDAgNjQwIDI4MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSLlsbHohIroiIfml6Xlh7rnmoTnt7Tnv5Lmj5LlnJYiPjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iMjgwIiBmaWxsPSIjZWVmM2Y0Ii8+PGNpcmNsZSBjeD0iNDkxIiBjeT0iNzUiIHI9IjMxIiBmaWxsPSIjZDNkZmRmIi8+PHBhdGggZD0ibTAgMjM1IDE1NS0xNDEgMTM2IDk3IDEyMy03NyAxMTIgOTcgNTUtMjUgNTkgMzV2NTlIMFoiIGZpbGw9IiNiOGM5YzkiLz48cGF0aCBkPSJtMCAyNjAgMTMzLTc5IDE0NiA3MyAxMzMtNjYgMTM5IDYwIDg5LTM1djY3SDBaIiBmaWxsPSIjOTBhZWFhIi8+PC9zdmc+Cg==\" alt=\"\" width=\"320\">\n  \u003c!-- 任務：替圖片寫描述，再讓以下連結前往 #projects。 -->\n  \u003cp>\u003ca>看看我的作品\u003c/a>\u003c/p>\n  \u003csection id=\"projects\">\n    \u003ch2>我的作品\u003c/h2>\n    \u003cp>這是我第一個網頁作品。\u003c/p>\n  \u003c/section>\n\u003c/body>\n\u003c/html>","starter.en.html":"\u003c!doctype html>\n\u003chtml lang=\"en\">\n\u003chead>\u003clink rel=\"icon\" href=\"data:,\">\n  \u003cmeta charset=\"utf-8\">\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  \u003ctitle>My Portfolio\u003c/title>\n\u003c/head>\n\u003cbody>\n  \u003c!-- Use an alias or fictional character. Do not include phone numbers or home addresses. -->\n  \u003ch1>Add your portfolio title\u003c/h1>\n  \u003cp>Write two sentences about your interests and a skill you want to learn.\u003c/p>\n  \u003cimg src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iMjgwIiB2aWV3Qm94PSIwIDAgNjQwIDI4MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSLlsbHohIroiIfml6Xlh7rnmoTnt7Tnv5Lmj5LlnJYiPjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iMjgwIiBmaWxsPSIjZWVmM2Y0Ii8+PGNpcmNsZSBjeD0iNDkxIiBjeT0iNzUiIHI9IjMxIiBmaWxsPSIjZDNkZmRmIi8+PHBhdGggZD0ibTAgMjM1IDE1NS0xNDEgMTM2IDk3IDEyMy03NyAxMTIgOTcgNTUtMjUgNTkgMzV2NTlIMFoiIGZpbGw9IiNiOGM5YzkiLz48cGF0aCBkPSJtMCAyNjAgMTMzLTc5IDE0NiA3MyAxMzMtNjYgMTM5IDYwIDg5LTM1djY3SDBaIiBmaWxsPSIjOTBhZWFhIi8+PC9zdmc+Cg==\" alt=\"\" width=\"320\">\n  \u003c!-- Task: describe the image, then link the text below to #projects. -->\n  \u003cp>\u003ca>View my projects\u003c/a>\u003c/p>\n  \u003csection id=\"projects\">\n    \u003ch2>My projects\u003c/h2>\n    \u003cp>This is my first web page.\u003c/p>\n  \u003c/section>\n\u003c/body>\n\u003c/html>"};
+(function () {
+  "use strict";
+  const KEY="portfolio-lab.locale";
+  let locale="zh";
+  try {
+    const query=new URLSearchParams(location.search).get("lang");
+    const saved=localStorage.getItem(KEY);
+    locale=query==="en"||query==="zh"?query:saved==="en"?"en":"zh";
+  } catch(e) {
+    try{locale=new URLSearchParams(location.search).get("lang")==="en"?"en":"zh";}catch(ignore){}
+  }
+  const missing=new Set();
+  const content=()=>locale==="en"?window.LabContentEN:window.LabContent;
+  function t(key){
+    if(locale!=="en"||typeof key!=="string")return key;
+    if(Object.hasOwn(window.LabMessagesEN||{},key))return window.LabMessagesEN[key];
+    if(/\p{Script=Han}/u.test(key))missing.add(key);
+    return key;
+  }
+  function setLocale(value){
+    if(!["zh","en"].includes(value))return;
+    locale=value;
+    try{localStorage.setItem(KEY,value);}catch(e){}
+    // Keep explicit language links/bookmarks in sync without changing the lesson route.
+    try{
+      const url=new URL(location.href);url.searchParams.set("lang",value);
+      history.replaceState(null,"",url);
+    }catch(e){}
+  }
+  function resource(path){
+    if(locale!=="en")return path;
+    return {"print/worksheet.html":"print/worksheet.en.html","print/teacher-key.html":"print/teacher-key.en.html","starter.html":"starter.en.html"}[path]||path;
+  }
+  function syncUntouched(project){
+    const active=content(),other=locale==="en"?window.LabContent:window.LabContentEN;
+    if(!active||!other)return;
+    if(project.build.html===other.starter&&project.build.css===other.starterCSS)
+      project.build={html:active.starter,css:active.starterCSS};
+    for(const lesson of [1,2])project.practice[lesson].forEach((s,i)=>{
+      const old=other.tasks[lesson][i],next=active.tasks[lesson][i];
+      if(s.html===old.html&&s.css===old.css)project.practice[lesson][i]={html:next.html,css:next.css};
+    });
+  }
+  window.LabI18n={
+    KEY,t,content,setLocale,resource,syncUntouched,
+    get locale(){return locale;},
+    get languageTag(){return locale==="en"?"en":"zh-HK";},
+    get dateLocale(){return locale==="en"?"en-HK":"zh-HK";},
+    missing
+  };
+})();
+
+/* English UI translations. Student code and responses are never passed through this dictionary. */
+window.LabMessagesEN={
+  "作品只留在這個瀏覽器；請另存備份。": "Your work stays in this browser. Download a separate backup.",
+  "Learn 理解": "Learn",
+  "Practice 練習": "Practice",
+  "Build 創作": "Build",
+  "小測與 Exit Ticket": "Quiz & Exit Ticket",
+  "課堂教材": "Classroom materials",
+  "教師及備用資源": "Teacher and backup resources",
+  "教師指引": "Teacher guide",
+  "備用工作紙": "Worksheets",
+  "課程導航": "Course navigation",
+  "課程": "Lessons",
+  "01 HTML 結構": "01 HTML structure",
+  "02 CSS 樣式": "02 CSS styling",
+  "學習階段": "Learning stages",
+  "作品與離線": "Work & offline",
+  "中五 ICT\nWeb Application Development": "Form 5 ICT\nWeb Application Development",
+  "讓內容，成為網頁。": "Turn content into a web page.",
+  "讓樣式，幫助閱讀。": "Make your page easier to read.",
+  "認識 HTML 的結構，建立你的第一個 Portfolio。": "Explore HTML structure and build your first portfolio.",
+  "延續你的 HTML 草稿，用 CSS 整理顏色、字體與留白。": "Continue your HTML draft and use CSS to organise colour, typography and spacing.",
+  " · 70 分鐘": " · 70 minutes",
+  "以別名和授權素材創作。學習內容為 HTML 與 CSS；JavaScript 由教材內部使用。": "Create with an alias and permitted materials. You learn HTML and CSS; JavaScript runs the teaching tool.",
+  "可選擇的 HTML 源碼": "Selectable HTML source",
+  "可選擇的網頁元素": "Selectable page elements",
+  "Alex 的 Portfolio": "Alex's Portfolio",
+  "我喜歡攝影，也正在學習網頁設計。": "I enjoy photography and I am learning web design.",
+  "山脊與日出的練習插圖": "A practice illustration of mountain ridges and sunrise",
+  "看看我的作品": "View my projects",
+  "選擇 ": "Select ",
+  "查看 ": "View ",
+  " 源碼": " source",
+  "解釋 ": "Explain ",
+  "想一想：": "Think about it: ",
+  "網頁呈現": "Rendered page",
+  "HTML 源碼": "HTML source",
+  "選擇左邊的元素，看看右邊的源碼。": "Select an element on the left and find its source on the right.",
+  "下一步：Practice": "Next: Practice",
+  "先看整份 HTML": "Start with the whole HTML document",
+  "HTML 描述內容的結構。元素通常有開始標籤、內容及結束標籤；屬性在開始標籤內提供額外資料。": "HTML describes the structure of content. An element usually has a start tag, content and an end tag. Attributes provide extra information inside the start tag.",
+  "<!doctype html>\n<html lang=\"zh-HK\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Alex 的 Portfolio</title>\n</head>\n<body>\n  <h1>Alex 的 Portfolio</h1>\n  <p>我喜歡攝影。</p>\n</body>\n</html>": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Alex's Portfolio</title>\n</head>\n<body>\n  <h1>Alex's Portfolio</h1>\n  <p>I enjoy photography.</p>\n</body>\n</html>",
+  " 宣告使用 HTML 文件。": " declares an HTML document.",
+  " 放文件資料；": " contains document information; ",
+  " 顯示於瀏覽器分頁。": " appears in the browser tab.",
+  " 放讀者看到的內容。": " contains the content readers see.",
+  " 指定語言；UTF-8 幫助正確顯示中文。": " declares the language; UTF-8 helps display text correctly, including Chinese.",
+  "以圖片為例：src 是路徑，alt 是替代文字。檔名大小寫要相同。教材已提供 mountain.svg；自選圖片可在 Build 加入。": "For an image, src is the source path and alt is the text alternative. Match the filename and its letter case. This lab includes mountain.svg; add your own images in Build.",
+  "標籤要正確巢狀，例如 <p><a href=\"#projects\">作品</a></p>。瀏覽器可能自動修補錯誤，因此「看得到」不一定代表源碼正確。": "Nest tags correctly, for example <p><a href=\"#projects\">Projects</a></p>. Browsers may repair mistakes automatically, so a visible page does not always mean correct source code.",
+  "課堂開始：哪一份較清楚？": "Start a discussion: which portfolio is clearer?",
+  "攝影、關於我、我的作品、下一頁": "Photography, about me, my projects, next page",
+  "歡迎！這裡有很多東西。": "Welcome! There are lots of things here. ",
+  "Alex 的攝影 Portfolio": "Alex's Photography Portfolio",
+  "我用照片記錄校園生活。": "I use photos to record school life.",
+  "查看校園攝影作品": "View my school photography",
+  "兩人討論一分鐘：哪一份較容易明白？留意主題、內容次序與連結文字。第一課先建立清楚的結構，下一課再用 CSS 設計樣式。": "Discuss with a partner for one minute: which one is easier to understand? Look at the topic, content order and link text. Lesson 1 focuses on clear structure; Lesson 2 adds CSS presentation.",
+  "CSS 有無樣式對照": "CSS styles on/off comparison",
+  "目前：有 CSS": "Styles: on",
+  "目前：沒有 CSS": "Styles: off",
+  "同一份內容，不同的閱讀體驗。": "The same content, a different reading experience.",
+  "切換 CSS，觀察標題、段落與作品區的改變。": "Toggle CSS and observe the heading, paragraphs and project section.",
+  "CSS 源碼": "CSS source",
+  "選擇器、屬性、值": "Selectors, properties and values",
+  "h1 {\n  color: #17634b;\n}\n\n/* h1：選擇器；color：屬性；#17634b：值 */": "h1 {\n  color: #17634b;\n}\n\n/* h1: selector; color: property; #17634b: value */",
+  "h1 選取所有 h1 元素；.intro 選取 class=\"intro\" 的元素；#projects 選取 id=\"projects\" 的元素。每項宣告用冒號連接屬性和值，以分號結束。": "h1 selects h1 elements; .intro selects class=\"intro\"; #projects selects id=\"projects\". A colon separates each property from its value, and a semicolon ends the declaration.",
+  "這兩課在獨立 CSS 編輯欄寫樣式。匯出時教材會把 CSS 放入 HTML 的 head 內 style 元素；多頁網站也可用共同的外部 styles.css 保持一致。": "In this lab, write styles in the separate CSS editor. On export, the lab places them in a style element inside head. A multi-page site can share an external styles.css file for a consistent appearance.",
+  "常用屬性": "Common properties",
+  "color：文字顏色；background-color：背景顏色。": "color: text colour; background-color: background colour.",
+  "font-family：字型；font-size：大小；line-height：行高。": "font-family: typeface; font-size: text size; line-height: line spacing.",
+  "padding：內容到邊框的內距。": "padding: space between the content and its border.",
+  "border：邊框；margin：邊框以外的外距。": "border: the border itself; margin: space outside the border.",
+  "先預測，再試改": "Predict, then try",
+  "同樣條件下，相同選擇器後出現的宣告會覆蓋前面的。一般的 id 選擇器比 class 更具優先度，class 又比元素選擇器高；繼承的樣式可被元素自己的規則取代。": "Under equal conditions, the later declaration with the same selector wins. In ordinary cases, an id selector has higher specificity than a class, and a class has higher specificity than an element selector. A rule on an element can override an inherited style.",
+  "p { color: #333333; }\np { color: #17634b; }\n/* 段落最後是甚麼顏色？改一次再確認。 */": "p { color: #333333; }\np { color: #17634b; }\n/* What colour will the paragraph be? Change a value and test. */",
+  "第二課成功準則": "Lesson 2 success criteria",
+  "保留第一課的清楚結構，運用一致的字體、顏色、背景與留白改善可讀性。能解釋一條 CSS 規則，並用實際預覽驗證改動。": "Keep the clear HTML structure. Improve readability with consistent typography, colour, backgrounds and spacing. Explain one CSS rule and use the preview to test your change.",
+  "延伸挑戰：為一組段落加入 class=\"intro\"，只選取這組內容；或把相同 CSS 套用到第二個網頁，檢查兩頁是否一致。": "Extension: give a group of paragraphs class=\"intro\" and select only that group, or apply the same CSS to a second page and check consistency.",
+  "我的 Portfolio 即時預覽": "My portfolio live preview",
+  "練習即時預覽": "Practice live preview",
+  "HTML 代碼": "HTML code",
+  "CSS 代碼": "CSS code",
+  "已有修改，請重新檢查。": "Your code has changed. Run the checks again.",
+  "修改後自動更新；Ctrl／⌘ + Enter 可立即更新。": "Updates automatically after editing. Ctrl / Command + Enter updates immediately.",
+  "不支援的元素、內嵌樣式或屬性已略去；CSS 請用 CSS 欄。": "Unsupported elements, inline styles or attributes were omitted. Put CSS in the CSS editor.",
+  "有圖片來源未找到，請核對檔名或加入圖片。": "An image source was not found. Check the filename or add the image.",
+  "CSS 包含外部載入指令，已暫停套用。": "CSS containing external loading instructions was not applied.",
+  "預覽尚未準備好，請再按一次檢查。": "The preview is not ready yet. Try the check again.",
+  "未能檢查預覽。請更新預覽後再試。": "The preview could not be checked. Update it and try again.",
+  "通過": "Pass",
+  "待改": "To improve",
+  " 項通過。": " checks passed. ",
+  "再用預覽和同伴回饋確認品質。": "Confirm the quality with the preview and peer feedback.",
+  "按「待改」說明修改，再重新檢查。": "Use the 'To improve' guidance, edit your code and check again.",
+  "窄畫面 360px": "Narrow view: 360px",
+  "回到完整寬度": "Full-width view",
+  "客觀檢查": "Objective checks",
+  "檢查這份作品": "Check this work",
+  "檢查會讀取源碼及預覽的實際樣式。外部網址的可達性、內容品質與完整可及性須人工確認。": "Checks inspect source code and actual preview styles. External link availability, content quality and full accessibility require human review.",
+  "代碼編輯": "Code editor",
+  "即時預覽": "Live preview",
+  "更新預覽": "Update preview",
+  "保存到本機": "Save in this browser",
+  "需要一點提示？": "Need a hint?",
+  "先自己試，再選擇下一層：方向 → 結構 → 例子。": "Try first, then reveal hints: direction, structure, example.",
+  "提示 1：給我方向": "Hint 1: A direction",
+  "方向": "Direction",
+  "結構": "Structure",
+  "參考例子": "Example",
+  "提示 ": "Hint ",
+  "給我方向": "A direction",
+  "看看結構": "Show the structure",
+  "已顯示全部提示": "All hints shown",
+  "重設這一題": "Reset this task",
+  "將清除這一題的修改。Portfolio 作品不受影響。": "This will remove edits to this task. Your portfolio will stay as it is.",
+  "確認重設": "Confirm reset",
+  "取消": "Cancel",
+  "Practice · 小步練習": "Practice · One step at a time",
+  "三個任務，每個約 4 分鐘。": "Three tasks, about 4 minutes each.",
+  "三個任務，每個約 5 分鐘。": "Three tasks, about 5 minutes each.",
+  "練習任務": "Practice tasks",
+  "下一步：Build": "Next: Build",
+  "下一個任務": "Next task",
+  "請選擇 1.5 MB 以下的 PNG、JPEG 或 WebP。": "Choose a PNG, JPEG or WebP file no larger than 1.5 MB.",
+  "最多加入六張圖片。可沿用已加入的檔案。": "You can add up to six images. You can continue using files already added.",
+  "已加入 ": "Added ",
+  "。把 img 的 src 改成這個檔名。圖片只存在本機和你的匯出檔案內。": ". Set the image's src to this filename. The image stays on this device and in your exported files.",
+  "圖片素材": "Image materials",
+  "可直接使用 mountain.svg（本教材原創練習圖）。也可加入你有權使用的圖片；請避免可辨識同學、住址或其他敏感資料。": "Use mountain.svg, the lab's original practice illustration, or add images you have permission to use. Avoid identifiable classmates, home addresses or other sensitive details.",
+  "加入本機圖片（最多六張，每張 1.5 MB）": "Add a local image (up to six, 1.5 MB each)",
+  "已加入：": "Added images: ",
+  "目前使用內置山景圖。": "Using the built-in mountain illustration.",
+  "Build · 我的 Portfolio": "Build · My Portfolio",
+  "18 分鐘完成 HTML 草稿；先把內容與結構做好。": "Create an HTML draft in 18 minutes. Focus on content and structure first.",
+  "延續第一課同一份 HTML，加入 CSS 令內容更清楚。": "Continue the same HTML from Lesson 1 and use CSS to make it clearer.",
+  "最少成果": "Minimum outcome",
+  "一個主標題、一段介紹、一張有替代文字的內容圖、一條可用連結；保存並匯出。可用別名或虛構角色。": "One main heading, an introduction, a content image with alternative text and a working link. Save and export. An alias or fictional character is welcome.",
+  "保留 HTML 元素；加入主題顏色、可讀文字、背景與留白。解釋一條 CSS 規則，並重新測試圖片與連結。": "Keep the HTML elements. Add a heading colour, readable text, a background and spacing. Explain one CSS rule and retest images and links.",
+  "下載可編輯備份": "Download editable backup",
+  "匯出 HTML 作品": "Export HTML",
+  "保存與離線說明": "Saving & offline help",
+  "備份可跨電腦繼續編輯。匯出 HTML 內含圖片與 CSS，可直接開啟；教學預覽會阻止外部圖片與外部網站連結。": "Use a backup to continue on another computer. The exported HTML includes images and CSS and opens independently. The teaching preview blocks external images and external website links.",
+  "自己測一次，再讓伙伴看": "Test it yourself, then ask a partner",
+  "在預覽點「看看我的作品」，確認跳到對應區域；圖片應正常顯示。": "Click the project link in the preview and check that it reaches the intended section. Make sure the image displays.",
+  "切至 360px 窄畫面，留意字、圖片與連結；用 Tab 尋找連結。": "Switch to the 360px view. Check text, images and links, then use Tab to reach the link.",
+  "下載 HTML 並開啟，確認離開教材後仍能顯示圖片和樣式。": "Download and open the HTML to check that images and styles work outside the lab.",
+  "想一想：alt 描述了甚麼？文字和圖片是否適合公開？外部連結若有使用，須另行點測。": "Ask yourself: what does alt describe? Is the content suitable to share? Test any external links separately.",
+  "完成得較快？": "Finished early?",
+  "加入興趣清單 ul / li，或第二個 h2 內容區。先保存草稿，CSS 留到第二課。": "Add an interests list using ul / li, or a second h2 section. Save your draft first; CSS comes in Lesson 2.",
+  "用 class 選取一組內容；加入 img { max-width: 100%; height: auto; }。試把同一套 CSS 套用到第二頁，說明一致樣式的好處。": "Select a group using class. Add img { max-width: 100%; height: auto; }. Try sharing the CSS with a second page and explain the benefit of consistent styling.",
+  "前往小測與 Exit Ticket": "Go to Quiz & Exit Ticket",
+  "同伴回饋 · 每人約 3 分鐘": "Peer feedback · About 3 minutes each",
+  "一個優點與一項具體改善建議": "One strength and one specific improvement",
+  "創作者解釋了哪個 HTML 元素／CSS 規則？": "Which HTML element or CSS rule did the creator explain?",
+  "圖片、連結和窄畫面測試的結果": "Results of the image, link and narrow-view tests",
+  "不用記錄伙伴真實姓名。先說出觀察和原因，再提出可行的修改。": "Do not record your partner's real name. Describe what you noticed and why, then suggest a practical change.",
+  "課前診斷 · 5 分鐘": "Diagnostic questions · 5 minutes",
+  "不計分；用來決定需要先重溫甚麼。": "Not graded. Use these answers to decide what to review first.",
+  " 小測": " quiz",
+  "檢查小測": "Check quiz",
+  "還有 ": "There are ",
+  " 題未作答。請先完成全部題目。": " unanswered questions. Answer every question first.",
+  " 題正確。": " correct.",
+  "正確。": "Correct. ",
+  "再想想。正確答案：": "Try again. The correct answer is: ",
+  "答案只存在這個瀏覽器；不會自動傳送給教師。": "Answers stay in this browser and are not automatically sent to the teacher.",
+  "個人 Exit Ticket · 最後 4–5 分鐘": "Individual Exit Ticket · Final 4–5 minutes",
+  "請獨立作答。開放題由教師評閱，不會用關鍵字自動給分。": "Answer independently. Your teacher reviews open responses; they are not marked automatically using keywords.",
+  "保存回答": "Save answers",
+  "下載學習紀錄": "Download learning record",
+  "依教師指示把學習紀錄或備份交到學校指定位置；本教材沒有提交或班級統計服務。": "Submit your record or backup through your school's usual method as instructed. This lab has no submission or class analytics service.",
+  "Portfolio Lab · 學習紀錄": "Portfolio Lab · Learning record",
+  "診斷": "Diagnostic questions",
+  "（未填）": "(not completed)",
+  "小測": "Quiz",
+  "（未答）": "(not answered)",
+  "同伴回饋": "Peer feedback",
+  "中五 ICT · Web Application Development。兩課各 70 分鐘，先建結構，再改善閱讀。": "Form 5 ICT · Web Application Development. Two 70-minute lessons: establish structure, then improve readability.",
+  "打印教師指引": "Print teacher guide",
+  "開啟學生工作紙": "Open student worksheets",
+  "教師答案及評閱準則": "Teacher answers & assessment guidance",
+  "教師指引目錄": "Teacher guide contents",
+  "目標": "Goals",
+  "第一課": "Lesson 1",
+  "第二課": "Lesson 2",
+  "評估": "Assessment",
+  "故障備案": "Contingency plan",
+  "教綱與來源": "Curriculum & sources",
+  "課前準備與成功準則": "Preparation and success criteria",
+  "學生具備一般瀏覽和檔案操作能力，並已在必修部分單元 C(c) Elementary Web Authoring 認識基本 HTML 結構，但不必背誦 HTML 代碼，多數未曾親手編寫；本課由辨認推進到編寫。一人一機及教師投影。可用繁體中文介紹，保留英文標籤和術語。": "Students have basic browsing and file skills. In Compulsory Part Module C(c), Elementary Web Authoring, they learned to recognise the basic constructs of HTML but were not required to memorise HTML codes, and most have not written HTML by hand. This lesson moves them from recognising HTML to writing it. Plan one device per student and a teacher display. Choose the Chinese or English interface while retaining the HTML/CSS terms.",
+  "課前預先下載離線單檔或整個教材資料夾；每部電腦試開、試保存及匯出。打印工作紙與答案。": "Download the standalone lab or full folder before class. Test opening, saving and exporting on each computer. Print worksheets and answers.",
+  "準備一份教師樣本。學生可預備短介紹與授權圖片；未準備者用虛構角色及 mountain.svg。": "Prepare a teacher example. Students may bring a short introduction and permitted image; otherwise use a fictional character and mountain.svg.",
+  "第一課：口頭提問中解釋 h1、p、img、a 至少三項；建立四元素草稿；修正一個錯誤並說明測試方法；給一項具體回饋。": "Lesson 1: explain at least three of h1, p, img and a in oral questioning; create the four-element draft; fix one error and explain the test; give one specific suggestion.",
+  "第二課：解釋選擇器、屬性和值；在同一草稿加入顏色、字體、背景與盒模型；以預覽和同伴測試說明閱讀改善。": "Lesson 2: explain selector, property and value; add colour, typography, a background and box-model spacing to the same draft; explain readability improvements using preview and peer tests.",
+  "第一課的 Build 只有 18 分鐘。優先讓學生完成標題和段落，再加內置圖與 #projects 連結。快完成者才加清單或第二個內容區。": "Lesson 1 allows only 18 minutes for Build. Prioritise the heading and paragraph, then the built-in image and #projects link. Add a list or second section only when the minimum draft is ready.",
+  "Lesson 1 · HTML（70 分鐘）": "Lesson 1 · HTML (70 minutes)",
+  "時間": "Time",
+  "階段": "Stage",
+  "教學與學生活動": "Teaching and learning activities",
+  "評估證據／教材": "Evidence / materials",
+  "Lesson 2 · CSS（70 分鐘）": "Lesson 2 · CSS (70 minutes)",
+  "學生第一課作品會自動延續；換電腦則先匯入備份。": "Students continue their Lesson 1 work; import a backup when changing computers.",
+  "評估與教學調整": "Assessment and teaching adjustments",
+  "工具": "Tool",
+  "觀察甚麼": "What to look for",
+  "下一步": "Next step",
+  "三題診斷": "Three diagnostic questions",
+  "標題、超連結、照片權利與私隱": "Headings, hyperlinks, image rights and privacy",
+  "答案只留在學生的瀏覽器：教師巡視時閱讀螢幕，並請全班舉手（包括「記得必修部分哪些 HTML 標籤」），按結果調整示範重點。若分不清內容和樣式，先用對比例子口頭說明。": "Answers stay in each student's browser, so read screens while circulating and take a show of hands (including which HTML tags students remember from the Compulsory Part). Adjust the demonstration to what you find. If content and styling are confused, explain the contrasting examples orally first.",
+  "常見標籤、路徑、href、有效 CSS": "Common tags, paths, href and valid CSS",
+  "讓學生先指出錯誤，再取下一層提示；不要直接代打。": "Ask students to identify the problem before taking another hint. Explain rather than typing for them.",
+  "源碼、即時預覽、獨立匯出檔": "Source, live preview and an independently opened export",
+  "自動檢查只作形成性回饋。教師另外檢視內容、圖片描述與實際功能。": "Automatic checks provide formative feedback. The teacher also reviews content, image descriptions and actual functionality.",
+  "能否解釋一項選擇，提出具體且尊重的建議": "An explained choice and a specific, respectful suggestion",
+  "要求「我看到…所以建議…」，避免只說好看。": "Use 'I noticed ... so I suggest ...' rather than a general comment about appearance.",
+  "獨立解釋與除錯，能否遷移到新例子": "Independent explanation, debugging and transfer to a new example",
+  "學生下載學習紀錄，連同匯出的 HTML 按學校慣常方式提交；教師在下一課前閱讀。若多名學生仍混淆 href/src 或選擇器，下一課先示範再讓學生重試。": "Students download their learning record and submit it with the exported HTML through the school's usual channel; read these before the next lesson. If several students still confuse href/src or selectors, model the idea again at the start of the next lesson and let them retry.",
+  "小測可自行重試；Exit Ticket 由教師閱卷。答案、口頭提問建議及簡短評閱準則見教師答案。可下載學習紀錄，由學生按學校既有方式提交。沒有線上收集服務。": "Students may retry the quiz; the teacher reviews Exit Tickets. The teacher answers include oral prompts and brief assessment guidance. Students can download a record and submit it through the school's usual method. There is no online collection service.",
+  "鷹架、分層與正面課堂管理": "Scaffolding, differentiation and positive classroom management",
+  "示範 → 元素對照 → 引導修改 → 半成品 → 獨立作品。三層提示由方向到例子；課堂規範是先按一次檢查，再取下一層提示。教材不會強制這個次序，教師巡視時留意學生取用提示的情況。": "Model, match elements to source, guide edits, use a starter, then create independently. Hints progress from direction to example. The classroom rule is to check your work first, then take one hint. The lab does not enforce this order, so watch hint use while circulating.",
+  "需要支援：提供標籤參考、內置素材和同伴口頭解釋；先達成最少成果。能力較高：加清單、第二區或 class 選擇器。": "Support: offer a tag reference, built-in materials and oral peer explanations. Meet the minimum outcome first. Extension: add lists, another section or a class selector.",
+  "建立「先看預覽 → 查提示 → 問伙伴 → 問老師」程序。投影當前步驟和剩餘時間；巡視時先處理無法開始的學生。": "Establish a routine: inspect the preview, check a hint, ask a partner, then ask the teacher. Display the current step and remaining time. Visit students who cannot get started first.",
+  "伙伴可以解釋，不替對方控制鍵盤。共用電腦時每 5 分鐘交換操作／檢查角色；兩人各自完成 Exit Ticket。": "Partners may explain without taking over the keyboard. When sharing a device, swap editing and checking roles every five minutes; each student completes an individual Exit Ticket.",
+  "針對具體進步給回饋；對離題操作先靠近和私下提醒，讓學生知道下一個可完成的小步驟。": "Give feedback on specific progress. For off-task behaviour, move closer and redirect privately where possible, identifying the next manageable step.",
+  "教學依據：Gagné 的教學事件用於導入、目標、回憶、示範、實作、回饋和遷移；鷹架把支援由示範逐步減少；形成性評估用於決定下一步。這些是教學設計理由，並非此網站已證實提升學習成績的研究結論。": "Rationale: Gagne's instructional events guide attention, goals, recall, modelling, practice, feedback and transfer. Scaffolding gradually reduces support, while formative assessment informs the next step. These are design rationales, not research evidence that this website has improved attainment.",
+  "三級故障備案": "Three-level contingency plan",
+  "情況": "Situation",
+  "可立即採取的安排": "Immediate arrangement",
+  "仍需補做": "Follow-up still needed",
+  "網絡或平台故障": "Network or platform failure",
+  "開啟預存的 offline.html；或整個資料夾的 index.html。也可用 starter.html 配合文字編輯器。": "Open the saved offline.html or the full folder's index.html. A text editor and starter.html are another option.",
+  "先確認備份檔在每部機上；首次未下載不能憑空離線。": "Check that files are already on each computer. A first visit cannot work offline without prior preparation.",
+  "部分電腦故障": "Some computers fail",
+  "兩人共用正常電腦，交換寫碼／檢查角色；不用登入或公開真實姓名。": "Share working computers and alternate editing and checking roles. No login or real name is required.",
+  "各自交 Exit Ticket，恢復後保存個別作品。": "Collect individual Exit Tickets and save separate work when devices recover.",
+  "全班電腦或供電故障": "All computers or power fail",
+  "派工作紙：標籤配對、除錯、紙上 Portfolio、同伴回饋。": "Distribute worksheets: match tags, debug code, draft a paper portfolio and give peer feedback.",
+  "紙上源碼不能證明瀏覽器呈現正確；設備恢復後補做圖片、連結、CSS 和匯出測試。": "Paper source cannot prove browser behaviour. Retest images, links, CSS and exports when devices recover.",
+  "進度落後": "Students fall behind",
+  "先保存最少成果；下一課開首補測。": "Save the minimum draft and finish testing at the start of the next lesson.",
+  "第一課不趕做 CSS。": "Keep CSS for Lesson 2.",
+  "紙本替代時間": "Paper alternative timing",
+  "活動": "Activity",
+  "診斷及情境導入": "Diagnostic questions and introduction",
+  "印刷範例與教師講解": "Printed example and teacher explanation",
+  "標籤配對": "Tag matching",
+  "除錯": "Debugging",
+  "紙上 Portfolio 草稿": "Paper portfolio draft",
+  "交換檢查及回饋": "Exchange drafts and give feedback",
+  "第二課全班設備故障：0–8 重溫 HTML、8–20 讀 CSS 規則、20–35 預測與除錯、35–55 在草稿加 CSS、55–65 同伴說明與回饋、65–70 Exit Ticket；之後必須補做瀏覽器測試。": "For a Lesson 2 class-wide failure: 0–8 review HTML; 8–20 read CSS rules; 20–35 predict and debug; 35–55 add CSS to the draft; 55–65 explain and review with a partner; 65–70 complete an Exit Ticket. Follow up with browser tests when devices recover.",
+  "教綱對照與來源": "Curriculum alignment and sources",
+  "主要對照：ICT Curriculum and Assessment Guide（2021），Elective B → b. Web Programming and Applications → i. Web authoring and publishing，印刷頁 45（PDF 第 55 頁）。本單元是 HTML／CSS 入門，並非整個選修單元的完整覆蓋。": "Main reference: ICT Curriculum and Assessment Guide (2021), Elective B, b. Web Programming and Applications, i. Web authoring and publishing, printed page 45 (PDF page 55). This is a two-lesson HTML/CSS introduction, not complete coverage of the elective.",
+  "教綱／評核依據": "Curriculum / assessment basis",
+  "網站落實": "Implementation in this lab",
+  "界線": "Scope",
+  "編輯 HTML 網頁": "Edit HTML web pages",
+  "文件結構、四種元素、X-Ray、除錯及 Portfolio 草稿": "Document structure, four elements, X-Ray, debugging and a portfolio draft",
+  "標籤參考可用；重點是理解及運用。": "Tag references are available. Focus on understanding and application.",
+  "以 CSS 保持網頁一致樣式": "Use CSS for a consistent appearance across pages",
+  "選擇器、顏色／背景／字體／留白；相同規則套用同類元素；延伸至第二頁": "Selectors, colour, background, typography and spacing; rules shared across similar elements; a second-page extension",
+  "兩課核心作品為單頁。跨頁共用外部 CSS 是延伸示例。": "The core outcome is a single page. Sharing an external stylesheet across pages is an extension example.",
+  "發布網頁內容": "Publish web content",
+  "教師部署及學生匯出時區分本機檔案與網上發布": "Distinguish local files from published sites during teacher deployment and student export",
+  "沒有要求學生公開發布；網域、託管、伺服器等不在本兩課授課範圍。": "Students need not publish publicly. Domains, hosting and servers are outside these two lessons.",
+  "教育局 ICT 課程與評估指引（2021）": "EDB ICT Curriculum and Assessment Guide (2021)",
+  "WHATWG HTML 標準": "WHATWG HTML Standard",
+  "W3C WCAG 對比指引": "W3C WCAG contrast guidance",
+  "教學網站及測試不能取代教師按學生程度調整步速。備份、作品和回答只留在學生裝置。": "The website and its tests do not replace teacher adjustments for the class. Backups, work and answers remain on students' devices.",
+  "備份超過 13.5 MB，無法讀取。": "The backup is larger than 13.5 MB and cannot be read.",
+  "準備匯入備份": "Ready to import a backup",
+  " 字元；CSS ": " characters; CSS ",
+  " 字元；": " characters; ",
+  " 張自選圖片。匯入會取代這個瀏覽器的作品與回答。": " custom images. Importing replaces this browser's project and answers.",
+  "備份現有並匯入": "Back up current work & import",
+  "未匯入：": "Not imported: ",
+  "準備此瀏覽器離線使用": "Prepare this browser for offline use",
+  "你正在完整離線教材內開啟。保留此檔案或整個資料夾，無須另作快取。": "You are using the complete offline lab. Keep this file or the full folder; no separate cache is needed.",
+  "此環境不支援離線快取。請下載單檔離線教材，或保留整個教材資料夾。": "Offline caching is unavailable here. Download the standalone lab or keep the full materials folder.",
+  "正在保存完整教材…": "Saving the complete lab...",
+  "未能啟用離線教材": "The offline lab could not be activated",
+  "準備逾時，請使用單檔離線教材。": "Preparation timed out. Use the standalone offline file.",
+  "教材快取未齊備。": "The materials cache is incomplete.",
+  "完整教材已備妥。請先重新載入一次，再關閉網絡測試；作品備份仍須另外下載。": "The complete lab is ready. Reload once, then disconnect and test. Download a separate backup of your work too.",
+  "未能準備離線快取：": "Could not prepare offline caching: ",
+  " 你仍可下載單檔教材。": " You can still download the standalone lab.",
+  "先保存作品，再準備課堂的備用方式。": "Save your work, then prepare the classroom backup options.",
+  "作品保存與帶走": "Save and take your work with you",
+  "修改後約 0.6 秒自動保存在目前瀏覽器。清除瀏覽資料、私人瀏覽或更換網址／裝置可能失去記錄。備份檔可在其他裝置匯入。": "Edits are saved in this browser after about 0.6 seconds. Clearing browser data, private browsing, or a different address or device may lose the record. Use a backup to continue elsewhere.",
+  "匯入 Portfolio Lab JSON 備份": "Import a Portfolio Lab JSON backup",
+  "JSON 備份包括 HTML、CSS、圖片、練習、回答及同伴回饋。HTML 作品是可獨立開啟的呈現版本；繼續編輯請使用 JSON 備份。": "A JSON backup includes HTML, CSS, images, practice, answers and peer feedback. HTML exports are independent viewing copies; use JSON to continue editing in the lab.",
+  "課前準備離線": "Prepare offline materials before class",
+  "下載單檔教材 offline.html，保存到每部電腦或 USB。": "Save the standalone offline.html on each computer or a USB drive.",
+  "拔除網絡，再開啟檔案，試做修改、保存與匯出。": "Disconnect, open the file, and test editing, saving and exporting.",
+  "另存學生作品 JSON；打印工作紙及教師答案。": "Save students' JSON backups separately. Print worksheets and teacher answers.",
+  "下載單檔離線教材": "Download standalone offline lab",
+  "開啟 HTML 起始檔": "Download HTML starter",
+  "學生備用工作紙（HTML／CSS）": "Student backup worksheets (HTML / CSS)",
+  "教師答案與評閱準則": "Teacher answers & assessment guidance",
+  "私隱與預覽": "Privacy and preview",
+  "沒有帳號、追蹤分析、廣告、雲端儲存或自動上傳。學生可用別名與虛構內容。": "No accounts, analytics, advertising, cloud storage or automatic uploads. Students may use aliases and fictional content.",
+  "網上版本的託管商可能保留一般訪問紀錄；學生源碼、圖片和答案不會由本教材傳送到伺服器。": "The online host may keep normal access logs. This lab does not send student source code, images or answers to the server.",
+  "預覽與匯出會略去腳本、表單、事件屬性、內嵌樣式和外部資源。CSS 在獨立欄編寫；只顯示內置或已加入作品的圖片。": "Preview and export omit scripts, forms, event attributes, inline styles and external resources. Write CSS in its own editor. Images must be built in or added to the project.",
+  "預覽的外部連結不開啟；同頁 #id 可測試。匯出的 HTTPS 連結保留，須在獨立 HTML 內人工點測。": "External links do not open in the preview; same-page #id links can be tested. HTTPS links remain in the export and require manual testing in the independent HTML file.",
+  "教師答案在教材內可見，適合形成性評估；不是保密考試系統。": "Teacher answers are visible in the materials. Use them for formative assessment, not a confidential examination.",
+  "共用電腦：離開前下載備份，再清除這個瀏覽器的本機資料。自選圖片可能含相片中繼資料，分享前用學校認可方式移除或改用內置素材。": "On shared computers, download a backup before clearing local lab data. Custom photos may contain metadata; remove it using a school-approved method before sharing, or use the built-in image.",
+  "清除此瀏覽器的學習資料": "Clear this browser's learning data",
+  "會刪除這個網址下 Portfolio Lab 的作品、練習、圖片和回答。先下載備份；其他網站資料不受影響。": "This removes the lab's project, practice, images and answers at this address. Download a backup first. Other websites' data is unaffected.",
+  "下載備份後清除": "Download backup & clear",
+  "已清除此瀏覽器的 Portfolio Lab 資料。": "This browser's Portfolio Lab data has been cleared.",
+  "這不是支援的 Portfolio Lab v1 備份。": "This is not a supported Portfolio Lab v1 backup.",
+  "作品源碼格式或大小不正確（每欄最多 80,000 字元）。": "Project source has an invalid format or exceeds 80,000 characters per editor.",
+  "每份作品最多六張自選圖片。": "Each project supports up to six custom images.",
+  "備份含不支援的圖片。只接受 PNG、JPEG 或 WebP。": "The backup contains an unsupported image. Use PNG, JPEG or WebP only.",
+  "未能讀取本機記錄，已開啟起始內容。若有備份請重新匯入。": "The local record could not be read. Starter content is open; import a backup if you have one.",
+  "已保存至這個瀏覽器 · ": "Saved in this browser · ",
+  "瀏覽器未能保存（可能已滿或禁止儲存）。請立即下載可編輯備份。": "This browser could not save the work (storage may be full or blocked). Download an editable backup now.",
+  "預覽不開啟外部網站：": "The preview does not open external sites: ",
+  "我的 Portfolio": "My Portfolio",
+  "基本文件結構": "Basic document structure",
+  "有 doctype、html lang、head、title 和 body。": "Include doctype, html lang, head, title and body.",
+  "一個有意義的主標題": "One meaningful main heading",
+  "用一個 h1 清楚說明 Portfolio 主題；替換起始文字。": "Use one h1 to identify your portfolio's topic. Replace the starter text.",
+  "一段自己的介紹": "Your own introduction",
+  "第一段寫至少一句介紹，建議八個字以上；不用填個人聯絡資料。": "Write at least one introductory sentence in the first paragraph, preferably eight or more characters. No personal contact details are needed.",
+  "標題與連結標籤配對": "Paired heading and link tags",
+  "檢查 </h1> 和 </a>。這是基本檢查，並非完整 HTML 驗證器。": "Check </h1> and </a>. This is a basic check, not a complete HTML validator.",
+  "圖片來源可在作品內找到": "Image sources exist in the project",
+  "使用 mountain.svg 或已加入作品的圖片檔名。外部圖片不會載入。": "Use mountain.svg or the filename of an image already added to the project. External images are not loaded.",
+  "內容圖片有文字替代": "A text alternative for the content image",
+  "至少一張內容圖有具體描述。裝飾圖可用空 alt；描述是否合適仍由同伴判斷。": "Give at least one content image a specific description. Decorative images may use empty alt; a partner should still judge whether a description is appropriate.",
+  "連結有文字及有效目的地": "A labelled link with a valid destination",
+  "#projects 要有相同 id。https 網址只檢查格式，仍須教師或學生另行點測。": "#projects needs a matching id. HTTPS addresses are checked for format only; a student or teacher must test them separately.",
+  "h1 是指定綠色，段落保持原色": "h1 uses the specified green; paragraphs keep their colour",
+  "請用 h1 選擇器設定 color: #17634b。": "Use the h1 selector and color: #17634b.",
+  "字體 18px、行高 1.7 及指定配色": "18px text, 1.7 line height and the specified colours",
+  "body 的實際樣式須符合任務；無效宣告不會通過。": "The actual body styles must meet the task. Invalid declarations do not pass.",
+  "section 有內距、外距和實線邊框": "section has padding, a top margin and a solid border",
+  "用 padding:20px、margin-top:24px 及至少 1px 的 solid 邊框。": "Use padding: 20px, margin-top: 24px and a solid border at least 1px wide.",
+  "文字大小和行距可讀": "Readable text size and line spacing",
+  "body 字體至少 16px，行高至少 1.4。建議 18px 和 1.7。": "Set body text to at least 16px with a line height of at least 1.4. Try 18px and 1.7.",
+  "主標題與正文的抽樣對比 ≥ 4.5:1": "Sampled heading and body contrast is at least 4.5:1",
+  "抽樣正文 ": "Sampled body text ",
+  ":1；主標題 ": ":1; heading ",
+  ":1。未涵蓋所有區域、透明祖先或背景圖，仍須人工閱讀檢查。": ":1. This does not cover every area, transparent ancestor or background image. Review readability manually too.",
+  "主標題已套用 CSS 顏色": "The main heading has a CSS colour",
+  "用 h1 規則建立主題顏色；其餘文字保持易讀。": "Use an h1 rule for a heading colour and keep the remaining text readable.",
+  "連結保留底線": "Links remain underlined",
+  "連結保留底線，避免只靠顏色辨識。": "Keep links underlined so they can be identified without colour alone.",
+  "。": ". ",
+  "：": ": ",
+  "、": ", ",
+  "；": "; ",
+  "語言 / Language": "Language",
+  "跳到主要內容": "Skip to main content",
+  "中五 ICT HTML 與 CSS 課堂教材：理解、練習、創作。": "Form 5 ICT classroom materials: learn, practise and build with HTML and CSS.",
+  "課前先複習 Lesson 1 HTML": "Start with a Lesson 1 HTML recap",
+  "開始 CSS 前，先用五分鐘檢查上一課的 HTML 知識。": "Before starting CSS, spend five minutes checking what you remember from the HTML lesson.",
+  "前往課前複習小測": "Open the HTML recap quiz",
+  "課前複習小測 · Lesson 1 HTML · 5 分鐘": "Before class · Lesson 1 HTML recap · 5 minutes",
+  "開始 CSS 前獨立完成，檢查上一課的掌握情況。這是形成性回饋，不計入成績；完成後先看解說，再開始 CSS。": "Answer independently before starting CSS to check your understanding of the previous lesson. This gives formative feedback, not a formal grade. Review the explanations before moving on to CSS.",
+  "檢查課前複習小測": "Check HTML recap",
+  "複習後前往 Lesson 2 Learn": "Continue to Lesson 2 Learn after the recap",
+  "課後自測 · Lesson 2 CSS（選做）": "After class · Lesson 2 CSS self-check (optional)",
+  "CSS 學習後檢查": "Check your CSS learning",
+  "完成 CSS 的 Learn、Practice、Build 後才作答；課前不用做這一部分。": "Answer after completing CSS Learn, Practice and Build. This section is not part of the pre-lesson recap.",
+  "第二課課前複習小測": "Lesson 2 HTML recap quiz",
+  "第一課 HTML：h1／p、src／alt、href／id、結束標籤": "Lesson 1 HTML: h1/p, src/alt, href/id and end tags",
+  "首五分鐘獨立作答；按錯題重溫，再開啟草稿補測。CSS 題只作課後選做自測。": "Answer independently in the first five minutes. Review errors, then open and test the draft. The CSS quiz is an optional self-check after class.",
+  "第二課全班設備故障：0–5 做 HTML 複習小測、5–8 訂正、8–20 讀 CSS 規則、20–35 預測與除錯、35–55 在草稿加 CSS、55–65 同伴說明與回饋、65–70 Exit Ticket；之後必須補做瀏覽器測試。": "For a class-wide device failure in Lesson 2: 0–5 HTML recap quiz, 5–8 review answers, 8–20 read CSS, 20–35 predict and debug, 35–55 style the draft, 55–65 explain and review with a partner, 65–70 Exit Ticket. Complete browser tests when devices recover.",
+  "按這裡": "Click here",
+  "課後自測 · Lesson 1 HTML（選做）": "After class · Lesson 1 HTML self-check (optional)",
+  "HTML 學習後檢查": "Check your HTML learning",
+  "完成 HTML 的 Learn、Practice、Build 後才作答；課前診斷不包括這一部分。": "Answer after completing HTML Learn, Practice and Build. This section is not part of the diagnostic questions."
+};
+
+(function () {
+  "use strict";
+  const wrap = body => [
+    "<!doctype html>", '<html lang="zh-HK">', "<head>",
+    '  <meta charset="utf-8">', '  <meta name="viewport" content="width=device-width, initial-scale=1">',
+    "  <title>我的 Portfolio</title>", "</head>", "<body>", body, "</body>", "</html>"
+  ].join("\n");
+  const starter = wrap([
+    "  <!-- 以別名或虛構角色創作；不用寫電話、地址或真實姓名。 -->",
+    "  <h1>請填上你的 Portfolio 標題</h1>",
+    "  <p>請填上兩句介紹，例如興趣和想學會的技能。</p>",
+    '  <img src="mountain.svg" alt="" width="320">',
+    "  <!-- 任務：替圖片寫描述，再讓以下連結前往 #projects。 -->",
+    "  <p><a>看看我的作品</a></p>",
+    '  <section id="projects">',
+    "    <h2>我的作品</h2>",
+    "    <p>這是我第一個網頁作品。</p>",
+    "  </section>"
+  ].join("\n"));
+  const practiceHTML = wrap([
+    "  <h1>Alex 的 Portfolio</h1>",
+    "  <p>我喜歡攝影，也正在學習網頁設計。</p>",
+    '  <img src="mountain.svg" alt="山脊與日出的練習插圖" width="300">',
+    '  <p><a href="#projects">看看我的作品</a></p>',
+    '  <section id="projects"><h2>我的作品</h2><p>校園攝影集</p></section>'
+  ].join("\n"));
+  window.LabContent = {
+    wrap, starter, practiceHTML,
+    starterCSS: [
+      "/* Lesson 2：逐步加入可讀的樣式。CSS 與 HTML 分開編輯。 */",
+      "body {",
+      "  font-family: Arial, sans-serif;",
+      "}",
+      "",
+      "/* 1. 為 body 加上背景、文字顏色、字體大小及行高。 */",
+      "/* 2. 為 h1 選擇清楚的顏色。 */",
+      "/* 3. 為 section 加上 padding、margin 及 border。 */",
+      "/* 4. 為連結保留底線。 */"
+    ].join("\n"),
+    sampleCSS: [
+      "body {", "  font-family: Arial, sans-serif;", "  color: #243b35;",
+      "  background-color: #f4f8f6;", "  font-size: 18px;", "  line-height: 1.7;",
+      "  padding: 24px;", "}", "", "h1 { color: #17634b; }", "",
+      "section {", "  background-color: #ffffff;", "  padding: 20px;",
+      "  margin-top: 24px;", "  border: 1px solid #c7d6ce;", "}",
+      "a { color: #17634b; text-decoration: underline; }",
+      "img { max-width: 100%; height: auto; }"
+    ].join("\n"),
+    elements: [
+      {tag:"h1", name:"主標題", code:"<h1>Alex 的 Portfolio</h1>", explanation:"標示頁面的主要主題。通常每頁設一個清晰的主標題。標籤說明結構；字的大小可在 CSS 調整。", question:"如果把標題改成普通段落，讀者和螢幕閱讀器會失去甚麼線索？"},
+      {tag:"p", name:"段落", code:"<p>我喜歡攝影，也正在學習網頁設計。</p>", explanation:"把相關句子組成一個段落。開始標籤、內容、結束標籤組成這個元素；縮排有助閱讀源碼。", question:"網頁顯示的句子，位於哪兩個標籤之間？"},
+      {tag:"img", name:"圖片", code:'<img src="mountain.svg" alt="山脊與日出的練習插圖">', explanation:"src 指向圖片，alt 提供文字替代。這張圖是內容圖，因此要寫有意思的描述。純裝飾圖可用 alt=\"\"。img 是空元素，沒有 </img>。", question:"檔名打錯時會怎樣？alt 能否代替修正錯誤的 src？"},
+      {tag:"a", name:"超連結", code:'<a href="#projects">看看我的作品</a>', explanation:"href 是目的地；連結文字告訴讀者會去甚麼地方。#projects 會跳到同頁 id=\"projects\" 的位置；https://… 是完整網址。", question:"只有 <a>看看我的作品</a>，為甚麼還未成為可點擊的超連結？"}
+    ],
+    tasks: {
+      1: [
+        {title:"1. 標題與段落", goal:"把標題改為你選擇的別名，加上一句介紹。保留 h1 和 p 的開始及結束標籤。", html:wrap("  <h1>請填上標題</h1>\n  <p>請填上介紹</p>"), css:"", checks:["heading","intro","closing"], hints:["先找出 h1 和 p；只改它們中間的文字。","h1 表示頁面主題；p 是介紹段落。不要把文字寫在標籤以外。","<h1>Sam 的 Portfolio</h1>\n<p>我喜歡畫畫，想學會製作網頁。</p>"]},
+        {title:"2. 圖片與替代文字", goal:"在原有標題和段落後加入山景圖。使用 mountain.svg，並寫出能描述這張內容圖的 alt。", html:wrap("  <h1>Alex 的 Portfolio</h1>\n  <p>我喜歡攝影。</p>\n  <!-- 在這裡加入圖片 -->"), css:"", checks:["image","alt"], hints:["img 是空元素，不用結束標籤。圖片已隨教材提供。","使用 src=\"mountain.svg\"；alt 描述內容，不能只寫「圖片」或檔名。",'<img src="mountain.svg" alt="山脊與日出的練習插圖" width="300">']},
+        {title:"3. 修復連結與標題", goal:"修正缺少的標題結束標籤。再令「看看我的作品」連至同頁 projects 區域，並在預覽中點一下測試。", html:wrap('  <h1>Alex 的 Portfolio\n  <p>我喜歡攝影。</p>\n  <a>看看我的作品</a>\n  <section id="projects"><h2>我的作品</h2><p>校園攝影集</p></section>'), css:"", checks:["closing","link"], hints:["先檢查 h1 的開始和結束。a 還欠一個指定目的地的屬性。","在標題文字後加 </h1>。同頁連結用 # 配合目標 id。",'<h1>Alex 的 Portfolio</h1>\n<a href="#projects">看看我的作品</a>']}
+      ],
+      2: [
+        {title:"1. 選擇器與顏色", goal:"在 CSS 為 h1 加上 #17634b 顏色。觀察標題改變，段落保持原本顏色。", html:practiceHTML, css:"/* 寫下選擇器、屬性和值。 */\nh1 {\n  /* 在此加入宣告 */\n}", checks:["cssHeading"], hints:["HTML 決定元素；CSS 選擇器決定哪些元素套用樣式。","h1 { color: 色碼; }。留意冒號、分號與大括號。","h1 { color: #17634b; }"]},
+        {title:"2. 易讀文字", goal:"為 body 設 font-size: 18px、line-height: 1.7、color: #243b35 和 background-color: #f4f8f6。背景與文字要有足夠對比。", html:practiceHTML, css:"body {\n  font-family: Arial, sans-serif;\n}", checks:["cssText","contrast"], hints:["body 的字體樣式通常會由子元素繼承，無須逐段重複。","用 font-size 控制字體大小，用 line-height 增加行距。color 與 background-color 是不同屬性。","body {\n  font-family: Arial, sans-serif;\n  font-size: 18px;\n  line-height: 1.7;\n  color: #243b35;\n  background-color: #f4f8f6;\n}"]},
+        {title:"3. 盒模型與留白", goal:"為 section 加 padding: 20px、margin-top: 24px 和 1px 實線邊框。分辨內容內側和元素外側的距離。", html:practiceHTML, css:"section {\n  /* 依次加入內距、外距、邊框 */\n}", checks:["cssBox"], hints:["盒模型由內到外是 content → padding → border → margin。","padding 是內容到邊框；margin 是邊框外。border 要有寬度、線型和顏色。","section {\n  padding: 20px;\n  margin-top: 24px;\n  border: 1px solid #c7d6ce;\n}"]}
+      ]
+    },
+    quizzes: {
+      1: [
+        {q:"哪個元素標示頁面的主要主題？", options:["<h1>","<p>","<img>"], answer:0, why:"h1 是主標題；不要只憑外觀大小判斷結構。"},
+        {q:"<a>我的作品</a> 欠甚麼才能指定目的地？", options:["alt","href","src"], answer:1, why:"a 的 href 指定連結目的地。"},
+        {q:"圖片 src 的檔名打錯，最佳處理是？", options:["只加入 alt 就算完成","刪去所有圖片","修正路徑，再檢查 alt"], answer:2, why:"alt 提供文字替代，仍須修好圖片來源。"},
+        {q:"甚麼資料適合放在這次 Portfolio？", options:["家居地址和電話","別名、興趣和獲准使用的圖片","同學未同意公開的照片"], answer:1, why:"用別名和授權素材也能達成創作目標。"}
+      ],
+      2: [
+        {q:"在 p { color: #17634b; } 中，p 是甚麼？", options:["值","屬性","選擇器"], answer:2, why:"p 選取所有 p 元素；color 是屬性，色碼是值。"},
+        {q:"文字與邊框之間的內側距離由甚麼控制？", options:["padding","margin","href"], answer:0, why:"padding 是內距，margin 是邊框外側的距離。"},
+        {q:"兩條相同選擇器的普通規則都設定 color，通常哪條生效？", options:["第一條","後出現的一條","每次隨機"], answer:1, why:"在來源、重要性、層與優先度相同時，後面的宣告覆蓋前面的。"},
+        {q:"令閱讀更清楚的做法是？", options:["只靠顏色表示連結","淺灰小字放白底","足夠對比、適當行距、連結保留底線"], answer:2, why:"清楚的視覺線索與可讀文字能支援更多讀者。"}
+      ]
+    },
+    recall2: [
+      {q:"要為 Portfolio 加上主標題和介紹段落，應分別用哪兩個元素？",options:["<h1> 和 <p>","<p> 和 <img>","<img> 和 <a>"],answer:0,why:"h1 標示頁面主題；p 把介紹句子組成段落。"},
+      {q:'在 <img src="mountain.svg" alt="山景插圖"> 中，src 和 alt 分別有甚麼用途？',options:["src 寫圖片描述；alt 指向圖片","src 指向圖片；alt 提供文字替代","兩者都指定連結目的地"],answer:1,why:"src 指定圖片來源；alt 提供圖片的文字替代。檔名錯誤仍須修正 src。"},
+      {q:'作品區已有 id="projects"，哪個連結可以跳到該區？',options:['<a src="#projects">作品</a>','<a href="projects">作品</a>','<a href="#projects">作品</a>'],answer:2,why:"a 用 href 指定目的地；#projects 對應同頁的 id=\"projects\"。"},
+      {q:"<h1>我的 Portfolio<p>我喜歡攝影。</p> 少了甚麼？",options:["在圖片後加 </img>","在標題文字後、<p> 前加 </h1>","在段落加 href"],answer:1,why:"h1 應在標題文字後結束，再開始 p。看得到內容不代表源碼正確；img 是空元素，沒有 </img>。"}
+    ],
+    diagnostic: [
+      "網頁的標題有甚麼用途？",
+      "哪種功能可讓讀者按文字前往另一頁？",
+      "使用照片或個人資料前，應先檢查甚麼？"
+    ],
+    exit: {
+      1:["解釋今天用過的兩個 HTML 元素的用途。","<a>My Projects</a> 欠了甚麼？寫出一個可用例子。","今天修正了甚麼錯誤？如何確認修正有效？下一課想改善甚麼？"],
+      2:["用自己的話分辨 HTML 和 CSS 的工作。","寫一條 CSS，設定段落文字顏色；指出選擇器、屬性和值。","分辨 padding 和 margin。指出你改善的一項閱讀問題，以及測試方法。"]
+    },
+    flow1: [
+      ["0–5","情境導入","兩人比較兩個 Portfolio，指出清晰與混亂的內容（重溫必修部分 C(c)：為目標讀者組織網頁）。","口頭回應；Learn 頁頂的對比例子"],
+      ["5–10","診斷","獨立回答三題。教師巡視閱讀螢幕，請全班舉手（包括記得哪些 HTML 標籤），按結果補充先備概念。","小測頁的診斷題；紙本診斷題作後備"],
+      ["10–13","目標與準則","展示 h1、p、圖片含 alt、可用連結和保存目標。","Build 檢查清單"],
+      ["13–21","教師示範","示範完整文件、四個元素、屬性及預覽；刻意修正一個錯誤。","Learn；HTML X-Ray"],
+      ["21–30","探索","學生選元素、對照源碼，向同伴解釋至少三個用途。","Learn：HTML X-Ray；教師問答"],
+      ["30–42","Practice","三個短任務，每個約四分鐘；先自行嘗試，再逐層取提示。","客觀檢查與修改前後預覽"],
+      ["42–60","Build","完成半成品；教師先支援未有 h1／p 的學生，再檢查圖片與連結。最後兩分鐘匯出 HTML。","獨立 HTML 草稿、匯出檔及備份"],
+      ["60–66","分享","每人三分鐘：解釋一項 HTML 選擇；伙伴說出一個優點和一項具體建議。","回饋表；實際點連結和檢視圖片"],
+      ["66–70","評估","個別完成 Exit Ticket；下載學習紀錄，連同 HTML 按教師指示提交。教師據此決定 CSS 課前要重教甚麼。","Exit Ticket；學習紀錄；課後選做 HTML 自測"]
+    ],
+    flow2: [
+      ["0–8","課前複習與補測","首五分鐘獨立完成第一課 HTML 複習小測；按解說重溫。再開啟草稿，補測圖片和連結。","HTML 課前複習小測；第一課備份；Build"],
+      ["8–13","目標與示範","HTML 結構、CSS 樣式；示範選擇器、屬性、值。","Learn CSS 開關與源碼"],
+      ["13–25","Learn","比較有／無樣式；預測 color、字體、背景和盒模型效果。","CSS 規則及同選擇器先後次序"],
+      ["25–40","Practice","三項五分鐘練習：選擇器、文字可讀性、盒模型。","實際計算樣式的客觀檢查"],
+      ["40–58","Build","在原有 HTML 上加 CSS；檢查文字、留白、圖片和連結。","CSS 與 HTML 同一作品；匯出"],
+      ["58–65","同伴測試","解釋一項樣式決定；以窄畫面及鍵盤查看，給具體建議。","同伴回饋；手動閱讀測試"],
+      ["65–70","Exit Ticket","獨立解釋規則和盒模型；交付 HTML 與可編輯備份。CSS 自測可在課後選做。","Exit Ticket；另附選做 CSS 課後自測"]
+    ]
+  };
+})();
+
+(function () {
+  "use strict";
+  const wrap=body=>[
+    "<!doctype html>",'<html lang="en">',"<head>",
+    '  <meta charset="utf-8">','  <meta name="viewport" content="width=device-width, initial-scale=1">',
+    "  <title>My Portfolio</title>","</head>","<body>",body,"</body>","</html>"
+  ].join("\n");
+  const starter=wrap([
+    "  <!-- Use an alias or fictional character. Do not include phone numbers or home addresses. -->",
+    "  <h1>Add your portfolio title</h1>",
+    "  <p>Write two sentences about your interests and a skill you want to learn.</p>",
+    '  <img src="mountain.svg" alt="" width="320">',
+    "  <!-- Task: describe the image, then link the text below to #projects. -->",
+    "  <p><a>View my projects</a></p>",
+    '  <section id="projects">',
+    "    <h2>My projects</h2>",
+    "    <p>This is my first web page.</p>",
+    "  </section>"
+  ].join("\n"));
+  const practiceHTML=wrap([
+    "  <h1>Alex's Portfolio</h1>",
+    "  <p>I enjoy photography and I am learning web design.</p>",
+    '  <img src="mountain.svg" alt="A practice illustration of mountain ridges and sunrise" width="300">',
+    '  <p><a href="#projects">View my projects</a></p>',
+    '  <section id="projects"><h2>My projects</h2><p>School photography collection</p></section>'
+  ].join("\n"));
+  window.LabContentEN={
+    wrap,starter,practiceHTML,
+    starterCSS:[
+      "/* Lesson 2: add styles that make your content easier to read. */",
+      "body {","  font-family: Arial, sans-serif;","}","",
+      "/* 1. Set the body background, text colour, font size and line height. */",
+      "/* 2. Choose a clear colour for h1. */",
+      "/* 3. Add padding, margin and a border to section. */",
+      "/* 4. Keep links underlined. */"
+    ].join("\n"),
+    sampleCSS:window.LabContent.sampleCSS,
+    elements:[
+      {tag:"h1",name:"Main heading",code:"<h1>Alex's Portfolio</h1>",explanation:"Identifies the main topic of the page. Usually give each page one clear main heading. HTML describes structure; CSS can change the size of the text.",question:"What clue would readers and screen reader users lose if the heading became an ordinary paragraph?"},
+      {tag:"p",name:"Paragraph",code:"<p>I enjoy photography and I am learning web design.</p>",explanation:"Groups related sentences into a paragraph. This element has a start tag, content and an end tag. Indentation helps people read the source.",question:"Between which two tags does the displayed sentence appear?"},
+      {tag:"img",name:"Image",code:'<img src="mountain.svg" alt="A practice illustration of mountain ridges and sunrise">',explanation:'src specifies the image source; alt provides a text alternative. This content image needs a meaningful description. A purely decorative image can use alt="". img is a void element and has no </img> tag.',question:"What happens if the filename is wrong? Does adding alt fix an incorrect src?"},
+      {tag:"a",name:"Hyperlink",code:'<a href="#projects">View my projects</a>',explanation:'href gives the destination. Link text tells readers where the link goes. #projects jumps to id="projects" on the same page; https://... is a full web address.',question:"Why is <a>View my projects</a> not yet a hyperlink with a destination?"}
+    ],
+    tasks:{
+      1:[
+        {title:"1. Heading and paragraph",goal:"Use your chosen alias in the heading and add an introductory sentence. Keep the start and end tags for h1 and p.",html:wrap("  <h1>Add your title</h1>\n  <p>Add your introduction</p>"),css:"",checks:["heading","intro","closing"],hints:["Find h1 and p first. Change only the text between their tags.","h1 identifies the page topic; p contains your introduction. Keep the text inside the elements.","<h1>Sam's Portfolio</h1>\n<p>I enjoy drawing and want to learn how to build web pages.</p>"]},
+        {title:"2. Image and alternative text",goal:"Add the mountain image after the heading and paragraph. Use mountain.svg and write alt text that describes this content image.",html:wrap("  <h1>Alex's Portfolio</h1>\n  <p>I enjoy photography.</p>\n  <!-- Add the image here. -->"),css:"",checks:["image","alt"],hints:["img is a void element. It does not need an end tag. The image is included with this lab.",'Use src="mountain.svg". Describe the content in alt; do not write only "image" or the filename.','<img src="mountain.svg" alt="A practice illustration of mountain ridges and sunrise" width="300">']},
+        {title:"3. Repair the link and heading",goal:"Add the missing heading end tag. Link 'View my projects' to the projects section on the same page, then click it in the preview to test it.",html:wrap('  <h1>Alex\'s Portfolio\n  <p>I enjoy photography.</p>\n  <a>View my projects</a>\n  <section id="projects"><h2>My projects</h2><p>School photography collection</p></section>'),css:"",checks:["closing","link"],hints:["Check the start and end of h1 first. The a element also needs an attribute that specifies its destination.","Put </h1> after the heading text. A same-page link uses # followed by the target id.",'<h1>Alex\'s Portfolio</h1>\n<a href="#projects">View my projects</a>']}
+      ],
+      2:[
+        {title:"1. Selectors and colour",goal:"In CSS, set the h1 colour to #17634b. Watch the heading change while the paragraph keeps its original colour.",html:practiceHTML,css:"/* Write a selector, a property and a value. */\nh1 {\n  /* Add your declaration here. */\n}",checks:["cssHeading"],hints:["HTML identifies the elements; a CSS selector chooses which elements receive a style.","h1 { color: colour-code; }. Check the colon, semicolon and braces.","h1 { color: #17634b; }"]},
+        {title:"2. Readable text",goal:"For body, set font-size: 18px, line-height: 1.7, color: #243b35 and background-color: #f4f8f6. Text and background need sufficient contrast.",html:practiceHTML,css:"body {\n  font-family: Arial, sans-serif;\n}",checks:["cssText","contrast"],hints:["Child elements usually inherit text styles from body, so you do not need to repeat them for each paragraph.","font-size controls text size and line-height controls line spacing. color and background-color are different properties.","body {\n  font-family: Arial, sans-serif;\n  font-size: 18px;\n  line-height: 1.7;\n  color: #243b35;\n  background-color: #f4f8f6;\n}"]},
+        {title:"3. Box model and spacing",goal:"Give section padding: 20px, margin-top: 24px and a 1px solid border. Distinguish space inside the border from space outside it.",html:practiceHTML,css:"section {\n  /* Add padding, a top margin and a border. */\n}",checks:["cssBox"],hints:["From inside to outside, the box model is content, padding, border, margin.","padding is between the content and border. margin is outside the border. A border needs a width, style and colour.","section {\n  padding: 20px;\n  margin-top: 24px;\n  border: 1px solid #c7d6ce;\n}"]}
+      ]
+    },
+    quizzes:{
+      1:[
+        {q:"Which element identifies the main topic of a page?",options:["<h1>","<p>","<img>"],answer:0,why:"h1 is a main heading. Structure is not defined only by how large the text looks."},
+        {q:"What does <a>My projects</a> need to specify a destination?",options:["alt","href","src"],answer:1,why:"The href attribute of a specifies the link destination."},
+        {q:"What should you do if the filename in an image's src is wrong?",options:["Add alt and leave the path unchanged","Remove all images","Correct the path, then check alt"],answer:2,why:"alt provides a text alternative, but you still need to correct the image source."},
+        {q:"Which content is suitable for this portfolio?",options:["Your home address and phone number","An alias, interests and images you have permission to use","Photos of classmates without their consent"],answer:1,why:"You can meet the learning goals using an alias and permitted materials."}
+      ],
+      2:[
+        {q:"In p { color: #17634b; }, what is p?",options:["Value","Property","Selector"],answer:2,why:"p selects p elements. color is the property; the colour code is its value."},
+        {q:"Which property controls the space between the content and its border?",options:["padding","margin","href"],answer:0,why:"padding is inside the border; margin is outside it."},
+        {q:"Two ordinary rules with the same selector set color. Which normally wins?",options:["The first rule","The later rule","A random rule each time"],answer:1,why:"When origin, importance, layer and specificity are equal, the later declaration wins."},
+        {q:"Which choice improves readability?",options:["Identify links using colour alone","Use small pale-grey text on white","Use sufficient contrast, suitable line spacing and underlined links"],answer:2,why:"Clear visual cues and readable text support more readers."}
+      ]
+    },
+    recall2:[
+      {q:"Which elements should you use for a portfolio's main heading and introductory paragraph, respectively?",options:["<h1> and <p>","<p> and <img>","<img> and <a>"],answer:0,why:"h1 identifies the page topic; p groups the introductory sentences into a paragraph."},
+      {q:'In <img src="mountain.svg" alt="Mountain illustration">, what are the jobs of src and alt?',options:["src describes the image; alt gives its source","src gives the image source; alt provides a text alternative","Both specify a link destination"],answer:1,why:"src specifies the image source; alt provides a text alternative. An incorrect filename still needs to be fixed in src."},
+      {q:'The projects section has id="projects". Which link jumps to it on the same page?',options:['<a src="#projects">Projects</a>','<a href="projects">Projects</a>','<a href="#projects">Projects</a>'],answer:2,why:'a uses href to specify a destination. #projects matches id="projects" on the same page.'},
+      {q:"What is missing from <h1>My Portfolio<p>I enjoy photography.</p>?",options:["Add </img> after the image","Add </h1> after the heading text, before <p>","Add href to the paragraph"],answer:1,why:"End h1 after the heading text before starting p. Visible content does not prove correct source code; img is a void element and has no </img>."}
+    ],
+    diagnostic:["What is the purpose of a heading on a web page?","What feature lets a reader click text to open another page?","What should you check before using a photo or personal information?"],
+    exit:{
+      1:["Explain the purposes of two HTML elements you used today.","What is missing from <a>My Projects</a>? Write a working example.","What error did you fix today, and how did you test the fix? What would you like to improve next lesson?"],
+      2:["Explain the different jobs of HTML and CSS in your own words.","Write a CSS rule that sets paragraph text colour. Identify the selector, property and value.","Distinguish padding from margin. Name one readability problem you improved and explain how you tested it."]
+    },
+    flow1:[
+      ["0–5","Engage","In pairs, compare two portfolios and identify what makes the content clear or confusing (recalls Compulsory Part C(c): organising web pages for an audience).","Oral responses; contrasting examples at the top of Learn"],
+      ["5–10","Diagnose","Answer three questions independently. The teacher reads screens, takes a show of hands (including which HTML tags students remember) and addresses gaps in prior knowledge.","Diagnostic questions on the Quiz page; printed questions as backup"],
+      ["10–13","Set goals","Show the targets: h1, p, an image with alt, a working link and a saved draft.","Build success checklist"],
+      ["13–21","Model","Demonstrate the document, four elements, attributes and preview. Deliberately fix one error.","Learn; HTML X-Ray"],
+      ["21–30","Explore","Select elements, match them to source code and explain at least three purposes to a partner.","Learn: HTML X-Ray; teacher questions"],
+      ["30–42","Practice","Three short tasks, about four minutes each. Try first, then reveal hints gradually.","Objective checks and before/after previews"],
+      ["42–60","Build","Complete the starter. Support students without h1 or p first, then check images and links. Export the HTML in the last two minutes.","Independent HTML draft, export and backup"],
+      ["60–66","Share","Three minutes each: explain one HTML choice; the partner gives one strength and one specific suggestion.","Feedback form; real image and link tests"],
+      ["66–70","Assess","Complete the Exit Ticket independently, download the learning record and submit it with the HTML as instructed. The teacher decides what to revisit before CSS.","Exit Ticket; learning record; optional HTML self-check after class"]
+    ],
+    flow2:[
+      ["0–8","Recap and catch up","Spend the first five minutes independently answering the Lesson 1 HTML recap quiz. Review the explanations, then open the draft and test images and links.","HTML recap quiz; Lesson 1 backup; Build"],
+      ["8–13","Goals and modelling","Distinguish HTML structure from CSS presentation. Demonstrate selector, property and value.","CSS toggle and source in Learn"],
+      ["13–25","Learn","Compare styles on/off. Predict effects of colour, font, background and the box model.","CSS rules; order of rules with equal specificity"],
+      ["25–40","Practice","Three five-minute tasks: selectors, readable text and the box model.","Checks of actual computed styles"],
+      ["40–58","Build","Style the existing HTML. Check text, spacing, images and links.","One shared HTML/CSS project; export"],
+      ["58–65","Peer testing","Explain one styling decision. Test a narrow view and keyboard navigation; give specific feedback.","Peer feedback; manual readability tests"],
+      ["65–70","Exit Ticket","Independently explain a rule and the box model. Save HTML and an editable backup. The CSS self-check is optional after class.","Exit Ticket; optional CSS self-check afterwards"]
+    ]
+  };
+})();
+
+(function () {
+  "use strict";
+  const I=window.LabI18n;
+  const tr=key=>I.t(key);
+  const KEY = "portfolio-lab.v1";
+  const MAX_SOURCE = 80000;
+  const mountain = '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="280" viewBox="0 0 640 280"><rect width="640" height="280" fill="#eef3f4"/><circle cx="491" cy="75" r="31" fill="#d3dfdf"/><path d="m0 235 155-141 136 97 123-77 112 97 55-25 59 35v59H0Z" fill="#b8c9c9"/><path d="m0 260 133-79 146 73 133-66 139 60 89-35v67H0Z" fill="#90aeaa"/></svg>';
+  const builtinAssets = {"mountain.svg":"data:image/svg+xml;base64," + btoa(mountain)};
+  const initial = () => {const C=I.content();return ({
+    format:"portfolio-lab", version:1, lesson:1, build:{html:C.starter,css:C.starterCSS},
+    practice:{1:C.tasks[1].map(t=>({html:t.html,css:t.css})),2:C.tasks[2].map(t=>({html:t.html,css:t.css}))},
+    assets:{}, answers:{}, peer:{}, savedAt:null
+  });};
+  let storageMessage = "";
+  function inert(source) {
+    const t = document.createElement("template");
+    t.innerHTML = source;
+    return t.content;
+  }
+  function validProject(p) {
+    if (!p || p.format!=="portfolio-lab" || p.version!==1) throw Error(tr("這不是支援的 Portfolio Lab v1 備份。"));
+    if (!p.build || typeof p.build.html!=="string" || typeof p.build.css!=="string" || p.build.html.length>MAX_SOURCE || p.build.css.length>MAX_SOURCE) throw Error(tr("作品源碼格式或大小不正確（每欄最多 80,000 字元）。"));
+    const clean = initial();
+    clean.lesson = p.lesson===2?2:1;
+    clean.build = {html:p.build.html,css:p.build.css};
+    // Copy only known fields; never merge arbitrary JSON into application objects.
+    if (p.practice && typeof p.practice==="object") for (const lesson of [1,2]) {
+      if (Array.isArray(p.practice[lesson])) p.practice[lesson].slice(0,3).forEach((s,i)=>{
+        if (s && typeof s.html==="string" && typeof s.css==="string" && s.html.length<=MAX_SOURCE && s.css.length<=MAX_SOURCE) clean.practice[lesson][i]={html:s.html,css:s.css};
+      });
+    }
+    if (p.assets && typeof p.assets==="object") {
+      const entries=Object.entries(p.assets);
+      if (entries.length>6) throw Error(tr("每份作品最多六張自選圖片。"));
+      for (const [name,data] of entries) {
+        if (!/^[a-zA-Z0-9][\w.-]{0,70}\.(png|jpe?g|webp)$/i.test(name) || typeof data!=="string" || data.length>2100000 || !/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/]+=*$/.test(data)) throw Error(tr("備份含不支援的圖片。只接受 PNG、JPEG 或 WebP。"));
+        clean.assets[name]=data;
+      }
+    }
+    if (p.answers && typeof p.answers==="object") for (const k of ["diagnostic","recall2","quiz1","quiz2","exit1","exit2"]) {
+      if (Array.isArray(p.answers[k])) clean.answers[k]=p.answers[k].slice(0,6).map(v=>typeof v==="string"?v.slice(0,4000):Number.isInteger(v)&&v>=0&&v<3?v:"");
+    }
+    if (p.peer && typeof p.peer==="object") for (const l of [1,2]) if (Array.isArray(p.peer[l])) clean.peer[l]=p.peer[l].slice(0,3).map(v=>typeof v==="string"?v.slice(0,2000):"");
+    clean.savedAt = typeof p.savedAt==="string"?p.savedAt:null;
+    return clean;
+  }
+  function load() {
+    try {
+      const raw=localStorage.getItem(KEY);
+      const project=raw?validProject(JSON.parse(raw)):initial();
+      I.syncUntouched(project);
+      return project;
+    } catch(e) {
+      storageMessage=tr("未能讀取本機記錄，已開啟起始內容。若有備份請重新匯入。");
+      return initial();
+    }
+  }
+  function save(p) {
+    p.savedAt=new Date().toISOString();
+    try {localStorage.setItem(KEY,JSON.stringify(p));return {ok:true,message:tr("已保存至這個瀏覽器 · ")+new Date(p.savedAt).toLocaleTimeString(I.dateLocale,{hour:"2-digit",minute:"2-digit"})};}
+    catch(e){return {ok:false,message:tr("瀏覽器未能保存（可能已滿或禁止儲存）。請立即下載可編輯備份。")};}
+  }
+  function clear() {try{localStorage.removeItem(KEY);}catch(e){}}
+  const esc = value => String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  function assetData(name,assets) {
+    const normal = String(name||"").replace(/^\.\//,"").replace(/^assets\//,"");
+    return Object.hasOwn(builtinAssets,normal)?builtinAssets[normal] : Object.hasOwn(assets,normal)?assets[normal] : "";
+  }
+  const allowed=new Set("main header footer nav section article div span h1 h2 h3 h4 h5 h6 p a img ul ol li strong em b i u s hr br figure figcaption table thead tbody tfoot tr td th caption blockquote code pre dl dt dd small sup sub".split(" "));
+  const dropped=new Set("script style title meta link base iframe object embed form input button textarea select option svg math video audio source canvas template noscript".split(" "));
+  const allowedAttrs=new Set(["id","class","title","alt","width","height","colspan","rowspan","scope","lang"]);
+  function linkOK(href,root) {
+    if (/^#[\w-]+$/.test(href)) return Array.from(root.querySelectorAll("[id]")).some(el=>el.id===href.slice(1));
+    try {const u=new URL(href);return u.protocol==="https:" && !!u.hostname;}catch(e){return false;}
+  }
+  function safeCSS(css) {
+    // CSP additionally denies all network loads, including escaped CSS URLs.
+    if (/@import|url\s*\(|expression\s*\(|-moz-binding|behavior\s*:/i.test(css)) return "";
+    return css.replace(/</g,"\\3c ");
+  }
+  function safeBody(html, assets, preview) {
+    const root=inert(html), target=document.createElement("div");
+    let removed=0, missing=0;
+    function append(node,parent) {
+      if (node.nodeType===3) {parent.appendChild(document.createTextNode(node.textContent));return;}
+      if (node.nodeType!==1) return;
+      const tag=node.localName;
+      if (dropped.has(tag)){if(!["title","meta"].includes(tag))removed++;return;}
+      if (!allowed.has(tag)){removed++;for(const c of node.childNodes)append(c,parent);return;}
+      const out=document.createElement(tag);
+      for (const attr of node.attributes) {
+        if (allowedAttrs.has(attr.name) && attr.value.length<1000) out.setAttribute(attr.name,attr.value);
+        else if (attr.name!=="src" && attr.name!=="href") removed++;
+      }
+      if(tag==="img"){
+        const data=assetData(node.getAttribute("src"),assets);
+        if(data)out.setAttribute("src",data);else missing++;
+      }
+      if(tag==="a"){
+        const href=node.getAttribute("href")||"";
+        if (linkOK(href,root)) {
+          if(preview && !href.startsWith("#")) {out.setAttribute("title",tr("預覽不開啟外部網站：")+href);out.setAttribute("data-external-link",href);}
+          else out.setAttribute("href",href);
+        }
+      }
+      for(const c of node.childNodes)append(c,out);
+      parent.appendChild(out);
+    }
+    for (const n of root.childNodes)append(n,target);
+    return {body:target.innerHTML,removed,missing};
+  }
+  function makeDocument(html,css,assets={},preview=true) {
+    const result=safeBody(html,assets,preview), raw=inert(html);
+    const title=raw.querySelector("title")?.textContent||tr("我的 Portfolio");
+    const csp="default-src 'none'; script-src 'none'; img-src data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; object-src 'none'; base-uri "+(preview?"about:":"'none'")+"; form-action 'none'";
+    // srcdoc otherwise inherits the embedding page's base URL, breaking #id links.
+    const base=preview?'<base href="about:srcdoc">':"";
+    const languageMatch=html.replace(/<!--[\s\S]*?-->/g,"").match(/<html\b[^>]*\blang\s*=\s*["']([A-Za-z0-9-]{2,35})["']/i);
+    const language=languageMatch?languageMatch[1]:I.languageTag;
+    return {text:'<!doctype html><html lang="'+esc(language)+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="'+csp+'">'+base+'<title>'+esc(title)+'</title><style>html{overflow-wrap:anywhere}body{margin:16px}img{max-width:100%}a{overflow-wrap:anywhere}'+safeCSS(css)+'</style></head><body>'+result.body+'</body></html>', ...result, cssBlocked:css.length>0 && safeCSS(css)===""};
+  }
+  const placeholder=s=>/請填|TODO|在這裡|你的介紹|你的標題|add your (?:portfolio )?title|add your introduction|write two sentences about your interests/i.test(s);
+  function rgb(s) {const n=s?.match(/[\d.]+/g);return n && n.length>=3?n.map(Number):null;}
+  function composite(a,b){const alpha=a[3]??1;return a.slice(0,3).map((c,i)=>c*alpha+b[i]*(1-alpha));}
+  function ratio(fore,back) {
+    const lum=rgb=>rgb.map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
+    const a=lum(fore),b=lum(back);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+  }
+  function evaluate(source,keys,frame) {
+    const raw=source.html.replace(/<!--[\s\S]*?-->/g,""),root=inert(raw),h=root.querySelectorAll("h1"),ps=root.querySelectorAll("p"),imgs=Array.from(root.querySelectorAll("img")),links=Array.from(root.querySelectorAll("a"));
+    const doc=frame?.contentDocument;
+    const win=frame?.contentWindow;
+    const st=el=>el&&win?win.getComputedStyle(el):null;
+    const body=st(doc?.body),title=st(doc?.querySelector("h1")),section=st(doc?.querySelector("section"));
+    const bg=body?composite(rgb(body.backgroundColor)||[255,255,255], [255,255,255]):[255,255,255];
+    const fg=body?composite(rgb(body.color)||[0,0,0],bg):[0,0,0];
+    const tb=title?composite(rgb(title.backgroundColor)||[0,0,0,0],bg):bg;
+    const tf=title?composite(rgb(title.color)||[0,0,0],tb):fg;
+    const contrasts=[ratio(fg,bg),ratio(tf,tb)];
+    const hOpen=(raw.match(/<h1(?:\s[^>]*)?>/gi)||[]).length,hClose=(raw.match(/<\/h1\s*>/gi)||[]).length;
+    const aOpen=(raw.match(/<a(?:\s[^>]*)?>/gi)||[]).length,aClose=(raw.match(/<\/a\s*>/gi)||[]).length;
+    const result = {
+      structure:[tr("基本文件結構"),/<!doctype\s+html\s*>/i.test(raw)&&/<html\b[^>]*lang=/i.test(raw)&&/<head\b/i.test(raw)&&/<body\b/i.test(raw)&&!!root.querySelector("title")?.textContent.trim(),tr("有 doctype、html lang、head、title 和 body。")],
+      heading:[tr("一個有意義的主標題"),h.length===1&&h[0].textContent.trim().length>=3&&!placeholder(h[0].textContent),tr("用一個 h1 清楚說明 Portfolio 主題；替換起始文字。")],
+      intro:[tr("一段自己的介紹"),!!ps[0]&&ps[0].textContent.trim().length>=8&&!placeholder(ps[0].textContent),tr("第一段寫至少一句介紹，建議八個字以上；不用填個人聯絡資料。")],
+      closing:[tr("標題與連結標籤配對"),hOpen>0&&hOpen===hClose&&aOpen===aClose&&!root.querySelector("h1 p, h1 section"),tr("檢查 </h1> 和 </a>。這是基本檢查，並非完整 HTML 驗證器。")],
+      image:[tr("圖片來源可在作品內找到"),imgs.length>0&&imgs.every(img=>!!assetData(img.getAttribute("src"),window.LabProject.assets)),tr("使用 mountain.svg 或已加入作品的圖片檔名。外部圖片不會載入。")],
+      alt:[tr("內容圖片有文字替代"),imgs.length>0&&imgs.every(i=>i.hasAttribute("alt"))&&imgs.some(i=>{const s=i.getAttribute("alt")?.trim()||"";return s.length>=4&&!/^(圖片|照片|image|photo|picture|\S+\.(jpg|png|svg))$/i.test(s)&&!placeholder(s);}),tr("至少一張內容圖有具體描述。裝飾圖可用空 alt；描述是否合適仍由同伴判斷。")],
+      link:[tr("連結有文字及有效目的地"),links.some(a=>(a.textContent.trim().length>=2)&&linkOK(a.getAttribute("href")||"",root)),tr("#projects 要有相同 id。https 網址只檢查格式，仍須教師或學生另行點測。")],
+      cssHeading:[tr("h1 是指定綠色，段落保持原色"),!!title&&title.color==="rgb(23, 99, 75)"&&st(doc.querySelector("p"))?.color!==title.color,tr("請用 h1 選擇器設定 color: #17634b。")],
+      cssText:[tr("字體 18px、行高 1.7 及指定配色"),!!body&&body.fontSize==="18px"&&Math.abs(parseFloat(body.lineHeight)-30.6)<.2&&body.color==="rgb(36, 59, 53)"&&body.backgroundColor==="rgb(244, 248, 246)",tr("body 的實際樣式須符合任務；無效宣告不會通過。")],
+      cssBox:[tr("section 有內距、外距和實線邊框"),!!section&&["paddingTop","paddingRight","paddingBottom","paddingLeft"].every(k=>parseFloat(section[k])>=20)&&parseFloat(section.marginTop)>=24&&parseFloat(section.borderTopWidth)>=1&&section.borderTopStyle==="solid",tr("用 padding:20px、margin-top:24px 及至少 1px 的 solid 邊框。")],
+      readable:[tr("文字大小和行距可讀"),!!body&&parseFloat(body.fontSize)>=16&&parseFloat(body.lineHeight)/parseFloat(body.fontSize)>=1.4,tr("body 字體至少 16px，行高至少 1.4。建議 18px 和 1.7。")],
+      contrast:[tr("主標題與正文的抽樣對比 ≥ 4.5:1"),!!body&&contrasts.every(n=>n>=4.5),tr("抽樣正文 ")+contrasts[0].toFixed(1)+tr(":1；主標題 ")+contrasts[1].toFixed(1)+tr(":1。未涵蓋所有區域、透明祖先或背景圖，仍須人工閱讀檢查。")],
+      cssColor:[tr("主標題已套用 CSS 顏色"),!!title&&title.color!==body?.color&&source.css.trim().length>20,tr("用 h1 規則建立主題顏色；其餘文字保持易讀。")],
+      underline:[tr("連結保留底線"),!!doc?.querySelector("a")&&st(doc.querySelector("a")).textDecorationLine.includes("underline"),tr("連結保留底線，避免只靠顏色辨識。")]
+    };
+    return keys.map(key=>({key,label:result[key][0],pass:!!result[key][1],detail:result[key][2]}));
+  }
+  function download(name,text,type="text/plain;charset=utf-8") {
+    const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement("a");
+    a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);
+  }
+  window.LabEngine={KEY,MAX_SOURCE,initial,load,save,clear,validProject,esc,inert,assetData,safeCSS,makeDocument,evaluate,download,get storageMessage(){return storageMessage;}};
+})();
+
+(function () {
+  "use strict";
+  const I=window.LabI18n,E=window.LabEngine;
+  const tr=key=>I.t(key);
+  let C=I.content();
+  let project=E.load();window.LabProject=project;
+  let route="learn",lesson=project.lesson,taskIndex={1:0,2:0},tab=project.lesson===2?"css":"html",saveTimer,previewTimer;
+  const view={xray:0,cssStyled:true,hints:{1:[0,0,0],2:[0,0,0]},checked:new Set(),quizChecked:new Set(),narrow:new Set(),postQuizOpen:false};
+  let saveText=E.storageMessage||tr("作品只留在這個瀏覽器；請另存備份。");
+  const app=document.getElementById("app");
+  const el=(tag,attrs,...children)=>{
+    const node=document.createElement(tag);
+    for(const [k,v] of Object.entries(attrs||{})) {
+      if(v===null||v===undefined||(v===false&&!k.startsWith("aria-")))continue;
+      if(k==="class")node.className=v;
+      else if(k.startsWith("on"))node.addEventListener(k.slice(2).toLowerCase(),v);
+      else if(["value","checked","disabled"].includes(k))node[k]=v;
+      else node.setAttribute(k,v===true&&!k.startsWith("aria-")?"":String(v));
+    }
+    for(const c of children.flat(Infinity))if(c!==null&&c!==undefined&&c!==false)node.append(c instanceof Node?c:document.createTextNode(String(c)));
+    return node;
+  };
+  const button=(text,fn,cls="",attrs={})=>el("button",{type:"button",class:cls,onclick:fn,...attrs},text);
+  const offlineURLs={};
+  function resourceURL(href){
+    if(!window.LabOffline)return href;
+    if(href==="offline.html")return location.href;
+    if(window.LabOfflineResources?.[href]){
+      if(!offlineURLs[href])offlineURLs[href]=URL.createObjectURL(new Blob([window.LabOfflineResources[href]],{type:"text/html;charset=utf-8"}));
+      return offlineURLs[href];
+    }
+    return href;
+  }
+  const link=(text,href,attrs={})=>el("a",{href:resourceURL(I.resource(href)),...attrs},text);
+  const note=(...c)=>el("div",{class:"note"},...c);
+  const actions=(...c)=>el("div",{class:"actions"},...c);
+  const heading=(title,subtitle)=>el("div",{class:"section-head"},el("h2",{},title),subtitle?el("p",{},subtitle):null);
+  const code=text=>el("pre",{},el("code",{},text));
+  const statusNode=()=>el("p",{class:"status save-status",role:"status","aria-live":"polite"},saveText);
+  function saveNow() {
+    clearTimeout(saveTimer);
+    project.lesson=lesson;
+    const r=E.save(project);saveText=r.message;
+    document.querySelectorAll(".save-status").forEach(n=>{n.textContent=saveText;n.classList.toggle("error",!r.ok);});
+    return r;
+  }
+  function queueSave(){clearTimeout(saveTimer);saveTimer=setTimeout(saveNow,600);}
+  function changeLanguage(next){
+    if(next===I.locale)return;
+    saveNow();clearTimeout(previewTimer);
+    const y=window.scrollY;
+    I.setLocale(next);C=I.content();I.syncUntouched(project);saveNow();
+    render();
+    document.querySelector('[data-locale="'+next+'"]')?.focus({preventScroll:true});
+    window.scrollTo(0,y);
+  }
+  function go(next,l=lesson){location.hash=l+"/"+next;}
+  function readHash(){
+    const parts=location.hash.slice(1).split("/");
+    if(["1","2"].includes(parts[0])){const previous=lesson;lesson=Number(parts.shift());if(previous!==lesson)tab=lesson===2?"css":"html";}
+    route=["learn","practice","build","quiz","teacher","resources"].includes(parts[0])?parts[0]:"learn";
+  }
+  function navigate(){clearTimeout(previewTimer);saveNow();readHash();render(true);}
+  window.addEventListener("hashchange",navigate);
+  window.addEventListener("pagehide",saveNow);
+  function shell(){
+    const nav=[["learn",tr("Learn 理解")],["practice",tr("Practice 練習")],["build",tr("Build 創作")],["quiz",tr("小測與 Exit Ticket")]];
+    return [
+      el("header",{class:"header"},
+        link("Portfolio Lab","#"+lesson+"/learn",{class:"brand"}),
+        el("span",{class:"header-desc"},tr("課堂教材")),
+        el("nav",{"aria-label":tr("教師及備用資源")},link(tr("教師指引"),"#"+lesson+"/teacher"),link(tr("備用工作紙"),"print/worksheet.html",{target:"_blank",rel:"noopener"})),
+        el("div",{class:"language-switch",role:"group","aria-label":tr("語言 / Language")},
+          button("繁中",()=>changeLanguage("zh"),"",{"aria-pressed":I.locale==="zh","data-locale":"zh",lang:"zh-HK"}),
+          button("English",()=>changeLanguage("en"),"",{"aria-pressed":I.locale==="en","data-locale":"en",lang:"en"}))),
+      el("div",{class:"layout"},
+        el("aside",{class:"sidebar","aria-label":tr("課程導航")},
+          el("div",{},el("h2",{},tr("課程")),el("div",{class:"lessons"},[1,2].map(n=>button(n===1?tr("01 HTML 結構"):tr("02 CSS 樣式"),()=>{tab=n===1?"html":"css";go("learn",n);},"",{"aria-pressed":lesson===n})))),
+          el("nav",{class:"side-links","aria-label":tr("學習階段")},nav.map(([r,t])=>link(t,"#"+lesson+"/"+r,{"aria-current":route===r?"page":null}))),
+          el("div",{class:"side-bottom"},link(tr("作品與離線"),"#"+lesson+"/resources"),el("p",{class:"meta"},tr("中五 ICT\nWeb Application Development")))),
+        el("main",{id:"main",tabindex:"-1"},pageContent()))
+    ];
+  }
+  function pageContent(){
+    if(route==="teacher")return teacherPage();
+    if(route==="resources")return resourcesPage();
+    const title=lesson===1?tr("讓內容，成為網頁。"):tr("讓樣式，幫助閱讀。");
+    const subtitle=lesson===1?tr("認識 HTML 的結構，建立你的第一個 Portfolio。"):tr("延續你的 HTML 草稿，用 CSS 整理顏色、字體與留白。");
+    const children=[
+      el("div",{class:"intro"},el("h1",{},title),el("p",{},subtitle),el("div",{class:"meta"},"Lesson "+lesson+" · "+(lesson===1?"HTML":"CSS")+tr(" · 70 分鐘"))),
+      el("nav",{class:"steps","aria-label":"Learn Practice Build"},["learn","practice","build"].map((r,i)=>link("0"+(i+1)+" "+r[0].toUpperCase()+r.slice(1),"#"+lesson+"/"+r,{"aria-current":route===r?"step":null})))
+    ];
+    children.push(route==="learn"?(lesson===1?learnHTML():learnCSS()):route==="practice"?practicePage():route==="build"?buildPage():quizPage());
+    children.push(el("footer",{class:"page-footer"},tr("以別名和授權素材創作。學習內容為 HTML 與 CSS；JavaScript 由教材內部使用。")));
+    return children;
+  }
+  function learnHTML(){
+    let selected=view.xray;
+    const sourceList=el("ol",{class:"source-list","aria-label":tr("可選擇的 HTML 源碼")});
+    const canvas=el("div",{class:"xray-canvas","aria-label":tr("可選擇的網頁元素")});
+    const exp=el("div",{class:"explanation",role:"status","aria-live":"polite"});
+    const question=el("p",{class:"muted small"});
+    const selectors=el("div",{class:"actions element-buttons"});
+    const sample=[
+      button(tr("Alex 的 Portfolio"),()=>select(0),"x-title"),
+      button(tr("我喜歡攝影，也正在學習網頁設計。"),()=>select(1)),
+      button(el("img",{src:E.assetData("mountain.svg",{}),alt:tr("山脊與日出的練習插圖")}),()=>select(2)),
+      button(tr("看看我的作品"),()=>select(3),"x-link")
+    ];
+    sample.forEach((b,i)=>{b.setAttribute("aria-label",tr("選擇 ")+C.elements[i].tag+" "+C.elements[i].name);canvas.append(b);});
+    C.elements.forEach((item,i)=>{
+      sourceList.append(el("li",{},button([el("span",{class:"line-number","aria-hidden":"true"},i+1),el("code",{},item.code)],()=>select(i),"",{"aria-label":tr("查看 ")+item.tag+tr(" 源碼")})));
+      selectors.append(button("<"+item.tag+">",()=>select(i),"",{"aria-label":tr("解釋 ")+item.tag}));
+    });
+    function select(i){
+      selected=i;view.xray=i;
+      [sample,Array.from(sourceList.querySelectorAll("button")),Array.from(selectors.children)].forEach(group=>group.forEach((b,n)=>b.setAttribute("aria-pressed",n===selected)));
+      const item=C.elements[i];exp.replaceChildren(el("strong",{},"<"+item.tag+"> "+item.name),el("p",{},item.explanation));
+      question.textContent=tr("想一想：")+item.question;
+    }
+    select(selected);
+    const panel=el("div",{class:"split"},el("section",{class:"panel"},el("div",{class:"panel-bar"},tr("網頁呈現")),canvas),el("section",{class:"panel code-panel"},el("div",{class:"panel-bar"},tr("HTML 源碼")),sourceList));
+    const opener=el("section",{class:"reading opener"},el("h3",{},tr("課堂開始：哪一份較清楚？")),
+      el("div",{class:"contrast-grid"},
+        el("div",{class:"sample-rough"},el("div",{class:"sample-tag"},"Portfolio A"),el("div",{class:"fake-h"},tr("攝影、關於我、我的作品、下一頁")),el("p",{},tr("歡迎！這裡有很多東西。"),el("u",{},tr("按這裡")),tr("、"),el("u",{},tr("按這裡")))),
+        el("div",{class:"sample-clear"},el("div",{class:"sample-tag"},"Portfolio B"),el("div",{class:"fake-h"},tr("Alex 的攝影 Portfolio")),el("p",{},tr("我用照片記錄校園生活。")),el("u",{},tr("查看校園攝影作品")))),
+      el("p",{class:"small muted"},tr("兩人討論一分鐘：哪一份較容易明白？留意主題、內容次序與連結文字。第一課先建立清楚的結構，下一課再用 CSS 設計樣式。")));
+    return el("div",{},opener,heading("HTML X-Ray",tr("選擇左邊的元素，看看右邊的源碼。")),panel,exp,
+      actions(selectors,button(tr("下一步：Practice"),()=>go("practice"),"primary push")),question,
+      el("section",{class:"reading"},el("h3",{},tr("先看整份 HTML")),
+        el("div",{class:"reading-grid"},
+          el("div",{},el("p",{},tr("HTML 描述內容的結構。元素通常有開始標籤、內容及結束標籤；屬性在開始標籤內提供額外資料。")),
+            code(tr('<!doctype html>\n<html lang="zh-HK">\n<head>\n  <meta charset="utf-8">\n  <title>Alex 的 Portfolio</title>\n</head>\n<body>\n  <h1>Alex 的 Portfolio</h1>\n  <p>我喜歡攝影。</p>\n</body>\n</html>'))),
+          el("div",{},el("ul",{},
+            el("li",{},el("code",{},"<!doctype html>"),tr(" 宣告使用 HTML 文件。")),
+            el("li",{},el("code",{},"head"),tr(" 放文件資料；"),el("code",{},"title"),tr(" 顯示於瀏覽器分頁。")),
+            el("li",{},el("code",{},"body"),tr(" 放讀者看到的內容。")),
+            el("li",{},el("code",{},I.locale==="en"?'lang="en"':'lang="zh-HK"'),tr(" 指定語言；UTF-8 幫助正確顯示中文。"))),
+            note(el("p",{},tr("以圖片為例：src 是路徑，alt 是替代文字。檔名大小寫要相同。教材已提供 mountain.svg；自選圖片可在 Build 加入。")),
+              el("p",{},tr("標籤要正確巢狀，例如 <p><a href=\"#projects\">作品</a></p>。瀏覽器可能自動修補錯誤，因此「看得到」不一定代表源碼正確。")))))));
+  }
+  function learnCSS(){
+    let styled=view.cssStyled;
+    const frame=el("iframe",{class:"preview-frame",title:tr("CSS 有無樣式對照"),sandbox:"allow-same-origin",referrerpolicy:"no-referrer"});
+    const cssPanel=code(C.sampleCSS);
+    const toggle=button(styled?tr("目前：有 CSS"):tr("目前：沒有 CSS"),()=>{styled=!styled;view.cssStyled=styled;toggle.textContent=styled?tr("目前：有 CSS"):tr("目前：沒有 CSS");toggle.setAttribute("aria-pressed",styled);frame.srcdoc=E.makeDocument(C.practiceHTML,styled?C.sampleCSS:"",project.assets).text;},"",{"aria-pressed":styled});
+    frame.srcdoc=E.makeDocument(C.practiceHTML,styled?C.sampleCSS:"",project.assets).text;
+    return el("div",{},
+      note(el("strong",{},tr("課前先複習 Lesson 1 HTML")),el("p",{},tr("開始 CSS 前，先用五分鐘檢查上一課的 HTML 知識。")),link(tr("前往課前複習小測"),"#2/quiz")),
+      heading(tr("同一份內容，不同的閱讀體驗。"),tr("切換 CSS，觀察標題、段落與作品區的改變。")),
+      actions(toggle,button(tr("下一步：Practice"),()=>go("practice"),"primary push")),
+      el("div",{class:"split"},el("section",{class:"panel"},el("div",{class:"panel-bar"},tr("網頁呈現")),frame),el("section",{class:"panel code-panel"},el("div",{class:"panel-bar"},tr("CSS 源碼")),cssPanel)),
+      el("section",{class:"reading"},el("h3",{},tr("選擇器、屬性、值")),
+        code(tr("h1 {\n  color: #17634b;\n}\n\n/* h1：選擇器；color：屬性；#17634b：值 */")),
+        el("div",{class:"reading-grid"},
+          el("div",{},el("p",{},tr("h1 選取所有 h1 元素；.intro 選取 class=\"intro\" 的元素；#projects 選取 id=\"projects\" 的元素。每項宣告用冒號連接屬性和值，以分號結束。")),
+            el("p",{},tr("這兩課在獨立 CSS 編輯欄寫樣式。匯出時教材會把 CSS 放入 HTML 的 head 內 style 元素；多頁網站也可用共同的外部 styles.css 保持一致。")),
+            code('<link rel="stylesheet" href="styles.css">')),
+          el("div",{},el("h4",{},tr("常用屬性")),el("ul",{},
+            el("li",{},tr("color：文字顏色；background-color：背景顏色。")),
+            el("li",{},tr("font-family：字型；font-size：大小；line-height：行高。")),
+            el("li",{},tr("padding：內容到邊框的內距。")),
+            el("li",{},tr("border：邊框；margin：邊框以外的外距。")))))),
+      note(el("strong",{},tr("先預測，再試改")),el("p",{},tr("同樣條件下，相同選擇器後出現的宣告會覆蓋前面的。一般的 id 選擇器比 class 更具優先度，class 又比元素選擇器高；繼承的樣式可被元素自己的規則取代。")),
+        code(tr("p { color: #333333; }\np { color: #17634b; }\n/* 段落最後是甚麼顏色？改一次再確認。 */"))),
+      el("section",{class:"reading"},el("h3",{},tr("第二課成功準則")),
+        el("p",{},tr("保留第一課的清楚結構，運用一致的字體、顏色、背景與留白改善可讀性。能解釋一條 CSS 規則，並用實際預覽驗證改動。")),
+        el("p",{},tr("延伸挑戰：為一組段落加入 class=\"intro\"，只選取這組內容；或把相同 CSS 套用到第二個網頁，檢查兩頁是否一致。"))));
+  }
+  function workbench(source,keys,{build=false}={}){
+    const workspace=build?"build":lesson+"-"+taskIndex[lesson];
+    let active=lesson===1?"html":tab;
+    let loaded=false,loadVersion=0;
+    const feedback=el("div",{class:"feedback",role:"status","aria-live":"polite"});
+    const checks=el("ul",{class:"check-list"});
+    const safety=el("div",{class:"workbench-footer"});
+    const frame=el("iframe",{class:"preview-frame",title:build?tr("我的 Portfolio 即時預覽"):tr("練習即時預覽"),sandbox:"allow-same-origin",referrerpolicy:"no-referrer"});
+    const editor=el("textarea",{id:"source-editor",class:"code",spellcheck:"false","aria-label":active==="html"?tr("HTML 代碼"):tr("CSS 代碼"),maxlength:E.MAX_SOURCE,value:source[active],oninput:()=>{
+      source[active]=editor.value;view.checked.delete(workspace);queueSave();checks.replaceChildren();feedback.className="feedback";feedback.textContent=tr("已有修改，請重新檢查。");
+      clearTimeout(previewTimer);previewTimer=setTimeout(updatePreview,300);
+    },onkeydown:event=>{
+      if((event.ctrlKey||event.metaKey)&&event.key==="Enter"){event.preventDefault();updatePreview();}
+    }});
+    const tabControls=el("div",{class:"editor-tabs"});
+    function selectTab(next){
+      active=next;tab=next;editor.value=source[active];editor.setAttribute("aria-label",next==="html"?tr("HTML 代碼"):tr("CSS 代碼"));
+      tabControls.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.kind===next));editor.focus();
+    }
+    ["html","css"].filter(t=>lesson===2||t==="html").forEach(t=>tabControls.append(button(t.toUpperCase(),()=>selectTab(t),"",{"aria-pressed":active===t,"data-kind":t})));
+    function updatePreview(){
+      loaded=false;const version=++loadVersion;
+      const result=E.makeDocument(source.html,source.css,project.assets);
+      frame.onload=()=>{if(version===loadVersion)loaded=true;};
+      frame.srcdoc=result.text;
+      const messages=[tr("修改後自動更新；Ctrl／⌘ + Enter 可立即更新。")];
+      if(result.removed)messages.push(tr("不支援的元素、內嵌樣式或屬性已略去；CSS 請用 CSS 欄。"));
+      if(result.missing)messages.push(tr("有圖片來源未找到，請核對檔名或加入圖片。"));
+      if(result.cssBlocked)messages.push(tr("CSS 包含外部載入指令，已暫停套用。"));
+      safety.textContent=messages.join(" ");
+    }
+    async function runChecks(){
+      clearTimeout(previewTimer);updatePreview();
+      for(let n=0;n<40&&!loaded;n++)await new Promise(r=>setTimeout(r,50));
+      if(!frame.isConnected)return;
+      if(!loaded){feedback.textContent=tr("預覽尚未準備好，請再按一次檢查。");return;}
+      let results;
+      try{results=E.evaluate(source,keys,frame);}catch(e){feedback.textContent=tr("未能檢查預覽。請更新預覽後再試。");return;}
+      checks.replaceChildren(...results.map(r=>el("li",{class:r.pass?"pass":"fail"},el("span",{class:"mark"},r.pass?tr("通過"):tr("待改")),el("div",{},el("strong",{},r.label),el("div",{class:"meta"},r.detail)))));
+      const count=results.filter(r=>r.pass).length;
+      feedback.className="feedback "+(count===results.length?"pass":"fail");
+      feedback.textContent=count+" / "+results.length+tr(" 項通過。")+(count===results.length?tr("再用預覽和同伴回饋確認品質。"):tr("按「待改」說明修改，再重新檢查。"));
+      view.checked.add(workspace);
+      saveNow();
+    }
+    const widthBtn=button(tr("窄畫面 360px"),()=>{
+      const narrow=frame.dataset.narrow!=="true";if(narrow)view.narrow.add(workspace);else view.narrow.delete(workspace);applyWidth(narrow);
+    },"",{"aria-pressed":"false"});
+    function applyWidth(narrow){frame.dataset.narrow=String(narrow);frame.style.maxWidth=narrow?"360px":"none";frame.style.marginInline="auto";widthBtn.textContent=narrow?tr("回到完整寬度"):tr("窄畫面 360px");widthBtn.setAttribute("aria-pressed",narrow);}
+    applyWidth(view.narrow.has(workspace));
+    const checkSection=el("section",{},el("h3",{},tr("客觀檢查")),button(tr("檢查這份作品"),runChecks,"primary"),feedback,checks,
+      el("p",{class:"checks-label"},tr("檢查會讀取源碼及預覽的實際樣式。外部網址的可達性、內容品質與完整可及性須人工確認。")));
+    const work=el("div",{},
+      el("div",{class:"split workbench"},
+        el("section",{class:"panel editor-wrap"},el("div",{class:"panel-bar"},el("span",{},tr("代碼編輯")),tabControls),editor),
+        el("section",{class:"panel"},el("div",{class:"panel-bar"},el("span",{},tr("即時預覽")),widthBtn),frame)),
+      safety,actions(button(tr("更新預覽"),updatePreview),build?button(tr("保存到本機"),saveNow):null),statusNode());
+    setTimeout(updatePreview,0);
+    if(view.checked.has(workspace))setTimeout(runChecks,0);
+    return {work,checkSection,updatePreview,source};
+  }
+  function practicePage(){
+    const i=taskIndex[lesson],task=C.tasks[lesson][i],source=project.practice[lesson][i];
+    const bench=workbench(source,task.checks);
+    let hintLevel=view.hints[lesson][i];
+    const hintArea=el("div",{class:"hints"},el("h3",{},tr("需要一點提示？")),el("p",{class:"small muted"},tr("先自己試，再選擇下一層：方向 → 結構 → 例子。")));
+    const reveal=button("",()=>{
+      hintLevel++;view.hints[lesson][i]=hintLevel;drawHints();
+    });
+    function drawHints(){
+      hintArea.querySelectorAll(".hint").forEach(n=>n.remove());
+      const texts=[tr("方向"),tr("結構"),tr("參考例子")];
+      for(let n=0;n<hintLevel;n++)hintArea.insertBefore(el("div",{class:"hint"},el("strong",{},tr("提示 ")+(n+1)+" · "+texts[n]),n===2?code(task.hints[n]):el("p",{},task.hints[n])),reveal);
+      reveal.textContent=hintLevel<3?tr("提示 ")+(hintLevel+1)+tr("：")+[tr("給我方向"),tr("看看結構"),tr("參考例子")][hintLevel]:tr("已顯示全部提示");reveal.disabled=hintLevel===3;
+    }
+    hintArea.append(reveal);
+    drawHints();
+    const resetBox=el("div",{});
+    const reset=button(tr("重設這一題"),()=>{
+      resetBox.replaceChildren(el("div",{class:"confirm-box"},el("p",{},tr("將清除這一題的修改。Portfolio 作品不受影響。")),
+        actions(button(tr("確認重設"),()=>{project.practice[lesson][i]={html:task.html,css:task.css};view.hints[lesson][i]=0;view.checked.delete(lesson+"-"+i);saveNow();render();}),button(tr("取消"),()=>resetBox.replaceChildren()))));
+    });
+    return el("div",{},heading(tr("Practice · 小步練習"),lesson===1?tr("三個任務，每個約 4 分鐘。"):tr("三個任務，每個約 5 分鐘。")),
+      el("div",{class:"task-nav","aria-label":tr("練習任務")},C.tasks[lesson].map((t,n)=>button(t.title,()=>{clearTimeout(previewTimer);taskIndex[lesson]=n;render();},"",{"aria-pressed":n===i}))),
+      el("div",{class:"task-description"},el("h3",{},task.title),el("p",{},task.goal)),bench.work,
+      el("div",{class:"below-editor"},bench.checkSection,hintArea),actions(reset,button(i===2?tr("下一步：Build"):tr("下一個任務"),()=>{if(i===2)go("build");else{taskIndex[lesson]++;render();}},"push primary")),resetBox);
+  }
+  function buildPage(){
+    const keys=["structure","heading","intro","closing","image","alt","link"];
+    if(lesson===2)keys.push("cssColor","readable","contrast","cssBox","underline");
+    const bench=workbench(project.build,keys,{build:true});
+    const imageStatus=el("p",{class:"status",role:"status"});
+    const imageInput=el("input",{class:"file-input",id:"image-file",type:"file",accept:"image/png,image/jpeg,image/webp",onchange:async e=>{
+      const f=e.target.files[0];if(!f)return;
+      if(!["image/png","image/jpeg","image/webp"].includes(f.type)||f.size>1500000){imageStatus.textContent=tr("請選擇 1.5 MB 以下的 PNG、JPEG 或 WebP。");return;}
+      if(Object.keys(project.assets).length>=6){imageStatus.textContent=tr("最多加入六張圖片。可沿用已加入的檔案。");return;}
+      let name=f.name.replace(/[^a-zA-Z0-9_.-]/g,"-").slice(-65);
+      if(!/^[a-zA-Z0-9]/.test(name))name="image"+name;
+      if(!/\.(png|jpe?g|webp)$/i.test(name))name="image-"+Date.now()+".png";
+      if(Object.hasOwn(project.assets,name)){const dot=name.lastIndexOf(".");name=name.slice(0,dot)+"-"+Date.now().toString().slice(-6)+name.slice(dot);}
+      const data=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(f);});
+      project.assets[name]=data;saveNow();imageStatus.textContent=tr("已加入 ")+name+tr("。把 img 的 src 改成這個檔名。圖片只存在本機和你的匯出檔案內。");bench.updatePreview();
+    }});
+    const imageSection=el("section",{},el("h3",{},tr("圖片素材")),el("p",{},tr("可直接使用 mountain.svg（本教材原創練習圖）。也可加入你有權使用的圖片；請避免可辨識同學、住址或其他敏感資料。")),
+      el("label",{for:"image-file"},tr("加入本機圖片（最多六張，每張 1.5 MB）")),imageInput,imageStatus,
+      el("p",{class:"meta"},tr("已加入：")+(Object.keys(project.assets).join(tr("、"))||tr("目前使用內置山景圖。"))));
+    return el("div",{},heading(tr("Build · 我的 Portfolio"),lesson===1?tr("18 分鐘完成 HTML 草稿；先把內容與結構做好。"):tr("延續第一課同一份 HTML，加入 CSS 令內容更清楚。")),
+      note(el("strong",{},tr("最少成果")),el("p",{},lesson===1?tr("一個主標題、一段介紹、一張有替代文字的內容圖、一條可用連結；保存並匯出。可用別名或虛構角色。"):tr("保留 HTML 元素；加入主題顏色、可讀文字、背景與留白。解釋一條 CSS 規則，並重新測試圖片與連結。"))),
+      bench.work,
+      actions(button(tr("下載可編輯備份"),exportJSON),button(tr("匯出 HTML 作品"),exportHTML,"primary"),link(tr("保存與離線說明"),"#"+lesson+"/resources")),
+      el("p",{class:"meta"},tr("備份可跨電腦繼續編輯。匯出 HTML 內含圖片與 CSS，可直接開啟；教學預覽會阻止外部圖片與外部網站連結。")),
+      el("div",{class:"below-editor"},bench.checkSection,imageSection),
+      el("section",{class:"reading"},el("h3",{},tr("自己測一次，再讓伙伴看")),
+        el("ul",{},el("li",{},tr("在預覽點「看看我的作品」，確認跳到對應區域；圖片應正常顯示。")),
+          el("li",{},tr("切至 360px 窄畫面，留意字、圖片與連結；用 Tab 尋找連結。")),
+          el("li",{},tr("下載 HTML 並開啟，確認離開教材後仍能顯示圖片和樣式。")),
+          el("li",{},tr("想一想：alt 描述了甚麼？文字和圖片是否適合公開？外部連結若有使用，須另行點測。"))),
+        peerForm()),
+      note(el("strong",{},tr("完成得較快？")),el("p",{},lesson===1?tr("加入興趣清單 ul / li，或第二個 h2 內容區。先保存草稿，CSS 留到第二課。"):tr("用 class 選取一組內容；加入 img { max-width: 100%; height: auto; }。試把同一套 CSS 套用到第二頁，說明一致樣式的好處。"))),
+      actions(button(tr("前往小測與 Exit Ticket"),()=>go("quiz"),"primary push")));
+  }
+  function peerForm(){
+    const values=project.peer[lesson]||(project.peer[lesson]=["","",""]);
+    return el("div",{},el("h3",{},tr("同伴回饋 · 每人約 3 分鐘")),
+      [tr("一個優點與一項具體改善建議"),tr("創作者解釋了哪個 HTML 元素／CSS 規則？"),tr("圖片、連結和窄畫面測試的結果")].map((t,i)=>el("div",{class:"form-row"},el("label",{for:"peer-"+i},t),el("textarea",{id:"peer-"+i,rows:2,maxlength:2000,value:values[i]||"",oninput:e=>{values[i]=e.target.value;queueSave();}}))),
+      el("p",{class:"meta"},tr("不用記錄伙伴真實姓名。先說出觀察和原因，再提出可行的修改。")));
+  }
+  function exportJSON(){saveNow();E.download("portfolio-lab-backup.json",JSON.stringify(project,null,2),"application/json");}
+  function exportHTML(){saveNow();const result=E.makeDocument(project.build.html,project.build.css,project.assets,false);E.download("my-portfolio.html",result.text,"text/html;charset=utf-8");}
+  function formFields(key,prompts,rows=3){
+    const values=project.answers[key]||(project.answers[key]=[]);
+    return prompts.map((t,i)=>el("div",{class:"form-row"},el("label",{for:key+"-"+i},(i+1)+". "+t),el("textarea",{id:key+"-"+i,rows,maxlength:4000,value:values[i]||"",oninput:e=>{values[i]=e.target.value;queueSave();}})));
+  }
+  function quizSection(qs,key,title,description="",prefix="q",checkLabel=tr("檢查小測")){
+    const values=project.answers[key]||(project.answers[key]=[]);
+    const feedback=el("div",{class:"feedback",role:"status","aria-live":"polite"});
+    function checkQuiz(){
+      view.quizChecked.add(key);
+      const missing=qs.map((q,i)=>i).filter(i=>!Number.isInteger(values[i]));
+      if(missing.length){feedback.className="feedback fail";feedback.textContent=tr("還有 ")+missing.length+tr(" 題未作答。請先完成全部題目。");return;}
+      const count=qs.filter((q,i)=>q.answer===values[i]).length;
+      feedback.className="feedback "+(count===qs.length?"pass":"fail");feedback.replaceChildren(el("strong",{},count+" / "+qs.length+tr(" 題正確。")),el("ol",{},qs.map((q,i)=>el("li",{},(q.answer===values[i]?tr("正確。"):tr("再想想。正確答案：")+q.options[q.answer]+tr("。"))+q.why))));saveNow();
+    }
+    const fields=qs.map((q,i)=>el("fieldset",{},el("legend",{},(i+1)+". "+q.q),q.options.map((o,n)=>el("label",{class:"choice"},el("input",{type:"radio",name:prefix+i,value:n,checked:values[i]===n,onchange:()=>{values[i]=n;feedback.replaceChildren();view.quizChecked.delete(key);queueSave();}}),el("span",{},o)))));
+    const quiz=el("section",{"data-quiz":key,"aria-label":title},el("h3",{},title),description?el("p",{class:"small muted"},description):null,
+      el("div",{class:key==="recall2"?"quiz-grid":null},fields),
+      button(checkLabel,checkQuiz,"primary"),feedback);
+    if(view.quizChecked.has(key))checkQuiz();
+    return quiz;
+  }
+  function quizPage(){
+    const entry=lesson===1?el("div",{},
+      el("section",{},el("h3",{},tr("課前診斷 · 5 分鐘")),el("p",{class:"small muted"},tr("不計分；用來決定需要先重溫甚麼。")),formFields("diagnostic",C.diagnostic,2))):el("div",{},
+      quizSection(C.recall2,"recall2",tr("課前複習小測 · Lesson 1 HTML · 5 分鐘"),tr("開始 CSS 前獨立完成，檢查上一課的掌握情況。這是形成性回饋，不計入成績；完成後先看解說，再開始 CSS。"),"recall2-",tr("檢查課前複習小測")),
+      actions(link(tr("複習後前往 Lesson 2 Learn"),"#2/learn")));
+    const post=el("details",{class:"reading",open:view.postQuizOpen,ontoggle:e=>{if(e.target.isConnected)view.postQuizOpen=e.target.open;}},
+      el("summary",{},lesson===2?tr("課後自測 · Lesson 2 CSS（選做）"):tr("課後自測 · Lesson 1 HTML（選做）")),
+      el("div",{},lesson===2?quizSection(C.quizzes[2],"quiz2",tr("CSS 學習後檢查"),tr("完成 CSS 的 Learn、Practice、Build 後才作答；課前不用做這一部分。")):quizSection(C.quizzes[1],"quiz1",tr("HTML 學習後檢查"),tr("完成 HTML 的 Learn、Practice、Build 後才作答；課前診斷不包括這一部分。"))));
+    return el("div",{class:"assessment-page"},heading(tr("小測與 Exit Ticket"),tr("答案只存在這個瀏覽器；不會自動傳送給教師。")),
+      entry,
+      el("section",{class:"reading"},el("h3",{},tr("個人 Exit Ticket · 最後 4–5 分鐘")),el("p",{},tr("請獨立作答。開放題由教師評閱，不會用關鍵字自動給分。")),formFields("exit"+lesson,C.exit[lesson],3),
+        actions(button(tr("保存回答"),saveNow),button(tr("下載學習紀錄"),exportLearning,"primary")),statusNode()),
+      post,el("p",{class:"meta"},tr("依教師指示把學習紀錄或備份交到學校指定位置；本教材沒有提交或班級統計服務。")));
+  }
+  function exportLearning(){
+    const lines=[tr("Portfolio Lab · 學習紀錄"),"Lesson "+lesson,new Date().toLocaleString(I.dateLocale),""];
+    if(lesson===1){
+      lines.push(tr("診斷"));
+      C.diagnostic.forEach((q,i)=>lines.push(q,project.answers.diagnostic?.[i]||tr("（未填）"),""));
+    }else{
+      lines.push(tr("課前複習小測 · Lesson 1 HTML · 5 分鐘"));
+      C.recall2.forEach((q,i)=>lines.push(q.q,q.options[project.answers.recall2?.[i]]||tr("（未答）"),""));
+    }
+    lines.push(lesson===2?tr("課後自測 · Lesson 2 CSS（選做）"):tr("課後自測 · Lesson 1 HTML（選做）"));
+    C.quizzes[lesson].forEach((q,i)=>lines.push(q.q,q.options[project.answers["quiz"+lesson]?.[i]]||tr("（未答）"),""));
+    lines.push("Exit Ticket");
+    C.exit[lesson].forEach((q,i)=>lines.push(q,project.answers["exit"+lesson]?.[i]||tr("（未填）"),""));
+    lines.push(tr("同伴回饋"),...(project.peer[lesson]||[]));
+    E.download("portfolio-learning-lesson-"+lesson+".txt",lines.join("\n"));
+  }
+  function table(headers,rows,caption){
+    return el("div",{class:"table-scroll"},el("table",{},caption?el("caption",{},caption):null,el("thead",{},el("tr",{},headers.map(t=>el("th",{scope:"col"},t)))),el("tbody",{},rows.map(row=>el("tr",{},row.map((t,i)=>el("td",{class:i===0?"time":""},t)))))));
+  }
+  function teacherPage(){
+    return el("article",{class:"teacher-page"},el("h1",{},tr("教師指引")),el("p",{},tr("中五 ICT · Web Application Development。兩課各 70 分鐘，先建結構，再改善閱讀。")),
+      actions(button(tr("打印教師指引"),()=>window.print()),link(tr("開啟學生工作紙"),"print/worksheet.html",{target:"_blank",rel:"noopener"}),link(tr("教師答案及評閱準則"),"print/teacher-key.html",{target:"_blank",rel:"noopener"})),
+      el("nav",{class:"toc","aria-label":tr("教師指引目錄")},link(tr("目標"),"#teacher-goals"),link(tr("第一課"),"#teacher-l1"),link(tr("第二課"),"#teacher-l2"),link(tr("評估"),"#teacher-assessment"),link(tr("故障備案"),"#teacher-backup"),link(tr("教綱與來源"),"#teacher-sources")),
+      el("section",{id:"teacher-goals"},el("h2",{},tr("課前準備與成功準則")),
+        el("p",{},tr("學生具備一般瀏覽和檔案操作能力，並已在必修部分單元 C(c) Elementary Web Authoring 認識基本 HTML 結構，但不必背誦 HTML 代碼，多數未曾親手編寫；本課由辨認推進到編寫。一人一機及教師投影。可用繁體中文介紹，保留英文標籤和術語。")),
+        el("ol",{},el("li",{},tr("課前預先下載離線單檔或整個教材資料夾；每部電腦試開、試保存及匯出。打印工作紙與答案。")),
+          el("li",{},tr("準備一份教師樣本。學生可預備短介紹與授權圖片；未準備者用虛構角色及 mountain.svg。")),
+          el("li",{},tr("第一課：口頭提問中解釋 h1、p、img、a 至少三項；建立四元素草稿；修正一個錯誤並說明測試方法；給一項具體回饋。")),
+          el("li",{},tr("第二課：解釋選擇器、屬性和值；在同一草稿加入顏色、字體、背景與盒模型；以預覽和同伴測試說明閱讀改善。"))),
+        note(el("p",{},tr("第一課的 Build 只有 18 分鐘。優先讓學生完成標題和段落，再加內置圖與 #projects 連結。快完成者才加清單或第二個內容區。")))),
+      el("section",{id:"teacher-l1"},el("h2",{},tr("Lesson 1 · HTML（70 分鐘）")),table([tr("時間"),tr("階段"),tr("教學與學生活動"),tr("評估證據／教材")],C.flow1)),
+      el("section",{id:"teacher-l2"},el("h2",{},tr("Lesson 2 · CSS（70 分鐘）")),el("p",{},tr("學生第一課作品會自動延續；換電腦則先匯入備份。")),table([tr("時間"),tr("階段"),tr("教學與學生活動"),tr("評估證據／教材")],C.flow2)),
+      el("section",{id:"teacher-assessment"},el("h2",{},tr("評估與教學調整")),
+        table([tr("工具"),tr("觀察甚麼"),tr("下一步")],[
+          [tr("三題診斷"),tr("標題、超連結、照片權利與私隱"),tr("答案只留在學生的瀏覽器：教師巡視時閱讀螢幕，並請全班舉手（包括「記得必修部分哪些 HTML 標籤」），按結果調整示範重點。若分不清內容和樣式，先用對比例子口頭說明。")],
+          [tr("第二課課前複習小測"),tr("第一課 HTML：h1／p、src／alt、href／id、結束標籤"),tr("首五分鐘獨立作答；按錯題重溫，再開啟草稿補測。CSS 題只作課後選做自測。")],
+          ["Practice",tr("常見標籤、路徑、href、有效 CSS"),tr("讓學生先指出錯誤，再取下一層提示；不要直接代打。")],
+          ["Build",tr("源碼、即時預覽、獨立匯出檔"),tr("自動檢查只作形成性回饋。教師另外檢視內容、圖片描述與實際功能。")],
+          [tr("同伴回饋"),tr("能否解釋一項選擇，提出具體且尊重的建議"),tr("要求「我看到…所以建議…」，避免只說好看。")],
+          ["Exit Ticket",tr("獨立解釋與除錯，能否遷移到新例子"),tr("學生下載學習紀錄，連同匯出的 HTML 按學校慣常方式提交；教師在下一課前閱讀。若多名學生仍混淆 href/src 或選擇器，下一課先示範再讓學生重試。")]
+        ]),
+        el("p",{},tr("小測可自行重試；Exit Ticket 由教師閱卷。答案、口頭提問建議及簡短評閱準則見教師答案。可下載學習紀錄，由學生按學校既有方式提交。沒有線上收集服務。"))),
+      el("section",{},el("h2",{},tr("鷹架、分層與正面課堂管理")),
+        el("ul",{},el("li",{},tr("示範 → 元素對照 → 引導修改 → 半成品 → 獨立作品。三層提示由方向到例子；課堂規範是先按一次檢查，再取下一層提示。教材不會強制這個次序，教師巡視時留意學生取用提示的情況。")),
+          el("li",{},tr("需要支援：提供標籤參考、內置素材和同伴口頭解釋；先達成最少成果。能力較高：加清單、第二區或 class 選擇器。")),
+          el("li",{},tr("建立「先看預覽 → 查提示 → 問伙伴 → 問老師」程序。投影當前步驟和剩餘時間；巡視時先處理無法開始的學生。")),
+          el("li",{},tr("伙伴可以解釋，不替對方控制鍵盤。共用電腦時每 5 分鐘交換操作／檢查角色；兩人各自完成 Exit Ticket。")),
+          el("li",{},tr("針對具體進步給回饋；對離題操作先靠近和私下提醒，讓學生知道下一個可完成的小步驟。"))),
+        el("p",{},tr("教學依據：Gagné 的教學事件用於導入、目標、回憶、示範、實作、回饋和遷移；鷹架把支援由示範逐步減少；形成性評估用於決定下一步。這些是教學設計理由，並非此網站已證實提升學習成績的研究結論。"))),
+      el("section",{id:"teacher-backup"},el("h2",{},tr("三級故障備案")),
+        table([tr("情況"),tr("可立即採取的安排"),tr("仍需補做")],[
+          [tr("網絡或平台故障"),tr("開啟預存的 offline.html；或整個資料夾的 index.html。也可用 starter.html 配合文字編輯器。"),tr("先確認備份檔在每部機上；首次未下載不能憑空離線。")],
+          [tr("部分電腦故障"),tr("兩人共用正常電腦，交換寫碼／檢查角色；不用登入或公開真實姓名。"),tr("各自交 Exit Ticket，恢復後保存個別作品。")],
+          [tr("全班電腦或供電故障"),tr("派工作紙：標籤配對、除錯、紙上 Portfolio、同伴回饋。"),tr("紙上源碼不能證明瀏覽器呈現正確；設備恢復後補做圖片、連結、CSS 和匯出測試。")],
+          [tr("進度落後"),tr("先保存最少成果；下一課開首補測。"),tr("第一課不趕做 CSS。")]
+        ]),
+        table([tr("紙本替代時間"),tr("活動")],[["0–10",tr("診斷及情境導入")],["10–20",tr("印刷範例與教師講解")],["20–30",tr("標籤配對")],["30–45",tr("除錯")],["45–60",tr("紙上 Portfolio 草稿")],["60–66",tr("交換檢查及回饋")],["66–70","Exit Ticket"]]),
+        el("p",{},tr("第二課全班設備故障：0–5 做 HTML 複習小測、5–8 訂正、8–20 讀 CSS 規則、20–35 預測與除錯、35–55 在草稿加 CSS、55–65 同伴說明與回饋、65–70 Exit Ticket；之後必須補做瀏覽器測試。"))),
+      el("section",{id:"teacher-sources"},el("h2",{},tr("教綱對照與來源")),
+        el("p",{},tr("主要對照：ICT Curriculum and Assessment Guide（2021），Elective B → b. Web Programming and Applications → i. Web authoring and publishing，印刷頁 45（PDF 第 55 頁）。本單元是 HTML／CSS 入門，並非整個選修單元的完整覆蓋。")),
+        table([tr("教綱／評核依據"),tr("網站落實"),tr("界線")],[
+          [tr("編輯 HTML 網頁"),tr("文件結構、四種元素、X-Ray、除錯及 Portfolio 草稿"),tr("標籤參考可用；重點是理解及運用。")],
+          [tr("以 CSS 保持網頁一致樣式"),tr("選擇器、顏色／背景／字體／留白；相同規則套用同類元素；延伸至第二頁"),tr("兩課核心作品為單頁。跨頁共用外部 CSS 是延伸示例。")],
+          [tr("發布網頁內容"),tr("教師部署及學生匯出時區分本機檔案與網上發布"),tr("沒有要求學生公開發布；網域、託管、伺服器等不在本兩課授課範圍。")]
+        ]),
+        el("ul",{class:"plain-list"},
+          el("li",{},link(tr("教育局 ICT 課程與評估指引（2021）"),"https://www.edb.gov.hk/attachment/en/curriculum-development/kla/technology-edu/curriculum-doc/ICT_C%26A_Guide_e_final.pdf",{target:"_blank",rel:"noopener noreferrer"})),
+          el("li",{},"Gagné, R. M., Briggs, L. J., & Wager, W. W. (1992). Principles of instructional design (4th ed.). Harcourt Brace Jovanovich College Publishers."),
+          el("li",{},"Vygotsky, L. S. (1978). Mind in society: The development of higher psychological processes."),
+          el("li",{},link(tr("WHATWG HTML 標準"),"https://html.spec.whatwg.org/",{target:"_blank",rel:"noopener noreferrer"}),tr("；"),link(tr("W3C WCAG 對比指引"),"https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",{target:"_blank",rel:"noopener noreferrer"})))),
+      el("footer",{class:"page-footer"},tr("教學網站及測試不能取代教師按學生程度調整步速。備份、作品和回答只留在學生裝置。")));
+  }
+  function resourcesPage(){
+    const importArea=el("div",{}),clearArea=el("div",{});
+    const file=el("input",{id:"import-project",class:"file-input",type:"file",accept:".json,application/json",onchange:async e=>{
+      const f=e.target.files[0];if(!f)return;
+      try {
+        if(f.size>13500000)throw Error(tr("備份超過 13.5 MB，無法讀取。"));
+        const candidate=E.validProject(JSON.parse(await f.text()));
+        importArea.replaceChildren(el("div",{class:"confirm-box"},el("h3",{},tr("準備匯入備份")),
+          el("p",{},"HTML "+candidate.build.html.length+tr(" 字元；CSS ")+candidate.build.css.length+tr(" 字元；")+Object.keys(candidate.assets).length+tr(" 張自選圖片。匯入會取代這個瀏覽器的作品與回答。")),
+          actions(button(tr("備份現有並匯入"),()=>{exportJSON();project=candidate;window.LabProject=project;lesson=project.lesson;view.checked.clear();view.quizChecked.clear();saveNow();go("build",lesson);if(route==="build")render(true);},"primary"),button(tr("取消"),()=>{importArea.replaceChildren();file.value="";}))));
+      } catch(err){importArea.replaceChildren(el("p",{class:"status error",role:"alert"},tr("未匯入：")+err.message));}
+    }});
+    const offlineStatus=el("p",{class:"status",role:"status"});
+    const cacheButton=button(tr("準備此瀏覽器離線使用"),async()=>{
+      if(location.protocol==="file:"||window.LabOffline){offlineStatus.textContent=tr("你正在完整離線教材內開啟。保留此檔案或整個資料夾，無須另作快取。");return;}
+      if(!("serviceWorker" in navigator)||!window.isSecureContext){offlineStatus.textContent=tr("此環境不支援離線快取。請下載單檔離線教材，或保留整個教材資料夾。");return;}
+      cacheButton.disabled=true;offlineStatus.textContent=tr("正在保存完整教材…");
+      try{
+        const reg=await navigator.serviceWorker.register("./sw.js");
+        await navigator.serviceWorker.ready;
+        const worker=reg.active||reg.waiting||reg.installing;
+        if(!worker)throw Error(tr("未能啟用離線教材"));
+        const channel=new MessageChannel();
+        const reply=await new Promise((resolve,reject)=>{
+          const timeout=setTimeout(()=>reject(Error(tr("準備逾時，請使用單檔離線教材。"))),15000);
+          channel.port1.onmessage=e=>{clearTimeout(timeout);resolve(e.data);};
+          worker.postMessage({type:"VERIFY_CACHE"},[channel.port2]);
+        });
+        if(!reply.ok)throw Error(tr("教材快取未齊備。"));
+        offlineStatus.textContent=tr("完整教材已備妥。請先重新載入一次，再關閉網絡測試；作品備份仍須另外下載。");
+      }catch(err){offlineStatus.textContent=tr("未能準備離線快取：")+err.message+tr(" 你仍可下載單檔教材。");}
+      cacheButton.disabled=false;
+    });
+    return el("article",{},el("h1",{},tr("作品與離線")),el("p",{},tr("先保存作品，再準備課堂的備用方式。")),
+      el("div",{class:"two-col"},
+        el("section",{},el("h2",{},tr("作品保存與帶走")),el("p",{},tr("修改後約 0.6 秒自動保存在目前瀏覽器。清除瀏覽資料、私人瀏覽或更換網址／裝置可能失去記錄。備份檔可在其他裝置匯入。")),
+          actions(button(tr("保存到本機"),saveNow),button(tr("下載可編輯備份"),exportJSON,"primary"),button(tr("匯出 HTML 作品"),exportHTML)),statusNode(),
+          el("label",{for:"import-project"},tr("匯入 Portfolio Lab JSON 備份")),file,importArea,
+          el("p",{class:"meta"},tr("JSON 備份包括 HTML、CSS、圖片、練習、回答及同伴回饋。HTML 作品是可獨立開啟的呈現版本；繼續編輯請使用 JSON 備份。"))),
+        el("section",{},el("h2",{},tr("課前準備離線")),el("ol",{},
+          el("li",{},tr("下載單檔教材 offline.html，保存到每部電腦或 USB。")),
+          el("li",{},tr("拔除網絡，再開啟檔案，試做修改、保存與匯出。")),
+          el("li",{},tr("另存學生作品 JSON；打印工作紙及教師答案。"))),
+          el("div",{class:"resource-list"},
+            link(tr("下載單檔離線教材"),"offline.html",{download:"Portfolio-Lab-offline.html"}),
+            link(tr("開啟 HTML 起始檔"),"starter.html",{download:"starter.html"}),
+            link(tr("學生備用工作紙（HTML／CSS）"),"print/worksheet.html",{target:"_blank",rel:"noopener"}),
+            link(tr("教師答案與評閱準則"),"print/teacher-key.html",{target:"_blank",rel:"noopener"})),
+          actions(cacheButton),offlineStatus)),
+      el("section",{class:"reading privacy-list"},el("h2",{},tr("私隱與預覽")),
+        el("ul",{},
+          el("li",{},tr("沒有帳號、追蹤分析、廣告、雲端儲存或自動上傳。學生可用別名與虛構內容。")),
+          el("li",{},tr("網上版本的託管商可能保留一般訪問紀錄；學生源碼、圖片和答案不會由本教材傳送到伺服器。")),
+          el("li",{},tr("預覽與匯出會略去腳本、表單、事件屬性、內嵌樣式和外部資源。CSS 在獨立欄編寫；只顯示內置或已加入作品的圖片。")),
+          el("li",{},tr("預覽的外部連結不開啟；同頁 #id 可測試。匯出的 HTTPS 連結保留，須在獨立 HTML 內人工點測。")),
+          el("li",{},tr("教師答案在教材內可見，適合形成性評估；不是保密考試系統。")),
+          el("li",{},tr("共用電腦：離開前下載備份，再清除這個瀏覽器的本機資料。自選圖片可能含相片中繼資料，分享前用學校認可方式移除或改用內置素材。"))),
+        button(tr("清除此瀏覽器的學習資料"),()=>{
+          clearArea.replaceChildren(el("div",{class:"confirm-box"},el("p",{},tr("會刪除這個網址下 Portfolio Lab 的作品、練習、圖片和回答。先下載備份；其他網站資料不受影響。")),
+            actions(button(tr("下載備份後清除"),()=>{exportJSON();E.clear();project=E.initial();window.LabProject=project;lesson=1;view.checked.clear();view.quizChecked.clear();saveText=tr("已清除此瀏覽器的 Portfolio Lab 資料。");render(true);},"danger"),button(tr("取消"),()=>clearArea.replaceChildren()))));
+        },"danger"),clearArea));
+  }
+  function render(focus=false){
+    document.documentElement.lang=I.languageTag;
+    document.querySelector(".skip").textContent=tr("跳到主要內容");
+    document.querySelector('meta[name="description"]')?.setAttribute("content",tr("中五 ICT HTML 與 CSS 課堂教材：理解、練習、創作。"));
+    app.replaceChildren(...shell());
+    document.title="Portfolio Lab · "+(route==="teacher"?tr("教師指引"):route==="resources"?tr("作品與離線"):"Lesson "+lesson+" "+route);
+    if(focus){window.scrollTo(0,0);document.getElementById("main")?.focus({preventScroll:true});}
+  }
+  readHash();render();
+  // In-page teacher anchors are separate from lesson routes.
+  document.addEventListener("click",event=>{
+    const a=event.target.closest("a");
+    if(a?.getAttribute("href")==="#main"){event.preventDefault();document.getElementById("main")?.focus();return;}
+    if(a?.getAttribute("href")?.startsWith("#teacher-")){
+      event.preventDefault();document.getElementById(a.getAttribute("href").slice(1))?.scrollIntoView();
+    }
+  });
+})();
+</script></body>
+</html>

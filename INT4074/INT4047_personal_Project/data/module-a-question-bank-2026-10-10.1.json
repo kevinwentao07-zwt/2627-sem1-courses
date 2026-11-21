@@ -1,0 +1,6247 @@
+{
+  "bankVersion": "2026-10-10.1",
+  "policy": {
+    "A1.1": [
+      6,
+      "supporting",
+      "辨認數據與資訊，為後續分析建立背景"
+    ],
+    "A1.2": [
+      6,
+      "supporting",
+      "掌握系統各組成部分與角色"
+    ],
+    "A1.3": [
+      8,
+      "core",
+      "跨情境辨認輸入、處理與輸出"
+    ],
+    "A1.4": [
+      6,
+      "supporting",
+      "資訊查證與負責任使用"
+    ],
+    "A2.1": [
+      8,
+      "core",
+      "表格及數據庫學習的基礎"
+    ],
+    "A2.2": [
+      6,
+      "supporting",
+      "比較存取方式與適用情境"
+    ],
+    "A2.3": [
+      10,
+      "priority",
+      "易混淆的有效性、核實與檢查限制"
+    ],
+    "A2.4": [
+      8,
+      "core",
+      "計算校驗位並理解偵錯限制"
+    ],
+    "A3.1": [
+      8,
+      "core",
+      "區分取樣、量化及資料量因素"
+    ],
+    "A3.2": [
+      8,
+      "core",
+      "位元、組合數與儲存單位基礎"
+    ],
+    "A3.3": [
+      10,
+      "priority",
+      "數值轉換與後續運算的基礎"
+    ],
+    "A3.4": [
+      8,
+      "core",
+      "二進制、十進制與十六進制互換"
+    ],
+    "A3.5": [
+      10,
+      "priority",
+      "固定長度、二補數與數值範圍"
+    ],
+    "A3.6": [
+      10,
+      "priority",
+      "運算、截斷與兩種溢出的判斷"
+    ],
+    "A3.7": [
+      6,
+      "supporting",
+      "碼點、編碼與長度的概念區分"
+    ],
+    "A3.8": [
+      10,
+      "priority",
+      "影像及音訊計算與格式取捨"
+    ],
+    "A4.1": [
+      8,
+      "core",
+      "引用、公式與函數的基本應用"
+    ],
+    "A4.2": [
+      10,
+      "priority",
+      "複製方向與相對／絕對／混合引用"
+    ],
+    "A4.3": [
+      10,
+      "priority",
+      "函數、條件邏輯及運算次序"
+    ],
+    "A4.4": [
+      8,
+      "core",
+      "多条件操作與紀錄完整性"
+    ],
+    "A4.5": [
+      6,
+      "supporting",
+      "跨工作表引用及動態更新"
+    ],
+    "A4.6": [
+      8,
+      "core",
+      "分組、匯總與圖表解讀"
+    ],
+    "A4.7": [
+      8,
+      "core",
+      "模型參數、比重與預測限制"
+    ],
+    "A4.8": [
+      8,
+      "core",
+      "欄位類型、表單設計與維護"
+    ],
+    "A4.9": [
+      10,
+      "priority",
+      "單表 SQL 解讀及結果呈現"
+    ]
+  },
+  "questions": [
+    {
+      "type": "mcq",
+      "q": "哪一項最能協助老師判斷班級表現？",
+      "options": [
+        "80、65、92、71",
+        "四名學生平均分為 77",
+        "一張沒有標籤的空白表"
+      ],
+      "correct": 1,
+      "explain": "平均分把原始分數整理成有意義的結果；資訊是否有用也取決於情境。",
+      "difficulty": 1,
+      "skill": "data",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.1-Q01",
+      "lessonId": "A1.1",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.1.data"
+      ],
+      "hint": "數據是原始事實；加上背景並經過處理，才成為對使用者有意義的資訊。",
+      "misconceptions": [
+        "data.distractor-1",
+        null,
+        "data.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "未經標籤的 18、21、24，最接近哪一類？",
+      "options": [
+        "有明確背景的資訊",
+        "原始數據",
+        "完整知識結論"
+      ],
+      "correct": 1,
+      "explain": "沒有背景的觀測值先視為數據。",
+      "difficulty": 1,
+      "skill": "data-information",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.1-Q02",
+      "lessonId": "A1.1",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.1.data-information"
+      ],
+      "hint": "數據是原始事實；加上背景並經過處理，才成為對使用者有意義的資訊。",
+      "misconceptions": [
+        "data-information.distractor-1",
+        null,
+        "data-information.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "錄製一段口頭訪問，主要取得哪種數據？",
+      "options": [
+        "數值",
+        "圖像",
+        "聲音"
+      ],
+      "correct": 2,
+      "explain": "錄音記錄聲音；逐字稿則是文字表示。",
+      "difficulty": 1,
+      "skill": "data-types",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.1-Q03",
+      "lessonId": "A1.1",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.1.data-types"
+      ],
+      "hint": "數據是原始事實；加上背景並經過處理，才成為對使用者有意義的資訊。",
+      "misconceptions": [
+        "data-types.distractor-1",
+        "data-types.distractor-2",
+        null
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "學號 0042 應保留前面的 0，最合適的儲存方式是？",
+      "options": [
+        "文字識別碼",
+        "直接當成數值 42",
+        "先計算平均"
+      ],
+      "correct": 0,
+      "explain": "識別碼不一定用於運算；文字可保留前導零。",
+      "difficulty": 2,
+      "skill": "data-types",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.1-Q04",
+      "lessonId": "A1.1",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.1.data-types"
+      ],
+      "hint": "「四名學生的平均分是 77」加入了情境與計算結果，可以支持老師作決定。",
+      "misconceptions": [
+        null,
+        "data-types.distractor-2",
+        "data-types.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "同一份氣溫紀錄，對不同使用者的價值會怎樣？",
+      "options": [
+        "必定完全相同",
+        "取決於需求、時間與背景",
+        "數據不能重用"
+      ],
+      "correct": 1,
+      "explain": "資訊的有用程度取決於目的和背景。",
+      "difficulty": 2,
+      "skill": "information-context",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.1-Q05",
+      "lessonId": "A1.1",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.1.information-context"
+      ],
+      "hint": "「四名學生的平均分是 77」加入了情境與計算結果，可以支持老師作決定。",
+      "misconceptions": [
+        "information-context.distractor-1",
+        null,
+        "information-context.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "一間小店記錄每天賣出的飲品數量。寫出一項原始數據及一項可幫助補貨的資訊，說明如何得到它。",
+      "rubric": [
+        "原始數據例：某天某種飲品賣出的數量。",
+        "資訊例：一週平均銷量或需求較高的品種。",
+        "說明整理、加總或計算平均後如何支持補貨。"
+      ],
+      "explain": "原始數據例：某天某種飲品賣出的數量。；資訊例：一週平均銷量或需求較高的品種。；說明整理、加總或計算平均後如何支持補貨。",
+      "difficulty": 3,
+      "skill": "data-to-decision",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.1-Q06",
+      "lessonId": "A1.1",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.1.data-to-decision"
+      ],
+      "hint": "常見數據類型包括文字、數值、圖像、聲音與影片；學號即使只有數字，也可作文字識別碼。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "圖書館職員在資訊系統中屬於哪個組成部分？",
+      "options": [
+        "Technology 科技",
+        "Data 數據",
+        "Personnel 人員"
+      ],
+      "correct": 2,
+      "explain": "人員操作、管理或使用系統。資訊系統並不只包含硬件和軟件。",
+      "difficulty": 1,
+      "skill": "system",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.2-Q01",
+      "lessonId": "A1.2",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.2.system"
+      ],
+      "hint": "資訊系統有目的、數據、處理過程、科技和人員五個組成部分。",
+      "misconceptions": [
+        "system.distractor-1",
+        "system.distractor-2",
+        null
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "圖書館系统的「追蹤借閱與歸還」主要描述？",
+      "options": [
+        "目的",
+        "人員",
+        "科技"
+      ],
+      "correct": 0,
+      "explain": "目的解釋系統為何存在。",
+      "difficulty": 1,
+      "skill": "system-components",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.2-Q02",
+      "lessonId": "A1.2",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.2.system-components"
+      ],
+      "hint": "資訊系統有目的、數據、處理過程、科技和人員五個組成部分。",
+      "misconceptions": [
+        null,
+        "system-components.distractor-2",
+        "system-components.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "掃描器與借書軟件属于？",
+      "options": [
+        "數據",
+        "科技",
+        "人員"
+      ],
+      "correct": 1,
+      "explain": "硬件和軟件是支持系統運作的科技。",
+      "difficulty": 1,
+      "skill": "system-components",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.2-Q03",
+      "lessonId": "A1.2",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.2.system-components"
+      ],
+      "hint": "資訊系統有目的、數據、處理過程、科技和人員五個組成部分。",
+      "misconceptions": [
+        "system-components.distractor-1",
+        null,
+        "system-components.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "計算還書日期，在系統中屬於？",
+      "options": [
+        "資料項目",
+        "使用者",
+        "處理過程"
+      ],
+      "correct": 2,
+      "explain": "計算把輸入按規則轉為結果。",
+      "difficulty": 2,
+      "skill": "system-process",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.2-Q04",
+      "lessonId": "A1.2",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.2.system-process"
+      ],
+      "hint": "借書系統的目的，是追蹤借閱與歸還；書號和借閱日期是數據。",
+      "misconceptions": [
+        "system-process.distractor-1",
+        "system-process.distractor-2",
+        null
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "一家商店用紙本帳簿記錄銷售。這能否是資訊系統？",
+      "options": [
+        "能，資訊系統可不依賴電腦",
+        "不能，只有联网电脑才算",
+        "不能，必須使用 AI"
+      ],
+      "correct": 0,
+      "explain": "資訊系統可包含人工處理及紙本科技。",
+      "difficulty": 2,
+      "skill": "noncomputer-systems",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.2-Q05",
+      "lessonId": "A1.2",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.2.noncomputer-systems"
+      ],
+      "hint": "借書系統的目的，是追蹤借閱與歸還；書號和借閱日期是數據。",
+      "misconceptions": [
+        null,
+        "noncomputer-systems.distractor-2",
+        "noncomputer-systems.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "為學校午餐訂購系統，分別提出一個目的、數據、處理過程、科技與人員的例子。",
+      "rubric": [
+        "目的：管理訂餐或預測份數。",
+        "數據：餐款、學生識別碼、訂餐日期等。",
+        "過程：整理訂單、統計份數或計算價款。",
+        "科技及人員：例如表單／數據庫，以及訂餐學生／職員。"
+      ],
+      "explain": "目的：管理訂餐或預測份數。；數據：餐款、學生識別碼、訂餐日期等。；過程：整理訂單、統計份數或計算價款。；科技及人員：例如表單／數據庫，以及訂餐學生／職員。",
+      "difficulty": 3,
+      "skill": "system-design",
+      "maxScore": 4,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.2-Q06",
+      "lessonId": "A1.2",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.2.system-design"
+      ],
+      "hint": "掃描器與軟件屬科技，圖書館職員屬人員；登記借閱和計算到期日是處理過程。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "系統計算 95 − 12，屬於哪一項？",
+      "options": [
+        "Input 輸入",
+        "Process 處理",
+        "Output 輸出"
+      ],
+      "correct": 1,
+      "explain": "減法是處理；讀取餘額是輸入，顯示 $83 是輸出。",
+      "difficulty": 1,
+      "skill": "ipo",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.3-Q01",
+      "lessonId": "A1.3",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.3.ipo"
+      ],
+      "hint": "輸入收集卡號、餘額與車費；處理按規則扣款；輸出呈現餘額。",
+      "misconceptions": [
+        "ipo.distractor-1",
+        null,
+        "ipo.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "拍卡時讀取卡號與餘額屬於？",
+      "options": [
+        "輸入",
+        "輸出",
+        "刪除"
+      ],
+      "correct": 0,
+      "explain": "從外部取得資料是輸入。",
+      "difficulty": 1,
+      "skill": "ipo-input",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.3-Q02",
+      "lessonId": "A1.3",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.3.ipo-input"
+      ],
+      "hint": "輸入收集卡號、餘額與車費；處理按規則扣款；輸出呈現餘額。",
+      "misconceptions": [
+        null,
+        "ipo-input.distractor-2",
+        "ipo-input.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "屏幕顯示剩餘 $83 屬於？",
+      "options": [
+        "輸入",
+        "處理",
+        "輸出"
+      ],
+      "correct": 2,
+      "explain": "向使用者呈現結果是輸出。",
+      "difficulty": 1,
+      "skill": "ipo-output",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.3-Q03",
+      "lessonId": "A1.3",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.3.ipo-output"
+      ],
+      "hint": "輸入收集卡號、餘額與車費；處理按規則扣款；輸出呈現餘額。",
+      "misconceptions": [
+        "ipo-output.distractor-1",
+        "ipo-output.distractor-2",
+        null
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "把交易送到中央系統，最直接涉及哪項資訊處理活動？",
+      "options": [
+        "呈現",
+        "傳輸",
+        "量化"
+      ],
+      "correct": 1,
+      "explain": "傳輸把資料由一個位置送至另一個位置。",
+      "difficulty": 2,
+      "skill": "information-processes",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.3-Q04",
+      "lessonId": "A1.3",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.3.information-processes"
+      ],
+      "hint": "資訊處理活動還包括收集、組織、分析、儲存、傳輸及呈現；它們可以反覆發生，不是固定的七個順序步驟。",
+      "misconceptions": [
+        "information-processes.distractor-1",
+        null,
+        "information-processes.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "資訊處理的收集、組織、分析等活動，是否一定按單一固定順序發生？",
+      "options": [
+        "一定，而且不能重複",
+        "不一定，可以重複或交錯",
+        "只有收集才算處理"
+      ],
+      "correct": 1,
+      "explain": "實際系統可以同時儲存、傳輸及呈現。",
+      "difficulty": 2,
+      "skill": "information-processes",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.3-Q05",
+      "lessonId": "A1.3",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.3.information-processes"
+      ],
+      "hint": "資訊處理活動還包括收集、組織、分析、儲存、傳輸及呈現；它們可以反覆發生，不是固定的七個順序步驟。",
+      "misconceptions": [
+        "information-processes.distractor-1",
+        null,
+        "information-processes.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "系統讀取餘額 $95，扣除車費 $12；輸出餘額是多少？",
+      "answers": [
+        "83"
+      ],
+      "explain": "95 − 12 = 83。",
+      "difficulty": 2,
+      "skill": "ipo-calculation",
+      "unit": "HKD",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.3-Q06",
+      "lessonId": "A1.3",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.3.ipo-calculation"
+      ],
+      "hint": "資訊處理活動還包括收集、組織、分析、儲存、傳輸及呈現；它們可以反覆發生，不是固定的七個順序步驟。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "售貨機缺貨時，哪項最能解釋輸出與處理的關係？",
+      "options": [
+        "輸出一定是商品",
+        "處理檢查库存後，可以輸出缺貨訊息",
+        "輸出與處理无關"
+      ],
+      "correct": 1,
+      "explain": "輸出依處理結果而定，可以是訊息而非實物。",
+      "difficulty": 3,
+      "skill": "ipo-application",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.3-Q07",
+      "lessonId": "A1.3",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.3.ipo-application"
+      ],
+      "hint": "同一個系統可能同時儲存交易、傳輸資料及呈現結果。",
+      "misconceptions": [
+        "ipo-application.distractor-1",
+        null,
+        "ipo-application.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "以自动售貨機為例，列出輸入、處理和輸出各一項；再提出一種需要儲存的資料。",
+      "rubric": [
+        "輸入：商品選擇、付款或金額。",
+        "處理：核對款項／庫存、計算找續。",
+        "輸出：商品、找續或錯誤訊息；儲存例：庫存或交易紀錄。"
+      ],
+      "explain": "輸入：商品選擇、付款或金額。；處理：核對款項／庫存、計算找續。；輸出：商品、找續或錯誤訊息；儲存例：庫存或交易紀錄。",
+      "difficulty": 3,
+      "skill": "ipo-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.3-Q08",
+      "lessonId": "A1.3",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.3.ipo-reasoning"
+      ],
+      "hint": "同一個系統可能同時儲存交易、傳輸資料及呈現結果。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "查證停課消息最適合的做法是？",
+      "options": [
+        "核對官方來源與發布日期",
+        "看哪一張圖片最多人轉發",
+        "只讀標題"
+      ],
+      "correct": 0,
+      "explain": "可追溯的官方來源和正確日期，可以減少過時或錯誤訊息的影響。",
+      "difficulty": 1,
+      "skill": "literacy",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.4-Q01",
+      "lessonId": "A1.4",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.4.literacy"
+      ],
+      "hint": "網絡讓資訊快速流通；知識型社會重視把資訊轉化成知識及決策的能力。",
+      "misconceptions": [
+        null,
+        "literacy.distractor-2",
+        "literacy.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "一則公告的日期被裁去，應先？",
+      "options": [
+        "核實完整原文與日期",
+        "忽略日期",
+        "只看圖片顏色"
+      ],
+      "correct": 0,
+      "explain": "日期有助判斷消息是否仍適用。",
+      "difficulty": 1,
+      "skill": "source-evaluation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.4-Q02",
+      "lessonId": "A1.4",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.4.source-evaluation"
+      ],
+      "hint": "網絡讓資訊快速流通；知識型社會重視把資訊轉化成知識及決策的能力。",
+      "misconceptions": [
+        null,
+        "source-evaluation.distractor-2",
+        "source-evaluation.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "「轉發一萬次」能否直接證明消息正確？",
+      "options": [
+        "能",
+        "不能",
+        "能，只要是圖片"
+      ],
+      "correct": 1,
+      "explain": "傳播量與可靠性不是同一件事。",
+      "difficulty": 1,
+      "skill": "source-evaluation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.4-Q03",
+      "lessonId": "A1.4",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.4.source-evaluation"
+      ],
+      "hint": "網絡讓資訊快速流通；知識型社會重視把資訊轉化成知識及決策的能力。",
+      "misconceptions": [
+        "source-evaluation.distractor-1",
+        null,
+        "source-evaluation.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "知識型社會重視哪一種能力？",
+      "options": [
+        "只收藏最多檔案",
+        "只複製他人答案",
+        "分析資訊並用於決策"
+      ],
+      "correct": 2,
+      "explain": "把資訊轉化成理解與判斷是重要能力。",
+      "difficulty": 2,
+      "skill": "information-literacy",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.4-Q04",
+      "lessonId": "A1.4",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.4.information-literacy"
+      ],
+      "hint": "資訊素養包括找出需要、搜尋、核實、分析及負責任地使用資訊。",
+      "misconceptions": [
+        "information-literacy.distractor-1",
+        "information-literacy.distractor-2",
+        null
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "報告引用網上資料，較負責任的做法是？",
+      "options": [
+        "不檢查就貼上",
+        "核實來源並標明出處",
+        "修改字體後當作自己原創"
+      ],
+      "correct": 1,
+      "explain": "核實和交代來源能支持可追溯的使用。",
+      "difficulty": 2,
+      "skill": "responsible-use",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.4-Q05",
+      "lessonId": "A1.4",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.4.responsible-use"
+      ],
+      "hint": "資訊素養包括找出需要、搜尋、核實、分析及負責任地使用資訊。",
+      "misconceptions": [
+        "responsible-use.distractor-1",
+        null,
+        "responsible-use.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "同學轉來一張沒有日期的停課截图。提出兩項查證步驟，並解釋為何只看轉發量不足。",
+      "rubric": [
+        "找學校或相關官方渠道的完整公告。",
+        "核對發布日期、適用對象與內容。",
+        "轉發量只反映傳播程度，不能證明真实性。"
+      ],
+      "explain": "找學校或相關官方渠道的完整公告。；核對發布日期、適用對象與內容。；轉發量只反映傳播程度，不能證明真实性。",
+      "difficulty": 3,
+      "skill": "source-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A1.4-Q06",
+      "lessonId": "A1.4",
+      "topicId": "A1",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A1.4.source-reasoning"
+      ],
+      "hint": "評估來源、日期、證據和背景，比單看轉發量更可靠。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "S001、Amy、4A、82 這一整列是？",
+      "options": [
+        "Field 欄位",
+        "Record 紀錄",
+        "Database 數據庫"
+      ],
+      "correct": 1,
+      "explain": "整列把同一名學生的多個欄位值集合成一筆紀錄。",
+      "difficulty": 1,
+      "skill": "hierarchy",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.1-Q01",
+      "lessonId": "A2.1",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.1.hierarchy"
+      ],
+      "hint": "欄位描述一種屬性，例如 Score；82 是該欄位的一個數據值。",
+      "misconceptions": [
+        "hierarchy.distractor-1",
+        null,
+        "hierarchy.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "Students 表的 Score 標題表示？",
+      "options": [
+        "一筆紀錄",
+        "一個欄位",
+        "一個資料庫"
+      ],
+      "correct": 1,
+      "explain": "欄位定義共同屬性。",
+      "difficulty": 1,
+      "skill": "data-field",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.1-Q02",
+      "lessonId": "A2.1",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.1.data-field"
+      ],
+      "hint": "欄位描述一種屬性，例如 Score；82 是該欄位的一個數據值。",
+      "misconceptions": [
+        "data-field.distractor-1",
+        null,
+        "data-field.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "Amy 的 Score 為 82，這個 82 是？",
+      "options": [
+        "數據值",
+        "整筆紀錄",
+        "全部資料庫"
+      ],
+      "correct": 0,
+      "explain": "82 是某筆紀錄某個欄位的值。",
+      "difficulty": 1,
+      "skill": "data-value",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.1-Q03",
+      "lessonId": "A2.1",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.1.data-value"
+      ],
+      "hint": "欄位描述一種屬性，例如 Score；82 是該欄位的一個數據值。",
+      "misconceptions": [
+        null,
+        "data-value.distractor-2",
+        "data-value.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "同一學生的學號、姓名、班別和分數合在一起，構成？",
+      "options": [
+        "四個資料庫",
+        "只是一個欄位",
+        "一筆紀錄"
+      ],
+      "correct": 2,
+      "explain": "紀錄集合了同一對象的相關欄位。",
+      "difficulty": 1,
+      "skill": "data-record",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.1-Q04",
+      "lessonId": "A2.1",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.1.data-record"
+      ],
+      "hint": "欄位描述一種屬性，例如 Score；82 是該欄位的一個數據值。",
+      "misconceptions": [
+        "data-record.distractor-1",
+        "data-record.distractor-2",
+        null
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "一張表有 12 名學生，每名學生一列。資料紀錄有多少筆（不計標題列）？",
+      "answers": [
+        "12"
+      ],
+      "explain": "每位學生是一筆紀錄，所以有 12 筆。",
+      "difficulty": 2,
+      "skill": "record-count",
+      "unit": "筆",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.1-Q05",
+      "lessonId": "A2.1",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.1.record-count"
+      ],
+      "hint": "紀錄收集同一對象的相關欄位，例如 Amy 的學號、班別和分數。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "表格含 ID、Name、Class、Score 四種屬性，共有多少個欄位？",
+      "answers": [
+        "4"
+      ],
+      "explain": "欄位數由屬性種類決定，不是學生人數。",
+      "difficulty": 2,
+      "skill": "field-count",
+      "unit": "個",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.1-Q06",
+      "lessonId": "A2.1",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.1.field-count"
+      ],
+      "hint": "紀錄收集同一對象的相關欄位，例如 Amy 的學號、班別和分數。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "Students、Classes 和 Attendance 三個相关資料表可组成？",
+      "options": [
+        "一個數據庫",
+        "一個數據值",
+        "同一個欄位"
+      ],
+      "correct": 0,
+      "explain": "數據庫可組織多個相關資料集合。",
+      "difficulty": 2,
+      "skill": "database-hierarchy",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.1-Q07",
+      "lessonId": "A2.1",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.1.database-hierarchy"
+      ],
+      "hint": "紀錄收集同一對象的相關欄位，例如 Amy 的學號、班別和分數。",
+      "misconceptions": [
+        null,
+        "database-hierarchy.distractor-2",
+        "database-hierarchy.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "解釋「欄位」與「紀錄」的不同，並以學生資料表各舉一例。",
+      "rubric": [
+        "欄位表示屬性，例如 Score。",
+        "紀錄表示同一學生的完整資料，例如 Amy 的 ID、姓名、班別與分數。",
+        "說明一筆紀錄由多個欄位值組成。"
+      ],
+      "explain": "欄位表示屬性，例如 Score。；紀錄表示同一學生的完整資料，例如 Amy 的 ID、姓名、班別與分數。；說明一筆紀錄由多個欄位值組成。",
+      "difficulty": 3,
+      "skill": "hierarchy-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.1-Q08",
+      "lessonId": "A2.1",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.1.hierarchy-reasoning"
+      ],
+      "hint": "檔案可包含一組紀錄；數據庫組織相關資料集合。欄位與紀錄是表格的兩個方向。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "已知所需紀錄的位置，要迅速讀取單筆紀錄，較適合？",
+      "options": [
+        "順序存取",
+        "直接存取",
+        "每次讀完整個檔案"
+      ],
+      "correct": 1,
+      "explain": "直接存取可利用位置定位；順序存取則要經過前面的紀錄。",
+      "difficulty": 1,
+      "skill": "access",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.2-Q01",
+      "lessonId": "A2.2",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.2.access"
+      ],
+      "hint": "順序存取按排列逐筆經過資料，適合依序讀取大量紀錄。",
+      "misconceptions": [
+        "access.distractor-1",
+        null,
+        "access.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "從第一筆依次經過前面紀錄才能讀到目標，是？",
+      "options": [
+        "直接存取",
+        "順序存取",
+        "資料加密"
+      ],
+      "correct": 1,
+      "explain": "順序存取依資料排列逐筆經過。",
+      "difficulty": 1,
+      "skill": "sequential-access",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.2-Q02",
+      "lessonId": "A2.2",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.2.sequential-access"
+      ],
+      "hint": "順序存取按排列逐筆經過資料，適合依序讀取大量紀錄。",
+      "misconceptions": [
+        "sequential-access.distractor-1",
+        null,
+        "sequential-access.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "已知紀錄位置而跳至该處讀取，是？",
+      "options": [
+        "顺序存取",
+        "必定读完整檔案",
+        "直接存取"
+      ],
+      "correct": 2,
+      "explain": "直接存取利用可定位的位置讀取。",
+      "difficulty": 1,
+      "skill": "direct-access",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.2-Q03",
+      "lessonId": "A2.2",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.2.direct-access"
+      ],
+      "hint": "順序存取按排列逐筆經過資料，適合依序讀取大量紀錄。",
+      "misconceptions": [
+        "direct-access.distractor-1",
+        "direct-access.distractor-2",
+        null
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "在从第一筆開始的順序存取示意中，讀到第 8 筆需要經過多少筆（包括目標）？",
+      "answers": [
+        "8"
+      ],
+      "explain": "依次讀取 1 至 8，共 8 筆。",
+      "difficulty": 2,
+      "skill": "access-cost",
+      "unit": "筆",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.2-Q04",
+      "lessonId": "A2.2",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.2.access-cost"
+      ],
+      "hint": "直接存取可利用已知位置定位所需紀錄，適合頻繁讀取特定項目。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "需要按順序處理所有薪金紀錄，哪項判斷較合理？",
+      "options": [
+        "順序存取可適合批次讀取",
+        "任何情境直接存取都必定最快",
+        "順序存取不能處理多筆紀錄"
+      ],
+      "correct": 0,
+      "explain": "處理所有紀錄時，依次讀取往往是合理方式；實際效能視媒體及實作。",
+      "difficulty": 2,
+      "skill": "access-selection",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.2-Q05",
+      "lessonId": "A2.2",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.2.access-selection"
+      ],
+      "hint": "直接存取可利用已知位置定位所需紀錄，適合頻繁讀取特定項目。",
+      "misconceptions": [
+        null,
+        "access-selection.distractor-2",
+        "access-selection.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "比较查閱一名学生资料和每月處理全校資料的存取需要。說明兩種存取方式各適合其中哪種情境，以及一項限制。",
+      "rubric": [
+        "已知位置查單筆：直接存取可迅速定位。",
+        "全校依次批次處理：順序存取可適用。",
+        "直接存取須有可定位方式；順序查後段紀錄須經過前面資料。"
+      ],
+      "explain": "已知位置查單筆：直接存取可迅速定位。；全校依次批次處理：順序存取可適用。；直接存取須有可定位方式；順序查後段紀錄須經過前面資料。",
+      "difficulty": 3,
+      "skill": "access-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.2-Q06",
+      "lessonId": "A2.2",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.2.access-reasoning"
+      ],
+      "hint": "直接存取仍需要可定位資料的儲存方式，並不是任何搜尋都自動變成直接存取。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "限制年齡必須在 10–100 之間，屬於？",
+      "options": [
+        "Verification 核實",
+        "Validation 有效性檢查",
+        "Encryption 加密"
+      ],
+      "correct": 1,
+      "explain": "範圍檢查測試是否符合規則。核實則比較輸入與來源或重複輸入是否一致。",
+      "difficulty": 1,
+      "skill": "validation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q01",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.validation"
+      ],
+      "hint": "數據控制有助減少錯誤，讓資料適合後續處理和決策。",
+      "misconceptions": [
+        "validation.distractor-1",
+        null,
+        "validation.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "比較兩次輸入的密碼是否一致，是？",
+      "options": [
+        "Verification 核實",
+        "Parity 奇偶檢查",
+        "Compression 壓縮"
+      ],
+      "correct": 0,
+      "explain": "重複輸入比較是一種核實。",
+      "difficulty": 1,
+      "skill": "verification",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q02",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.verification"
+      ],
+      "hint": "數據控制有助減少錯誤，讓資料適合後續處理和決策。",
+      "misconceptions": [
+        null,
+        "verification.distractor-2",
+        "verification.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "規定姓名不可留空，屬於哪項檢查？",
+      "options": [
+        "範圍檢查",
+        "存在／必填檢查",
+        "奇偶檢查"
+      ],
+      "correct": 1,
+      "explain": "存在檢查避免必要欄位缺失。",
+      "difficulty": 1,
+      "skill": "presence-check",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q03",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.presence-check"
+      ],
+      "hint": "數據控制有助減少錯誤，讓資料適合後續處理和決策。",
+      "misconceptions": [
+        "presence-check.distractor-1",
+        null,
+        "presence-check.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "只接受 4 位數字的 PIN，長度檢查能單獨保證全是數字嗎？",
+      "options": [
+        "能",
+        "不能，還要檢查類型或格式",
+        "能，並且能證明是本人 PIN"
+      ],
+      "correct": 1,
+      "explain": "長度和字元格式是不同條件。",
+      "difficulty": 2,
+      "skill": "validation-limits",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q04",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.validation-limits"
+      ],
+      "hint": "Validation 檢查是否符合规则，例如必填、資料類型、長度、範圍或格式。",
+      "misconceptions": [
+        "validation-limits.distractor-1",
+        null,
+        "validation-limits.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "成績原為 82，輸入成 28，0–100 範圍檢查會？",
+      "options": [
+        "發現數字顛倒",
+        "通過，因為仍在範圍內",
+        "自動改回 82"
+      ],
+      "correct": 1,
+      "explain": "Validation 不等於核對實際內容。",
+      "difficulty": 2,
+      "skill": "validation-verification",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q05",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.validation-verification"
+      ],
+      "hint": "Validation 檢查是否符合规则，例如必填、資料類型、長度、範圍或格式。",
+      "misconceptions": [
+        "validation-verification.distractor-1",
+        null,
+        "validation-verification.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "生日寫成 31/02，僅檢查字串為 DD/MM 格式，有什麼限制？",
+      "options": [
+        "格式正確就一定是有效日期",
+        "可能仍接受不存在的日期",
+        "一定變成今日日期"
+      ],
+      "correct": 1,
+      "explain": "格式檢查不能單獨證明日期在日曆上存在。",
+      "difficulty": 2,
+      "skill": "format-vs-validity",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q06",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.format-vs-validity"
+      ],
+      "hint": "Validation 檢查是否符合规则，例如必填、資料類型、長度、範圍或格式。",
+      "misconceptions": [
+        "format-vs-validity.distractor-1",
+        null,
+        "format-vs-validity.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "分數範圍 0–100，應拒絕哪組輸入？",
+      "options": [
+        "0 和 100",
+        "50 和 80",
+        "−1 和 101"
+      ],
+      "correct": 2,
+      "explain": "範圍邊界 0、100 合法，範圍以外不合法。",
+      "difficulty": 2,
+      "skill": "boundary-check",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q07",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.boundary-check"
+      ],
+      "hint": "Validation 檢查是否符合规则，例如必填、資料類型、長度、範圍或格式。",
+      "misconceptions": [
+        "boundary-check.distractor-1",
+        "boundary-check.distractor-2",
+        null
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "一個「0–100 整數分數」欄位，应有哪些檢查？為何這些檢查不能取代核實？",
+      "rubric": [
+        "檢查必填、數值及整數類型、0–100 範圍。",
+        "符合規則的數值仍可能不是原始分數。",
+        "另與原始成績單比對或使用雙重輸入核實。"
+      ],
+      "explain": "檢查必填、數值及整數類型、0–100 範圍。；符合規則的數值仍可能不是原始分數。；另與原始成績單比對或使用雙重輸入核實。",
+      "difficulty": 3,
+      "skill": "data-control-design",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q08",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.data-control-design"
+      ],
+      "hint": "Verification 比對原始資料或兩次輸入；符合規則不代表資料就是事實上正確。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "兩次輸入都把 82 打成 28。為何雙重輸入可能仍漏掉錯誤？再提出一種改善。",
+      "rubric": [
+        "兩次相同錯誤會通過一致性比較。",
+        "可由獨立人員輸入或另與原始文件逐項核對。"
+      ],
+      "explain": "兩次相同錯誤會通過一致性比較。；可由獨立人員輸入或另與原始文件逐項核對。",
+      "difficulty": 3,
+      "skill": "verification-limits",
+      "maxScore": 2,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.3-Q09",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.verification-limits"
+      ],
+      "hint": "Verification 比對原始資料或兩次輸入；符合規則不代表資料就是事實上正確。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "short",
+      "q": "學生班別欄 CL 已有格式檢查。提出一項比格式檢查更有效、用來確認班別存在的有效性檢查。",
+      "answers": [
+        "固定值檢查",
+        "固定值检查",
+        "查找檢查",
+        "查找检查",
+        "存在於班別清單的檢查",
+        "fixed value check",
+        "fixed-value check",
+        "lookup check",
+        "existence check"
+      ],
+      "explain": "將輸入與實際存在的班別清單比較；格式正确並不代表班別存在。",
+      "difficulty": 3,
+      "skill": "lookup-validation",
+      "maxScore": 1,
+      "source": {
+        "kind": "past-paper",
+        "year": 2025,
+        "paper": "1B",
+        "question": "7(c)",
+        "pdfPage": 6,
+        "marks": 1,
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/ict/2025-Sample-ict-Level5-E-J018.pdf#page=6",
+        "publication": "HKEAA 2025 Samples of Candidates’ Performance · Level 5",
+        "presentation": "中文轉述；原題作答形式保留",
+        "verifiedOn": "2026-10-10",
+        "answerAuthority": "本應用參考解答（非官方評卷參考）"
+      },
+      "id": "A2.3-Q10",
+      "lessonId": "A2.3",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.3.lookup-validation"
+      ],
+      "hint": "Verification 比對原始資料或兩次輸入；符合規則不代表資料就是事實上正確。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "偶校驗要求資料加校驗位的 1 總數？",
+      "options": [
+        "為偶數",
+        "永遠等於 0",
+        "為奇數"
+      ],
+      "correct": 0,
+      "explain": "計算總數時要包括校驗位。",
+      "difficulty": 1,
+      "skill": "even-parity",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.4-Q02",
+      "lessonId": "A2.4",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.4.even-parity"
+      ],
+      "hint": "偶校驗令資料加校驗位的 1 總數為偶數；奇校驗則令總數為奇數。",
+      "misconceptions": [
+        null,
+        "even-parity.distractor-2",
+        "even-parity.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "資料 1011001 有多少個 1？",
+      "answers": [
+        "4"
+      ],
+      "explain": "依次數出 1、1、1、1，共 4 個。",
+      "difficulty": 1,
+      "skill": "count-ones",
+      "unit": "個",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.4-Q03",
+      "lessonId": "A2.4",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.4.count-ones"
+      ],
+      "hint": "偶校驗令資料加校驗位的 1 總數為偶數；奇校驗則令總數為奇數。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "1011001 使用偶校驗，應加哪個校驗位？",
+      "answers": [
+        "0"
+      ],
+      "explain": "資料已有 4 個 1，所以加 0 保持偶數。",
+      "difficulty": 2,
+      "skill": "parity-bit",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.4-Q04",
+      "lessonId": "A2.4",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.4.parity-bit"
+      ],
+      "hint": "單一位元翻轉會改變奇偶性，所以可以被偵測。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "1011001 使用奇校驗，應加哪個校驗位？",
+      "answers": [
+        "1"
+      ],
+      "explain": "4 個 1 加校驗位 1，總共 5 個 1。",
+      "difficulty": 2,
+      "skill": "odd-parity",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.4-Q05",
+      "lessonId": "A2.4",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.4.odd-parity"
+      ],
+      "hint": "單一位元翻轉會改變奇偶性，所以可以被偵測。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "一個資料 bit 翻轉，原本的偶校驗通常会？",
+      "options": [
+        "仍一定通過",
+        "檢查失敗",
+        "自動定位錯誤 bit"
+      ],
+      "correct": 1,
+      "explain": "單一翻轉改變奇偶性，但不能定位該位。",
+      "difficulty": 2,
+      "skill": "parity-detection",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.4-Q06",
+      "lessonId": "A2.4",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.4.parity-detection"
+      ],
+      "hint": "單一位元翻轉會改變奇偶性，所以可以被偵測。",
+      "misconceptions": [
+        "parity-detection.distractor-1",
+        null,
+        "parity-detection.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "傳輸中兩個 bit 同時翻轉，偶校驗能否保證發現？",
+      "options": [
+        "能，所有錯誤都可找到",
+        "不能，奇偶性可能不變",
+        "能，而且自動修正"
+      ],
+      "correct": 1,
+      "explain": "兩個翻轉仍可保留 1 的總數的奇偶性，所以檢查可能通過。",
+      "difficulty": 3,
+      "skill": "parity",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.4-Q01",
+      "lessonId": "A2.4",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.4.parity"
+      ],
+      "hint": "偶數個位元翻轉可能保留原本奇偶性；奇偶檢查不能保證找出所有錯誤，也不能定位或修正錯誤。",
+      "misconceptions": [
+        "parity.distractor-1",
+        null,
+        "parity.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "奇偶檢查通過，最合理的結論是？",
+      "options": [
+        "資料肯定完全正確",
+        "檢查器已修正所有錯誤",
+        "尚不能排除偶數個 bit 翻轉"
+      ],
+      "correct": 2,
+      "explain": "偶數個翻轉可保留奇偶性。",
+      "difficulty": 3,
+      "skill": "parity-limits",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.4-Q07",
+      "lessonId": "A2.4",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.4.parity-limits"
+      ],
+      "hint": "偶數個位元翻轉可能保留原本奇偶性；奇偶檢查不能保證找出所有錯誤，也不能定位或修正錯誤。",
+      "misconceptions": [
+        "parity-limits.distractor-1",
+        "parity-limits.distractor-2",
+        null
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "說明偶校驗如何偵測單一 bit 錯誤，以及為何未必能發現兩個 bit 錯誤。",
+      "rubric": [
+        "单一翻轉令 1 的總數由偶轉奇，檢查失敗。",
+        "兩個翻轉可能仍保持偶數個 1。",
+        "奇偶檢查不能保證找出所有錯誤，亦不能定位或修正。"
+      ],
+      "explain": "单一翻轉令 1 的總數由偶轉奇，檢查失敗。；兩個翻轉可能仍保持偶數個 1。；奇偶檢查不能保證找出所有錯誤，亦不能定位或修正。",
+      "difficulty": 3,
+      "skill": "parity-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A2.4-Q08",
+      "lessonId": "A2.4",
+      "topicId": "A2",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A2.4.parity-reasoning"
+      ],
+      "hint": "偶數個位元翻轉可能保留原本奇偶性；奇偶檢查不能保證找出所有錯誤，也不能定位或修正錯誤。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "只提高取樣率，直接增加的是？",
+      "options": [
+        "每秒測量點數",
+        "螢幕的像素數",
+        "每個樣本的位元深度"
+      ],
+      "correct": 0,
+      "explain": "取樣率描述每秒取多少個樣本；位元深度描述每個樣本可表示的等級。",
+      "difficulty": 1,
+      "skill": "sampling",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.1-Q01",
+      "lessonId": "A3.1",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.1.sampling"
+      ],
+      "hint": "模擬數據連續變化；數碼數據用離散數值表示。",
+      "misconceptions": [
+        null,
+        "sampling.distractor-2",
+        "sampling.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "未數碼化的連續聲波属于？",
+      "options": [
+        "模擬訊號",
+        "離散二進制資料",
+        "純文字"
+      ],
+      "correct": 0,
+      "explain": "聲壓隨時間連續變化。",
+      "difficulty": 1,
+      "skill": "analog-digital",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.1-Q02",
+      "lessonId": "A3.1",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.1.analog-digital"
+      ],
+      "hint": "模擬數據連續變化；數碼數據用離散數值表示。",
+      "misconceptions": [
+        null,
+        "analog-digital.distractor-2",
+        "analog-digital.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "把測量幅度對應到有限等級，是？",
+      "options": [
+        "取樣",
+        "量化",
+        "壓縮檔頭"
+      ],
+      "correct": 1,
+      "explain": "取樣處理時間點，量化處理幅度等級。",
+      "difficulty": 1,
+      "skill": "quantisation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.1-Q03",
+      "lessonId": "A3.1",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.1.quantisation"
+      ],
+      "hint": "模擬數據連續變化；數碼數據用離散數值表示。",
+      "misconceptions": [
+        "quantisation.distractor-1",
+        null,
+        "quantisation.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "以每秒 8,000 個樣本取樣 3 秒，共有多少個樣本？",
+      "answers": [
+        "24000"
+      ],
+      "explain": "8,000 × 3 = 24,000。",
+      "difficulty": 2,
+      "skill": "sample-count",
+      "unit": "samples",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.1-Q04",
+      "lessonId": "A3.1",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.1.sample-count"
+      ],
+      "hint": "取樣在不同時間測量訊號；量化把測量值映射到有限的數值等級。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "其他條件相同，取樣率由 8 kHz 加到 16 kHz，樣本數？",
+      "options": [
+        "減半",
+        "不變",
+        "加倍"
+      ],
+      "correct": 2,
+      "explain": "每秒取樣點增加一倍。",
+      "difficulty": 2,
+      "skill": "sampling-rate",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.1-Q05",
+      "lessonId": "A3.1",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.1.sampling-rate"
+      ],
+      "hint": "取樣在不同時間測量訊號；量化把測量值映射到有限的數值等級。",
+      "misconceptions": [
+        "sampling-rate.distractor-1",
+        "sampling-rate.distractor-2",
+        null
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "每個樣本用 8 bits 表示，可以有多少種幅度等級？",
+      "answers": [
+        "256"
+      ],
+      "explain": "2⁸ = 256 種等級。",
+      "difficulty": 2,
+      "skill": "quantisation-levels",
+      "unit": "級",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.1-Q06",
+      "lessonId": "A3.1",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.1.quantisation-levels"
+      ],
+      "hint": "取樣在不同時間測量訊號；量化把測量值映射到有限的數值等級。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "位元深度增加而取樣率不變，直接增加的是？",
+      "options": [
+        "每秒取樣點數",
+        "可表示的幅度等級",
+        "音訊時長"
+      ],
+      "correct": 1,
+      "explain": "時間測量點由取樣率決定，幅度等級由位元深度決定。",
+      "difficulty": 2,
+      "skill": "sampling-vs-depth",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.1-Q07",
+      "lessonId": "A3.1",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.1.sampling-vs-depth"
+      ],
+      "hint": "取樣在不同時間測量訊號；量化把測量值映射到有限的數值等級。",
+      "misconceptions": [
+        "sampling-vs-depth.distractor-1",
+        null,
+        "sampling-vs-depth.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "分别解释提高取樣率與位元深度可能帶來的改善，以及它們對未壓縮資料量的影響。",
+      "rubric": [
+        "較高取樣率提供更多時間測量點。",
+        "較高位元深度提供更多幅度等級。",
+        "其他條件相同，兩者均增加未壓縮資料量；不保證原始訊號質素改善。"
+      ],
+      "explain": "較高取樣率提供更多時間測量點。；較高位元深度提供更多幅度等級。；其他條件相同，兩者均增加未壓縮資料量；不保證原始訊號質素改善。",
+      "difficulty": 3,
+      "skill": "digitisation-tradeoff",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.1-Q08",
+      "lessonId": "A3.1",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.1.digitisation-tradeoff"
+      ],
+      "hint": "其他條件相同，較高取樣率提供更多時間測量點；較高位元深度提供更多幅度等級，但也增加未壓縮資料量。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "4 bits 最多能表示多少種不同模式？",
+      "options": [
+        "4",
+        "8",
+        "16"
+      ],
+      "correct": 2,
+      "explain": "每增加一個 bit，模式數量加倍。2⁴ = 16。",
+      "difficulty": 1,
+      "skill": "patterns",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.2-Q01",
+      "lessonId": "A3.2",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.2.patterns"
+      ],
+      "hint": "一個 bit 有 0 和 1 兩種狀態；8 bits 組成一個 byte。",
+      "misconceptions": [
+        "patterns.distractor-1",
+        "patterns.distractor-2",
+        null
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "1 byte 等於多少 bits？",
+      "answers": [
+        "8"
+      ],
+      "explain": "1 byte = 8 bits。",
+      "difficulty": 1,
+      "skill": "bit-byte",
+      "unit": "bits",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.2-Q02",
+      "lessonId": "A3.2",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.2.bit-byte"
+      ],
+      "hint": "一個 bit 有 0 和 1 兩種狀態；8 bits 組成一個 byte。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "3 bits 最多表示多少種模式？",
+      "answers": [
+        "8"
+      ],
+      "explain": "2³ = 8。",
+      "difficulty": 1,
+      "skill": "patterns",
+      "unit": "種",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.2-Q03",
+      "lessonId": "A3.2",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.2.patterns"
+      ],
+      "hint": "一個 bit 有 0 和 1 兩種狀態；8 bits 組成一個 byte。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "5 bits 最多表示多少種模式？",
+      "answers": [
+        "32"
+      ],
+      "explain": "2⁵ = 32。",
+      "difficulty": 2,
+      "skill": "patterns",
+      "unit": "種",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.2-Q04",
+      "lessonId": "A3.2",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.2.patterns"
+      ],
+      "hint": "n 個 bit 可以組合出 2ⁿ 種不同模式。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "要表示 10 種不同颜色，至少需要多少 bits？",
+      "answers": [
+        "4"
+      ],
+      "explain": "3 bits 只有 8 種；4 bits 有 16 種，足以涵蓋 10 種。",
+      "difficulty": 2,
+      "skill": "minimum-bits",
+      "unit": "bits",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.2-Q05",
+      "lessonId": "A3.2",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.2.minimum-bits"
+      ],
+      "hint": "n 個 bit 可以組合出 2ⁿ 種不同模式。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "同一串 bits 的意义取决于？",
+      "options": [
+        "只取決於位數",
+        "編碼或解讀規則",
+        "永遠是數字"
+      ],
+      "correct": 1,
+      "explain": "位元模式可以按不同規則表示不同內容。",
+      "difficulty": 2,
+      "skill": "representation-context",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.2-Q06",
+      "lessonId": "A3.2",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.2.representation-context"
+      ],
+      "hint": "n 個 bit 可以組合出 2ⁿ 種不同模式。",
+      "misconceptions": [
+        "representation-context.distractor-1",
+        null,
+        "representation-context.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "本题规定 1 KiB = 1,024 bytes；2 KiB 是多少 bits？",
+      "answers": [
+        "16384"
+      ],
+      "explain": "2 × 1,024 × 8 = 16,384 bits。",
+      "difficulty": 3,
+      "skill": "storage-units",
+      "unit": "bits",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.2-Q07",
+      "lessonId": "A3.2",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.2.storage-units"
+      ],
+      "hint": "模式的意義取決於編碼規則；同一串 bits 可表示數字、文字或顏色。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "要為 20 名學生分配不同的二進制代碼，最少需要多少 bits？說明理由及有多少個未使用模式。",
+      "rubric": [
+        "4 bits 只有 16 種，不足。",
+        "5 bits 有 32 種，足夠。",
+        "未使用模式為 32 − 20 = 12。"
+      ],
+      "explain": "4 bits 只有 16 種，不足。；5 bits 有 32 種，足夠。；未使用模式為 32 − 20 = 12。",
+      "difficulty": 3,
+      "skill": "minimum-bits-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.2-Q08",
+      "lessonId": "A3.2",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.2.minimum-bits-reasoning"
+      ],
+      "hint": "模式的意義取決於編碼規則；同一串 bits 可表示數字、文字或顏色。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "二進制 00001101 的十進制值是？",
+      "options": [
+        "11",
+        "13",
+        "15"
+      ],
+      "correct": 1,
+      "explain": "8 + 4 + 1 = 13；值為 0 的位不參與加總。",
+      "difficulty": 1,
+      "skill": "binary",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q01",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.binary"
+      ],
+      "hint": "二進制每個數位只能是 0 或 1；位值由右至左是 1、2、4、8……。",
+      "misconceptions": [
+        "binary.distractor-1",
+        null,
+        "binary.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "二進制由右至左前三個位值是？",
+      "options": [
+        "1、2、4",
+        "1、10、100",
+        "0、1、2"
+      ],
+      "correct": 0,
+      "explain": "二進制每向左一位，位值加倍。",
+      "difficulty": 1,
+      "skill": "binary-place-value",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q02",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.binary-place-value"
+      ],
+      "hint": "二進制每個數位只能是 0 或 1；位值由右至左是 1、2、4、8……。",
+      "misconceptions": [
+        null,
+        "binary-place-value.distractor-2",
+        "binary-place-value.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "二進制 1010 的十進制值是多少？",
+      "answers": [
+        "10"
+      ],
+      "explain": "8 + 2 = 10。",
+      "difficulty": 1,
+      "skill": "binary-to-denary",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q03",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.binary-to-denary"
+      ],
+      "hint": "二進制每個數位只能是 0 或 1；位值由右至左是 1、2、4、8……。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "short",
+      "q": "把十進制 9 寫成 4-bit 二進制。",
+      "answers": [
+        "1001"
+      ],
+      "explain": "9 = 8 + 1，固定 4 位為 1001。",
+      "difficulty": 2,
+      "skill": "denary-to-binary",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q04",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.denary-to-binary"
+      ],
+      "hint": "把 bit 為 1 的位值加起來，就得到十進制數值。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "二進制 101101 的十進制值是多少？",
+      "answers": [
+        "45"
+      ],
+      "explain": "32 + 8 + 4 + 1 = 45。",
+      "difficulty": 2,
+      "skill": "binary-to-denary",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q05",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.binary-to-denary"
+      ],
+      "hint": "把 bit 為 1 的位值加起來，就得到十進制數值。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "把十進制 37 寫成 8-bit 二進制。",
+      "answers": [
+        "00100101"
+      ],
+      "explain": "37 = 32 + 4 + 1，补至 8 位。",
+      "difficulty": 2,
+      "skill": "fixed-width-binary",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q06",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.fixed-width-binary"
+      ],
+      "hint": "把 bit 為 1 的位值加起來，就得到十進制數值。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "8-bit 無符號整數的最大值是多少？",
+      "answers": [
+        "255"
+      ],
+      "explain": "2⁸ − 1 = 255。",
+      "difficulty": 2,
+      "skill": "unsigned-range",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q07",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.unsigned-range"
+      ],
+      "hint": "把 bit 為 1 的位值加起來，就得到十進制數值。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "00001010 與 1010 作無符號二進制數比較，值？",
+      "options": [
+        "前者更大",
+        "相同",
+        "前者更小"
+      ],
+      "correct": 1,
+      "explain": "前導零不改變數值。",
+      "difficulty": 2,
+      "skill": "leading-zeros",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q08",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.leading-zeros"
+      ],
+      "hint": "把 bit 為 1 的位值加起來，就得到十進制數值。",
+      "misconceptions": [
+        "leading-zeros.distractor-1",
+        null,
+        "leading-zeros.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "要以無符號二進制表示十進制 256，最少需要多少 bits？",
+      "answers": [
+        "9"
+      ],
+      "explain": "8 bits 最大為 255；9 bits 可以表示 256。",
+      "difficulty": 3,
+      "skill": "binary-capacity",
+      "unit": "bits",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q09",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.binary-capacity"
+      ],
+      "hint": "8-bit 無符號整數可表示 0–255；這個範圍不同於有符號二補數。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "把十進制 173 轉成 8-bit 二進制，並以位值加總驗算。",
+      "rubric": [
+        "173 = 128 + 32 + 8 + 4 + 1。",
+        "8-bit 表示為 10101101。",
+        "把所有 1 的位值相加應還原 173。"
+      ],
+      "explain": "173 = 128 + 32 + 8 + 4 + 1。；8-bit 表示為 10101101。；把所有 1 的位值相加應還原 173。",
+      "difficulty": 3,
+      "skill": "conversion-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.3-Q10",
+      "lessonId": "A3.3",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.3.conversion-reasoning"
+      ],
+      "hint": "8-bit 無符號整數可表示 0–255；這個範圍不同於有符號二補數。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "十六進制 2F 的十進制值是？",
+      "options": [
+        "32",
+        "47",
+        "215"
+      ],
+      "correct": 1,
+      "explain": "2 是十六位，F 是 15：2 × 16 + 15 = 47。",
+      "difficulty": 1,
+      "skill": "hex",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.4-Q01",
+      "lessonId": "A3.4",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.4.hex"
+      ],
+      "hint": "十六進制使用 0–9 和 A–F，A 代表 10，F 代表 15。",
+      "misconceptions": [
+        "hex.distractor-1",
+        null,
+        "hex.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "十六進制字母 A 代表十進制？",
+      "options": [
+        "10",
+        "11",
+        "16"
+      ],
+      "correct": 0,
+      "explain": "A–F 分別代表 10–15。",
+      "difficulty": 1,
+      "skill": "hex-digits",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.4-Q02",
+      "lessonId": "A3.4",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.4.hex-digits"
+      ],
+      "hint": "十六進制使用 0–9 和 A–F，A 代表 10，F 代表 15。",
+      "misconceptions": [
+        null,
+        "hex-digits.distractor-2",
+        "hex-digits.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "1 個十六進制位對應多少二進制位？",
+      "options": [
+        "2",
+        "4",
+        "8"
+      ],
+      "correct": 1,
+      "explain": "16 = 2⁴。",
+      "difficulty": 1,
+      "skill": "hex-grouping",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.4-Q03",
+      "lessonId": "A3.4",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.4.hex-grouping"
+      ],
+      "hint": "十六進制使用 0–9 和 A–F，A 代表 10，F 代表 15。",
+      "misconceptions": [
+        "hex-grouping.distractor-1",
+        null,
+        "hex-grouping.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "short",
+      "q": "把二進制 1010 1111 轉成兩位十六進制。",
+      "answers": [
+        "AF"
+      ],
+      "explain": "1010 是 A，1111 是 F。",
+      "difficulty": 2,
+      "skill": "binary-to-hex",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.4-Q04",
+      "lessonId": "A3.4",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.4.binary-to-hex"
+      ],
+      "hint": "每 4 個二進制位可以對應 1 個十六進制位。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "十六進制 3C 的十進制值是多少？",
+      "answers": [
+        "60"
+      ],
+      "explain": "3 × 16 + 12 = 60。",
+      "difficulty": 2,
+      "skill": "hex-to-denary",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.4-Q05",
+      "lessonId": "A3.4",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.4.hex-to-denary"
+      ],
+      "hint": "每 4 個二進制位可以對應 1 個十六進制位。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "把十進制 31 轉成兩位十六進制。",
+      "answers": [
+        "1F"
+      ],
+      "explain": "31 = 1 × 16 + 15。",
+      "difficulty": 2,
+      "skill": "denary-to-hex",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.4-Q06",
+      "lessonId": "A3.4",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.4.denary-to-hex"
+      ],
+      "hint": "每 4 個二進制位可以對應 1 個十六進制位。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "把十六進制 80 轉成 8-bit 二進制。",
+      "answers": [
+        "10000000"
+      ],
+      "explain": "8 对应 1000，0 对应 0000。",
+      "difficulty": 2,
+      "skill": "hex-to-binary",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.4-Q07",
+      "lessonId": "A3.4",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.4.hex-to-binary"
+      ],
+      "hint": "每 4 個二進制位可以對應 1 個十六進制位。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "將十六進制 9D 分別轉成 8-bit 二進制與十進制，展示兩個核對方法。",
+      "rubric": [
+        "二進制：1001 1101。",
+        "十進制：9 × 16 + 13 = 157。",
+        "二進制加總：128 + 16 + 8 + 4 + 1 = 157。"
+      ],
+      "explain": "二進制：1001 1101。；十進制：9 × 16 + 13 = 157。；二進制加總：128 + 16 + 8 + 4 + 1 = 157。",
+      "difficulty": 3,
+      "skill": "hex-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.4-Q08",
+      "lessonId": "A3.4",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.4.hex-reasoning"
+      ],
+      "hint": "例如 0010 1111 = 2F，十進制值是 2 × 16 + 15 = 47。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "8-bit 二補數的最高位位值是？",
+      "options": [
+        "128",
+        "−128",
+        "−1"
+      ],
+      "correct": 1,
+      "explain": "最高位帶負權重 −2⁷。",
+      "difficulty": 1,
+      "skill": "signed-place-value",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q02",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.signed-place-value"
+      ],
+      "hint": "8-bit 二補數的範圍是 −128 至 127，最高位的位值為 −128。",
+      "misconceptions": [
+        "signed-place-value.distractor-1",
+        null,
+        "signed-place-value.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "8-bit 二補數可以表示的最小整數是多少？",
+      "answers": [
+        "-128"
+      ],
+      "explain": "範圍為 −2⁷ 至 2⁷−1。",
+      "difficulty": 1,
+      "skill": "signed-range",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q03",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.signed-range"
+      ],
+      "hint": "8-bit 二補數的範圍是 −128 至 127，最高位的位值為 −128。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "8-bit 二補數可以表示的最大整數是多少？",
+      "answers": [
+        "127"
+      ],
+      "explain": "最大值是 01111111，即 127。",
+      "difficulty": 1,
+      "skill": "signed-range",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q04",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.signed-range"
+      ],
+      "hint": "8-bit 二補數的範圍是 −128 至 127，最高位的位值為 −128。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "11111111 作 8-bit 二補數表示什麼？",
+      "options": [
+        "255",
+        "−1",
+        "−127"
+      ],
+      "correct": 1,
+      "explain": "最高位是 −128，其餘位相加為 127，總和為 −1。",
+      "difficulty": 2,
+      "skill": "complement",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q01",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.complement"
+      ],
+      "hint": "求負數表示：先把正數每個 bit 反轉，再加 1；必須指定固定的位數。",
+      "misconceptions": [
+        "complement.distractor-1",
+        null,
+        "complement.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "用 8-bit 二補數表示 −5。",
+      "answers": [
+        "11111011"
+      ],
+      "explain": "00000101 反轉為 11111010，再加 1。",
+      "difficulty": 2,
+      "skill": "negation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q05",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.negation"
+      ],
+      "hint": "求負數表示：先把正數每個 bit 反轉，再加 1；必須指定固定的位數。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "11110011 作 8-bit 二補數時，十進制值是多少？",
+      "answers": [
+        "-13"
+      ],
+      "explain": "−128 + 64 + 32 + 16 + 2 + 1 = −13。",
+      "difficulty": 2,
+      "skill": "decode-signed",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q06",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.decode-signed"
+      ],
+      "hint": "求負數表示：先把正數每個 bit 反轉，再加 1；必須指定固定的位數。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "11110011 作 8-bit 無符號數時，值是多少？",
+      "answers": [
+        "243"
+      ],
+      "explain": "128 + 64 + 32 + 16 + 2 + 1 = 243。",
+      "difficulty": 2,
+      "skill": "signed-vs-unsigned",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q07",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.signed-vs-unsigned"
+      ],
+      "hint": "求負數表示：先把正數每個 bit 反轉，再加 1；必須指定固定的位數。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "用 4-bit 二補數表示 −3。",
+      "answers": [
+        "1101"
+      ],
+      "explain": "0011 反轉為 1100，再加 1。",
+      "difficulty": 2,
+      "skill": "fixed-width-negation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q08",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.fixed-width-negation"
+      ],
+      "hint": "求負數表示：先把正數每個 bit 反轉，再加 1；必須指定固定的位數。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "8-bit 二補數對 −128 取相反數，哪項正確？",
+      "options": [
+        "能精確得到 +128",
+        "不能，+128 超出範圍",
+        "會得到 +127"
+      ],
+      "correct": 1,
+      "explain": "範圍不對稱，−128 的相反數無法以 8 bits 表示。",
+      "difficulty": 3,
+      "skill": "signed-boundary",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q09",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.signed-boundary"
+      ],
+      "hint": "11111111 作無符號數是 255，作 8-bit 二補數是 −1；解讀方式決定數值。",
+      "misconceptions": [
+        "signed-boundary.distractor-1",
+        null,
+        "signed-boundary.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "同一串 10000000，分別用無符號及 8-bit 二補數解讀。為何答案不同？",
+      "rubric": [
+        "無符號解讀為 128。",
+        "二補數解讀為 −128。",
+        "兩種規則給最高位不同權重；位元模式本身不決定解讀。"
+      ],
+      "explain": "無符號解讀為 128。；二補數解讀為 −128。；兩種規則給最高位不同權重；位元模式本身不決定解讀。",
+      "difficulty": 3,
+      "skill": "signed-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.5-Q10",
+      "lessonId": "A3.5",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.5.signed-reasoning"
+      ],
+      "hint": "11111111 作無符號數是 255，作 8-bit 二補數是 −1；解讀方式決定數值。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "short",
+      "q": "計算 4-bit 二進制 0011 + 0001，不考慮符號。",
+      "answers": [
+        "0100"
+      ],
+      "explain": "3 + 1 = 4，二進制為 0100。",
+      "difficulty": 1,
+      "skill": "binary-addition",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q02",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.binary-addition"
+      ],
+      "hint": "二進制加法在 1 + 1 時進位；用負數二補數可把減法轉成加法。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "二進制 1 + 1 的十進制結果是多少？",
+      "answers": [
+        "2"
+      ],
+      "explain": "二進制結果為 10，即十進制 2。",
+      "difficulty": 1,
+      "skill": "carry",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q03",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.carry"
+      ],
+      "hint": "二進制加法在 1 + 1 時進位；用負數二補數可把減法轉成加法。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "8-bit 有符號二補數計算 127 + 1，會發生？",
+      "options": [
+        "正確得到 128",
+        "溢出",
+        "結果仍是 127"
+      ],
+      "correct": 1,
+      "explain": "可表示的最大值是 127。留下的 10000000 表示 −128，與真正結果 128 不同。",
+      "difficulty": 2,
+      "skill": "arithmetic",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q01",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.arithmetic"
+      ],
+      "hint": "溢出是結果超出所選表示方式的範圍；8-bit 無符號數不能表示 260。",
+      "misconceptions": [
+        "arithmetic.distractor-1",
+        null,
+        "arithmetic.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "以 8-bit 二補數計算 7 − 3，寫出結果 bits。",
+      "answers": [
+        "00000100"
+      ],
+      "explain": "7 + (−3) = 4，結果為 00000100。",
+      "difficulty": 2,
+      "skill": "binary-subtraction",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q04",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.binary-subtraction"
+      ],
+      "hint": "溢出是結果超出所選表示方式的範圍；8-bit 無符號數不能表示 260。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "8-bit 無符號 250 + 10，結果？",
+      "options": [
+        "不溢出，值為 260",
+        "溢出，260 超出 255",
+        "溢出，因为不能相加"
+      ],
+      "correct": 1,
+      "explain": "真正結果超出 8-bit 無符號範圍。",
+      "difficulty": 2,
+      "skill": "unsigned-overflow",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q05",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.unsigned-overflow"
+      ],
+      "hint": "溢出是結果超出所選表示方式的範圍；8-bit 無符號數不能表示 260。",
+      "misconceptions": [
+        "unsigned-overflow.distractor-1",
+        null,
+        "unsigned-overflow.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "250 + 10 只保留最低 8 bits，按無符號解讀得到多少？",
+      "answers": [
+        "4"
+      ],
+      "explain": "260 mod 256 = 4。",
+      "difficulty": 2,
+      "skill": "truncation",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q06",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.truncation"
+      ],
+      "hint": "溢出是結果超出所選表示方式的範圍；8-bit 無符號數不能表示 260。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "8-bit 二補數中 −1 + 1 出現最左進位，是否就是有符號溢出？",
+      "options": [
+        "一定是",
+        "不是，0 可表示",
+        "結果是 −128"
+      ],
+      "correct": 1,
+      "explain": "有符號溢出取決於結果是否超出範圍，不能只看進位。",
+      "difficulty": 3,
+      "skill": "carry-vs-overflow",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q07",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.carry-vs-overflow"
+      ],
+      "hint": "有符號溢出不能只看最左進位：127 + 1 超出二補數範圍，會留下表示 −128 的 bits。",
+      "misconceptions": [
+        "carry-vs-overflow.distractor-1",
+        null,
+        "carry-vs-overflow.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "8-bit 二補數 −100 − 50，哪項正確？",
+      "options": [
+        "结果 −150 可以表示",
+        "發生溢出",
+        "結果 −50"
+      ],
+      "correct": 1,
+      "explain": "−150 小於 −128，超出範圍。",
+      "difficulty": 3,
+      "skill": "negative-overflow",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q08",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.negative-overflow"
+      ],
+      "hint": "有符號溢出不能只看最左進位：127 + 1 超出二補數範圍，會留下表示 −128 的 bits。",
+      "misconceptions": [
+        "negative-overflow.distractor-1",
+        null,
+        "negative-overflow.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "兩個正的 8-bit 二補數相加後留下負數 bits，可能表示？",
+      "options": [
+        "有符號溢出",
+        "正常且必定正確",
+        "資料已加密"
+      ],
+      "correct": 0,
+      "explain": "兩個正數的真實和不能為負；此情況指出範圍超出。",
+      "difficulty": 3,
+      "skill": "signed-overflow",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q09",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.signed-overflow"
+      ],
+      "hint": "有符號溢出不能只看最左進位：127 + 1 超出二補數範圍，會留下表示 −128 的 bits。",
+      "misconceptions": [
+        null,
+        "signed-overflow.distractor-2",
+        "signed-overflow.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "比较 8-bit 無符號與二補數表示下的 127 + 1：指出是否溢出、留下的 bits 和解讀值。",
+      "rubric": [
+        "留下的 bits 都為 10000000。",
+        "無符號可表示 128，沒有溢出。",
+        "二補數最高為 127，發生溢出；留下的 bits 解讀為 −128。"
+      ],
+      "explain": "留下的 bits 都為 10000000。；無符號可表示 128，沒有溢出。；二補數最高為 127，發生溢出；留下的 bits 解讀為 −128。",
+      "difficulty": 3,
+      "skill": "overflow-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.6-Q10",
+      "lessonId": "A3.6",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.6.overflow-reasoning"
+      ],
+      "hint": "有符號溢出不能只看最左進位：127 + 1 超出二補數範圍，會留下表示 −128 的 bits。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "原始 ASCII 字元集的字元數是？",
+      "options": [
+        "128",
+        "256",
+        "所有中文字"
+      ],
+      "correct": 0,
+      "explain": "原始 ASCII 是 7-bit，共 128 個代碼。",
+      "difficulty": 1,
+      "skill": "ascii",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.7-Q02",
+      "lessonId": "A3.7",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.7.ascii"
+      ],
+      "hint": "字元編碼建立字元與代碼的對應；不同規則可產生不同資料表示。",
+      "misconceptions": [
+        null,
+        "ascii.distractor-2",
+        "ascii.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "Big5 與 GB 系列的主要用途涉及？",
+      "options": [
+        "只編碼聲音",
+        "中文字編碼",
+        "加密所有檔案"
+      ],
+      "correct": 1,
+      "explain": "兩者是常見中文編碼標準／系列。",
+      "difficulty": 1,
+      "skill": "encoding-standards",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.7-Q03",
+      "lessonId": "A3.7",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.7.encoding-standards"
+      ],
+      "hint": "字元編碼建立字元與代碼的對應；不同規則可產生不同資料表示。",
+      "misconceptions": [
+        "encoding-standards.distractor-1",
+        null,
+        "encoding-standards.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "下列哪項正確？",
+      "options": [
+        "所有 Unicode 字元固定佔 1 byte",
+        "UTF-8 中 A 和 中 的 byte 數可不同",
+        "ASCII 能表示所有中文字"
+      ],
+      "correct": 1,
+      "explain": "Unicode 定義碼點；UTF-8 是其編碼方式，使用可變長度的 byte 表示。",
+      "difficulty": 2,
+      "skill": "encoding",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.7-Q01",
+      "lessonId": "A3.7",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.7.encoding"
+      ],
+      "hint": "ASCII、Big5、GB 和 Unicode 對字元的涵蓋與表示方式不同。",
+      "misconceptions": [
+        "encoding.distractor-1",
+        null,
+        "encoding.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "Unicode 碼點與 UTF-8 bytes 的關係是？",
+      "options": [
+        "每個碼點固定 1 byte",
+        "碼點定義字元，UTF-8 決定 byte 表示",
+        "完全相同的概念"
+      ],
+      "correct": 1,
+      "explain": "Unicode 定義碼點；UTF-8 是可變長度編碼形式。",
+      "difficulty": 2,
+      "skill": "codepoint-vs-encoding",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.7-Q04",
+      "lessonId": "A3.7",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.7.codepoint-vs-encoding"
+      ],
+      "hint": "ASCII、Big5、GB 和 Unicode 對字元的涵蓋與表示方式不同。",
+      "misconceptions": [
+        "codepoint-vs-encoding.distractor-1",
+        null,
+        "codepoint-vs-encoding.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "以 UTF-8 儲存 A中，A 佔 1 byte、中佔 3 bytes；不計檔頭，共多少 bytes？",
+      "answers": [
+        "4"
+      ],
+      "explain": "1 + 3 = 4。",
+      "difficulty": 2,
+      "skill": "utf8-length",
+      "unit": "bytes",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.7-Q05",
+      "lessonId": "A3.7",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.7.utf8-length"
+      ],
+      "hint": "ASCII、Big5、GB 和 Unicode 對字元的涵蓋與表示方式不同。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "一份中文檔案以不匹配的編碼解讀而出現亂碼。解釋可能原因及一項修正方法。",
+      "rubric": [
+        "儲存時的 byte 編碼與讀取時採用的解碼規則不一致。",
+        "用正确原始編碼讀取，或正確轉碼到一致標準，例如 UTF-8。",
+        "修改字體不等於改正 byte 解讀規則。"
+      ],
+      "explain": "儲存時的 byte 編碼與讀取時採用的解碼規則不一致。；用正确原始編碼讀取，或正確轉碼到一致標準，例如 UTF-8。；修改字體不等於改正 byte 解讀規則。",
+      "difficulty": 3,
+      "skill": "encoding-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.7-Q06",
+      "lessonId": "A3.7",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.7.encoding-reasoning"
+      ],
+      "hint": "Unicode 碼點不是固定的檔案 byte 數。UTF-8 用 1–4 bytes 表示一個碼點，例如 A 是 1 byte，中是 3 bytes。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "點陣影像由什麼基本單位組成？",
+      "options": [
+        "像素",
+        "取樣秒數",
+        "SQL 紀錄"
+      ],
+      "correct": 0,
+      "explain": "每個像素用色彩資料表示。",
+      "difficulty": 1,
+      "skill": "raster-image",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q02",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.raster-image"
+      ],
+      "hint": "點陣影像用像素和顏色值表示；未壓縮影像資料量約為寬 × 高 × 每像素位元數。",
+      "misconceptions": [
+        null,
+        "raster-image.distractor-2",
+        "raster-image.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "哪項一般適合保留圖像而不引入有損壓縮失真？",
+      "options": [
+        "JPEG 的高壓縮設定",
+        "PNG 無損壓縮",
+        "MP3"
+      ],
+      "correct": 1,
+      "explain": "PNG 使用無損圖像壓縮；檔案大小仍視內容而定。",
+      "difficulty": 1,
+      "skill": "compression-format",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q03",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.compression-format"
+      ],
+      "hint": "點陣影像用像素和顏色值表示；未壓縮影像資料量約為寬 × 高 × 每像素位元數。",
+      "misconceptions": [
+        "compression-format.distractor-1",
+        null,
+        "compression-format.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "不計檔頭，100 × 100 像素的 24-bit 未壓縮影像佔？",
+      "options": [
+        "10,000 bytes",
+        "30,000 bytes",
+        "240,000 bytes"
+      ],
+      "correct": 1,
+      "explain": "100 × 100 × 24 ÷ 8 = 30,000 bytes；這是未壓縮資料估算。",
+      "difficulty": 2,
+      "skill": "media",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q01",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.media"
+      ],
+      "hint": "未壓縮音訊資料量約為取樣率 × 位元深度 × 聲道 × 時長；影片也包含連續影格及可能的音訊。",
+      "misconceptions": [
+        "media.distractor-1",
+        null,
+        "media.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "200 × 100 像素、24 bits/pixel，忽略檔頭與填充，未壓縮資料是多少 bytes？",
+      "answers": [
+        "60000"
+      ],
+      "explain": "200 × 100 × 24 ÷ 8 = 60,000。",
+      "difficulty": 2,
+      "skill": "image-size",
+      "unit": "bytes",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q04",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.image-size"
+      ],
+      "hint": "未壓縮音訊資料量約為取樣率 × 位元深度 × 聲道 × 時長；影片也包含連續影格及可能的音訊。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "1,000 samples/s、8 bits/sample、單聲道、10 秒，未壓縮音訊是多少 bytes？",
+      "answers": [
+        "10000"
+      ],
+      "explain": "1,000 × 8 × 1 × 10 ÷ 8 = 10,000。",
+      "difficulty": 2,
+      "skill": "audio-size",
+      "unit": "bytes",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q05",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.audio-size"
+      ],
+      "hint": "未壓縮音訊資料量約為取樣率 × 位元深度 × 聲道 × 時長；影片也包含連續影格及可能的音訊。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "其他條件不變，單聲道改雙聲道，未壓縮音訊資料量？",
+      "options": [
+        "減半",
+        "不變",
+        "加倍"
+      ],
+      "correct": 2,
+      "explain": "聲道數是資料量公式中的乘數。",
+      "difficulty": 2,
+      "skill": "audio-channels",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q06",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.audio-channels"
+      ],
+      "hint": "未壓縮音訊資料量約為取樣率 × 位元深度 × 聲道 × 時長；影片也包含連續影格及可能的音訊。",
+      "misconceptions": [
+        "audio-channels.distractor-1",
+        "audio-channels.distractor-2",
+        null
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "關於 MP4 與 WAV，哪一項較準確？",
+      "options": [
+        "只看副檔名可保證壓縮方法",
+        "它們是容器，實際內容／編碼也要查看",
+        "兩者都是字元編碼"
+      ],
+      "correct": 1,
+      "explain": "容器不等於單一固定編碼；WAV 常装 PCM，MP4 可含不同編碼資料。",
+      "difficulty": 2,
+      "skill": "containers-codecs",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q07",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.containers-codecs"
+      ],
+      "hint": "未壓縮音訊資料量約為取樣率 × 位元深度 × 聲道 × 時長；影片也包含連續影格及可能的音訊。",
+      "misconceptions": [
+        "containers-codecs.distractor-1",
+        null,
+        "containers-codecs.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "影像寬與高各加倍、位元深度不變，未壓縮資料量是原來的多少倍？",
+      "answers": [
+        "4"
+      ],
+      "explain": "2 × 2 = 4，像素數加至四倍。",
+      "difficulty": 3,
+      "skill": "image-scaling",
+      "unit": "倍",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q08",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.image-scaling"
+      ],
+      "hint": "PNG 常用無損壓縮、JPEG 通常有損；WAV 是容器且常裝 PCM，MP3 通常有損。AVI、MP4 是影片容器；TXT、DOCX、ODT、PDF 用途與格式不同。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "一張校園照片和一張透明背景校徽，分别選擇較合理的圖像格式，说明畫質、透明度和檔案大小的取捨。",
+      "rubric": [
+        "照片可考虑 JPEG，以可接受失真換取較小檔案。",
+        "透明校徽可考虑 PNG，支持透明及無損。",
+        "實際大小依內容與設定，不能只按副檔名保證。"
+      ],
+      "explain": "照片可考虑 JPEG，以可接受失真換取較小檔案。；透明校徽可考虑 PNG，支持透明及無損。；實際大小依內容與設定，不能只按副檔名保證。",
+      "difficulty": 3,
+      "skill": "format-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A3.8-Q09",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.format-reasoning"
+      ],
+      "hint": "PNG 常用無損壓縮、JPEG 通常有損；WAV 是容器且常裝 PCM，MP3 通常有損。AVI、MP4 是影片容器；TXT、DOCX、ODT、PDF 用途與格式不同。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "照片原為 800×600。只修改 HTML，把顯示尺寸改為 400×200，沒有改動圖片檔案；下載時間會因此縮短嗎？說明原因。",
+      "rubric": [
+        "不會單因修改 HTML 顯示尺寸而縮短。",
+        "瀏覽器仍須下載原來的同一張圖片檔案，資料量沒有减少。"
+      ],
+      "explain": "不會單因修改 HTML 顯示尺寸而縮短。；瀏覽器仍須下載原來的同一張圖片檔案，資料量沒有减少。",
+      "difficulty": 3,
+      "skill": "display-vs-file-size",
+      "maxScore": 2,
+      "source": {
+        "kind": "past-paper",
+        "year": 2025,
+        "paper": "1B",
+        "question": "4(a)(i)",
+        "pdfPage": 3,
+        "marks": 1,
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/ict/2025-Sample-ict-Level5-E-J018.pdf#page=3",
+        "publication": "HKEAA 2025 Samples of Candidates’ Performance · Level 5",
+        "presentation": "中文轉述；原題作答形式保留",
+        "verifiedOn": "2026-10-10",
+        "answerAuthority": "本應用參考解答（非官方評卷參考）"
+      },
+      "id": "A3.8-Q10",
+      "lessonId": "A3.8",
+      "topicId": "A3",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A3.8.display-vs-file-size"
+      ],
+      "hint": "PNG 常用無損壓縮、JPEG 通常有損；WAV 是容器且常裝 PCM，MP3 通常有損。AVI、MP4 是影片容器；TXT、DOCX、ODT、PDF 用途與格式不同。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "計算 B2:C2 平均值的公式是？",
+      "options": [
+        "=SUM(B2:C2)",
+        "=AVERAGE(B2:C2)",
+        "=MAX(B2:C2)"
+      ],
+      "correct": 1,
+      "explain": "AVERAGE 計算平均值；SUM 加總，MAX 找最大值。",
+      "difficulty": 1,
+      "skill": "formula",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.1-Q01",
+      "lessonId": "A4.1",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.1.formula"
+      ],
+      "hint": "儲存格以欄字母與列號定位，例如 B2；公式通常以 = 開始。",
+      "misconceptions": [
+        "formula.distractor-1",
+        null,
+        "formula.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "儲存格 B2 代表？",
+      "options": [
+        "B 列第 2 欄",
+        "B 欄第 2 列",
+        "第二張工作表"
+      ],
+      "correct": 1,
+      "explain": "欄用字母、列用數字。",
+      "difficulty": 1,
+      "skill": "cell-address",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.1-Q02",
+      "lessonId": "A4.1",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.1.cell-address"
+      ],
+      "hint": "儲存格以欄字母與列號定位，例如 B2；公式通常以 = 開始。",
+      "misconceptions": [
+        "cell-address.distractor-1",
+        null,
+        "cell-address.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "一般試算表公式以哪個符號開始？",
+      "options": [
+        "#",
+        "@",
+        "="
+      ],
+      "correct": 2,
+      "explain": "= 告訴試算表後面是公式。",
+      "difficulty": 1,
+      "skill": "formula-syntax",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.1-Q03",
+      "lessonId": "A4.1",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.1.formula-syntax"
+      ],
+      "hint": "儲存格以欄字母與列號定位，例如 B2；公式通常以 = 開始。",
+      "misconceptions": [
+        "formula-syntax.distractor-1",
+        "formula-syntax.distractor-2",
+        null
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "B2=80、C2=90，=SUM(B2:C2) 的結果是？",
+      "answers": [
+        "170"
+      ],
+      "explain": "80 + 90 = 170。",
+      "difficulty": 2,
+      "skill": "sum",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.1-Q04",
+      "lessonId": "A4.1",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.1.sum"
+      ],
+      "hint": "引用儲存格而非寫死數字，可以讓資料改變時重新計算。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "B2=80、C2=90，=(B2+C2)/2 的結果是？",
+      "answers": [
+        "85"
+      ],
+      "explain": "170 ÷ 2 = 85。",
+      "difficulty": 2,
+      "skill": "formula-evaluation",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.1-Q05",
+      "lessonId": "A4.1",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.1.formula-evaluation"
+      ],
+      "hint": "引用儲存格而非寫死數字，可以讓資料改變時重新計算。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "比較 =85 与 =AVERAGE(B2:C2)，後者的主要好處是？",
+      "options": [
+        "數值永遠不同",
+        "來源分數改變時可以自動更新",
+        "不能複製"
+      ],
+      "correct": 1,
+      "explain": "儲存格引用保留對來源的依賴。",
+      "difficulty": 2,
+      "skill": "dynamic-formula",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.1-Q06",
+      "lessonId": "A4.1",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.1.dynamic-formula"
+      ],
+      "hint": "引用儲存格而非寫死數字，可以讓資料改變時重新計算。",
+      "misconceptions": [
+        "dynamic-formula.distractor-1",
+        null,
+        "dynamic-formula.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "B2=60、C2=100。寫一個用兩個儲存格引用計算平均分的公式。",
+      "answers": [
+        "=AVERAGE(B2:C2)",
+        "=(B2+C2)/2",
+        "=SUM(B2:C2)/2",
+        "=AVERAGE(B2,C2)"
+      ],
+      "explain": "可用 AVERAGE 或加總後除以 2。",
+      "difficulty": 2,
+      "skill": "formula-writing",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.1-Q07",
+      "lessonId": "A4.1",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.1.formula-writing"
+      ],
+      "hint": "引用儲存格而非寫死數字，可以讓資料改變時重新計算。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "一位同學把所有平均分直接打成數值。解釋這樣的風險，並提出以儲存格引用改善的方法。",
+      "rubric": [
+        "原始分數變動後，寫死的數值可能過時。",
+        "用引用，例如 =AVERAGE(B2:C2)，連動重新計算。",
+        "核對範圍與資料類型，避免引用錯列。"
+      ],
+      "explain": "原始分數變動後，寫死的數值可能過時。；用引用，例如 =AVERAGE(B2:C2)，連動重新計算。；核對範圍與資料類型，避免引用錯列。",
+      "difficulty": 3,
+      "skill": "formula-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.1-Q08",
+      "lessonId": "A4.1",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.1.formula-reasoning"
+      ],
+      "hint": "=(B2+C2)/2 和 =AVERAGE(B2:C2) 在兩格都有數值時可得到相同結果。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "引用 $F$1 固定了？",
+      "options": [
+        "欄和列",
+        "只固定欄",
+        "只固定列"
+      ],
+      "correct": 0,
+      "explain": "兩個 $ 分別固定欄 F 和列 1。",
+      "difficulty": 1,
+      "skill": "absolute-reference",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q02",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.absolute-reference"
+      ],
+      "hint": "相對引用 B2 隨公式複製位置改變；絕對引用 $F$1 固定欄與列。",
+      "misconceptions": [
+        null,
+        "absolute-reference.distractor-2",
+        "absolute-reference.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "引用 $B2 固定了？",
+      "options": [
+        "列 2",
+        "欄 B",
+        "欄與列"
+      ],
+      "correct": 1,
+      "explain": "$ 只在 B 前面，所以固定欄。",
+      "difficulty": 1,
+      "skill": "mixed-reference",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q03",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.mixed-reference"
+      ],
+      "hint": "相對引用 B2 隨公式複製位置改變；絕對引用 $F$1 固定欄與列。",
+      "misconceptions": [
+        "mixed-reference.distractor-1",
+        null,
+        "mixed-reference.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "=B2*$F$1 向下複製一列變成？",
+      "options": [
+        "=B3*$F$1",
+        "=B3*$F$2",
+        "=B2*$F$1"
+      ],
+      "correct": 0,
+      "explain": "B2 是相對引用，所以成為 B3；$F$1 完全固定。",
+      "difficulty": 2,
+      "skill": "references",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q01",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.references"
+      ],
+      "hint": "混合引用 $B2 固定欄，B$2 固定列。",
+      "misconceptions": [
+        null,
+        "references.distractor-2",
+        "references.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "把 =B2+C2 向下複製一列，公式變成？",
+      "answers": [
+        "=B3+C3"
+      ],
+      "explain": "相對引用的列號都增加 1。",
+      "difficulty": 2,
+      "skill": "copy-down",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q04",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.copy-down"
+      ],
+      "hint": "混合引用 $B2 固定欄，B$2 固定列。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "把 =$B2*2 向右複製一欄，公式變成？",
+      "answers": [
+        "=$B2*2"
+      ],
+      "explain": "固定欄 B；水平移動不改變列號。",
+      "difficulty": 2,
+      "skill": "mixed-copy-right",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q05",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.mixed-copy-right"
+      ],
+      "hint": "混合引用 $B2 固定欄，B$2 固定列。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "把 =B$2*2 向右複製一欄，公式變成？",
+      "answers": [
+        "=C$2*2"
+      ],
+      "explain": "欄相對移動，列 2 固定。",
+      "difficulty": 2,
+      "skill": "mixed-copy-right",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q06",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.mixed-copy-right"
+      ],
+      "hint": "混合引用 $B2 固定欄，B$2 固定列。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "把 =B$2*2 向下複製一列，公式變成？",
+      "answers": [
+        "=B$2*2"
+      ],
+      "explain": "列已固定，向下移動不改變它。",
+      "difficulty": 2,
+      "skill": "mixed-copy-down",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q07",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.mixed-copy-down"
+      ],
+      "hint": "混合引用 $B2 固定欄，B$2 固定列。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "short",
+      "q": "把 =$B2*C$1 從 D2 複製至 E3，公式變成？",
+      "answers": [
+        "=$B3*D$1"
+      ],
+      "explain": "向右一欄且向下一列；只改變沒有 $ 的部分。",
+      "difficulty": 3,
+      "skill": "mixed-two-axis",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q08",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.mixed-two-axis"
+      ],
+      "hint": "共用折扣率或匯率時，固定該參數的儲存格，可避免複製後引用到錯誤位置。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "所有商品都引用同一格匯率 F1，複製公式時較適合用？",
+      "options": [
+        "F1",
+        "$F$1",
+        "每次換不同匯率格"
+      ],
+      "correct": 1,
+      "explain": "固定共用參數可避免複製後引用位移。",
+      "difficulty": 3,
+      "skill": "reference-selection",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q09",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.reference-selection"
+      ],
+      "hint": "共用折扣率或匯率時，固定該參數的儲存格，可避免複製後引用到錯誤位置。",
+      "misconceptions": [
+        "reference-selection.distractor-1",
+        null,
+        "reference-selection.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "折扣率放在 F1、价格放在 B2:B20。写出 C2 的折後價公式，并说明複製到 C3 時的變化。",
+      "rubric": [
+        "可用 =B2*(1-$F$1)。",
+        "複製至 C3 時 B2 變成 B3。",
+        "$F$1 固定，所有商品使用同一折扣率。"
+      ],
+      "explain": "可用 =B2*(1-$F$1)。；複製至 C3 時 B2 變成 B3。；$F$1 固定，所有商品使用同一折扣率。",
+      "difficulty": 3,
+      "skill": "reference-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.2-Q10",
+      "lessonId": "A4.2",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.2.reference-reasoning"
+      ],
+      "hint": "共用折扣率或匯率時，固定該參數的儲存格，可避免複製後引用到錯誤位置。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "AVERAGE 的用途是？",
+      "options": [
+        "計數文字",
+        "計算平均",
+        "只找最大值"
+      ],
+      "correct": 1,
+      "explain": "AVERAGE 計算範圍內數值的平均。",
+      "difficulty": 1,
+      "skill": "aggregate-functions",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q02",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.aggregate-functions"
+      ],
+      "hint": "SUM、AVERAGE、MAX、MIN 和 COUNT 支援常用數值計算。",
+      "misconceptions": [
+        "aggregate-functions.distractor-1",
+        null,
+        "aggregate-functions.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "資料為 10、20、30，=MAX(範圍) 的結果是？",
+      "answers": [
+        "30"
+      ],
+      "explain": "MAX 取最大數值。",
+      "difficulty": 1,
+      "skill": "aggregate-functions",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q03",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.aggregate-functions"
+      ],
+      "hint": "SUM、AVERAGE、MAX、MIN 和 COUNT 支援常用數值計算。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "D2=75，=IF(D2>=75,\"Pass\",\"Review\") 回傳？",
+      "options": [
+        "Review",
+        "Pass",
+        "150"
+      ],
+      "correct": 1,
+      "explain": ">= 包含等於；75 達到門檻，所以回傳 Pass。",
+      "difficulty": 2,
+      "skill": "functions",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q01",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.functions"
+      ],
+      "hint": "比較運算符如 >= 回傳真假；AND 要所有條件成立，OR 只需其中一項。",
+      "misconceptions": [
+        "functions.distractor-1",
+        null,
+        "functions.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "AND(TRUE,FALSE) 的结果是？",
+      "options": [
+        "TRUE",
+        "FALSE",
+        "30"
+      ],
+      "correct": 1,
+      "explain": "AND 要所有條件都真。",
+      "difficulty": 2,
+      "skill": "logical-and",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q04",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.logical-and"
+      ],
+      "hint": "比較運算符如 >= 回傳真假；AND 要所有條件成立，OR 只需其中一項。",
+      "misconceptions": [
+        "logical-and.distractor-1",
+        null,
+        "logical-and.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "OR(TRUE,FALSE) 的结果是？",
+      "options": [
+        "TRUE",
+        "FALSE",
+        "空白"
+      ],
+      "correct": 0,
+      "explain": "OR 只需至少一個條件為真。",
+      "difficulty": 2,
+      "skill": "logical-or",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q05",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.logical-or"
+      ],
+      "hint": "比較運算符如 >= 回傳真假；AND 要所有條件成立，OR 只需其中一項。",
+      "misconceptions": [
+        null,
+        "logical-or.distractor-2",
+        "logical-or.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "=2+3*4 的結果是多少？",
+      "answers": [
+        "14"
+      ],
+      "explain": "乘法先算，2 + 12 = 14。",
+      "difficulty": 2,
+      "skill": "operator-precedence",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q06",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.operator-precedence"
+      ],
+      "hint": "比較運算符如 >= 回傳真假；AND 要所有條件成立，OR 只需其中一項。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "=(2+3)*4 的結果是多少？",
+      "answers": [
+        "20"
+      ],
+      "explain": "括號先算，5 × 4 = 20。",
+      "difficulty": 2,
+      "skill": "operator-precedence",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q07",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.operator-precedence"
+      ],
+      "hint": "比較運算符如 >= 回傳真假；AND 要所有條件成立，OR 只需其中一項。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "B2=80、C2=60，=AND(B2>=70,C2>=70) 的结果是？",
+      "options": [
+        "TRUE",
+        "FALSE",
+        "70"
+      ],
+      "correct": 1,
+      "explain": "第二個條件不成立，AND 回傳 FALSE。",
+      "difficulty": 3,
+      "skill": "logical-conditions",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q08",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.logical-conditions"
+      ],
+      "hint": "IF 按條件選擇兩個結果，例如 =IF(D2>=75,\"Pass\",\"Review\")；括號決定計算次序。",
+      "misconceptions": [
+        "logical-conditions.distractor-1",
+        null,
+        "logical-conditions.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "short",
+      "q": "D2<60 顯示 Review，否則顯示 Pass。寫出一個 IF 公式。",
+      "answers": [
+        "=IF(D2<60,\"Review\",\"Pass\")",
+        "=IF(D2>=60,\"Pass\",\"Review\")"
+      ],
+      "explain": "兩個邏輯等價的 IF 寫法都能表達規則。",
+      "difficulty": 3,
+      "skill": "if-writing",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q09",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.if-writing"
+      ],
+      "hint": "IF 按條件選擇兩個結果，例如 =IF(D2>=75,\"Pass\",\"Review\")；括號決定計算次序。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "要求兩次測驗均達 70 才算 Pass，为什么不能只檢查平均分 >=70？提出一個條件公式。",
+      "rubric": [
+        "平均达 70 仍可能有一次分數低於 70，例如 80 和 60。",
+        "可用 AND(B2>=70,C2>=70)。",
+        "再以 IF 將真假转成 Pass／Review。"
+      ],
+      "explain": "平均达 70 仍可能有一次分數低於 70，例如 80 和 60。；可用 AND(B2>=70,C2>=70)。；再以 IF 將真假转成 Pass／Review。",
+      "difficulty": 3,
+      "skill": "logic-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.3-Q10",
+      "lessonId": "A4.3",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.3.logic-reasoning"
+      ],
+      "hint": "IF 按條件選擇兩個結果，例如 =IF(D2>=75,\"Pass\",\"Review\")；括號決定計算次序。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "篩選平均分 >70 後，其他學生的紀錄會？",
+      "options": [
+        "被永久刪除",
+        "暫時不顯示",
+        "分數自動變成 70"
+      ],
+      "correct": 1,
+      "explain": "篩選只影響呈現的紀錄。取消篩選後可以再次看到所有資料。",
+      "difficulty": 1,
+      "skill": "filter",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.4-Q01",
+      "lessonId": "A4.4",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.4.filter"
+      ],
+      "hint": "排序改變顯示次序；篩選保留符合條件的紀錄，並不代表刪除其他資料。",
+      "misconceptions": [
+        "filter.distractor-1",
+        null,
+        "filter.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "按平均分由高至低排列，屬於？",
+      "options": [
+        "排序",
+        "篩選",
+        "删除"
+      ],
+      "correct": 0,
+      "explain": "排序改變顯示次序。",
+      "difficulty": 1,
+      "skill": "sorting",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.4-Q02",
+      "lessonId": "A4.4",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.4.sorting"
+      ],
+      "hint": "排序改變顯示次序；篩選保留符合條件的紀錄，並不代表刪除其他資料。",
+      "misconceptions": [
+        null,
+        "sorting.distractor-2",
+        "sorting.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "只顯示 4A 班學生，屬於？",
+      "options": [
+        "排序",
+        "篩選",
+        "加總"
+      ],
+      "correct": 1,
+      "explain": "篩選按條件保留可見紀錄。",
+      "difficulty": 1,
+      "skill": "filtering",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.4-Q03",
+      "lessonId": "A4.4",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.4.filtering"
+      ],
+      "hint": "排序改變顯示次序；篩選保留符合條件的紀錄，並不代表刪除其他資料。",
+      "misconceptions": [
+        "filtering.distractor-1",
+        null,
+        "filtering.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "同时要 4A 班且平均分 >70，两条件应怎样结合？",
+      "options": [
+        "OR",
+        "AND",
+        "只檢查其中一項"
+      ],
+      "correct": 1,
+      "explain": "AND 要两條件同时成立。",
+      "difficulty": 2,
+      "skill": "multiple-criteria",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.4-Q04",
+      "lessonId": "A4.4",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.4.multiple-criteria"
+      ],
+      "hint": "多重條件可以同時限制班別與分數，再按分數排序。",
+      "misconceptions": [
+        "multiple-criteria.distractor-1",
+        null,
+        "multiple-criteria.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "Amy(4A,85)、Ben(4B,71.5)、Chris(4A,88)、Dana(4B,65)，篩選 4A 且平均 >70 後有？",
+      "options": [
+        "只有 Amy",
+        "Amy 和 Chris",
+        "全體四人"
+      ],
+      "correct": 1,
+      "explain": "兩位 4A 學生都符合分數條件。",
+      "difficulty": 2,
+      "skill": "filter-tracing",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.4-Q05",
+      "lessonId": "A4.4",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.4.filter-tracing"
+      ],
+      "hint": "多重條件可以同時限制班別與分數，再按分數排序。",
+      "misconceptions": [
+        "filter-tracing.distractor-1",
+        null,
+        "filter-tracing.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "只把 Score 欄排序而 Name 欄不動，有什麼風險？",
+      "options": [
+        "沒有風險",
+        "分數可能配錯學生",
+        "所有分數自動相同"
+      ],
+      "correct": 1,
+      "explain": "各欄位須保持同一筆紀錄一起移動。",
+      "difficulty": 2,
+      "skill": "record-integrity",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.4-Q06",
+      "lessonId": "A4.4",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.4.record-integrity"
+      ],
+      "hint": "多重條件可以同時限制班別與分數，再按分數排序。",
+      "misconceptions": [
+        "record-integrity.distractor-1",
+        null,
+        "record-integrity.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "要找學號 S003 的紀錄，最直接的操作是？",
+      "options": [
+        "改變字體",
+        "搜尋指定學號",
+        "只計算平均"
+      ],
+      "correct": 1,
+      "explain": "搜尋可定位指定值。",
+      "difficulty": 2,
+      "skill": "searching",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.4-Q07",
+      "lessonId": "A4.4",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.4.searching"
+      ],
+      "hint": "多重條件可以同時限制班別與分數，再按分數排序。",
+      "misconceptions": [
+        "searching.distractor-1",
+        null,
+        "searching.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "寫出「4A 且平均分 >70，按平均分遞減」的操作順序，並說明篩選是否刪除資料。",
+      "rubric": [
+        "設定班別與分數的 AND 條件。",
+        "讓所有欄位一起按平均分由高至低排序。",
+        "篩選只改變可見紀錄，原始資料仍保留。"
+      ],
+      "explain": "設定班別與分數的 AND 條件。；讓所有欄位一起按平均分由高至低排序。；篩選只改變可見紀錄，原始資料仍保留。",
+      "difficulty": 3,
+      "skill": "manipulation-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.4-Q08",
+      "lessonId": "A4.4",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.4.manipulation-reasoning"
+      ],
+      "hint": "搜尋定位某個值或紀錄；處理表格時要保持每筆紀錄的欄位一起移動。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "引用 Test1 工作表 B2 的公式是？",
+      "options": [
+        "=Test1!B2",
+        "=Test1+B2",
+        "=B2!Test1"
+      ],
+      "correct": 0,
+      "explain": "! 分隔工作表名稱與儲存格位置。",
+      "difficulty": 1,
+      "skill": "worksheets",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.5-Q01",
+      "lessonId": "A4.5",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.5.worksheets"
+      ],
+      "hint": "工作表可把原始數據與摘要分開，仍透過引用保持連動。",
+      "misconceptions": [
+        null,
+        "worksheets.distractor-2",
+        "worksheets.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "=Test1!B2 中的 ! 用來？",
+      "options": [
+        "表示百分比",
+        "分隔工作表名與儲存格位置",
+        "固定整個引用"
+      ],
+      "correct": 1,
+      "explain": "! 指明來源位於某張工作表。",
+      "difficulty": 1,
+      "skill": "worksheet-reference",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.5-Q02",
+      "lessonId": "A4.5",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.5.worksheet-reference"
+      ],
+      "hint": "工作表可把原始數據與摘要分開，仍透過引用保持連動。",
+      "misconceptions": [
+        "worksheet-reference.distractor-1",
+        null,
+        "worksheet-reference.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "short",
+      "q": "寫出引用 Test2 工作表 C3 的公式。",
+      "answers": [
+        "=Test2!C3"
+      ],
+      "explain": "工作表名在 ! 前，儲存格位置在後。",
+      "difficulty": 2,
+      "skill": "worksheet-reference",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.5-Q03",
+      "lessonId": "A4.5",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.5.worksheet-reference"
+      ],
+      "hint": "例如 =Test1!B2 引用 Test1 工作表中的 B2。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "Summary 用公式引用 Test1，Test1 分數更新後通常？",
+      "options": [
+        "Summary 自动連動重算",
+        "Summary 永远不变",
+        "來源被删除"
+      ],
+      "correct": 0,
+      "explain": "引用建立了計算依賴。",
+      "difficulty": 2,
+      "skill": "cross-sheet-update",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.5-Q04",
+      "lessonId": "A4.5",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.5.cross-sheet-update"
+      ],
+      "hint": "例如 =Test1!B2 引用 Test1 工作表中的 B2。",
+      "misconceptions": [
+        null,
+        "cross-sheet-update.distractor-2",
+        "cross-sheet-update.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "直接複製貼上「數值」與建立跨表公式，主要区别是？",
+      "options": [
+        "數值貼上一定保留動態連結",
+        "公式可以保持對來源的連動",
+        "公式不能引用其他表"
+      ],
+      "correct": 1,
+      "explain": "貼上固定數值通常不保留來源依賴。",
+      "difficulty": 2,
+      "skill": "copy-vs-link",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.5-Q05",
+      "lessonId": "A4.5",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.5.copy-vs-link"
+      ],
+      "hint": "例如 =Test1!B2 引用 Test1 工作表中的 B2。",
+      "misconceptions": [
+        "copy-vs-link.distractor-1",
+        null,
+        "copy-vs-link.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "把各次測驗放在不同工作表、平均分放在 Summary。說明如何讓修改分數後的摘要自動更新，以及一項核對重點。",
+      "rubric": [
+        "在 Summary 用 Test1!B2、Test2!B2 等跨表引用計算。",
+        "引用來源修改後重算，不以固定數值貼上代替。",
+        "核對工作表、學生對應列與引用位置。"
+      ],
+      "explain": "在 Summary 用 Test1!B2、Test2!B2 等跨表引用計算。；引用來源修改後重算，不以固定數值貼上代替。；核對工作表、學生對應列與引用位置。",
+      "difficulty": 3,
+      "skill": "worksheet-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.5-Q06",
+      "lessonId": "A4.5",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.5.worksheet-reasoning"
+      ],
+      "hint": "跨表公式讓數據更新反映到摘要；純粹複製貼上數值，可能留下過時資料。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "比較不同人數班級的平均表現，值欄較適合用？",
+      "options": [
+        "平均分",
+        "學號加總",
+        "只計最高分"
+      ],
+      "correct": 0,
+      "explain": "平均分可以比較每名學生的平均表現；仍應同時留意人數和其他背景。",
+      "difficulty": 1,
+      "skill": "pivot",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.6-Q01",
+      "lessonId": "A4.6",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.6.pivot"
+      ],
+      "hint": "樞紐分析把紀錄按選定欄位分組，再做加總、計數或平均。",
+      "misconceptions": [
+        null,
+        "pivot.distractor-2",
+        "pivot.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "要按班別比較平均分，樞紐分析的分組欄位应是？",
+      "options": [
+        "班別",
+        "姓名的字型",
+        "學號加總"
+      ],
+      "correct": 0,
+      "explain": "分組欄位決定每個匯總群組。",
+      "difficulty": 1,
+      "skill": "pivot-grouping",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.6-Q02",
+      "lessonId": "A4.6",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.6.pivot-grouping"
+      ],
+      "hint": "樞紐分析把紀錄按選定欄位分組，再做加總、計數或平均。",
+      "misconceptions": [
+        null,
+        "pivot-grouping.distractor-2",
+        "pivot-grouping.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "數據值欄使用 COUNT，主要得到？",
+      "options": [
+        "分数总和",
+        "紀錄數量",
+        "最高分"
+      ],
+      "correct": 1,
+      "explain": "計數回答有多少筆／個數值，而非平均。",
+      "difficulty": 1,
+      "skill": "pivot-aggregation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.6-Q03",
+      "lessonId": "A4.6",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.6.pivot-aggregation"
+      ],
+      "hint": "樞紐分析把紀錄按選定欄位分組，再做加總、計數或平均。",
+      "misconceptions": [
+        "pivot-aggregation.distractor-1",
+        null,
+        "pivot-aggregation.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "4A 有 85、88 两个平均分，樞紐平均是多少？",
+      "answers": [
+        "86.5"
+      ],
+      "explain": "(85 + 88) ÷ 2 = 86.5。",
+      "difficulty": 2,
+      "skill": "pivot-average",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.6-Q04",
+      "lessonId": "A4.6",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.6.pivot-average"
+      ],
+      "hint": "以班別分組、以平均分為值，可比較班級；更換分組或計算方式會回答不同問題。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "4A 总分较高，能否直接證明人均表現较好？",
+      "options": [
+        "不能，還要看人數與平均",
+        "能，不需其他資料",
+        "能，只看圖表顏色"
+      ],
+      "correct": 0,
+      "explain": "班級人數不同會影響總分。",
+      "difficulty": 2,
+      "skill": "aggregate-interpretation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.6-Q05",
+      "lessonId": "A4.6",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.6.aggregate-interpretation"
+      ],
+      "hint": "以班別分組、以平均分為值，可比較班級；更換分組或計算方式會回答不同問題。",
+      "misconceptions": [
+        null,
+        "aggregate-interpretation.distractor-2",
+        "aggregate-interpretation.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "把分組由班別換成達標狀態，會？",
+      "options": [
+        "繼續回答完全相同問題",
+        "改變匯總群組及所回答的問題",
+        "刪除來源"
+      ],
+      "correct": 1,
+      "explain": "選用的欄位會改變分析角度。",
+      "difficulty": 2,
+      "skill": "pivot-fields",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.6-Q06",
+      "lessonId": "A4.6",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.6.pivot-fields"
+      ],
+      "hint": "以班別分組、以平均分為值，可比較班級；更換分組或計算方式會回答不同問題。",
+      "misconceptions": [
+        "pivot-fields.distractor-1",
+        null,
+        "pivot-fields.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "比較各班平均分，哪種圖表通常较清楚？",
+      "options": [
+        "有清楚標籤的柱形圖",
+        "沒有標籤的圖",
+        "只显示檔案名稱"
+      ],
+      "correct": 0,
+      "explain": "類別間比較可用清楚標示的柱形圖。",
+      "difficulty": 2,
+      "skill": "pivot-chart",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.6-Q07",
+      "lessonId": "A4.6",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.6.pivot-chart"
+      ],
+      "hint": "以班別分組、以平均分為值，可比較班級；更換分組或計算方式會回答不同問題。",
+      "misconceptions": [
+        null,
+        "pivot-chart.distractor-2",
+        "pivot-chart.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "提出一個樞紐分析配置以比较班级平均分，並指出一項讀图時需考慮的限制。",
+      "rubric": [
+        "以班別分組，以分數的平均作值。",
+        "以有標籤圖表比較各班。",
+        "留意班級人數、樣本、測驗背景或平均掩蓋個別差異。"
+      ],
+      "explain": "以班別分組，以分數的平均作值。；以有標籤圖表比較各班。；留意班級人數、樣本、測驗背景或平均掩蓋個別差異。",
+      "difficulty": 3,
+      "skill": "pivot-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.6-Q08",
+      "lessonId": "A4.6",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.6.pivot-reasoning"
+      ],
+      "hint": "圖表協助比較趨勢，但樣本大小和背景會影響結論；班级總分較高不一定代表平均表現較好。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "提高期末比重，誰的總分會增加？",
+      "options": [
+        "期末分高於測驗分的學生",
+        "每個學生都一定增加",
+        "測驗分高於期末分的學生"
+      ],
+      "correct": 0,
+      "explain": "把比重移到較高的期末分，會提高加權總分。",
+      "difficulty": 1,
+      "skill": "whatif",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.7-Q01",
+      "lessonId": "A4.7",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.7.whatif"
+      ],
+      "hint": "假設分析改變模型輸入，观察結果如何依賴參數。",
+      "misconceptions": [
+        null,
+        "whatif.distractor-2",
+        "whatif.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "What-if 分析主要透过什么观察結果？",
+      "options": [
+        "改變模型輸入",
+        "任意删除原始紀錄",
+        "只改字體"
+      ],
+      "correct": 0,
+      "explain": "改變參數後重算，觀察依賴关系。",
+      "difficulty": 1,
+      "skill": "whatif-input",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.7-Q02",
+      "lessonId": "A4.7",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.7.whatif-input"
+      ],
+      "hint": "假設分析改變模型輸入，观察結果如何依賴參數。",
+      "misconceptions": [
+        null,
+        "whatif-input.distractor-2",
+        "whatif-input.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "測驗 80、期末 90，各佔 50%，总分是多少？",
+      "answers": [
+        "85"
+      ],
+      "explain": "80 × 0.5 + 90 × 0.5 = 85。",
+      "difficulty": 1,
+      "skill": "weighted-score",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.7-Q03",
+      "lessonId": "A4.7",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.7.weighted-score"
+      ],
+      "hint": "假設分析改變模型輸入，观察結果如何依賴參數。",
+      "misconceptions": [],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "number",
+      "q": "測驗 80、期末 90，期末佔 70%，总分是多少？",
+      "answers": [
+        "87"
+      ],
+      "explain": "80 × 0.3 + 90 × 0.7 = 87。",
+      "difficulty": 2,
+      "skill": "weighted-score",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.7-Q04",
+      "lessonId": "A4.7",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.7.weighted-score"
+      ],
+      "hint": "加權分數 = 測驗 × (1−期末比重) + 期末 × 期末比重。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "number",
+      "q": "測驗 90、期末 60，期末佔 70%，总分是多少？",
+      "answers": [
+        "69"
+      ],
+      "explain": "90 × 0.3 + 60 × 0.7 = 69。",
+      "difficulty": 2,
+      "skill": "weighted-score",
+      "unit": "",
+      "tolerance": 0,
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.7-Q05",
+      "lessonId": "A4.7",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.7.weighted-score"
+      ],
+      "hint": "加權分數 = 測驗 × (1−期末比重) + 期末 × 期末比重。",
+      "misconceptions": [],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "两次分数都是 80，改變两次的比重（总和仍100%），總分？",
+      "options": [
+        "必定上升",
+        "仍是 80",
+        "必定下降"
+      ],
+      "correct": 1,
+      "explain": "兩個相同值的加權平均不受權重分配影響。",
+      "difficulty": 2,
+      "skill": "model-dependency",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.7-Q06",
+      "lessonId": "A4.7",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.7.model-dependency"
+      ],
+      "hint": "加權分數 = 測驗 × (1−期末比重) + 期末 × 期末比重。",
+      "misconceptions": [
+        "model-dependency.distractor-1",
+        null,
+        "model-dependency.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "模型預測下月需要 120 份午餐，能否保证实际需求？",
+      "options": [
+        "能，公式一定正確",
+        "不能，假設和输入可能不同於實際",
+        "不能做任何判断"
+      ],
+      "correct": 1,
+      "explain": "模型支持推測，不保证現實必然相同。",
+      "difficulty": 3,
+      "skill": "prediction-limits",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.7-Q07",
+      "lessonId": "A4.7",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.7.prediction-limits"
+      ],
+      "hint": "預測依賴假設及資料品質；試算結果幫助判斷，不保證真實情況會發生。",
+      "misconceptions": [
+        "prediction-limits.distractor-1",
+        null,
+        "prediction-limits.distractor-3"
+      ],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "提高期末比重对两名學生的影響會不同，為什麼？解釋一種上升和一種下降的情況。",
+      "rubric": [
+        "期末高於測驗時，將權重移到較高分會提高總分。",
+        "期末低於測驗時，总分会降低。",
+        "影响取决于分数差与权重变化，原始成绩并未改动。"
+      ],
+      "explain": "期末高於測驗時，將權重移到較高分會提高總分。；期末低於測驗時，总分会降低。；影响取决于分数差与权重变化，原始成绩并未改动。",
+      "difficulty": 3,
+      "skill": "whatif-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.7-Q08",
+      "lessonId": "A4.7",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.7.whatif-reasoning"
+      ],
+      "hint": "預測依賴假設及資料品質；試算結果幫助判斷，不保證真實情況會發生。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "學號 S001 的欄位應選什麼類型？",
+      "options": [
+        "數值",
+        "文字",
+        "日期"
+      ],
+      "correct": 1,
+      "explain": "學號包含字母且用來識別對象，文字類型可以保留完整表示。",
+      "difficulty": 1,
+      "skill": "database",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.8-Q01",
+      "lessonId": "A4.8",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.8.database"
+      ],
+      "hint": "簡單數據庫用表格整理紀錄；為欄位選擇適當類型，如學號用文字、分數用數值。",
+      "misconceptions": [
+        "database.distractor-1",
+        null,
+        "database.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "班別只能是学校列出的選项，較合適的輸入元件是？",
+      "options": [
+        "自由文字框",
+        "下拉選單",
+        "音量滑桿"
+      ],
+      "correct": 1,
+      "explain": "固定選項可減少无效班別輸入。",
+      "difficulty": 1,
+      "skill": "form-controls",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.8-Q02",
+      "lessonId": "A4.8",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.8.form-controls"
+      ],
+      "hint": "簡單數據庫用表格整理紀錄；為欄位選擇適當類型，如學號用文字、分數用數值。",
+      "misconceptions": [
+        "form-controls.distractor-1",
+        null,
+        "form-controls.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "兩位學生同名時，較可靠的識別方式是？",
+      "options": [
+        "只用名字",
+        "以唯一學號識別",
+        "只用排序位置"
+      ],
+      "correct": 1,
+      "explain": "唯一識別碼减少同名混淆。",
+      "difficulty": 1,
+      "skill": "record-identification",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.8-Q03",
+      "lessonId": "A4.8",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.8.record-identification"
+      ],
+      "hint": "簡單數據庫用表格整理紀錄；為欄位選擇適當類型，如學號用文字、分數用數值。",
+      "misconceptions": [
+        "record-identification.distractor-1",
+        null,
+        "record-identification.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "學號 0012 含前導零，資料類型較適合？",
+      "options": [
+        "文字",
+        "用來求平均的數值",
+        "聲音"
+      ],
+      "correct": 0,
+      "explain": "學號是識別碼，文字可保留原始表示。",
+      "difficulty": 2,
+      "skill": "field-types",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.8-Q04",
+      "lessonId": "A4.8",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.8.field-types"
+      ],
+      "hint": "輸入表單提供清晰欄位、提示和檢查，讓使用者新增或修改資料。",
+      "misconceptions": [
+        null,
+        "field-types.distractor-2",
+        "field-types.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "表单通过範圍檢查，能否证明分数與原始成績單一致？",
+      "options": [
+        "能",
+        "不能，仍需核實",
+        "能，資料已备份"
+      ],
+      "correct": 1,
+      "explain": "有效性與事實正確性不同。",
+      "difficulty": 2,
+      "skill": "form-validation",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.8-Q05",
+      "lessonId": "A4.8",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.8.form-validation"
+      ],
+      "hint": "輸入表單提供清晰欄位、提示和檢查，讓使用者新增或修改資料。",
+      "misconceptions": [
+        "form-validation.distractor-1",
+        null,
+        "form-validation.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "資料誤刪後希望恢復，哪項最有幫助？",
+      "options": [
+        "只有重新排序",
+        "事前備份",
+        "改列名"
+      ],
+      "correct": 1,
+      "explain": "備份能提供恢復資料的來源。",
+      "difficulty": 2,
+      "skill": "data-maintenance",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.8-Q06",
+      "lessonId": "A4.8",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.8.data-maintenance"
+      ],
+      "hint": "輸入表單提供清晰欄位、提示和檢查，讓使用者新增或修改資料。",
+      "misconceptions": [
+        "data-maintenance.distractor-1",
+        null,
+        "data-maintenance.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "設計一個學生登記表單，提出兩項減少輸入錯誤的方法，以及一項保護或維護資料的方法。",
+      "rubric": [
+        "可用固定班別選項、必填、數值與範圍檢查。",
+        "可用來源比對或独立重複輸入核實。",
+        "可用備份、適當存取權限或維護紀錄。"
+      ],
+      "explain": "可用固定班別選項、必填、數值與範圍檢查。；可用來源比對或独立重複輸入核實。；可用備份、適當存取權限或維護紀錄。",
+      "difficulty": 3,
+      "skill": "form-design-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.8-Q07",
+      "lessonId": "A4.8",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.8.form-design-reasoning"
+      ],
+      "hint": "以唯一學號辨認學生，可以避免把兩位同名學生混為一人；備份與輸入核實亦有助維持資料。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "服務紀錄表單以文字框輸入學生班別。提出一個更合適的表單元件，並簡述原因。",
+      "rubric": [
+        "使用下拉選單或其他能限制為有效班別的選擇元件。",
+        "固定可選班別可減少錯字及不合法輸入。"
+      ],
+      "explain": "使用下拉選單或其他能限制為有效班別的選擇元件。；固定可選班別可減少錯字及不合法輸入。",
+      "difficulty": 3,
+      "skill": "form-control-reasoning",
+      "maxScore": 2,
+      "source": {
+        "kind": "past-paper",
+        "year": 2025,
+        "paper": "1B",
+        "question": "7(a)(i)",
+        "pdfPage": 5,
+        "marks": 2,
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/ict/2025-Sample-ict-Level5-E-J018.pdf#page=5",
+        "publication": "HKEAA 2025 Samples of Candidates’ Performance · Level 5",
+        "presentation": "中文轉述；原題作答形式保留",
+        "verifiedOn": "2026-10-10",
+        "answerAuthority": "本應用參考解答（非官方評卷參考）"
+      },
+      "id": "A4.8-Q08",
+      "lessonId": "A4.8",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.8.form-control-reasoning"
+      ],
+      "hint": "以唯一學號辨認學生，可以避免把兩位同名學生混為一人；備份與輸入核實亦有助維持資料。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "mcq",
+      "q": "SELECT Name FROM Students 選出的是？",
+      "options": [
+        "Name 欄位",
+        "所有工作表",
+        "只删除 Name"
+      ],
+      "correct": 0,
+      "explain": "SELECT 決定結果包含哪些欄位。",
+      "difficulty": 1,
+      "skill": "sql-projection",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q02",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.sql-projection"
+      ],
+      "hint": "SELECT 選擇輸出欄位，FROM 指定資料表，WHERE 篩選紀錄。",
+      "misconceptions": [
+        null,
+        "sql-projection.distractor-2",
+        "sql-projection.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "WHERE Score>=75 的作用是？",
+      "options": [
+        "按姓名排序",
+        "篩選符合条件的紀錄",
+        "把所有 Score 改成 75"
+      ],
+      "correct": 1,
+      "explain": "WHERE 限制輸出紀錄。",
+      "difficulty": 1,
+      "skill": "sql-selection",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q03",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.sql-selection"
+      ],
+      "hint": "SELECT 選擇輸出欄位，FROM 指定資料表，WHERE 篩選紀錄。",
+      "misconceptions": [
+        "sql-selection.distractor-1",
+        null,
+        "sql-selection.distractor-3"
+      ],
+      "difficultyLabel": "基礎"
+    },
+    {
+      "type": "mcq",
+      "q": "WHERE Avg >= 75 ORDER BY Avg DESC 會？",
+      "options": [
+        "顯示全班且按姓名排列",
+        "顯示達 75 分者，按平均分遞減",
+        "只顯示剛好 75 分者"
+      ],
+      "correct": 1,
+      "explain": ">= 包含門檻及以上；DESC 指由高至低。",
+      "difficulty": 2,
+      "skill": "query",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q01",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.query"
+      ],
+      "hint": "ORDER BY Avg DESC 把平均分從高至低排列；ASC 是由低至高。LIKE 中 _ 可匹配一個字元，例如 2_。",
+      "misconceptions": [
+        "query.distractor-1",
+        null,
+        "query.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "ORDER BY Score DESC 的排列是？",
+      "options": [
+        "由低至高",
+        "原始次序",
+        "由高至低"
+      ],
+      "correct": 2,
+      "explain": "DESC 是遞減排序。",
+      "difficulty": 2,
+      "skill": "sql-ordering",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q04",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.sql-ordering"
+      ],
+      "hint": "ORDER BY Avg DESC 把平均分從高至低排列；ASC 是由低至高。LIKE 中 _ 可匹配一個字元，例如 2_。",
+      "misconceptions": [
+        "sql-ordering.distractor-1",
+        "sql-ordering.distractor-2",
+        null
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "分数是 74、75、90；WHERE Score>=75 會留下？",
+      "options": [
+        "只有 90",
+        "75 和 90",
+        "全體"
+      ],
+      "correct": 1,
+      "explain": ">= 包含等於門檻的紀錄。",
+      "difficulty": 2,
+      "skill": "sql-boundary",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q05",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.sql-boundary"
+      ],
+      "hint": "ORDER BY Avg DESC 把平均分從高至低排列；ASC 是由低至高。LIKE 中 _ 可匹配一個字元，例如 2_。",
+      "misconceptions": [
+        "sql-boundary.distractor-1",
+        null,
+        "sql-boundary.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "WHERE Class='4A' AND Score>70，只有哪个紀錄符合？",
+      "options": [
+        "Amy(4A,85)",
+        "Ben(4B,80)",
+        "Chris(4A,65)"
+      ],
+      "correct": 0,
+      "explain": "兩個條件須同时成立。",
+      "difficulty": 2,
+      "skill": "sql-and",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q06",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.sql-and"
+      ],
+      "hint": "ORDER BY Avg DESC 把平均分從高至低排列；ASC 是由低至高。LIKE 中 _ 可匹配一個字元，例如 2_。",
+      "misconceptions": [
+        null,
+        "sql-and.distractor-2",
+        "sql-and.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "mcq",
+      "q": "SELECT Name,Score 的结果表應顯示？",
+      "options": [
+        "Name 和 Score 两欄",
+        "所有欄位",
+        "只顯示表名"
+      ],
+      "correct": 0,
+      "explain": "欄位投影不應混入未選取欄位。",
+      "difficulty": 2,
+      "skill": "sql-projection",
+      "maxScore": 1,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q07",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.sql-projection"
+      ],
+      "hint": "ORDER BY Avg DESC 把平均分從高至低排列；ASC 是由低至高。LIKE 中 _ 可匹配一個字元，例如 2_。",
+      "misconceptions": [
+        null,
+        "sql-projection.distractor-2",
+        "sql-projection.distractor-3"
+      ],
+      "difficultyLabel": "應用"
+    },
+    {
+      "type": "written",
+      "q": "學生表有 Name、Class、Score。解釋 SELECT Name, Score FROM Students WHERE Class='4A' ORDER BY Score DESC 的結果。",
+      "rubric": [
+        "結果包含 Name 與 Score。",
+        "只保留 4A 紀錄。",
+        "按 Score 由高至低；同分時未指定第二排序鍵。"
+      ],
+      "explain": "結果包含 Name 與 Score。；只保留 4A 紀錄。；按 Score 由高至低；同分時未指定第二排序鍵。",
+      "difficulty": 3,
+      "skill": "sql-reasoning",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q08",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.sql-reasoning"
+      ],
+      "hint": "報表為目標讀者呈現查詢結果，應有清楚標題、欄位名稱及適當排序。這裡練習解讀單表查詢。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "written",
+      "q": "一張面向老師的成績報表，应包含哪些清楚的標示？為何不宜把沒有背景的數字直接交给讀者？",
+      "rubric": [
+        "有報表标题、班別／篩選條件、欄位名稱等背景。",
+        "採用适当排序及足够的紀錄識別。",
+        "背景讓數據有意义，避免讀者把不同範圍或時間的數字混用。"
+      ],
+      "explain": "有報表标题、班別／篩選條件、欄位名稱等背景。；採用适当排序及足够的紀錄識別。；背景讓數據有意义，避免讀者把不同範圍或時間的數字混用。",
+      "difficulty": 3,
+      "skill": "report-audience",
+      "maxScore": 3,
+      "source": {
+        "kind": "original"
+      },
+      "id": "A4.9-Q09",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.report-audience"
+      ],
+      "hint": "報表為目標讀者呈現查詢結果，應有清楚標題、欄位名稱及適當排序。這裡練習解讀單表查詢。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    },
+    {
+      "type": "short",
+      "q": "資料表 SS 有紀錄 (CL,CNO,SER,HR)：(2A,22,賣旗,15)；(3D,3,賣旗,15)；(2C,2,圖書館助理,40)；(2C,5,資訊科技領袖生,35)；(3D,10,賣旗,15)。解讀 SELECT CL, CNO FROM SS WHERE SER='賣旗' AND CL LIKE '2_' 的輸出（班別、學號）。",
+      "answers": [
+        "2A 22",
+        "2A,22",
+        "2A，22",
+        "2A / 22",
+        "2A;22",
+        "(2A,22)"
+      ],
+      "explain": "LIKE 的 _ 匹配一個字元；符合賣旗及 2 開頭班別的只有 (2A,22)。",
+      "difficulty": 3,
+      "skill": "sql-like-tracing",
+      "maxScore": 1,
+      "source": {
+        "kind": "past-paper",
+        "year": 2025,
+        "paper": "1B",
+        "question": "7(d)(i)",
+        "pdfPage": 6,
+        "marks": 1,
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/ict/2025-Sample-ict-Level5-E-J018.pdf#page=6",
+        "publication": "HKEAA 2025 Samples of Candidates’ Performance · Level 5",
+        "presentation": "中文轉述；原題作答形式保留",
+        "verifiedOn": "2026-10-10",
+        "answerAuthority": "本應用參考解答（非官方評卷參考）"
+      },
+      "id": "A4.9-Q10",
+      "lessonId": "A4.9",
+      "topicId": "A4",
+      "bankVersion": "2026-10-10.1",
+      "markingVersion": "1",
+      "skills": [
+        "A4.9.sql-like-tracing"
+      ],
+      "hint": "報表為目標讀者呈現查詢結果，應有清楚標題、欄位名稱及適當排序。這裡練習解讀單表查詢。",
+      "misconceptions": [],
+      "difficultyLabel": "挑戰"
+    }
+  ]
+}

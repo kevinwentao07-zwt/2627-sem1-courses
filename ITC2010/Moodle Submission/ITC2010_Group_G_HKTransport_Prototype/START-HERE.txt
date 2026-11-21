@@ -1,0 +1,28 @@
+HKTransport | ITC2010 Digital Literacy | Group G
+
+OPEN THE WEB PROTOTYPE
+https://hk.52-220-124-215.sslip.io/
+Open the link or double-click ITC2010_Group_G_HKTransport_Prototype_Link.html.
+Internet access is required. No sign-in is needed.
+Try "Tsim Sha Tsui to Central, less walking" or "Ramen in Mong Kok".
+
+MULTIMEDIA
+hktransport_promo_v2_EN.mp4
+  44-second English video showing HKTransport place search, trip planning
+  and the 3D bus view.
+
+RUN THE WEB SOURCE LOCALLY
+Extract the ZIP. In this folder, run:
+    python3 -m http.server 8642 --directory web
+Open http://localhost:8642/ in a browser. The local planner uses online transit
+data and free map and search services. The live website provides the hosted AI
+assistant and Google integrations when available.
+
+SOURCE AND TESTING
+web/      Web app, assets, vendor libraries and test suite
+server/   Optional hosted proxy source and test suite
+LICENSE, THIRD_PARTY_NOTICES.md and licenses/  Credits and licences
+
+The web suite (51 tests) and proxy suite (27 tests) passed against the archived
+source. The suites cover route planning, arrival estimates and proxy behavior.
+Source repository: https://github.com/kevinwentao07-zwt/hktransport

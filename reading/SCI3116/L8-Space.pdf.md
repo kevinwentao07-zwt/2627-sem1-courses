@@ -1,0 +1,877 @@
+# L8-Space.pdf
+
+原件：SCI3116/L8-Space.pdf
+
+## 第 1 页
+
+Space Exploration
+© Circle Chan
+
+## 第 2 页
+
+Wonder of the stars
+From:https://mt.sohu.com/20170519/n493696218.shtml
+From: 
+https://zh.m.wikipedia.org/wiki/%E7%89%
+9B%E9%83%8E%E7%BB%87%E5%A5%B3
+From wikipedia
+
+## 第 3 页
+
+Our solar system
+4 Inner planets
+4 Outer planets 
+(
+)
+Titan
+Pluto
+Ceres (
+)
+(Size not to scale)
+Pluto (
+)
+(Size NOT to scale)
+Eris (
+)
+(Size not to scale)
+4
+• Star (恆星) a massive, luminous sphere, e.g. the Sun 
+• Planets (行星) orbit the star, e.g. Earth, Mars 
+• (Natural) Satellites (衛星) orbit a planet, e.g. Moon, Titan
+• Dwarf planets (矮行星) massive objects that orbit the Sun, but 
+has not cleared its orbit, e.g. Pluto, Cere
+
+## 第 4 页
+
+Sunshine Trailer:http://www.youtube.com/watch?v=1wjs4nmUITg
+in the solar system
+2
+The fate (命運) of the solar system…
+•
+Our life relies on the energy from the sun
+•
+The sun is a giant nuclear reactor: nuclear fusion - merging  
+hydrogen to form helium
+•
+The movie “Sunshine ” in 2007 was based on a plot that the 
+sun is dying (burning out??) and the earth is frozen in winter
+•
+Do you think this will be the fate of our solar system?
+
+## 第 5 页
+
+• The sun will ultimately burn out of hydrogen ...
+• However, it will NOT diminish (縮小), but it will become a 
+red giant (紅巨星), greatly expand and emit more light
+• All water on Earth evaporated, the sun may engulf the Earth
+• No worry, human civilization may have ended!!
+The life of the Sun
+
+## 第 6 页
+
+Size of Earth
+https://www.youtube.com/watch?v=1Eh5BpSnBBw
+We are extremely small!
+Orbit of planets, size of earth
+5
+• Planets closer to the Sun has a shorter period (較短週期) - the 
+shorter time needed for one cycle
+• Orbital period (公轉週期) = (cycle of seasons) 
+• Period of revolution (自轉週期) = a day (cycle of days and nights)
+
+## 第 7 页
+
+Why Pluto is not considered a planet?
+•
+We anticipate that we will discover many objects in our 
+solar systems that have similar size and orbit as Pluto, 
+however, we cannot consider all of them as planet
+•
+In 2006, International Astronomical Union (IAU, 國際天
+文聯合會)set a new definition for planets:
+1. Orbit around the sun
+2. has sufficient mass to form a round shape
+3. Has cleared the neighborhood around its orbit
+Pluto
+6
+Protest for Pluto
+Pluto does not satisfy criteria 
+3, it is not considered a 
+planet
+Objects satisfying 1 and 2 are 
+called Dwarf plants (矮行星)
+
+## 第 8 页
+
+7
+Figures for Pluto and Eris not real, we have no real picture yet
+Planets
+Dwarf 
+Planets
+The new members- Dwarf Planets
+Pluto and its moon
+Charon
+Eris (larger 
+than Pluto)
+Ceres
+
+## 第 9 页
+
+What to explore? Where are we?
+Earth & Moon
+Solar system 
+(
+)
+Sun
+5 light years
+8
+Other solar systems
+
+## 第 10 页
+
+Where are we? (2)
+(
+)
+27000
+light years
+9
+Milky Way is an 
+example of Galaxy
+
+## 第 11 页
+
+If you are not clear about the previous picture, 
+please go to this website:
+https://www.youtube.com/watch?v=Iy7NzjCmUf0
+
+## 第 12 页
+
+Why explore space?
+•
+Understanding
+- The Universe is so large, there are so 
+many unsolved problems
+- Learn about the origin: the origin of 
+the universe, solar system, life, …
+•
+Resources and Survival
+- The search for extraterrestrial planets 
+suitable for human
+- Extraterrestrial life?
+- Resources on other planets
+•
+Many other applications: military, 
+weather forecast, weather forecast, 
+prediction of natural disasters: 
+solar flare, impacts…
+•
+Demonstration of a country’s
+power?
+Solar system
+Milky Way seen on earth
+10
+
+## 第 13 页
+
+LAUNCHING INTO SPACE
+11
+
+## 第 14 页
+
+The Mathematica/ Principles of Natural Philosophy, or The
+Principia By Isaac Newton in year 1687 (translated version 1729)
+DEFINITION V.
+... If a leaden ball, projected from the top of a mountain by the 
+force of gunpowder with a given velocity,and in a direction 
+parallel to the horizon, is carried in a curve line to the distance of 
+two miles before it falls to the ground; the same, if the resistance 
+of the air were taken away,with a double or decuple 
+velocity,would fly twice or ten times as far. And by increasing the 
+velocity,we may at pleasure increase the distance to which it 
+might be projected, and diminish the curvature of the line, which 
+it might describe, till at last it should fall at the distance of 
+10,30,or 90 degrees, or even might go quite round the whole 
+earth before it falls; or lastly,so that it might never fall
+to the earth, but go forward into the celestial spaces, and 
+proceed in its motion in infinitum. And after the same manner 
+that a projectile, by the force of gravity,may be made to revolve 
+in an orbit, and go round the whole earth, ...
+
+## 第 15 页
+
+v
+D
+E
+F
+Reset
+V1=1291 mis 
+V3=2583m/s 
+V6=4520m/s 
+V8=5812mls 
+V9=6457m/s 
+V1 O= 
+7103m/s 
+V6=4521 mis 
+V6=4520m/s 
+V4=3228m/s
+Time=4789 s
+
+## 第 16 页
+
+Rocket speed
+• Low Earth Orbit:
+V ~ 8 km s-1 peroid~90 min
+• Earth Escape velocity 
+V ~ 11.2 km s-1
+• Sun Escape velocity
+V ~ 16.7 km s-1
+
+## 第 17 页
+
+History of Space Exploration
+- Space Race (
+) in Cold war
+•
+After World War II, the Soviet Union (SU) and 
+the USA became 2 opposing superpowers
+•
+No real wars (except Korean and Vietnam
+wars➔a “cold” war (冷戰)
+•
+In October 1957, SU launched the first 
+artificial satellite(人造衛星), Sputnik 1, to
+orbit the earth
+•
+In November 1957, SU put a dog Laika in a 
+spacecraft - the first animal to orbit the earth
+- Controversy the spacecraft was not designed to 
+land, Laika must die… she indeed died within 
+hours because of overheating
+16
+
+## 第 18 页
+
+Space Race (2)– The “firsts” of Soviets
+SU
+I got 
+this!
+Yuri Gagarin
+A. L1e7onov
+• In 1958, USA set up NASA (美國太空總署)
+• In 1961, SU achieved the first human 
+orbital flight - Yuri Gagarin orbited the 
+Earth in Vostok-1 for 108 mins from 
+launch to landing
+• Vostok-1 was designed to crash-land (!?) 
+➔Yuri landed using a parachute
+• In 1965, SU achieved the first spacewalk 
+for 12 mins by Leonov
+• - Leonov spacesuit inflated and he cannot 
+re-enter the spacecraft … he finally let
+some air out
+
+## 第 19 页
+
+Space Race (3)
+The Apollo Program
+In 1961, US president J. F. Kennedy said:
+"I believe that this nation should commit itself to achieving 
+the goal, before this decade is out, of landing a man on the 
+Moon and returning him safely to the Earth."
+18
+Kennedy (2:10)
+Procedures
+
+## 第 20 页
+
+Space Race (4)
+Armstrong
+Flag
+19
+• In 1963, 2 months before Kennedy was assassinated, he 
+suggested a co-operation with the Soviets; Soviets 
+declined
+• In 1969, USA's Apollo 11 landed on the moon
+Neil Armstrong was the first human on the moon: "That's 
+one small step for man, one giant leap for mankind".
+Another astronaut is Buzz Aldrin
+- Our laptop is more powerful than 
+Apollo 11's computer
+- They returned to Earth after a week
+
+## 第 21 页
+
+End of space race
+•
+There were a total of 6 successful landing on 
+the moon by the Apollo missions
+•
+Apollo 13 oxygen tank exploded, but luckily the 
+astronauts were able to return the earth It 
+•
+It costed US$170 billion (today’s money)
+•
+Rock samples were collected from the
+moon ➔answers of the origin of the moon?
+•
+Moon landing ended of space race
+•
+Apollo-Soyuz project established in 1972
+The origin of Moon???
+20
+Apollo 13
+A new mission
+
+## 第 22 页
+
+Other impacts of the space race
+21
+High school planetarium in US
+www.aplf-planetariums.info
+Earthrise
+Apollo 8
+GPS
+Global positioning system, 
+our smart phones are receiving 
+satellite signals directly
+Blue Marble Apollo 17
+• Environmental impact - Earth looks like a fragile, small blue 
+marble from space we should protect our home!!! 
+• Educational impact- students increased interest in space
+• Technological impact- many spin-off technologies, e.g. GPS, 
+artificial satellite communications, packaged foods, ...
+
+## 第 23 页
+
+Satellites
+•
+Satellites are delivered 
+by rockets or shuttle to 
+specific orbits above the 
+Earth.
+•
+Use of satellite: 
+Communication, 
+monitor and 
+surveillance,
+weather 
+forecast, search and 
+rescue, etc.
+22
+Live map of satellites
+
+## 第 24 页
+
+Common Orbits of Satellites
+•Low Earth Orbit(低軌道,LEO) 
+Circular or Elliptical, ~500 km, period~90min
+e.g. space shuttle 300-500 km; space telescope~600 km
+•Geostationary / geosynchronous orbit
+•( 地球靜止/地球同步軌道,GEO) 
+Circular ~36000 km, period =24hour 
+e.g. communication satellite
+
+## 第 25 页
+
+Geostationary 
+satellites
+Microwave 
+transmission 
+tower
+
+## 第 26 页
+
+Geostationary orbit /
+geosynchronous orbit
+~36000km
+Earth
+Communication between 
+satellites
+
+## 第 27 页
+
+GPS- Global positioning system, our smart phones are receiving satellite 
+signals directly
+GPS 24 satellites in Medium Earth Orbit (中軌道,MEO)
+radius~20000km
+GPS is a prime example of spin-off technology from 
+space exploration.
+Can you give some examples of use of GPS in our daily 
+life?
+Global Positioning system, GPS
+
+## 第 28 页
+
+Space Shuttle (太空穿梭機)
+Low
+earth
+orbit
+12700km
+600km
+Moon is 
+380000 km
+away
+27
+ISS’s orbit
+• Apollo spacecrafts can only be used once, US's 
+aim: cheaper, more frequent missions
+• Space shuttles can be re-used for 100 times. 
+Functions: fly to low earth orbit to
+1. Construct International Space Station
+2. Repair Hubble telescope (哈勃望遠鏡)
+
+## 第 29 页
+
+Space Shuttles (2)
+•
+NASA started the “Teacher in Space Program” ; high school 
+teacher MuAuliffe planned to teach 2 lessons from space
+•
+In 1986, Challenger (挑戰者號) exploded shortly after launch; 
+17% of American witnessed the accident on TV
+•
+in 2003, Columbia (哥倫比亞號) disintegrated on re-entry, all 
+space shuttles retired in 2011
+•
+These accidents reminded us the dangers of manned space 
+exploration; US now go to space by (Russian) Soyuz capsules
+The explosion of Challenger
+Christina MuAuliffe
+
+## 第 30 页
+
+International space station (ISS,國際太空站)
+•
+Building a space station is very expensive, encouraged 
+cooperation of EU, US, Russia, Japan, Canada, Brazil 
+•
+How large? Assume a height of 3m, roughly 3000 sq ft …
+•
+Has been occupied for more than 13 years …
+•
+Aim: to test human in space for a long time, microgravity 
+(微重力), spacecrafts, equipment, experiments ➔prepare 
+for flights to Moon, Mars and beyond …
+Candle on the ISS burns as the left figure, why?
+Can be viewed by naked eye
+Current location: http://iss.astroviewer.net/
+29
+
+## 第 31 页
+
+Life on ISS
+•
+Urine and other waste water (e.g. after showers) are 
+recycled to produce drinking water, and oxygen 
+•
+Solid wastes are stored; CO2  removed
+•
+Bird legs and puffy face- astronauts are required
+toexercise at least 2 hrs/day
+•
+Shower - a “vacuum cleaner” sucks the water and soap
+•
+Toilet – a “vacuum cleaner” sucks the wastes
+Ref: Canadian space agency
+Future natural life-
+support system 
+use plants to 
+remove CO2, 
+absorb sunlights, 
+produce oxygen 
+and food
+On Earth
+in Space
+30
+ISS: (toilet 8:35)http://www.youtube.com/watch?v=hyn1We0wOT8
+
+## 第 32 页
+
+Chinese Manned Space Flight - Shenzhou
+•
+Long time ago, Chairman Mao envisoned space exploration 
+➔manned spacecrafts Shuguang-1 (曙光一號) was planned 
+in but was cancelled
+•
+In 1993, China National Space Administration (CNSA, 國際航
+天局) was established
+•
+Shenzhou (神舟) program established in 1992 ➔Aim: to
+launch manned spacecrafts
+•
+4 unmanned Shenzhou launches ➔
+a dog, monkey,rabbit on Shenzhou-2
+•
+In 2003, Shenzhou-5 took Yang Liwei
+(楊利偉) to space and back. It marks
+1.
+2.
+The first human space flight of China
+China to be the 3rd country to achieve human space flights
+Landed!
+31
+
+## 第 33 页
+
+Chinese Space Station - Tiangong
+32
+•
+Shenzhou program continues to assist in building Chinese 
+space station-Tiangong (天宮)
+•
+In 2011, a small test space station, Tiangong-1 was launched 
+•
+In 2012, Shenzhou-9 docked Tiangong-1, carrying 3 astronauts 
+including the first female astronaut Liu Yang (劉洋)
+•
+Tiangong-2 launch in 2016, a space lab replace Tiangong-1
+•
+Tiangong-3, a large space station, aim: replace ISS in 2020
+Docking, Poll results
+Tiangong-1
+Shenzhou-9
+Inside 
+Tiangong-1
+
+## 第 34 页
+
+From: https://zh.wikipedia.org/wiki/%E5%A4%A9%E5%AE%AB%E7%A9%BA%E9%97%B4%E7%AB%99
+
+## 第 35 页
+
+Space Race between China and US?
+•
+For “security concerns”, the US government has established 
+Chinese exclusion policy of NASA -
+-Researchers from NASA are not allowed to collaborate (科學合
+作) with Chinese state researchers
+-NASA once banned Chinese scientists in participating in a 
+meeting held at their facilities; the ban was later lifted
+•
+China has increased collaboration with Europe and Russia, 
+e.g., Mars-500 experiment between 2007 - 2011:
+Should our Chinese researchers collaborate with NASA?
+From ESA 
+Mars 500
+33
+
+## 第 36 页
+
+Some issues for space exploration
+• The high cost of space exploration.
+• Which countries can/should explore space? 
+Which countries should be allowed to harvest 
+resources outside Earth?
+• Should space exploration be manned or 
+unmanned?
+• Impacts of space rubbish
+34
+
+## 第 37 页
+
+Space exploration is expensive!
+•
+In 2012, China and Russia collaborated to send a rover (火星探測
+車) to Mars, but failed (cost = US$ 163 M)
+•
+India launched a Mars Orbiter Mission in 2013; The spacecraft 
+arrive at Mars orbit on 23 Sept, 2014.India since became the 4th  
+nations, after US, Russia, EU, to complete a Mars mission
+•
+It costs US$ 80 M, cheaper than a Boeing 737
+•
+However, 1/3 of the Indian population is still in poverty; many 
+social facilities, e.g. toilets, are lacked in India
+•
+Bread or rocket? Real Science? People or Superpower status?
+•
+If you are Indian, do you support further, more expensive space 
+mission, e.g. a manned mission by 2020???
+From ISRO
+35
+
+## 第 38 页
+
+Unmanned Robotic space exploration
+Yutu (
+) - Rover (
+)
+Orbiters
+artificial satellites
+36
+• The farthest point human has been is the Moon
+• All the other findings came from "unmanned" space probes（無人
+太空探測器）
+• Voyager 1 and 2 launched by NASA in 1977 -> Still working!!
+Voyager 1 –
+Space probe (探
+測器）
+
+## 第 39 页
+
+Photos by Voyagers: Jupiter and its moons
+Europa with a
+potential sea under the ice
+Volcano on Io
+Callisto
+Ganymede
+- Storm 
+on Jupiter lasted 
+formore than 100 years
+Jupiter and Io
+37
+
+## 第 40 页
+
+Saturn Photos by Voyagers: other planets
+Titan - moon of Saturn,the only moon 
+with proven thick atmosphere and a 
+liquid sea
+Neptune
+Voyager  1 is the 
+farthest man-made 
+object from 
+Earth,going
+into the interstellar 
+space, carrying a 
+golden record
+for Aliens
+
+## 第 41 页
+
+Should we actively search aliens?
+
+## 第 42 页
+
+Chinese Lunar Exploration Program
+( 中國探月計劃)
+•
+Aim: to return a rock sample from moon
+•
+Phase 1: Lunar orbiter Chang‘e-1, Chang’e-2 (嫦娥一號，
+二號)orbited the moon
+•
+Phase 2: Chang'e-3 successfully launched in Dec 2013 and 
+deployed Yutu (35:) -7 a Moon rover
+•
+Phase 3: Chang'e 5 is planned to fly to Moon and return with 
+rock samples in 2017
+
+## 第 43 页
+
+Mars Rover (火星探測車)
+•
+Why Mars?
+1. Water, suitable climate, thin atmosphere ➔may have ancient 
+life, able to host human in the future?
+2. Origin of life? Demonstrate past & future of the Earth?
+•
+Spirit (勇氣號) and Opportunity (機遇號) launched in 2003, 
+landed on Mars in 2004 = US$ 820 M ➔ancient water?
+•
+Spirit stuck and lost contact in 2011; Opportunity is still 
+operating; findings: strong evidence of past water
+•
+Curiosity (好奇號) landed on Mars in 2012 ➔ancient life?
+Opportunity
+UFO fans like them 
+very much!
+Curiosity
+Ufosightingsdaily.com 
+Curiosity
+40
+
+## 第 44 页
+
+Manned Mission to Mars?
+•
+High failure rate for unmanned Mars probes 
+•
+6 months flying ➔(must) 20 months on Mars
+➔6 months flying, (round trip to Moon is 1 week)
+•
+Prolonged space flights cause physical and
+physiological problems on astronauts
+•
+Ultimate goal: terraforming of Mars (火星地球
+化)? ➔make Mars Earth-like, and habitable (適
+宜居住) for human
+•
+Mars One – a private, 
+one-way mission to become 
+“Mars residents”
+Mars one applicants:
+47
+Terraforming Mars (0:42)
+
+## 第 45 页
+
+Titan (泰坦)
+•
+Titan is the largest moon of Saturn.
+•
+Why Titan? A thick atmosphere and a solid core
+•
+A probe landed on Titan in 2005 and discovered its 
+similarities with earth
+1.There are rivers, lake, rains of hydrocarbons (碳氫化
+合物)
+2.A water cycle on earth, a cycle of hydrocarbons on 
+Titan ➔suggest the possibility a life without water
+Condensation
+Rain and snow
+Windows2universe.org
+Precipitation
+Water cycle
+Lake on Earth
+Lake on Titan (false color)
+41
+
+## 第 46 页
+
+Human VS Robotic Space Exploration
+•
+Able to detect something 
+unexpected
+•
+Quick and intelligent 
+decisions
+•
+National pride, political 
+issues
+•
+Public relation
+•
+Expensive 
+•
+Risky
+•
+Cheaper
+•
+Less risky, no need for 
+return
+•
+Explore much further
+•
+Slow communication 
+with Earth, e.g. it takes 5 
+hrs for a signal to travel 
+from Pluto to Earth, 
+another 5 hrs back
+•
+Low public awareness
+43
+Human
+Advantages
+Robots
+Advantages
+Disadvantages
+Disadvantages
+
+## 第 47 页
+
+Hubble space telescope (哈勃望遠鏡)
+13.2m
+•
+A telescope in space, orbiting the earth 
+•
+Advantages over Earth-based telescope
+1.Not affected by clouds
+2.Can observe in infra-red, ultra-violet, 
+which is absorbed by the atmosphere
+Eris
+44
+Images of deep space ➔
+Nebula (星雲)
+Images of solar system
+Pluto
+
+## 第 48 页
+
+Future of space exploration
+• Renewed Moon exploration program
+-China: moon landing
+-US: permanent moon base
+• Exploration of Mars and possibility of 
+colonization of Mars
+45
+
+## 第 49 页
+
+Future (1): Lunar base & colony?
+•
+A lunar base is planned by countries including China, US,
+Russia, Japan, ... ,roughly around 2030, stay for 6 months?
+•
+Why moon again? Water ice at North pole, close to earth, 
+as a stop-over to Mars
+How to define national 
+territory on the moon?
+46
+
+## 第 50 页
+
+Extraterrestrial life and Extra-solar planets
+•
+In 1996, a meteorite from 
+Mars showed a fossil of 
+bacteria?
+•
+In our Milky Way Galaxy,
+-at least 100 billion stars,
+-each star has at least 1 planet,
+-many are earth-sized and in 
+the habitable zone (may be 40 
+billion earth-like planets)
+•
+There are a lot of galaxy …
+•
+Do you think we are alone 
+in the universe?
+Habitable zone where 
+liquid water exists
+48
+
+## 第 51 页
+
+49
+Habitable zone where liquid water exists
+
+## 第 52 页
+
+Naming competition
+From: https://www.nameexoworlds.iau.org/2022exoworlds
+Let’s go and see!
+
+## 第 53 页
+
+If you believe that Earth is not the only planet 
+with intelligent life-form.
+Then why we have not found evidence of their 
+existence yet?
+50
+
+## 第 54 页
+
+Summary
+•
+Objects in our solar system are classified into star, planets, 
+dwarf planets and satellites
+•
+Our solar system is one of the numerous solar systems in 
+our galaxy, the Milky Way, and our Milky Way is one of the 
+numerous galaxies in the whole universe
+•
+The space race between the Soviet Union and the USA 
+during the cold war ended with 6 successful landing on 
+the Moon by the Apollo missions
+•
+The space race led to many spin-off technologies
+•
+International space station allows astronauts to perform 
+test and stay for a long time in microgravity
+•
+Chinese space exploration - Shenzhou and Tiangong
+•
+Manned VS Unmanned (robotic) space exploration
+52

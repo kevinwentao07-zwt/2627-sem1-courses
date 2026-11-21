@@ -1,0 +1,332 @@
+# Lecture 6-Material Science.pdf
+
+原件：SCI3116/Lecture 6-Material Science.pdf
+
+## 第 1 页
+
+CHAN HOI HUEN
+Material Science
+
+## 第 2 页
+
+INTRODUCTION
+- What is Nanotechnology?
+- Why nanoscale?
+- What is nanomaterial?
+- Nanomaterials’ characteristics
+- Applications of Nanotechnology
+- Miscellaneous
+
+## 第 3 页
+
+WHAT IS NANOTECHNOLOGY?
+• The design, characterization, and application of structures, devices, 
+and systems by controlled manipulation of size and shape of 
+materials at the nanometer scale. 
+• To produce materials with at least one novel/superior characteristic 
+of properties.
+
+## 第 4 页
+
+WHY NANOSCALE?
+• A nanometer (nm , n=10-9 ) is one thousand millionth of a meter. 
+People are interested in the nanoscale because at this scale physical 
+and chemical properties of materials differ significantly from those 
+at a larger scale.
+
+## 第 5 页
+
+WHY NANOSCALE?
+
+## 第 6 页
+
+WHAT IS NANOMATERIAL?
+• Is defined as any material that has unique or novel 
+properties, due to the nanoscale (nano metre- scale) 
+structuring. 
+• These are formed by incorporation or structuring of 
+nanoparticles.
+• They are subdivided into nanocrystals, nanopowders, 
+and nanotubes: A sequence of nanoscale of C60 atoms 
+arranged in a long thin cylindrical structure. 
+Nanopowder
+
+## 第 7 页
+
+NOBLE METAL NANOCRYSTALS WITH 
+CYCLIC PENTA-TWINNED STRUCTURES
+
+## 第 8 页
+
+• Nanotubes are extremely strong mechanically and very pure 
+conductors of electric current.
+• Applications of the nanotube 
+include resistors, capacitors, inductors, diodes 
+and transistors, etc.
+WHAT IS NANOMATERIAL?
+
+## 第 9 页
+
+Most of them are novel, why? 
+One definition of novel materials is:
+- (new forms of existing materials 
+with characteristics that differ 
+significantly from familiar or 
+naturally-occurring forms.) 
+- Nanomaterials can have one, two 
+or three dimensions in the 
+nanoscale:
+NANOMATERIALS’ CHARACTERISTICS
+One-Dimensional Nanomaterials
+These include nanowires, nanofibres, nanotubes, 
+and carbon nanotubes used especially in 
+electronics.
+Two-Dimensional Nanomaterials
+Nanoparticles like precipitates, colloids, quantum 
+dots, and nanocrystalline materials belong to this 
+category.
+Three-Dimensional Nanomaterials
+These are bulk nanostructured materials including 
+multi-layered films and coatings.
+
+## 第 10 页
+
+MEDICAL AND HEALTHCARE 
+APPLICATIONS
+Nanotech in Medicine
+Nanotechnology enables advanced diagnostics, targeted drug 
+delivery, tissue engineering, and cryonics applications.
+Information and Communication
+Nanotech improves memory storage, semiconductor devices, 
+optoelectronic devices, displays, and quantum computing.
+Heavy Industry Applications
+Nanotechnology advances aerospace, catalysis processes, and 
+construction vehicle manufacturing technologies.
+Consumer Goods Benefits
+Nanotech enhances foods, household items, optics, textiles, 
+cosmetics, and sports equipment.
+
+## 第 11 页
+
+HEAVY INDUSTRY AND 
+CONSUMER GOODS
+11
+Nanotechnology in Heavy Industry
+Nanotechnology is widely applied in aerospace, 
+catalysis, and manufacturing of construction vehicles 
+to enhance performance and efficiency.
+Nanotech in Consumer Goods
+Consumer goods such as foods, textiles, cosmetics, 
+and sports equipment benefit from nanotechnology 
+improving quality and functionality.
+Nanotech in Medicine and Information
+Nanotechnology drives innovations in diagnostics, 
+drug delivery, tissue engineering, memory storage, 
+and quantum computing devices.
+
+## 第 12 页
+
+EXAMPLE OF 
+LATEST 
+INNOVATION IN 
+HONG KONG
+
+## 第 13 页
+
+HEAT TRANSFER 
+MECHANISMS: RADIATION, 
+CONDUCTION, CONVECTION
+2/5/2026
+13
+Radiation Heat Transfer
+Radiation involves emission of electromagnetic rays 
+carrying heat energy through space.
+Conduction Heat Transfer
+Conduction transfers heat through direct contact 
+between adjacent molecules in a solid.
+Convection Heat Transfer
+Convection transfers heat by movement of a hot 
+fluid such as air or liquid.
+
+## 第 15 页
+
+CASE STUDIES: GALA 
+PLACE, CROWNE PLAZA, 
+HONG KONG COLISEUM
+2/5/2026
+15
+Gala Place Cooling Efficiency
+Gala Place used white cooling paint on a 50 m² roof, 
+reducing surface temperature by 30.3°C and saving 
+42% energy.
+Crowne Plaza Energy Savings
+Crowne Plaza applied cooling film on 134 m² glass 
+curtain walls, reducing indoor temperature by 3.4°C 
+and lowering operating costs.
+Hong Kong Coliseum Energy Impact
+Hong Kong Coliseum used grey cooling paint on a 
+9,700㎡rooftop, reducing surface temperature by 
+13.1°C and saving 300,000 kWh annually.
+
+## 第 16 页
+
+16
+COOLING TEXTILES: 
+PRODUCT LINES AND 
+FEATURES
+Product Lines
+i2Textile offers Breeze, Flex, Glide, Vent, and Cotton lines for 
+diverse cooling needs in daily and sportswear.
+Performance Features
+Cooling textiles provide moisture-wicking, quick-drying, 
+breathability, and one-way moisture transfer for comfort.
+Usage Applications
+These textiles are suitable for fitness, aerobic exercise, everyday 
+leisure, and high-intensity activities.
+Material Benefits
+Lightweight, soft, and breathable mesh fabrics ensure high cooling 
+sensation and strong resilience.
+
+## 第 17 页
+
+• Additional topics: safety, environment, cost and what 
+comes next.
+MISCELLANEOUS
+
+## 第 18 页
+
+MISCELLANEOUS TOPICS
+
+## 第 19 页
+
+Over-the-counter (OTC) medicines
+Definition, uses and the limits of self-care
+Access without a prescription
+OTC medicines can help manage common, minor health
+problems when people select and use them as directed.
+Common uses
+Examples include pain or fever relief, allergy symptoms
+and heartburn. The symptom and the person both matter
+when choosing a product.
+Limits of self-care
+Side effects, interactions and dosing errors remain
+possible. Ask a pharmacist or clinician when the label
+directs it, symptoms persist, or the diagnosis is uncertain.
+Appearance alone cannot identify a medicine.
+Read its label before use.
+Sources: U.S. FDA, Drug Facts Label; MedlinePlus, Using OTC Medicines Safely
+01
+
+## 第 20 页
+
+OTC safety and the medicine label
+The U.S. Drug Facts label supports informed product selection
+Active ingredient and strength
+Check the medicine name and amount in each dose.
+Compare ingredients across every product you take.
+Uses and warnings
+Match the labelled indication. Check interactions,
+health conditions, side effects and age restrictions.
+Directions
+Follow the dose, interval and duration on the label.
+Do not increase the dose because symptoms continue.
+When to seek advice
+Ask a pharmacist or clinician if the label is unclear,
+symptoms persist, or treatment may be unsuitable.
+Discussion case
+A cold remedy and a pain reliever
+both contain paracetamol
+(acetaminophen).
+Why is taking both risky?
+Sources: U.S. FDA, Drug Facts Label; Don’t Overuse Acetaminophen
+02
+
+## 第 21 页
+
+Mainland China’s 2026 legal framework
+Non-degradable single-use plastics
+Ecological and Environmental Code
+Adopted 12 March 2026
+In force from 15 August 2026
+Article 998
+The State prohibits and restricts production, sale and
+use of specified single-use plastics according to law.
+It promotes reduction, recovery and suitable alternatives.
+Scope depends on the product, activity and location.
+The Code does not itself make every disposable plastic
+item illegal in every setting.
+Product-specific rules determine
+which uses face restrictions.
+Source: PRC Ecological and Environmental Code, Articles 998 and 1242; position at 17 Sep 2026
+03
+
+## 第 22 页
+
+Selected national plastic restrictions
+Product-specific deadlines in the NDRC/MEE 2020 policy
+Deadline
+Required restriction and geographical scope
+Product
+End-2020
+No use in the catering industry nationwide.
+Non-degradable
+plastic straws
+End-2022
+Dine-in ban extends to built-up county towns
+and scenic sites.
+Non-degradable
+disposable tableware
+End-2025
+No use at marketplaces in built-up areas of prefecture-level
+cities and above, plus coastal county towns.
+Non-degradable
+shopping bags
+End-2025
+Postal/courier outlets nationwide: no non-degradable
+plastic bags, tape or single-use woven plastic bags.
+Express-delivery
+plastic packaging
+Earlier phases already covered major cities. These are policy deadlines, not measured compliance rates.
+Definitions, exclusions and applicable local measures remain relevant.
+Source: NDRC and MEE, Opinions on Further Strengthening Plastic Pollution Control, Section II(5)
+04
+
+## 第 23 页
+
+Enforcement and a campus case
+Article 1225 distinguishes different types of violation
+Unlawful production or sale
+Authorities stop production/sale and confiscate products.
+Fine: 1–3 times their value. They also confiscate illegal
+proceeds and revoke licences in serious cases.
+Unlawful use in business
+Correction order plus RMB 10,000–100,000 for
+enterprises and public institutions. Other business
+operators face RMB 500–5,000.
+Campus discussion
+A café offers conventional plastic straws and calls its
+carrier bags “eco-friendly”. What evidence should the
+university request before approving these products?
+Reuse can reduce demand for disposables.
+Source: PRC Ecological and Environmental Code, Article 1225. Discussion applies the framework.
+05
+
+## 第 24 页
+
+Polymerization: how plastics are made
+Small monomer molecules link into long-chain polymers
+Addition polymerization
+Unsaturated monomers such as ethene open their C=C
+double bonds and join end to end, forming polyethene with
+no by-product. Used for bags, bottles, films and pipes.
+Condensation polymerization
+Monomers with two functional groups react and release a
+small molecule such as water. This route gives polyesters
+(PET) and polyamides (nylon) used in fibres and packaging.
+Why it matters
+Chain length, branching and cross-linking set strength,
+flexibility and melting point. The same stable C–C backbone
+that makes plastics durable also makes them slow to degrade.
+Polymer pellets: feedstock of most plastics.
+Source: Basic polymer chemistry; connects to the plastic-restriction rules discussed earlier.
+06

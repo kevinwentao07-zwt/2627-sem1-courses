@@ -1,0 +1,489 @@
+# L5-From computer to artificial intelligence and beyond.pdf
+
+原件：SCI3116/L5-From computer to artificial intelligence and beyond.pdf
+
+## 第 1 页
+
+From computers 
+to robot and 
+beyond
+Chan Hoi Huen
+
+## 第 2 页
+
+• Intertec Superbrain computer Clock 
+rate = 4MHz, hard disk = 10MB, in 
+1983, it was sold for US$2000
+
+## 第 3 页
+
+WHAT COMPUTERS CAN DO TODAY?
+• Apple’s Siri: well-received with its “apparent” personality 
+• Robots, e.g. bigdog, android, Atlas 
+• Animated movies, e.g. Toy story, Avatar 
+• Simulations (模擬): use computer to reproduce behaviors 
+of the real system
+Big Bang Theory (Siri vs Raj, 01:00): 
+https://www.youtube.com/watch?v=OliVkzBLey4 Big dog: 
+https://www.youtube.com/watch?v=xqMVg5ixhd0 Avatar: 
+http://www.youtube.com/watch?v=1wK1Ixr-UmM
+
+## 第 4 页
+
+AUTO-PILOT SYSTEM: IS IT SAFE?
+• Auto-pilot (自動導航): Pilots only fly the aircrafts during take-off and 
+landing, altogether my be less than 10 mins; auto-pilot flies the rest • 
+• When visibility is too poor, Autoland system lands the plane 
+automatically without pilots’ manual control 
+• Over-reliance on auto-pilot? The crash of Air France Flight 447 in 2009 
+was indirectly caused by the auto-pilot being unexpectedly switched-
+off
+Air France 447
+
+## 第 5 页
+
+WHAT IS A COMPUTER?
+• Computer – a device that carries a set of arithmetic or logical 
+operations (算術, 邏輯運算) according to programmable rules
+• It consists of
+
+## 第 6 页
+
+OTHER EXAMPLES OF COMPUTERS
+• computer to conduct its logical operations according to rules (e.g. the program) →  software 
+• Is calculator a computer? Yes and no 
+• Is smart phone a computer?
+
+## 第 7 页
+
+COMPUTER DATA (1) – A BINARY SYSTEM
+
+## 第 8 页
+
+COMPUTER DATA (2) – CODING
+
+## 第 9 页
+
+COMPUTER DATA (3) – BYTE AND FILE SIZE
+• One byte = number of bits which encode 1 character 
+• The common standard used: 1 byte = 8 bits
+which encodes 28 = 256 characters 
+• A picture of 1.5 MB = 1 500 000 Bytes = 12 000 000 
+bits 
+• A movie of 5 GB = 5000 000 000 Bytes = 40 000 000 
+000 bits
+• Hard disks, storage devices are listed with power-of-
+10 capacity, while software use power-of-2 space 
+• 100 GB claimed hard disk capacity = 100 x 10003
+/10243 = 93 GB space
+
+## 第 10 页
+
+WHY REPRESENT DATA BY BINARY NUMBER?
+
+## 第 11 页
+
+STORAGE IN COMPUTER
+
+## 第 12 页
+
+PRIMARY STORAGE
+
+## 第 13 页
+
+MAGNETIC HARD DISK
+
+## 第 14 页
+
+From: 
+https://www.computerhistory.org/collections/catalog/102652371
+
+## 第 15 页
+
+CAPACITY OF MAGNETIC HARD DISK
+
+## 第 16 页
+
+10TB HARDDISK IS AFFORDABLE
+2021
+2023
+
+## 第 17 页
+
+MAGNETIC HARD DISK VS SOLID-STATE DRIVE
+
+## 第 18 页
+
+CPU (CENTRAL PROCESSING UNIT)
+• CPU – carry out the instructions of computer programs 
+• CPU is characterized by clock rate, in cycles per second (Hz) – the clock that 
+regulates calculations in the CPU 
+• Example: to multiply two numbers need 20 cycles, a computer of 5 Hz (= 5 
+cycles/second) needs 4 seconds 
+• 1GHz CPU (109 cycles/s) needs 0.000 000 02 second 
+• A faster clock rate = faster CPU (in the same family); NOT necessarily true for 
+CPU in different families • Nowadays, CPUs have faster clock rate, and can 
+perform the same task in the same number of cycles
+Intel core i7, up to 3.9 GHz
+
+## 第 19 页
+
+MULTI-TASKING AND MULTI-PROCESSOR
+• Computers with one CPU, one task is processed at any time
+• ➔
+multi-tasking is achieved by switching between different tasks quickly 
+➔
+an illusion that multiple tasks are performed at the same time
+• Computers with more than 1 CPU (multi-core, multi processor) can perform 
+multiple tasks simultaneously 
+•Number of tasks > number of CPUs ➔
+switching occurs
+• Number of tasks < number of CPUs ➔
+single task can be broken down 
+into several to run in parallel (並行計算)
+
+## 第 20 页
+
+WHAT IS CPU? FROM TRANSISTOR TO LOGIC GATES
+
+## 第 21 页
+
+FROM LOGIC GATE TO ADDITION CIRCUIT
+Please view the logic gates: https://www.techtarget.com/whatis/definition/logic-gate-AND-
+OR-XOR-NOT-NAND-NOR-and-XNOR
+
+## 第 22 页
+
+W HAT IS CPU?
+•
+CPU is composed of many transistors,arranged to form a 
+circuit of adders, subtracters, .....
+Intel core i7
+731 million transistors
+•These complicated circuits which compose of many transistors are called 
+integrated circuit (IC, 集成電路).
+:1.in
+CPUs are sometimes called chips
+1-r
+B'illlard-ball model of A D gate
+CPU - integrated circuit
+Toy logic gate
+Billiard-ball computer
+
+## 第 23 页
+
+COMPUTERS IN SOCIETY
+• Science
+• Weather forecast,typhoon 
+trajectory prediction
+• Analyze the orbit and 
+potential impact
+of 
+asteroids
+• Calculate the orbit of 
+satellites
+• Solve different mathematics 
+and physics problems
+Engineering
+•Design new products,new 
+airplanes
+•Monitor factory production 
+process
+•Control train schedule
+•Connect people with phone, 
+internet,messages,...
+••••
+EDUHK
+•Canteen,library,school bus,
+ibook,examination time slot,
+
+## 第 24 页
+
+ICT IN OUR SOCIETY
+•
+Information and Communication Tec hnology (ICT) is now 
+everywhere (ubiquitous), and fully integrated into every 
+aspects of our society.
+•
+E.g. Socia l Networking Services (e.g. facebook,WeChat)
+•
+Internet of Things (loT) is also developing quickly
+
+## 第 25 页
+
+ALL THESE EQUIPMENT CAN FIT IN YOUR POCKET NOW
+•
+What are the implications for our society?
+
+## 第 26 页
+
+MASSIVE SCALE COLLABORATION
+• Internet facilitate massive sca le collaboration that once consider 
+impossible.
+• (e.g. crowdsourcing,SETl@ home)
+• Kickstarter link (financing projects)
+• language translation (link to a related TED video)
+• Can you imagine what human can achieve by collaboration of 
+billions of people?
+
+## 第 27 页
+
+CONTEMPORARY ISSUES FOR ICT
+• Security, hacking and privacy
+• Intellectua l property (Copyright) vs Open- source resources
+• Spread of false information or fake news
+• (e.g. keywords for you deepfake video,GPT3)
+• Change of education system (esp. role of universities)
+(e.g. Coursera,Open MIT,Open Culture)
+
+## 第 28 页
+
+Part Two
+ARTIFICIAL INTELLIGENCE 
+AND ROBOTIC
+
+## 第 29 页
+
+BEYOND THE HARDWARE
+• In addition to the rapid advance of hardware
+capability,advances in artificial intelligence (Al, or 
+machine learning) in recent years also mean
+computer can now perform more complicated 
+tasks,
+• The level of competence of these Al are also 
+improving very quickly
+
+## 第 30 页
+
+partnership on Al
+
+## 第 31 页
+
+SOME RECENT NEW TECHNOLOGY
+• Facial recognition used in security and public 
+surveillance.
+• Video:
+• https://www.youtube.com/watch?v=-
+t3vOm9FbGU
+
+## 第 32 页
+
+In 2016, a chess program AlphaGO developed by Google 
+using Al system Deepmind challenge one of the top GO 
+player. The game GO has been previously considered to be 
+"too challenging for Al" at least for another decade.
+Later in 2017...
+•Last battle of Alpha Go
+•Anotherreport of the battle
+•The next version of the 
+system,AlphaGo Zero, starts 
+from scratch with no human play 
+data, manage to grow to even 
+better chess player in a period of 
+40 days. Beat all the previous 
+version of Alpha Go.
+
+## 第 33 页
+
+ROBOT IN MEDICAL USE
+• In view of the problem of the
+ageing
+population
+across
+the
+world,
+governments
+from
+different nations share a pressing
+need to tackle this issue. Yet,
+such problems as the low birth
+rate and the manpower shortage
+within the labour market result in
+those governments’ reliance on
+robotic technology.
+© H.H. Chan
+
+## 第 34 页
+
+So....it is time to ask this question again....
+CAN COMPUTER Al BEAT HUMAN?
+
+## 第 37 页
+
+COMPUTER VS HUMAN BRAIN
+• Human brain has its biological limits.
+• E.g. Size of human skull ➔limit of amount brain capacity
+• Computer can be built to very large size,and can also be
+networked ➔
+further increase of computational power.
+(e.g. Grid computing,cloud computing)
+• Capability of computational power of a computer can be
+designed to greatly exceed human capacity.
+
+## 第 38 页
+
+Computer VS Human brain
+Computer
+•Multi-tasking
+•Complicated numerical 
+calculations
+•Exact memory,computation...
+Artificial intelligence (人工智能)
+➔
+If a
+computer process all of the these ,it will be  
+indistinguishable from human mind (or even 
+better????)
+•
+Human brain
+•
+Deductive thinking, reasoning,drawing conclusions
+•
+Learning,adaptation
+•
+Creativity
+•
+Emotion and social skills
+•
+Recognize pattern,face, languages...
+•
+General intelligence ➔use of all the above..
+so
+
+## 第 39 页
+
+• BUT....
+•There are something that ONLY human can do …… Right?
+Can you give me any examples?
+
+## 第 41 页
+
+ISSUES CAUSED BY AI AND ROBOT
+• Displacement of workforce
+• Power and control (e.g. military use, surveiIlanee)
+• Future of Humanity (emergence of super intelligent entity, role of 
+human)
+
+## 第 42 页
+
+DISPLACEMENT OF WORKFORCE
+• It is suggested that Robots and Al are replacing 
+jobs at an increasing rate
+• Why?
+- Cost (high start-up vs continuous payment)
+- Efficiency (Wor king hour per day,speed)
+- Precision and ability
+
+## 第 43 页
+
+DISPLACEMENT OF WORKFORCE
+•
+Examples in recent year
+-
+Security guards 
+-
+Waiters in restaurants 
+-
+Warehouse worker
+-
+Drivers
+•
+In the near future?
+•
+It is now predicted that within the next one or two decades 
+the jobs of even professiona ls will be replaced, or changed 
+very substantially (e.g. lawyer,accountant, journalist....) (e.g. 
+a team of human ➔one single human supervising the 
+works of Al programs.)
+
+## 第 44 页
+
+TWO OTHER POSSIBLE ALTERNATIVES IDEAS
+• Is it possible that the job opportunity for our future 
+society is very different from those available 
+nowadays? (If so,what are these jobs?)
+• Is it possible that LESS people need to work in 
+the future? ("'Jobless” society,so government just
+pay their citizens allowance for them just to live 
+their life)
+• Can you imagine such society?
+
+## 第 45 页
+
+MILITA RY USE OF AI
+• Currently military has already make use of A l in 
+the surveillance.
+• Human decision/intervention is still needed (now 
+as a legal requirement in US) in most scenarios 
+(esp. the "kill" comma nd)
+• E.g. Killing drones controlled by Al can be very 
+dangerous if deployed.
+
+## 第 46 页
+
+POWER AND CONTROL
+• Who can use the following? Who is going to 
+benefits from these?
+- Access to automated weapons (e.g. drones)
+- Access to super-computers
+- Access to robots (industrial, military,medical or 
+otherwise)
+
+## 第 48 页
+
+What will happen next?
+
+## 第 49 页
+
+Crucial ethical/philosophical questions 
+for future of humanity...
+•
+If artificial general intelligence appears in the future ...
+•
+What is human? What is robot?
+•
+What is consciousness? (意識) (No accepted definition yet)
+•
+IF robots can acquire consciousness,can robots be 
+considered as new "humans"?
+•
+Can they create and improve themselves?
+•
+Mind-uploading: can we "upload" our mind and live forever?
+Knowing the risks and potentials,should we
+continue to research and build better Al?
+(moodle vote)
+65
+
+## 第 50 页
+
+Controversy of a computer world
+•
+Class division - social gap between those who can afford 
+computer and other digital devices and who cannot
+•
+Safety - e.g. auto-pilot, cancer treatment, nuclear power 
+stations,military security ...
+•
+Health
+•
+Privacy and Internet bullying
+•
+Employment - every job requires some computer knowledge
+•
+Addiction to computer (especia lly with mobile devices} ➔
+less social interaction
+•
+Video game controversy - violence, simulate a war,
+sex themes, ...
+http://www.youtube.com/watch?v=HOH4RRslKZ8
+Computerization and Controversy: Value Conflicts and Social Choices, (2nd Ed.)
+Torture Scene in GTAV
+
+## 第 51 页
+
+CONCLUSION....?
+• ICT, Al and robotics are changing the world in a way not seen 
+anytime in human history.
+• Don't expect the world to remain the same!
+• Future society require us to possess a very different skill sets.

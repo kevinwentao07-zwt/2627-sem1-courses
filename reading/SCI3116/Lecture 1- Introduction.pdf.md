@@ -1,0 +1,307 @@
+# Lecture 1- Introduction.pdf
+
+原件：SCI3116/Lecture 1- Introduction.pdf
+
+## 第 1 页
+
+SCI 3116
+Science, 
+Technology and 
+Society
+Lecture 1-
+Introduction
+Chan Hoi Huen
+1
+
+## 第 2 页
+
+What is the 
+difference 
+between 
+science and 
+technology?
+Scientists study the world as it is; engineers 
+create the world that has never been.  
+- By Theodore Von Karman 
+Do scientist and engineers hate each other?
+2
+
+## 第 3 页
+
+A mini game
+●Scientists always make this joke to 
+distinguish mathematicians, physicist and 
+engineers. Who are they?
+●Mathematicians – 3.141592653589793….
+●Physicists – 3.14
+●Engineers – 3
+3
+
+## 第 4 页
+
+What is 
+science?
+●To understand the nature and how it works!
+●Which of the following is science?
+Refraction
+Laser 
+pointer
+Hubble space 
+telescope
+Cosmology
+Quantum mechanics 
+– photon by Einstein
+Virus
+4
+
+## 第 5 页
+
+Science as 
+Method
+Karl Popper’s Ideas
+●“Falsification” (證偽)  and testing of scientific 
+theories
+●Distinguishing between science and pseudo-
+science or science from non-science
+5
+
+## 第 6 页
+
+Scientific 
+Method
+Pilot study
+6
+
+## 第 7 页
+
+Steps to 
+conduct 
+science
+How should we “conduct” science?
+Example
+1.
+Question: Why an apple falls from the                                      
+tree?
+2.
+Hypothesis: there is an attraction force between 
+any two masses
+3.
+Prediction and Tests: (i) the earth will attract 
+an orange; (ii) an apple will attract an orange
+4.
+Analysis: positive results of (i) indicate an 
+attraction of masses to the earth, negative 
+results of (ii) indicate there seem to be no 
+attraction between small masses 🡪
+Another 
+question: is the attraction force proportional to 
+mass?
+7
+
+## 第 8 页
+
+Class 
+discussion
+Can you propose a research topic 
+that can follow the above scientific 
+method?
+8
+
+## 第 9 页
+
+Class 
+discussion-
+example
+●Does drinking green tea daily reduce the risk of 
+cardiovascular disease?
+●Observation: Epidemiological studies suggested that people who consume
+green tea regularly have a lower incidence of cardiovascular disease.
+●Hypothesis: Drinking green tea daily reduces the risk of cardiovascular
+disease by reducing inflammation and improving blood flow.
+●Experiment: Conduct a randomized controlled trial where one group of
+participants drinks green tea daily and another group does not. Measure the
+incidence of cardiovascular disease in both groups over a certain period of
+time.
+●Analysis: Analyze the data collected from the trial to determine if there is a
+statistically significant difference in the incidence of cardiovascular disease
+between the two groups.
+●Conclusion: Based on the results of the experiment, draw a conclusion about
+whether or not drinking green tea daily reduces the risk of cardiovascular
+disease. If the hypothesis is supported, further studies may be conducted to
+explore the mechanisms behind this effect and to determine optimal dosages
+and administration methods.
+9
+
+## 第 10 页
+
+Is science 
+always correct? 
+No…
+●Always impossible to do 
+all possible tests - a new 
+evidence may prove 
+previous theory wrong 
+●Scientific theory should 
+be always open to 
+falsification; no theory is 
+“certainly” correct (so the 
+name “theory”)
+●A good scientist should 
+also doubt his/her findings 
+or belief
+●Science is built on 
+continuous falsification 
+and improvement
+Democratus (500BC)
+Matters constituted by atoms
+Atom in Greek - uncuttable
+J. J. Thomson (1904)
+Discovered electron, atom is 
+“cuttable” plum pubbing model
+Rutherford (1911)
+Positive nucleus and negative 
+electrons
+D. Ivanenko (1932)
+Proton and neutron in nucleus
+Stanford Linear Accelerator Center 
+1968
+Proton and neutron can be broken 
+down into quarks
+10
+
+## 第 11 页
+
+●Technology is the application of science, for example,
+making and use of tools and machines to solve a 
+problem or achieve a goal.
+●Examples:
+Stone knife 
+in stone age
+F-15, F-16, 
+Military aircrafts
+All pictures from Wikipedia
+A380
+Civilian aircrafts
+Nuclear bombs
+Nuclear power station
+Pain killers (drugs)
+Tobacco in cigarettes 
+Recreational drugs
+What is 
+technology?
+11
+
+## 第 12 页
+
+Relation between 
+Science and 
+Technology
+●Often an application of science, but can be an 
+invention of tools without science, e.g. 
+●Technology is sometimes refereed to as applied 
+science , science is called basic science. 
+●Science and technology influence each other, e.g. 
+No science
+Stone knife 
+in stone age
+Application of science
+Nuclear power station
+Nuclear
+physics
+Nuclear
+Power station
+Enormous energy source for research, better equipment 
+Fundamental principles of nature
+12
+
+## 第 13 页
+
+Science, 
+Technology 
+and Society 
+(STS)
+Facebook
+trendiness
+Internet
+Smart phone
+Provide the platform
+Increase the demand
+Example:
+Throughout the course, we will see how 
+science and technology influence society
+Social, political, 
+cultural values
+Science
+Technolog
+y
+Influence on 
+life styles, public policy
+Influence:
+Funding for specific tasks
+●The field of Science, Technology, and Society (STS) explores 
+the interrelationships between social, political, and cultural 
+factors and scientific research and technological 
+advancements. It also examines the beliefs shape the direction 
+and impact of scientific and technological progress. 
+13
+
+## 第 14 页
+
+Do you think science has a limit?
+Do you think technology has a limit?
+Sun
+Milky way galaxy
+Multiple universe
+14
+
+## 第 15 页
+
+Examples of 
+Early Chinese 
+Innovations
+(GS 
+curriculum- 4 
+inventions of 
+Ancient 
+China)
+●Paper making
+●Magnetic compass
+●Mechanical clock
+●Wheelbarrow (獨輪車)
+●Gunpowder/Explosive
+●Silk reeling machinery
+●Block printing (雕版印刷)
+15
+
+## 第 16 页
+
+More 
+Examples of 
+Early 
+Chinese 
+Innovations
+●Movable-type printing
+●Lock gates in canals 
+●Paddle-wheel boats (明輪船)
+●Iron-chain suspension bridge
+●Porcelain technology
+●Water-tight ship compartments (水密船艙)
+●All these innovations traveled from East to 
+West!
+16
+
+## 第 17 页
+
+Discussion
+●Is there any examples of 
+Science?
+●Is there any examples of 
+Technology?
+17
+
+## 第 18 页
+
+Next week:
+We will differentiate what is Science and what is 
+Pseudoscience.
+18

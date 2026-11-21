@@ -1,0 +1,7 @@
+Foundation quick check
+
+The Foundation Notes file is now a reference sheet titled Network Communication Key Points. Use the following oral prompts where the lesson plan refers to the Foundation quick check.
+
+1. A school computer-room network is a _____. A network linking offices in different cities is a _____. (LAN; WAN)
+2. The part that lets a computer connect to a network is a _____. Signal modulation/demodulation in the dial-up example uses a _____. (NIC; modem)
+3. The browser computer requesting a page is the _____. The device supplying webpage data is the _____. (client; server)

@@ -1,0 +1,14 @@
+Design references only
+
+TWGHs Sun Hoi Directors College S4 lesson plan
+https://www.ate.gov.hk/english/doc/ELE03_1819/ELE03_1819_S4%20Lesson%20Plan.pdf
+
+EdUHK A CLASS computer system worksheet
+https://aclass.eduhk.hk/sites/default/files/resources/134-system-unit-computer/worksheet-3.pdf
+
+EDB NET Text B Worksheet 2
+https://nets.edb.edcity.hk/public/edb/attachment/en/curriculum-development/resource-support/net/text%20b_worksheet%202.pdf
+
+These references informed layout and classroom planning conventions. Their tasks, school identity and lesson content have not been copied.
+
+Fonts: Word files specify Times New Roman for English and Noto Serif CJK TC for Traditional Chinese. The PDF renderer uses a metrically compatible serif substitute where Times New Roman is unavailable.

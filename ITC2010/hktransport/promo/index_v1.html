@@ -1,0 +1,219 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>hktransport film</title>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+#stage{position:absolute;inset:0;overflow:hidden;font-family:-apple-system,"SF Pro Display","PingFang SC",sans-serif;perspective:1900px;-webkit-font-smoothing:antialiased}
+#light,#dark,#city,#blend,#flash,#wall,#end,#intro{position:absolute;inset:0}
+#light{background:#f5f5f7;overflow:hidden}
+.orb{position:absolute;width:1100px;height:1100px;border-radius:50%;left:-550px;top:-550px}
+#dark{background:#000}
+#flash{background:#fff;opacity:0;pointer-events:none}
+.phone{position:absolute;left:50%;top:50%;width:448px;height:952px;margin:-476px 0 0 -224px;transform-style:preserve-3d}
+.body{position:absolute;inset:0;border-radius:74px;background:linear-gradient(135deg,#6f7278,#2b2c31 35%,#17181c 65%,#54565c);box-shadow:0 70px 120px rgba(20,25,60,.38),0 16px 34px rgba(20,25,60,.22)}
+.glassy{position:absolute;inset:9px;border-radius:66px;overflow:hidden;background:#000;transform:translateZ(1px)}
+.screen{position:absolute;left:5px;top:5px;width:428px;height:932px;border-radius:61px;overflow:hidden;background:#dfe5ea}
+.screen img{position:absolute;inset:0;width:100%;height:100%;opacity:0}
+.island{position:absolute;left:50%;top:21px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;transform:translateZ(3px)}
+.pop{position:absolute;left:14px;top:14px;width:428px;height:932px;transform-style:preserve-3d;opacity:0;filter:drop-shadow(0 26px 34px rgba(25,35,80,.3))}
+.pop img{position:absolute;inset:0;width:100%;height:100%}
+.cap{position:absolute;font-weight:700;letter-spacing:-.022em;line-height:1.14;white-space:pre}
+.cap .c{display:inline-block;will-change:transform,opacity}
+.onlight{color:#1d1d1f;font-size:88px}
+.sub{font-size:34px;font-weight:500;letter-spacing:-.01em;color:#6e6e73;margin-top:18px}
+.oncity{color:#fff;font-size:72px;text-shadow:0 4px 34px rgba(0,0,20,.72)}
+.hero{color:#fff;font-size:150px;left:0;right:0;top:50%;margin-top:-90px;text-align:center}
+.grad{background:linear-gradient(95deg,#ff375f,#ff9f0a 55%,#ffd60a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{position:absolute;left:50%;top:50%;width:640px;border-radius:32px;box-shadow:0 36px 70px rgba(20,25,60,.26);opacity:0}
+.bubble{position:absolute;left:1000px;top:270px;padding:26px 44px;border-radius:44px;background:linear-gradient(135deg,#0a84ff,#5e5ce6);color:#fff;font-size:52px;font-weight:600;box-shadow:0 26px 50px rgba(10,80,255,.3);opacity:0;white-space:pre}
+#scrim{position:absolute;left:0;right:0;bottom:0;height:420px;background:linear-gradient(transparent,rgba(4,6,20,.78));opacity:0}
+#pill{position:absolute;left:0;top:0;padding:14px 30px;border-radius:40px;background:#ff3b30;color:#fff;font-size:40px;font-weight:700;box-shadow:0 14px 34px rgba(0,0,0,.45);opacity:0;white-space:nowrap}
+#pill:after{content:"";position:absolute;left:50%;bottom:-13px;margin-left:-14px;border:14px solid transparent;border-bottom:0;border-top-color:#ff3b30}
+#wall{background:radial-gradient(circle at 50% 45%,#232845,#05060c 75%);overflow:hidden;transform-style:preserve-3d;opacity:0}
+#tilt{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.col{position:absolute;width:0;height:0}
+.mini{position:absolute;width:330px;height:714px;left:-165px;border-radius:46px;border:7px solid #1d1e23;background-size:cover;box-shadow:0 34px 60px rgba(0,0,0,.6)}
+#veil{position:absolute;inset:0;background:rgba(5,6,14,.42)}
+#end{background:#000;opacity:0;text-align:center}
+#icon{position:absolute;left:50%;top:292px;width:190px;height:190px;margin-left:-95px;border-radius:44px;box-shadow:0 30px 80px rgba(255,80,60,.34)}
+#url{position:absolute;left:50%;top:790px;transform:translateX(-50%);padding:16px 38px;border-radius:40px;background:rgba(255,255,255,.12);color:#fff;font-size:32px;font-weight:500;white-space:nowrap}
+</style>
+<div id="stage">
+  <div id="dark"></div>
+  <div id="light"><div class="orb" id="o1"></div><div class="orb" id="o2"></div><div class="orb" id="o3"></div></div>
+  <canvas id="city" width="1920" height="1080"></canvas><canvas id="blend" width="1920" height="1080"></canvas>
+  <div id="scrim"></div><div id="pill">还有 3 分钟</div>
+  <div class="phone" id="phone"><div class="body"></div><div class="glassy"><div class="screen" id="screen"></div></div><div class="island"></div></div>
+  <div class="bubble" id="bubble"></div>
+  <div id="wall"><div id="tilt"></div><div id="veil"></div></div>
+  <div id="end"><img id="icon" src="shots/icon.png"></div>
+  <div id="flash"></div>
+</div>
+<script type="importmap">{"imports":{"three":"./lib/three.module.js"}}</script>
+<script type="module">
+import { createCity } from './city.js';
+const $ = (id) => document.getElementById(id), stage = $('stage');
+const LANG = new URLSearchParams(location.search).get('lang') ?? 'hans', BASE = LANG === 'hans' ? 'shots/' : `shots/${LANG}/`;
+const clamp = (x) => Math.max(0, Math.min(1, x)), win = (t, a, b) => clamp((t - a) / (b - a));
+const out = (x) => 1 - (1 - x) ** 4, inOut = (x) => (x < 0.5 ? 16 * x ** 5 : 1 - (-2 * x + 2) ** 5 / 2);
+const spring = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-6.5 * x) * Math.cos(11 * x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const shots = ['01_home', '02_chat', '03_suggest', '04_plan', '05_route', '06_stop', '07_loop'];
+const SHEET_TOP = 397 / 844 * 100;
+const SCREENS = [[3.5, '01_home'], [6, '03_suggest'], [8, '01_home'], [9, '02_chat'], [14, '04_plan'], [16, '05_route'], [29.8, '06_stop'], [33, '07_loop']];
+const images = [], pops = [];
+for (const [, name] of SCREENS) {
+  const img = new Image(); img.src = `${BASE}${name}.png`; $('screen').append(img); images.push(img);
+  const pop = document.createElement('div'); pop.className = 'pop';
+  const copy = new Image(); copy.src = img.src; copy.style.clipPath = `inset(${SHEET_TOP}% 2% 1% 2% round 34px)`;
+  pop.append(copy); $('phone').append(pop); pops.push(pop);
+}
+function caption(text, css, cls, sub) {
+  const el = document.createElement('div'); el.className = `cap ${cls}`; el.style.cssText = css;
+  const chars = [];
+  const line = document.createElement('div');
+  for (const part of text.split(/(\*[^*]+\*)/)) {
+    const isGrad = part.startsWith('*'), words = part.replace(/\*/g, '');
+    for (const ch of words) { if (ch === '\n') { line.append(document.createElement('br')); continue; } const c = document.createElement('span'); c.className = `c${isGrad ? ' grad' : ''}`; c.textContent = ch === ' ' ? ' ' : ch; line.append(c); chars.push(c); }
+  }
+  el.append(line);
+  if (sub) { const s = document.createElement('div'); s.className = 'sub'; s.textContent = sub; el.append(s); chars.push(s); }
+  stage.insertBefore(el, $('flash'));
+  return { el, chars };
+}
+function showCaption(cap, t, from, to, gap = 0.024) {
+  if (LANG === 'en') gap *= 0.5;
+  const live = t >= from - 0.01 && t <= to + 0.01;
+  cap.el.style.display = live ? 'block' : 'none';
+  if (!live) return;
+  const leave = out(win(t, to - 0.22, to));
+  cap.chars.forEach((c, i) => {
+    const k = win(t, from + i * gap, from + i * gap + 0.62), s = spring(k);
+    c.style.opacity = clamp(k * 4) * (1 - leave);
+    c.style.transform = `translate3d(0,${(1 - s) * 70 - leave * 34}px,0) scale(${0.86 + 0.14 * s})`;
+  });
+}
+const TEXT = {
+  hans: { hero: ['车到哪了？', '哪条路最快？', '吃什么好？', '问 *hktransport*'], c: [['打开，就知道*你在哪*', '一进网页，地图就回到你的位置'], ['打字，*马上有推荐*', '站点和地点，由近到远'], ['一句话，*AI 帮你挑店*'], ['评分、距离、营业中，*都排好了*'], ['哪条路最快，*帮你比好*', '巴士、小巴、港铁、步行，一起算'], ['整条路线，*一眼看全*', '沿真实道路画线'], ['每一班车，都看得见'], ['按到站时间，推算它到哪了'], ['3D 小车，沿真实路线跑'], ['来车时间，跟着车走'], ['点一下站点，*来车就有*', '地图放大，到站时间同步显示'], ['循环线，*两程两种颜色*', '去程回程，一看就分清']], wall: ['定位', 'AI 找店', '实时到站', '3D 小车'], line: '香港出行，一个网页就够。', ask: '去吃茶餐厅', pill: ['还有 3 分钟', '还有 1 分钟'] },
+  hant: { hero: ['車到哪了？', '哪條路最快？', '吃甚麼好？', '問 *hktransport*'], c: [['打開，就知道*你在哪*', '一進網頁，地圖就回到你的位置'], ['打字，*馬上有推薦*', '站點和地點，由近到遠'], ['一句話，*AI 幫你揀店*'], ['評分、距離、營業中，*都排好了*'], ['哪條路最快，*幫你比好*', '巴士、小巴、港鐵、步行，一起計'], ['整條路線，*一眼看全*', '沿真實道路畫線'], ['每一班車，都看得見'], ['按到站時間，推算它到哪了'], ['3D 小車，沿真實路線跑'], ['來車時間，跟著車走'], ['點一下站點，*來車就有*', '地圖放大，到站時間同步顯示'], ['循環線，*兩程兩種顏色*', '去程回程，一看就分清']], wall: ['定位', 'AI 找店', '實時到站', '3D 小車'], line: '香港出行，一個網頁就夠。', ask: '去吃茶餐廳', pill: ['還有 3 分鐘', '還有 1 分鐘'] },
+  en: { hero: ['Where’s my bus?', 'What’s the fastest way?', 'Where should we eat?', 'Ask *hktransport*'], c: [['Open it.\n*It knows where you are.*', 'The map starts at your location'], ['Start typing.\n*See suggestions.*', 'Stops and places, nearest first'], ['Just ask. *AI picks the place.*'], ['Ratings, distance, hours. *Sorted.*'], ['The fastest way,\n*compared for you.*', 'Bus, minibus, MTR and walking'], ['The whole route,\n*at a glance.*', 'Drawn along the real roads'], ['Every bus, in plain sight'], ['Placed by its live arrival time'], ['A 3D bus on its real route'], ['Arrival time rides along'], ['Tap a stop.\n*See what’s coming.*', 'The map zooms in with live arrivals'], ['Circular routes,\n*two colours.*', 'Out and back, easy to tell apart']], wall: ['Location', 'AI search', 'Live arrivals', '3D bus'], line: 'Getting around Hong Kong, in one web page.', ask: 'Find a cha chaan teng', pill: ['3 min', '1 min'] },
+}[LANG];
+const isEN = LANG === 'en', big = isEN ? ';font-size:72px' : '', top = isEN ? 'top:360px' : 'top:400px';
+const SLOTS = [[`left:110px;${top}${big}`, 'onlight', 4.35, 5.92], [`left:1010px;${top}${big}`, 'onlight', 6.12, 7.92], [`left:1000px;top:110px;font-size:${isEN ? 54 : 76}px`, 'onlight', 8.15, 11.9], [`left:1000px;top:110px;font-size:${isEN ? 54 : 62}px`, 'onlight', 12.05, 13.9], [`left:110px;${top}${big}`, 'onlight', 14.15, 15.92], [`left:1010px;${top}${big}`, 'onlight', 16.12, 17.45],
+  ['left:110px;top:840px', 'oncity', 21.05, 22.9], ['left:110px;top:840px', 'oncity', 23.05, 24.9], ['left:110px;top:840px', 'oncity', 25.05, 26.9], ['left:110px;top:840px', 'oncity', 27.05, 28.7], [`left:110px;${top}${big}`, 'onlight', 30.6, 32.9], [`left:1010px;${top}${big}`, 'onlight', 33.12, 34.85]];
+const caps = SLOTS.map(([css, cls, a, b], i) => [caption(TEXT.c[i][0], css, cls, TEXT.c[i][1]), a, b]);
+const heroCss = isEN ? 'font-size:124px' : '';
+const heroes = TEXT.hero.map((text, i) => [caption(text, heroCss, 'hero'), i, i === 3 ? 3.92 : i + 0.97]);
+const wallWords = TEXT.wall.map((text, i) => [caption(text, heroCss, 'hero'), 35 + i, 35.96 + i]);
+const endName = caption('hktransport', 'left:0;right:0;top:520px;text-align:center;font-size:96px;color:#fff', '');
+const endLine = caption(TEXT.line, 'left:0;right:0;top:660px;text-align:center;font-size:46px;font-weight:500;color:#a1a1a6', '');
+const endUrl = $('url') ?? (() => { const u = document.createElement('div'); u.id = 'url'; u.textContent = 'hk.52-220-124-215.sslip.io'; $('end').append(u); return u; })();
+
+const cards = [0, 1, 2].map((k) => { const c = new Image(); c.src = `${BASE}card${k}.png`; c.className = 'card'; stage.insertBefore(c, $('bubble')); return c; });
+const PHONE = [
+  [3.55, 300, 1000, 0, -46, 34, 12, 0.92], [4.3, 420, 0, 0, -15, 4, 0, 1], [5.9, 420, 0, 0, -9, 3, 0, 1],
+  [6.25, -420, 0, 0, 15, 4, 0, 1], [7.9, -420, 0, 0, 9, 3, 0, 1], [8.25, -480, 0, 0, 17, 3, -1, 1.02], [13.8, -480, 0, 0, 9, 2, 0, 1.02],
+  [14.25, 450, 0, 0, -15, 4, 1, 1], [15.9, 450, 0, 0, -9, 3, 0, 1], [16.25, -420, 0, 0, 15, 3, 0, 1], [17.2, -420, 0, 0, 12, 3, 0, 1],
+  [18.05, 0, 500, 0, 0, 0, 0, 7], [29.95, 0, 500, 0, 0, 0, 0, 7], [30.7, 480, 0, 0, -14, 4, 0, 1], [32.9, 480, 0, 0, -9, 3, 0, 1],
+  [33.25, -420, 0, 0, 15, 4, 0, 1], [34.7, -420, 0, 0, 10, 3, 0, 1], [35.05, -420, -1300, 0, 30, -30, -10, 0.9],
+];
+function phoneAt(t) {
+  let i = PHONE.findIndex(([at]) => at > t); if (i < 0) i = PHONE.length - 1; if (i === 0) i = 1;
+  const a = PHONE[i - 1], b = PHONE[i], k = inOut(win(t, a[0], b[0])), v = a.map((x, n) => lerp(x, b[n], k));
+  const idle = Math.sin(t * 1.3) * 1.2;
+  return `translate3d(${v[1]}px,${v[2] + Math.sin(t * 1.7) * 7}px,${v[3]}px) rotateY(${v[4] + idle}deg) rotateX(${v[5]}deg) rotateZ(${v[6]}deg) scale(${v[7]})`;
+}
+// The wall of real screens near the end.
+const tilt = $('tilt'), columns = [];
+[-880, -440, 0, 440, 880].forEach((x, c) => {
+  const col = document.createElement('div'); col.className = 'col'; col.style.left = `${x}px`; tilt.append(col); columns.push(col);
+  for (let r = 0; r < 6; r++) { const m = document.createElement('div'); m.className = 'mini'; m.style.top = `${(r - 3) * 770}px`; m.style.backgroundImage = `url(${BASE}${shots[(r * 2 + c * 3) % shots.length]}.png)`; col.append(m); }
+});
+
+const blend = $('blend').getContext('2d');
+const city = createCity($('city'), 1920, 1080, LANG);
+let SUB = 4;
+window.setSub = (n) => { SUB = n; };
+function drawCity(t) {
+  for (let k = 0; k < SUB; k++) {
+    city.render(Math.max(0, Math.min(12, t + (k / SUB) * (0.5 / 60) * 1.0)));
+    blend.globalAlpha = 1 / (k + 1); blend.drawImage($('city'), 0, 0);
+  }
+  blend.globalAlpha = 1;
+}
+window.renderAt = (t) => {
+  const inCity = t >= 17.7 && t < 30.3;
+  $('light').style.display = (t >= 3.4 && t < 18.4) || (t >= 29.6 && t < 35.4) ? 'block' : 'none';
+  $('light').style.opacity = win(t, 3.4, 3.9);
+  [['o1', '#ffb6c9', 400, 250, 0.9], ['o2', '#b9d4ff', 1500, 800, 0.7], ['o3', '#ffe2a8', 1200, 200, 1.1]].forEach(([id, color, x, y, speed]) => {
+    const o = $(id); o.style.background = `radial-gradient(circle,${color}cc,${color}00 68%)`;
+    o.style.transform = `translate3d(${x + Math.sin(t * speed) * 260}px,${y + Math.cos(t * speed * 0.8) * 180}px,0)`;
+  });
+  for (const id of ['city', 'blend']) $(id).style.display = inCity ? 'block' : 'none';
+  if (inCity) { drawCity(t - 18); $('blend').style.opacity = t < 18 ? win(t, 17.7, 18) : 1 - win(t, 30, 30.3); }
+  // Phone and its screens.
+  const showPhone = t >= 3.5 && t < 35.1 && !(t >= 18.1 && t < 29.9);
+  const phone = $('phone'); phone.style.display = showPhone ? 'block' : 'none';
+  if (showPhone) {
+    phone.style.transform = phoneAt(t);
+    let current = 0; SCREENS.forEach(([at], i) => { if (t >= at) current = i; });
+    images.forEach((img, i) => { img.style.opacity = i === current ? 1 : i === current - 1 ? 1 - win(t, SCREENS[current][0], SCREENS[current][0] + 0.25) : 0; });
+    pops.forEach((pop, i) => {
+      const k = spring(win(t, SCREENS[i][0], SCREENS[i][0] + 0.62));
+      const isOn = i === current || (i === current - 1 && t < SCREENS[current][0] + 0.14);
+      pop.style.opacity = isOn ? 1 : 0;
+      pop.style.transform = `translate3d(0,${(1 - k) * 560}px,${44 + 40 * Math.sin(k * 3.14)}px)`;
+    });
+  }
+  const bubble = $('bubble'), typed = TEXT.ask.slice(0, Math.floor(win(t, 8.3, 8.95) * (TEXT.ask.length + 0.99)));
+  bubble.textContent = typed + (t < 9 ? '｜' : '');
+  const b = spring(win(t, 8.15, 8.7)), bo = 1 - win(t, 9.05, 9.35);
+  bubble.style.opacity = t < 8.1 ? 0 : clamp(win(t, 8.15, 8.3)) * bo;
+  bubble.style.transform = `translate3d(${(1 - b) * 80}px,${(1 - b) * 40 - (1 - bo) * 60}px,0) scale(${0.85 + 0.15 * b})`;
+  cards.forEach((card, i) => {
+    const from = 9.5 + i * 0.5, s = spring(win(t, from, from + 0.7)), leave = inOut(win(t, 13.55 + i * 0.06, 14.05 + i * 0.06));
+    card.style.opacity = t < from ? 0 : clamp(win(t, from, from + 0.12)) * (1 - leave);
+    card.style.transform = `translate3d(${lerp(1100, 110 + i * 34, s) + leave * 1100}px,${-250 + i * 232 + Math.sin(t * 1.5 + i) * 7}px,${i * -30 + 60}px) rotateY(${lerp(-40, -9, s)}deg) rotateZ(${(1 - s) * 5}deg)`;
+  });
+  for (const [cap, a, b2] of caps) showCaption(cap, t, a, b2);
+  for (const [cap, a, b2] of heroes) {
+    showCaption(cap, t, a, b2, 0.02);
+    cap.el.style.transform = `scale(${0.94 + win(t, a, b2) * 0.1})`;
+  }
+  $('scrim').style.opacity = win(t, 20.8, 21.1) * (1 - win(t, 28.5, 28.8));
+  // Rides above the bus when it is the subject of the shot.
+  const pill = $('pill'), tc = t - 18;
+  const shown = (tc > 3.05 && tc < 4.95) || (tc > 7.05 && tc < 8.95);
+  if (inCity && shown) {
+    const p = city.label(tc), edge = Math.min(win(tc, 3.05, 3.3) + win(tc, 7.05, 7.3), 1) * (1 - win(tc, 4.75, 4.95) - win(tc, 8.75, 8.95));
+    const s = spring(win(tc, tc < 6 ? 3.05 : 7.05, tc < 6 ? 3.6 : 7.6));
+    pill.textContent = TEXT.pill[tc < 6 ? 0 : 1];
+    pill.style.opacity = p.isFront ? clamp(edge) : 0;
+    pill.style.transform = `translate3d(${p.x * 1920}px,${p.y * 1080}px,0) translate(-50%,-125%) scale(${0.7 + 0.3 * s})`;
+  } else pill.style.opacity = 0;
+  // Wall of screens.
+  const wall = $('wall'), wallOn = t >= 34.9 && t < 39.3;
+  wall.style.display = wallOn ? 'block' : 'none';
+  if (wallOn) {
+    wall.style.opacity = win(t, 34.9, 35.1) * (1 - win(t, 39, 39.25));
+    tilt.style.transform = `translateZ(${lerp(-140, 60, win(t, 35, 39))}px) rotateX(24deg) rotateZ(-14deg)`;
+    columns.forEach((col, c) => { col.style.transform = `translate3d(0,${(c % 2 ? 1 : -1) * ((t - 37) * 170 + (1 - out(win(t, 34.9, 35.6))) * 900)}px,0)`; });
+  }
+  for (const [cap, a, b2] of wallWords) showCaption(cap, t, a, b2, 0.03);
+  // Close.
+  const end = $('end'); end.style.display = t >= 38.9 ? 'block' : 'none';
+  end.style.opacity = win(t, 38.95, 39.05);
+  const icon = $('icon'), i = spring(win(t, 39, 39.7));
+  icon.style.opacity = t >= 39 ? 1 : 0; icon.style.transform = `translateY(${(1 - i) * 90}px) scale(${0.6 + 0.4 * i})`;
+  showCaption(endName, t, 39.5, 45, 0.03); showCaption(endLine, t, 40, 45, 0.02);
+  const u = spring(win(t, 41, 41.6)); endUrl.style.opacity = clamp(win(t, 41, 41.2)); endUrl.style.transform = `translateX(-50%) translateY(${(1 - u) * 50}px)`;
+  // Flash on the two big hits, and the fade out.
+  const flash = $('flash');
+  const hit = Math.max(1 - Math.abs(t - 18) / 0.16, 1 - Math.abs(t - 30) / 0.16, 0);
+  flash.style.background = t > 43 ? '#000' : '#fff';
+  flash.style.opacity = t > 43 ? win(t, 43, 44) : hit;
+};
+await Promise.all([...document.images].map((img) => img.decode().catch(() => {})));
+await document.fonts.ready;
+await new Promise((r) => setTimeout(r, 500));
+renderAt(0); window.ready = true;
+</script></html>
